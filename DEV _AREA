@@ -1,0 +1,17 @@
+
+
+-- CRAETION ADMIN TABLE
+
+CREATE TABLE `admin` (
+	`ADMIN_ID` int NOT NULL AUTO_INCREMENT,
+	`USERNAME` varchar(255) ,
+	`ADMIN_PASSWORD` varchar(255) ,
+	 PRIMARY KEY (`ADMIN_ID`)
+);
+
+
+
+
+
+
+
