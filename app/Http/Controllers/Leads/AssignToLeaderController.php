@@ -26,31 +26,22 @@ class AssignToLeaderController extends Controller
 
     //uitility function
     public static function makePdf($cus_id,$enqid)
+
     {
 
+            // dd($enqid);
          $customer_basic_info=CustomerSignup::where('id',$cus_id)->first();
          $customer_enquiery=ClEnquiery::join('products','cl_enquieries.loan_product_id','=','products.id')
          ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
-         ->where('cl_enquieries.id',$enqid)
-         ->first();
-         $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)
-         ->where('hl_to_enquiery',$enqid)
-         ->first();
-         $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)
-         ->where('ln_com_to_enquiery',$enqid)
-         ->first();
-         $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)
-         ->where('ob_to_enquiery',$enqid)
-         ->get();
-         $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)
-         ->where('cr_to_enquiery',$enqid)
-         ->get();
-         $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)
-         ->where('el_to_enquiery',$enqid)
-         ->get();
-         $customer_fn_breakDown=FinalBreakDown::where('fn_of_cus',$cus_id)
-         ->where('fn_to_enquiery',$enqid)
-         ->first();
+            ->where('cl_enquieries.id',$enqid)
+            ->first();
+            // dd($customer_enquiery);
+         $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$enqid)->first();
+         $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$enqid)->first();
+         $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
+         $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
+         $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+         $customer_fn_breakDown=FinalBreakDown::where('fn_of_cus',$cus_id)->where('fn_to_enquiery',$enqid)->first();
 
          $data=[
              "basic_info"=>$customer_basic_info,
@@ -266,11 +257,6 @@ class AssignToLeaderController extends Controller
                      $cl_enquiery->save();
                 //end changing the profile genration value to 1 after profile genrated
 
-                   //section to reseting the customer master table final_assign_to_feild
-                        $customer_master=CustomerSignup::where('id',$this->cus_id)->first();
-                        $customer_master->Final_assign_after_more_info_m_cus_tb='0';
-                        $customer_master->save();
-                   //end section to reseting the customer master table final_assign_to_feild
 
                 // pdf generation and saving  to the database and moving to local storage
                 $print=AdminBreakDownController::makePdf($this->cus_id,$this->enq_id);
@@ -302,8 +288,7 @@ class AssignToLeaderController extends Controller
         $cus_info=CustomerSignup::join('cl_enquieries','table_customer.id','=','cl_enquieries.enquiery_of_ucs')
         ->join('products','cl_enquieries.loan_product_id','=','products.id')
         ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
-        ->join('banks','cl_enquieries.sa_ac_bank_id','=','banks.id')
-        ->select('*','table_customer.id AS cus_id','banks.*','products.*','subproducts.*','cl_enquieries.id AS enq_id')
+        ->select('*','table_customer.id AS cus_id','products.*','subproducts.*','cl_enquieries.id AS enq_id')
         ->where('cl_enquieries.id','=',$id)
         ->first();
         // dd($cus_info);

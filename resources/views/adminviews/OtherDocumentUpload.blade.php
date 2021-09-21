@@ -1,26 +1,28 @@
 @extends('layouts.master')
-
-
 @section('content')
     <!-- Main content -->
     <div class="content">
-        <div class="container mt-2">
-            <h5 class="mb-4">OTHER DOCUMENTS</h5>
-            @if (session('admin'))
-                <div class="float-right">
-                    <p class="breadcrumb-item"><a href="{{ route('offerAcceptedFileUpload.index') }}">Back</a></p>
-                </div>
-            @endif
-            @if (session('caller'))
-                <div class="float-right">
-                    <p class="breadcrumb-item"><a href="{{ route('caller.dashboard', session('caller')->id) }}">Back</a></p>
-                </div>
-            @endif
+        <div class="container">
+            <h5 class="p-2">OTHER DOCUMENTS</h5>
+
         </div>
-        <div class="container p-3">
-            <div class="card card-purple mt-5">
+        <div class="container px-2">
+            <div class="card card-purple">
                 <div class="card-header">
                     <h3 class="card-title">UPLOAD DOCUMENTS FOR ENQUIERY</h3>
+                    <div class="card-tools">
+                        @if (session('admin'))
+                    <div class="float-right">
+                        <p class="breadcrumb-item"><a href="{{ route('offerAcceptedFileUpload.index') }}" class="btn btn-primary">Back</a></p>
+                    </div>
+                @endif
+                @if (session('caller'))
+                    <div class="float-right">
+                        <p class="breadcrumb-item"><a href="{{ route('caller.dashboard', session('caller')->id) }}" class="btn btn-primary">Back</a></p>
+                    </div>
+                @endif
+                </div>
+
                 </div>
                 <!-- /.card-header -->
                     <!-- form start -->

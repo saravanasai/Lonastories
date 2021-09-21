@@ -8,11 +8,9 @@
                     {{-- <h2 class="mb-4">All Customers</h2> --}}
                 </div>
                 <div class="col mt-1">
-                    @if (session('admin'))
                         <div class="float-right">
                             <p class="breadcrumb-item"><a href="{{ route('admindashboard') }}">Back</a></p>
                         </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -64,9 +62,11 @@
                 </div>
             </div>
         </div>
-        @endsection
+    </div>
+     </div>
+    </div>
+@endsection
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -147,65 +147,5 @@
 
                 })
                 // end validation section for Date and Report Type
-
-
-
-
-                //section to handle the update button
-                $('body').on('click', '.proceed', function(event) {
-                    event.preventDefault();
-
-                    var assignment_for_user = $('#assignment_for_user').val();
-                    var url = '{{ route('detailview.store') }}';
-                    validation_status = true;
-
-                    if (validation_status) {
-                        $.ajax({
-
-                            url: url,
-                            type: "POST",
-                            data: {
-                                _token: "{{ csrf_token() }}",
-                                asignid: 'ADMIN',
-                                userid: assignment_for_user
-
-
-
-                            },
-                            success: function(data) {
-
-                                if (data == 1) {
-                                    Swal.fire({
-                                        title: 'Success',
-                                        text: "You process done!",
-                                        icon: 'success',
-                                        confirmButtonColor: '#3085d6',
-                                        confirmButtonText: 'ok'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            window.location.href =
-                                                "{{ route('admin.LeadsbyCaller') }}";
-                                        }
-                                    })
-                                } else {
-                                    Swal.fire(
-                                        'Somthing Went Worng!',
-                                        'You have not made any Changes.',
-                                        'error'
-                                    )
-
-                                }
-
-
-                            }
-
-                        });
-
-                    }
-
-
-                })
-                //end section to handle the update button
-
             })
         </script>

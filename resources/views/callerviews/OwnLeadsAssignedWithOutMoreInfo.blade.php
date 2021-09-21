@@ -1,85 +1,67 @@
 @extends('layouts.callermaster')
-
-
 @section('content')
     <!-- Main content -->
     <div class="content">
         <div class="container mt-2">
-            <h4 class="mb-4"> Own Leads Assigned By Admin fill more info</h4>
-            @if (session('admin'))
-                <div class="float-right">
-                    <p class="breadcrumb-item"><a href="{{ route('admindashboard') }}">Back</a></p>
-                </div>
-            @endif
-            @if (session('caller'))
-                <div class="float-right">
-                    <p class="breadcrumb-item"><a href="{{ route('caller.dashboard', session('caller')->id) }}">Back</a></p>
-                </div>
-            @endif
-            <table class="table table-bordered text-nowrap  table-striped yajra-datatable">
-                <thead class="bg-purple">
-                    <tr>
-                        <th>NO</th>
-                        <th>NAME</th>
-                        <th>PHONE</th>
-                        <th>EMAIL</th>
-                        <th>ENQUIERY</th>
-                        <th>INFO</th>
-                        <th>ACTION</th>
-                        <th>STATUS</th>
-                        <th>UPDATE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($new_own_leads as $sno => $own_leads)
+            <h4 class="mb-2 p-2">MY LEADS</h4>
+            <div class="float-right">
+                <p class="breadcrumb-item"><a href="{{ route('caller.dashboard') }}">Back</a></p>
+            </div>
+            <div class="container">
+                <table class="table table-bordered table table-head-fixed text-nowrap  table-striped yajra-datatable">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAME</th>
+                            <th>PHONE NO</th>
+                            <th>EMAIL</th>
+                            <th>ENQUIERY</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                            <th>UPDATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($new_own_leads as $sno => $new_own_leads)
                         <tr>
                             <td>{{ ++$sno }}</td>
-
-                            <td>{{ $own_leads->name }}</td>
-                            <td>{{ $own_leads->cus_phonenumber }}</td>
-                            <td>{{ $own_leads->email }}</td>
-                            <td>
-                                <a type="button" href="{{route('assignedNewLeads.edit',$own_leads->cus_id)}}"
-                                    class="btn btn-sm btn-info">
-                                     ENQUIERY
+                            <td>{{ $new_own_leads->name }}</td>
+                            <td>{{ $new_own_leads->cus_phonenumber }}</td>
+                            <td>{{ $new_own_leads->email }}</td>
+                            <td class="text-center">
+                                <a type="button" href="{{route('assignedNewLeads.edit',$new_own_leads->enq_id)}}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye px-1"></i>view
                                 </a>
                             </td>
-                            <td>
-                                @if ($own_leads->cs_enq_status_enq_tb=="1")
+                            <td class="text-center">
+                                @if ($new_own_leads->cs_enq_status_enq_tb=="1")
                                 <span class="badge badge-danger">New Enquiery</span>
                                 @else
-                                <span class="badge badge-success">{{$own_leads->status_code}}</span>
+                                <span class="badge badge-success">{{$new_own_leads->status_code}}</span>
                                 @endif
                             </td>
-                            <td>
-                                <a href="{{route('assignedNewLeads.show',$own_leads->cus_id)}}"
-                                    class="btn btn-sm btn-success">Fill Info</a>
-
+                            <td class="text-center">
+                                <a href="{{route('assignedNewLeads.show',$new_own_leads->cus_id)}}" class="btn btn-sm btn-success"><i class="fas fa-file-signature px-1"></i>Fill Info</a>
                             </td>
                             <td>
-                                <div class="form-group">
-                                    <select class="form-control" id="cus_over_all_status{{$own_leads->enq_id}}">
+                                <div class="input-group">
+                                    <select class="form-control" id="cus_over_all_status{{$new_own_leads->enq_id}}">
                                         <option value="0" selected>Choose the status</option>
-                                       @foreach ($status_code as $status)
-                                         <option value="{{$status->id}}">{{$status->status_code}}</option>
-                                       @endforeach
+                                        @foreach ($status_code as $status)
+                                        <option value="{{$status->id}}">{{$status->status_code}}</option>
+                                        @endforeach
                                     </select>
-                                  </div>
-                            </td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" id="{{ $own_leads->enq_id}}"
-                                        class="btn btn-sm btn-warning updateStatus">Update</button>
-
+                                    <div class="input-group-prepend">
+                                        <button type="button" id="{{ $new_own_leads->enq_id}}" class="btn btn-sm btn-warning updateStatus"><i class="fas fa-user-edit"></i></button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{$new_own_leads->links()}}
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
 
 

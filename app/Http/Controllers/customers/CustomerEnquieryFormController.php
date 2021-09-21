@@ -87,7 +87,7 @@ class  CustomerEnquieryFormController extends Controller
     public function edit($id)
     {
         $get_user_referal_id=CustomerSignup::where('id',$id)->first();
-        $url="http://localhost:8000/user/signup/".$get_user_referal_id->cus_referal_code;
+        $url="http://localhost:8000/user/signup/".$get_user_referal_id->cus_referal_code."/referal";
         Log::channel('telecallerlink')->info($url);
         return view('customerviews.csutomerEnquieryForm',compact('url'));
     }

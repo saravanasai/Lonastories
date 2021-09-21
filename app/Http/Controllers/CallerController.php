@@ -8,6 +8,7 @@ use Nexmo\Laravel\Facade\Nexmo;
 use App\Models\caller;
 use App\Models\ClEnquiery;
 use App\Models\CustomerSignup;
+use App\Models\Cutomer\CustomerEnqieryForm;
 use App\Models\Products;
 use App\Models\TeleCallerEnquiery;
 use Illuminate\Http\Request;
@@ -222,7 +223,9 @@ class CallerController extends Controller
 
     public function callerdashboard()
     {
-        $new_enq_assigned_count=CustomerSignup::where('cus_tb_assigned_to',session('caller')->id)->count();
+
+        $new_enq_assigned_count=CustomerEnqieryForm::where('initial_assign_to',session('caller')->id)
+        ->where('cs_enq_status_enq_tb','1')->count();
 
         return view('callerdashboard',['new_enq_count'=>$new_enq_assigned_count]);
     }
@@ -233,9 +236,7 @@ class CallerController extends Controller
     {
 
         $products=Products::all();
-        $banks=Bank::all();
-
-        return view('caller.newcustomer',["products"=>$products,"banks"=>$banks]);
+        return view('caller.newcustomer',["products"=>$products]);
     }
 
      public function StoreNewCustomer(Request $request)

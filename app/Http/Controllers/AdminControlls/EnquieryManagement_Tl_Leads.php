@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\customers;
+namespace App\Http\Controllers\AdminControlls;
 
 use App\Http\Controllers\Controller;
-use App\Mail\DirectReferalLink;
-use App\Models\CustomerSignup;
-use App\Models\Cutomer\DirectReferal;
+use App\Models\ClEnquiery;
+use App\Models\TeleCallerEnquiery;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
-class CustomerDirectReferal extends Controller
+class EnquieryManagement_Tl_Leads extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +16,10 @@ class CustomerDirectReferal extends Controller
      */
     public function index()
     {
-        return view('customerviews.customerDirectRefferal');
+        $leads_by_telecaller=TeleCallerEnquiery::join('telecaller','tele_caller_enquieries.telecaller_id','=','telecaller.id')
+        ->select('tele_caller_enquieries.*','tele_caller_enquieries.id as tc_enq_id','telecaller.*')->paginate(6);
+        // dd($leads_by_telecaller);
+        return view('AdminEnquieryViews.TodayLeadsByTeleCaller',['leads_by_telecaller'=>$leads_by_telecaller]);
     }
 
     /**
@@ -29,7 +29,7 @@ class CustomerDirectReferal extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -40,27 +40,7 @@ class CustomerDirectReferal extends Controller
      */
     public function store(Request $request)
     {
-
-
-        //need to validate on intergation with frontend
-        $get_user_referal_id=CustomerSignup::where('id','=',$request->refer_by_cus_id)->first();
-        $url="http://localhost:8000/user/signup/".$get_user_referal_id->cus_referal_code."/referal/2x";
-
-        $direct_referal= new DirectReferal();
-        $direct_referal->direct_ref_of_user=$request->refer_by_cus_id;
-        $direct_referal->refered_cus_name=$request->refer_to_cus_name;
-        $direct_referal->refered_cus_phonenumber=$request->refer_to_cus_phonenumber;
-        $direct_referal->refered_cus_email=$request->refer_to_cus_email;
-        $direct_referal->refered_cus_relationship=$request->refer_to_relationship;
-        $direct_referal->refered_url=$url;
-
-        if($direct_referal->save())
-        {
-            Log::channel('telecallerlink')->info($url);
-            Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
-            return redirect('/home');
-        }
-
+        //
     }
 
     /**
@@ -71,7 +51,13 @@ class CustomerDirectReferal extends Controller
      */
     public function show($id)
     {
-        //
+        $cl_enquiery=ClEnquiery::join('tele_caller_enquieries','cl_enquieries.enquiery_cus_ph','=','tele_caller_enquieries.cus_Phone_number')
+        ->join('products','cl_enquieries.loan_product_id','products.id')
+        ->join('subproducts','cl_enquieries.loan_product_sub_id','subproducts.id')
+        ->where('enquiery_cus_ph',$id)
+        ->where('initial_assign_to',null)->first();
+
+    return view('AdminEnquieryViews.MoreinfoofTelecallerLead',["cl_enquiery"=>$cl_enquiery]);
     }
 
     /**

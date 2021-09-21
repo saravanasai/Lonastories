@@ -5,11 +5,11 @@
         <div class="container mt-1">
             <div class="row">
                 <div class="col">
-                    <h2 class="mb-4">More details</h2>
+                    <h6 class="mb-4">MORE INFO OF ENQUIERY</h6>
                 </div>
                 <div class="col mt-1">
                         <div class="float-right">
-                            <p class="breadcrumb-item"><a href="{{ route('assignToAdmin.index') }}">Back</a></p>
+                            <p class="breadcrumb-item"><a href="{{ route('DirectLeadsAfterAssignMoreinfo.index') }}">Back</a></p>
                         </div>
                 </div>
             </div>
@@ -24,8 +24,6 @@
                                     <li class="nav-item"><a class="nav-link active" href="#activity"
                                             data-toggle="tab">General info</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summarized View</a></li>
-                                    <li class="nav-item"><a class="nav-link " href="#settings" data-toggle="tab">Assign To
-                                        </a></li>
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
@@ -124,7 +122,7 @@
 
                                                 </ul>
                                                 <div class="text-center mt-5 mb-3">
-                                                    <div class="btn-group">
+                                                    {{-- <div class="btn-group">
                                                         <input type="hidden"  id="enq_id" value="{{$more_info->enq_id}}">
                                                         <button type="button"
                                                             class="btn btn-success proceed"><i class="fas fa-vote-yea px-1"></i>Proceed</button>
@@ -135,10 +133,10 @@
                                                         <div class="dropdown-menu" role="menu">
                                                             <a class="dropdown-item" href="#settings"
                                                                 data-toggle="tab">Assign to Leader</a>
-                                                            {{-- <a class="dropdown-item" href="#">Another action</a>
-                                          <a class="dropdown-item" href="#">Something else here</a> --}}
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                          <a class="dropdown-item" href="#">Something else here</a>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -215,7 +213,7 @@
                                     </div>
                                     <!-- / end of second tab.tab-pane -->
                                     <div class="tab-pane" id="settings">
-                                        <table class="table table-striped table-valign-middle">
+                                        {{-- <table class="table table-striped table-valign-middle">
                                             <thead>
                                                 <tr>
                                                     <th>Leader Name</th>
@@ -246,7 +244,7 @@
                                             <div class="float-right">
                                                 {{$leader_info->links()}}
                                             </div>
-                                        </table>
+                                        </table> --}}
                                     </div>
                                     <!-- /.tab-pane -->
                                 </div>

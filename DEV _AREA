@@ -10,8 +10,50 @@ CREATE TABLE `admin` (
 );
 
 
+        1. today leads by caller
+        2.
 
-
-
-
-
+        +"id": 9
+        +"name": "Charles Short"
+        +"cus_phonenumber": "1212121212"
+        +"email": "nezahik@mailinator.com"
+        +"dob": "1986-01-29"
+        +"otp": "0"
+        +"refered_by": "0"
+        +"status": 1
+        +"active_status": 0
+        +"cus_referal_code": "LN1CS"
+        +"ref_check": "0"
+        +"enquiery_form_status": "0"
+        +"created_at": "2021-09-21 10:00:41"
+        +"updated_at": "2021-09-21 10:05:03"
+        +"enquiery_cus_ph": "1212121212"
+        +"enquiery_of_ucs": 1
+        +"initial_assign_to": "1"
+        +"companyname": "Haney Barr Traders"
+        +"take_home_salary": "62"
+        +"total_obligation": "97"
+        +"no_of_credit_card": "33"
+        +"no_of_credit_card_outstanding": "18"
+        +"credit_card_obligation": "0.9"
+        +"sa_ac_bank_id": "Shaeleigh Kramer"
+        +"loan_product_id": 2
+        +"loan_product_sub_id": 10
+        +"final_obligation": "97.9"
+        +"existing_foir": "157.90322580645162%"
+        +"loan_amount_required": "48"
+        +"current_loation": "Doloremque reprehend"
+        +"additional_details": "Architecto eos ut m"
+        +"eq_status": "1"
+        +"Final_assign_after_more_info_cl_tb": "1"
+        +"ready_to_break_down": "1"
+        +"overall_status_of_customer": "4"
+        +"profile_gen_status": "0"
+        +"profile_accepted_status": "0"
+        +"enq_doc_name": ""
+        +"documents_collected_status": "0"
+        +"con_lead_before_info": "0"
+        +"status_code": "Follow Up-Hot"
+        +"status_remark": "For conversions expected within the week"
+        +"cus_id": 1
+        +"enq_id": 9

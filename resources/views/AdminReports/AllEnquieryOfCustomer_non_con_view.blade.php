@@ -21,12 +21,12 @@
                 </div>
             </div>
         </div>
-     <div>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Enquiery Reports No Converted Cases</h3>
-              <div class="card-tools">
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Enquiery Reports No Converted Cases</h3>
+                <div class="card-tools">
                     <form action="{{route('NonConvertedEnquieryReports.export')}}" method="post">
                         @csrf
                         <input type="hidden" name="from_date" value="{{$from_date}}">
@@ -35,43 +35,30 @@
                         <i class="fas fa-file-export px-2"></i>Export
                         </button>
                     </form>
-              </div>
+                </div>
             </div>
-            <!-- /.card-header -->
+        <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
                 @include('components.all-enquiery-of-customer-not-converted-table',$user_info)
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-
-                    {{-- {{$user_info->links()}} --}}
-
-            </div>
-          </div>
-
+        <!-- /.card-body -->
+        </div>
     </div>
-
-
-        @endsection
+     </div>
+    </div>
+@endsection
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        {{-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> --}}
-
         <script>
             $(function() {
-
                 //SECTION FOR HANDLING THE assign REQUEST
-
                 $('body').on('click', '.assign', function(event) {
                     event.preventDefault();
                     var id = $('#assignment_for_user').val();
                     var leaderid = $('#single_leader_id').val();
                     var url = '{{ route('detailview.update', ':id') }}';
                     url = url.replace(':id', id);
-
-
                     Swal.fire({
                         title: 'Do you want to Assign?',
                         showDenyButton: true,
@@ -82,7 +69,6 @@
                         /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
                             $.ajax({
-
                                 url: url,
                                 type: "PUT",
                                 data: {
@@ -118,13 +104,7 @@
                             Swal.fire('You cancelled', '', 'info')
                         }
                     })
-
-
-
-
-
                 })
-
                 //END OF SECTION FOR HANDLING THE assign REQUEST
 
                 //section for handling the disabling function of user

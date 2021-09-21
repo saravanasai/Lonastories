@@ -80,13 +80,8 @@
                             </div>
                             <div class=" col col-md-3">
                                 <div class="form-group">
-                                    <label for="sa_bank_name">Salary / Primary Bank Account</label>
-                                    <select class="form-control" id="sa_bank_name" name="sa_bank_name">
-                                        <option value="0" selected>Choose bank name</option>
-                                       @foreach ($banks as $bank )
-                                        <option value="{{$bank->id}}">{{$bank->bank_name}}</option>
-                                       @endforeach
-                                    </select>
+                                    <label for="sa_bank_name">Salary Bank Account</label>
+                                    <input type="text" class="form-control" id="sa_bank_name" name="sa_bank_name" placeholder="Salary Bank Account">
                                 </div>
                             </div>
                             <div class=" col col-md-2">
@@ -186,7 +181,6 @@
                                     <button type="button" class="btn btn-warning" id="calculate_final_obligation">Calculate</button>
                                 </div>
                                 <div class="col col-md-2">
-
                                     <button type="submit" class="btn btn-success btnleadgen">Generate lead</button>
                                     <input type="hidden" value="{{session('caller')->id}}" id="id">
                                 </div>
