@@ -9,6 +9,7 @@ use App\Models\ClEnquiery;
 use App\Models\CreditBreakDown;
 use App\Models\CustomerSignup;
 use App\Models\FinalBreakDown;
+use App\Models\LeadsConverted\ConvertedFeilds;
 use App\Models\MultiplierEligibility;
 use App\Models\ObligationBreakDown;
 use App\Models\OfferPdf;
@@ -59,9 +60,11 @@ class EnquieryManagementBreakDown extends Controller
         $customer_enquiery=ClEnquiery::join('products','cl_enquieries.loan_product_id','=','products.id')
         ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
         ->join('statuses','cl_enquieries.overall_status_of_customer','=','statuses.id')
-           ->where('cl_enquieries.id',$id)
-           ->first();
+        ->select('cl_enquieries.*','cl_enquieries.id as enq_id','products.*','subproducts.*','statuses.*')
+        ->where('cl_enquieries.id',$id)
+        ->first();
         $cus_id=$customer_enquiery->enquiery_of_ucs;
+        $enq_id=$customer_enquiery->enq_id;
         $customer_basic_info=CustomerSignup::where('id',$cus_id)->first();
         $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$id)->first();
         $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$id)->first();
@@ -80,7 +83,8 @@ class EnquieryManagementBreakDown extends Controller
             "cr_details"=>$customer_cr_breakDown,
             "el_details"=>$customer_el_breakDown,
             "fn_details"=>$customer_fn_breakDown,
-            "pdf"=>$offer_pdf
+            "pdf"=>$offer_pdf,
+            "enq_id"=>$enq_id
         ];
         // dd($data);
         return view('AdminEnquieryViews.VIewForBreakDown',compact('data'));
@@ -95,7 +99,15 @@ class EnquieryManagementBreakDown extends Controller
      */
     public function edit($id)
     {
-        //
+        $con_feilds=ConvertedFeilds::where('con_lead_of_enquiery',$id)->first();
+        if($con_feilds!=null)
+        {
+            return view('AdminEnquieryViews.VIewForConvertedCase',compact('con_feilds'));
+        }
+        else
+        {
+            return redirect()->back()->with('error','Currently Unavaiable');
+        }
     }
 
     /**
