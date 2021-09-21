@@ -91,9 +91,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-purple elevation-4 " style="height: 100%">
+        <aside class="main-sidebar sidebar-dark-purple elevation-4 " style="height: 100vh;" >
             <!-- Sidebar -->
-            <div class="sidebar">
+            <div class="sidebar" >
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
@@ -112,7 +112,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <!-- Sidebar Menu -->
                 <nav class="mt-2" >
-
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
@@ -233,19 +232,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('TodayCallerLeads.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                        <p>TD Leads TeleCaller</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('DirectLeadsInitialAssign.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
+                                        <p>DL Assigned To Leader</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>DL Assign To TL TO BR</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+
                         <!--End Third Nav section  -->
                         <!-- Fourth Nav section  -->
                             <li class="nav-item">
@@ -365,7 +371,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
         <!-- /.content-wrapper -->
         <!-- Main Footer -->
-        {{-- <footer class="main-footer">
+        <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
                 Excition Technology
@@ -373,7 +379,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Default to the left -->
             <strong>Copyright &copy; 2021-2022 <a href="https://www.exciteon.com/">EXCITEON - TECH</a>.</strong> All
             rights reserved.
-        </footer> --}}
+        </footer>
     </div>
     <!-- ./wrapper -->
 

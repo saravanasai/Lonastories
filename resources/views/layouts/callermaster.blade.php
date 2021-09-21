@@ -124,30 +124,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <p>Add New Enquiery</p>
                                         </a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a href="{{route('breakDown.index')}}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Ready To BreakDown</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('offerAcOeDe.index')}}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Accept Leads</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('offerAcceptedFileUpload.index')}}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Upload Files</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{route('feildForConCase.index')}}" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Converted Leads</p>
-                                        </a>
-                                    </li> --}}
                                 </ul>
                             </li>
                             <!--End First Nav  part-1 section  -->
@@ -165,6 +141,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <a href="{{route('assignedNewLeads.index')}}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>New Assiged Enquiery</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('assignedleads.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Assigend Leads With More Info</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('offerAcOeDeLeader.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Accetp Or Deny</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('offerAcceptedFileUploadLeader.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Upload file</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{route('feildForConCaseLeader.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Converted Leads</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--End First Nav section  -->
+                             <!-- First Nav section  -->
+                             <li class="nav-item ">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon fas fa-running"></i>
+                                    <p>
+                                        My Leads
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{route('MyLeadsStatus.index')}}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>My Leads Status</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -231,8 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.content-wrapper -->
             <!-- Main Footer -->
-
-            {{-- <footer class="main-footer">
+            <footer class="main-footer">
                 <!-- To the right -->
                 <div class="float-right d-none d-sm-inline">
                     Excition Technology
@@ -240,7 +258,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Default to the left -->
                 <strong>Copyright &copy; 2021-2022 <a href="https://www.exciteon.com/">EXCITEON - TECH</a>.</strong> All
                 rights reserved.
-            </footer> --}}
+            </footer>
         </div>
         <!-- ./wrapper -->
 

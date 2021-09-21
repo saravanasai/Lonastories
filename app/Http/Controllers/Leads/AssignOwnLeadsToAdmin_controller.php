@@ -55,7 +55,8 @@ class AssignOwnLeadsToAdmin_controller extends Controller
      */
     public function store(Request $request)
     {
-        $customer_quick_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb','=',$request->cusid)->first();
+        $customer_quick_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb','=',$request->cusid)
+        ->where('cs_enq_status_enq_tb','1')->first();
         $cl_table=new ClEnquiery();
         $cl_table->enquiery_cus_ph=$request->phonenumber;
         $cl_table->enquiery_of_ucs=$request->cusid;

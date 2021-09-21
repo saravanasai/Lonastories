@@ -27,9 +27,9 @@
     <div class="content">
 
         <div class="conatiner col-md-12">
-            <div class="card card-info">
+            <div class="card card-purple">
                 <div class="card-header">
-                    <h5 class="card-title">More Details of Customer</h5>
+                    <h5 class="card-title">MORE DETAILS OF CUSTOMER</h5>
                 </div>
                 <form method="POST"  action="" id="new_customer_more_info_form">
                     @csrf
@@ -40,7 +40,8 @@
                                 <div class="form-group">
                                     <label for="firstName">First Name *</label>
                                     <input type="text" class="form-control" id="firstName" value="{{$customer_info->name}}" name="firstname" placeholder="Enter First Name" disabled>
-                                    <input type="hidden" class="form-control" id="cus_id" value="{{$customer_info->id}}" name="firstname" placeholder="Enter First Name" disabled>
+                                    <input type="hidden" class="form-control" id="cus_id" value="{{$customer_info->id}}"  disabled>
+                                    <input type="hidden" class="form-control" id="enq_id" value="{{$enq_id}}"  disabled>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -82,12 +83,7 @@
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="sa_bank_name">Salary Bank Account</label>
-                                    <select class="form-control" id="sa_bank_name" name="sa_bank_name">
-                                        <option value="0" selected>Choose bank name</option>
-                                       @foreach ($banks as $bank )
-                                        <option value="{{$bank->id}}">{{$bank->bank_name}}</option>
-                                       @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" id="sa_bank_name" name="sa_bank_name" placeholder="Salary Bank Account">
                                 </div>
                             </div>
                             <div class=" col col-md-2">
@@ -183,7 +179,9 @@
                                     <select class="form-control" id="lead_status">
                                         <option value="0" selected>Choose the status</option>
                                        @foreach ($status_code as $status)
+                                       @if($status->id!=7)
                                          <option value="{{$status->id}}">{{$status->status_code}}</option>
+                                        @endif
                                        @endforeach
                                     </select>
                                   </div>
@@ -191,16 +189,16 @@
                          </div>
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col col-md-1">
-                                    <button type="reset" class="btn btn-danger" >Reset</button>
+                                <div class="col col-md-2">
+                                    <button type="reset" class="btn btn-danger" ><i class="fas fa-trash-restore px-1"></i>Reset</button>
                                 </div>
-                                <div class="col col-md-1 offset-md-8">
-                                    <button type="button" class="btn btn-warning" id="calculate_final_obligation">Calculate</button>
+                                <div class="col col-md-2 offset-md-5">
+                                    <button type="button" class="btn btn-info" id="calculate_final_obligation"><i class="fas fa-calculator px-1"></i>Calculate</button>
                                 </div>
                                 <div class="col col-md-2">
 
-                                    <button type="submit" class="btn btn-success btnleadgen">Generate lead</button>
-                                    <input type="hidden" value="{{session('caller')->id}}" id="id">
+                                    <button type="submit" class="btn btn-success btnleadgen"><i class="fas fa-paper-plane px-1"></i>Submit</button>
+
                                 </div>
                             </div>
 
@@ -212,7 +210,6 @@
 
             </form>
         </div>
-    </div>
     </div>
 
     <!-- /.content -->

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminControlls\AdminOwnLeadToLeader_Controller;
 use App\Http\Controllers\AdminControlls\AdminSettingController;
 use App\Http\Controllers\AdminControlls\CustomerQuickEnquiery_AssignController;
 use App\Http\Controllers\AdminControlls\DirectReferalAdminController;
+use App\Http\Controllers\AdminControlls\EnquieryManagement_Tl_Leads;
 use App\Http\Controllers\AdminControlls\EnquieryOfCusDetailView;
 use App\Http\Controllers\AdminControlls\EnquieryOfCustomerView;
 use App\Http\Controllers\AdminControlls\feildForConCase_Controller;
@@ -18,6 +19,10 @@ use App\Http\Controllers\CallerController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\customers\CustomerDirectReferal;
 use App\Http\Controllers\customers\CustomerEnquieryFormController;
+use App\Http\Controllers\LeaderControlls\EnquieryManagement_my_Leads;
+use App\Http\Controllers\LeaderControlls\EnquieryManagementBreakDown;
+use App\Http\Controllers\LeaderControlls\EnquieryManagementDirectLeads_AfterAssign;
+use App\Http\Controllers\LeaderControlls\EnquieryManagementDirectLeads_InitialAssign;
 use App\Http\Controllers\LeaderControlls\feildForConCaseLeader_LeaderController;
 use App\Http\Controllers\LeaderControlls\offerAcceptedFileUploadLeader_LeaderController;
 use App\Http\Controllers\LeaderControlls\OfferAcceptedOrDeney_LeaderController;
@@ -87,6 +92,11 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('leads/DocumentCollected/feildForConCase',feildForConCase_Controller::class);
      //route resource for viewing the direct referal
     Route::resource('leads/Directrefferal',DirectReferalAdminController::class);
+    //resouece controller for admin enquiery Management
+    Route::resource('EnquieryManagement/TodayCallerLeads',EnquieryManagement_Tl_Leads::class);//this views the customer spoked by a tele caller
+    Route::resource('EnquieryManagement/DirectLeadsInitialAssign',EnquieryManagementDirectLeads_InitialAssign::class);//this views initial assigned status
+    Route::resource('EnquieryManagement/DirectLeadsAfterAssignMoreinfo',EnquieryManagementDirectLeads_AfterAssign::class);//this views After more info assign
+    Route::resource('EnquieryManagement/AssignedToLeaderBreakDown',EnquieryManagementBreakDown::class);//this views After more info assign
 
     //route resouece for adding telecaller
     Route::resource('/caller', CallerController::class);
@@ -119,6 +129,9 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
     Route::resource('leads/acceptOrDeny/offerAcOeDeLeader',OfferAcceptedOrDeney_LeaderController::class);
     Route::resource('leads/accepted/offerAcceptedFileUploadLeader',offerAcceptedFileUploadLeader_LeaderController::class);
     Route::resource('leads/DocumentCollected/feildForConCaseLeader',feildForConCaseLeader_LeaderController::class);
+
+    //routes that handle the My Leads of Caller
+    Route::resource('EnquieryManagement/MyLeadsStatus',EnquieryManagement_my_Leads::class);//this views the own Leader
 
 });
 

@@ -88,7 +88,9 @@ class AdminController extends Controller
   public function showadminpanel()
   {
 
-      $new_enquiry=CustomerSignup::where('enquiery_form_status','=','1')->get();
+    //   $new_enquiry=CustomerSignup::where('enquiery_form_status','=','1')->get();
+      $new_enquiry=CustomerEnqieryForm::where('cs_enq_status_enq_tb','=','1')
+      ->where('initial_assign_to',null)->get();
       $new_enq_count=count($new_enquiry);
       return view('admindashboard',["new_enq"=>$new_enq_count]);
   }

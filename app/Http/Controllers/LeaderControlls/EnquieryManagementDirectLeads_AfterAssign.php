@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Leads;
+namespace App\Http\Controllers\LeaderControlls;
 
 use App\Http\Controllers\Controller;
-use App\Models\caller;
-use App\Models\CustomerSignup;
+use App\Models\ClEnquiery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class AssignTcLeadToAdmin extends Controller
+class EnquieryManagementDirectLeads_AfterAssign extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,17 +16,17 @@ class AssignTcLeadToAdmin extends Controller
      */
     public function index()
     {
-
-        $customer_info=DB::table('cl_enquieries')
-        ->join('table_customer', 'cl_enquieries.enquiery_of_ucs', '=', 'table_customer.id')
-        ->join('statuses', 'statuses.id', '=', 'cl_enquieries.overall_status_of_customer')
-        ->select('table_customer.*','table_customer.id AS cus_id','cl_enquieries.*','statuses.*','cl_enquieries.id AS enq_id')
-        ->where('cl_enquieries.ready_to_break_down','=','0')
-        ->where('cl_enquieries.overall_status_of_customer','!=','7')
-        ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','=','0')
-        ->get();
-        // dd($customer_info);
-        return view('adminviews.LeadByTelCalAssignedToAdmin',compact('customer_info'));
+        $new_user=DB::table('table_customer')
+        ->join('cl_enquieries', 'table_customer.id', '=', 'cl_enquieries.enquiery_of_ucs')
+        ->join('statuses','cl_enquieries.overall_status_of_customer', '=', 'statuses.id')
+        ->join('telecaller','cl_enquieries.Final_assign_after_more_info_cl_tb', '=', 'telecaller.id')
+        ->select('table_customer.*','cl_enquieries.*','statuses.*')
+        ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','!=','ADMIN')
+        ->where('table_customer.enquiery_form_status','=',"0")
+        ->select('*','table_customer.id as cus_id','cl_enquieries.*','cl_enquieries.id as enq_id')
+        ->paginate(6);
+        // dd($new_user);
+        return view('AdminEnquieryViews.AssignedOwnLeadsToLeader',['new_user'=>$new_user]);
     }
 
     /**
@@ -59,20 +58,15 @@ class AssignTcLeadToAdmin extends Controller
      */
     public function show($id)
     {
-        // dd($id);
-        $more_info=DB::table('cl_enquieries')
+        $more_infomation=DB::table('cl_enquieries')
         ->join('products', 'cl_enquieries.loan_product_id', '=', 'products.id')
         ->join('subproducts','cl_enquieries.loan_product_sub_id', '=','subproducts.id')
         ->join('table_customer','cl_enquieries.enquiery_of_ucs', '=','table_customer.id')
-        ->select('cl_enquieries.*','products.*','subproducts.*','table_customer.*','cl_enquieries.id AS enq_id','table_customer.id AS cus_id')
-        ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','=','0')
+        ->select('cl_enquieries.*','products.*','subproducts.*','table_customer.*','table_customer.id as cus_id','cl_enquieries.id AS enq_id')
         ->where('cl_enquieries.id','=',$id)
         ->first();
-        //geting leaders list to give assign to leader option
-        $leader_info=caller::where('power','Leader')->paginate(5);
-        // dd($more_infomation);
-        return view('adminviews.moredetailview',["more_info"=>$more_info,"leader_info"=>$leader_info]);
-        // return redirect()->route('detailview.index')->with('more_info',$more_info);
+
+        return view('AdminEnquieryViews.Enquierymoredetailview',["more_info"=>$more_infomation]);
     }
 
     /**

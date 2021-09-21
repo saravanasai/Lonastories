@@ -1,11 +1,11 @@
-@extends('layouts.master')
+@extends('layouts.callermaster')
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-1">
                 <div class="col-sm-6">
-                    <h5 class="m-0">FEILDS FOR CONVERTED CASE AFTER LOGED IN LEADER VIEW </h5>
+                    <h5 class="m-0">FEILDS FOR CONVERTED CASE AFTER LOGED IN </h5>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,6 @@
 
     <!-- Main content -->
     <div class="content">
-
         <div class="container">
             <div class="col-12 col-sm-6 col-md-12 d-flex align-items-stretch flex-column">
                 <div class="card bg-light d-flex flex-fill">
@@ -311,7 +310,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                      $('#con_lead_loan_amount_applied').prop('disabled',true);
                      $('#con_lead_update_btn').prop('disabled',true);
                    }
-                   else if(update_status==15)
+                   else if(update_status==16)
                    {
                      $('#disbrusement_section').hide();
                      $('#con_lead_bank_name').prop('disabled',false);
