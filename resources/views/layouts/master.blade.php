@@ -233,19 +233,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('TodayCallerLeads.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-layer-group nav-icon"></i>
                                         <p>TD Leads TeleCaller</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('DirectLeadsInitialAssign.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-envelope-open-text nav-icon"></i>
                                         <p>DL Assigned To Leader</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-comment-medical nav-icon"></i>
                                         <p>DL Assign To TL TO BR</p>
                                     </a>
                                 </li>

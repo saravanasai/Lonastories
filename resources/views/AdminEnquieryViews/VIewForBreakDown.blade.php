@@ -62,6 +62,16 @@
                                 <li class="p-2"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone : {{$data['basic_info']->cus_phonenumber}}</li>
                                 <li class="p-2"><span class="fa-li"></span> <span class="badge bg-success">{{$data['enquiery_details']->status_code}}</span> </li>
                               </ul>
+                              @if($data['enquiery_details']->profile_accepted_status==1 && $data['enquiery_details']->documents_collected_status==1)
+                              <div class="d-flex">
+                                <a href="{{asset('enquieryDoc/'.$data['enquiery_details']->enq_doc_name)}}" download="Enquiery Document" class="btn btn-sm btn-primary px-1 mx-2">
+                                    <i class="fas fa-download px-1"></i>ENQUIERY DOCUMENTS
+                                  </a>
+                                <a href="{{route('AssignedToLeaderBreakDown.edit',$data['enq_id'])}}" class="btn btn-success px-1"><i class="fas fa-paper-plane px-1"></i> Details</a>
+                              </div>
+                              @else
+                              <a href="#" class="btn btn-danger disabled">Waiting For Accept And File To Upload</a>
+                              @endif
                             </div>
                             <div class="col-5 text-center">
                               <img src="https://image.freepik.com/free-vector/modern-people-avatar-casual-clothes-vector-cartoon-illustration-man-with-individual-face-hair-light-digital-frame-dark-blue-computer-picture-web-profile_107791-4258.jpg" alt="user-avatar" class="img-circle img-fluid">
@@ -269,35 +279,133 @@
                                 <h1 class="lead"><b>Additional info</b></h1>
                                 <ul class="ml-4 mb-0 mt-4 fa-ul text-muted">
                                   <li class="p-2"><span class="fa-li"></span> Age : {{$data['additional_details']->final_loan_amount}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Roi : {{$data['fn_details']->final_rate_of_interest}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Tenure : {{$data['fn_details']->final_tennure}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Emi : {{$data['fn_details']->final_emi}}</li>
+                                  <li class="p-2"><span class="fa-li"></span> Property Type : {{$data['additional_details']->hl_property_type}}</li>
+                                  <li class="p-2"><span class="fa-li"></span> Builder Name : {{$data['additional_details']->hl_builder_name}}</li>
+                                  <li class="p-2"><span class="fa-li"></span> Property Value : {{$data['additional_details']->hl_property_value}}</li>
                                 </ul>
                               </div>
                               <div class="col col-md-4">
                                 <h1 class="lead"><b>Final Info</b></h1>
                                 <ul class="ml-4 mb-0 mt-4 fa-ul text-muted">
-                                  <li class="p-2"><span class="fa-li"></span> Total Emi : {{$data['fn_details']->final_proposed_total_emi}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Current Foir : {{$data['fn_details']->final_current_foir}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Proposed Foir : {{$data['fn_details']->final_proposed_foir}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Income Considered : {{$data['fn_details']->final_salary_considered}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> Property Area : {{$data['additional_details']->hl_property_area}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> Property City : {{$data['additional_details']->hl_property_city}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> Gross Salary : {{$data['additional_details']->hl_gross_salary}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> Net Salary : {{$data['additional_details']->hl_net_salary}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> Co-Joint : {{$data['additional_details']->hl_co_joint}}</li>
                                 </ul>
                               </div>
                               <div class="col col-md-4">
-                                {{-- <h1 class="lead"><b>Additional Info</b></h1>
+                                <h1 class="lead"><b>LTV Info</b></h1>
                                 <ul class="ml-4 mb-0 mt-4 fa-ul text-muted">
-                                  <li class="p-2"><span class="fa-li"></span> Total Obligation : {{$data['enquiery_details']->total_obligation}}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Loan Amount Required : {{$data['enquiery_details']->loan_amount_required }}</li>
-                                  <li class="p-2"><span class="fa-li"></span> Final Obligation : {{$data['enquiery_details']->final_obligation }}</li>
-                                </ul> --}}
+                                    <li class="p-2"><span class="fa-li"></span> LTV-1 : {{$data['additional_details']->hl_fn_ltv_1}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> LTV-2 : {{$data['additional_details']->hl_fn_ltv_2}}</li>
+                                    <li class="p-2"><span class="fa-li"></span> LTV-3 : {{$data['additional_details']->hl_fn_ltv_3}}</li>
+                                </ul>
                               </div>
                           </div>
-                        </div>
-                        <div class="card-footer ">
-                          <div class="text-right">
-                            <a href="{{asset('storage/pdf/'.$data['pdf']->pdf_name.'.pdf')}}" download="LoanStoriesOffer" class="btn btn-sm btn-primary px-1">
-                                <i class="fas fa-download px-1"></i>OFFER PDF
-                              </a>
+                          <div class="row mt-3">
+                              <div class="col col-md-6">
+                                <table class="table table-bordered">
+                                        <thead>
+                                            <th>Sno</th>
+                                            <th>Existing Loan</th>
+                                            <th>Value</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>Loan Amount</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_loan_amount}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2.</td>
+                                            <td>Tenure</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_tennure}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3.</td>
+                                            <td>Roi</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_roi}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4.</td>
+                                            <td>Emi</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_emi }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5.</td>
+                                            <td>Pos</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_pos }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6.</td>
+                                            <td>Emi Paid</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_no_of_emi_paid }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>7.</td>
+                                            <td>Balance Emi</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_balance_emi}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>8.</td>
+                                            <td>Existing OutFlow</td>
+                                            <td>{{$data['ln_comparison']->ex_ln_exsting_out_flow}}</td>
+                                        </tr>
+                                        </tbody>
+                                </table>
+                              </div>
+                              <div class="col col-md-6">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <th>Sno</th>
+                                        <th>New Loan</th>
+                                        <th>Value</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Loan Amount</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_loan_amount}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Tenure</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_tennure}}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Roi</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_roi}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Emi</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_emi}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                        <td>Proposed Outflow</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_proposed_outflow}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6.</td>
+                                        <td>Net Savings</td>
+                                        <td>{{$data['ln_comparison']->ln_com_new_gross_sav}}</td>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                              </div>
+                          </div>
+                          <div class="row mt-2">
+                              <div class="col col-md-12 d-flex justify-content-center">
+                                <p class="px-4">MOTD: <span>{{$data['ln_comparison']->ln_com_motd  }}</span></p>
+                                <p class="px-4">Processing Fee: <span>{{$data['ln_comparison']->ln_com_pro_fee  }}</span></p>
+                                <p class="px-4">Other Charges: <span>{{$data['ln_comparison']->ln_com_ot_charges  }}</span></p>
+                                <p class="px-4">Total Cost: <span>{{$data['ln_comparison']->ln_com_total_cost  }}</span></p>
+                                <p class="px-4">Total Savings: <span>{{$data['ln_comparison']->ln_com_net_sav  }}</span></p>
+                              </div>
                           </div>
                         </div>
                       </div>
@@ -311,5 +419,9 @@
     </div>
 </div>
 <!-- /.content -->
-
 @endsection
+@if(session('error'))
+<script>
+    alert('Currently Unavialable Try After SomeTime');
+</script>
+@endif
