@@ -69,7 +69,7 @@ class AssignTcLeadToAdmin extends Controller
         ->where('cl_enquieries.id','=',$id)
         ->first();
         //geting leaders list to give assign to leader option
-        $leader_info=caller::where('power','Leader')->paginate(5);
+        $leader_info=caller::where('power','Leader')->where('status','ACTIVE')->paginate(5);
         // dd($more_infomation);
         return view('adminviews.moredetailview',["more_info"=>$more_info,"leader_info"=>$leader_info]);
         // return redirect()->route('detailview.index')->with('more_info',$more_info);

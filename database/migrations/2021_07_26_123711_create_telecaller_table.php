@@ -22,6 +22,7 @@ class CreateTelecallerTable extends Migration
             $table->string('adharnumber');
             $table->string('password');
             $table->string('status');
+            $table->integer('dl_status')->default(0)->comment("0 means not deleted 1 means deleted");
             $table->timestamps();
         });
     }

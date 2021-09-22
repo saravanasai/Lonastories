@@ -31,15 +31,14 @@
                             <td>{{ $single_caller->adharnumber }}</td>
                             <td>{{ $single_caller->power }}</td>
                             <td>{{ $single_caller->status }}</td>
-                            <td><button type="button" id="{{ $single_caller->id }}" class="btn btn-success edit"
-                                    data-toggle="modal">EDIT</button></td>
+                            <td><a  href="{{route('caller.edit',$single_caller->id)}}" class="btn btn-sm btn-success"
+                                >EDIT</a></td>
                             <td>
                                 <div class="btn-group">
-
                                     <button type="button" id="{{ $single_caller->id }}"
-                                        class="btn btn-danger delete">DELETE</button>
+                                        class="btn btn-sm btn-danger delete">DELETE</button>
                                     <button type="button" id="{{ $single_caller->id }}"
-                                        class="btn btn-outline-secondary disable">
+                                        class="btn btn-sm btn-outline-secondary disable">
                                         @if ($single_caller->status == 'ACTIVE') DISABLE
                                         @else ACTIVE @endif
                                     </button>
@@ -48,10 +47,12 @@
                         </tr>
                     @endforeach
                 </tbody>
+                <div class="float-right">
+                    {{$caller_info->links()}}
+                </div>
             </table>
         </div>
-
-     <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+     <div class="modal fade" id="caller_model" style="display: none;" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -123,21 +124,24 @@
 
 @endsection
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+@if (session('success'))
+  <Script>
+      Swal.fire('ok');
+  </Script>
+@endif
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-
-
-
-
-
-
+{{-- <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script> --}}
 
 <script>
     $(function() {
 
-        $('.yajra-datatable').DataTable();
+        $('.yajra-datatable').DataTable({
+            dom: 'Bfrt',
+            buttons: [
+            'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5'
+                ]
+            });
 
 
         //SECTION FOR HANDLING THE DELETE REQUEST
@@ -267,11 +271,8 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
 
         //section to handle the edit button
-        $('body').on('click', '.edit', function(event) {
-               $('.modal').modal('show');
-
+        $('body').on('click', '.caller-edit', function(event) {
             event.preventDefault();
-
             var id = $(this).attr('id');
             var url = '{{ route('caller.edit', ':id') }}';
             url = url.replace(':id',id);
@@ -292,8 +293,6 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                     $("#adhar_number_update").val(repsonse.adharnumber);
                     $("#callerPower_update").val(repsonse.power);
                     $("#update_id").val(repsonse.id);
-
-
 
                 }
 

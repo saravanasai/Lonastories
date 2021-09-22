@@ -86,6 +86,15 @@ class CustomerController extends Controller
 
                                             $dob=$request->date;
                                             $user_info=CustomerSignup::where('cus_phonenumber',$request->phonenumber)->first();
+                                            $tele_caller=TeleCallerEnquiery::where('cus_Phone_number',$request->phonenumber)->first();
+                                               //section to validate if the its a tellecaller referal
+                                               if($tele_caller!=null)
+                                               {
+                                                $user_info->refered_by=$tele_caller->id;
+                                                $tele_caller->cus_id=$user_info->id;
+                                                $tele_caller->save();
+                                               }
+                                               //end section to validate if the its a tellecaller referal
 
                                             // dd($user_info->refered_by!="0");
                                                        //section to check weather the user is refferd by Customer
@@ -152,9 +161,8 @@ class CustomerController extends Controller
                                                 $user_info->save();
                                             }
                                             //section to insert into a wallet of customer
-                                            $day=Carbon::parse($user_info->dob)->day;
-                                            $month=Carbon::parse($user_info->dob)->month;
-                                            $total_start_coins=$day.$month;
+                                            $year=Carbon::parse($user_info->dob)->year;
+                                            $total_start_coins=$year;
                                             // dd($total_start_coins);
                                             $walet_info=$user_info->wallet()->create([
                                                 "start_coins"=>$total_start_coins,

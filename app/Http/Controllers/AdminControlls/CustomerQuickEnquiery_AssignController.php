@@ -72,7 +72,8 @@ class CustomerQuickEnquiery_AssignController extends Controller
      */
     public function show($id)
     {
-        $leader_info=caller::where('power','Leader')->paginate(5);
+
+        $leader_info=caller::where('power','Leader')->where('status','ACTIVE')->paginate(5);
         $enquiery=CustomerEnqieryForm::where('customer_enqiery_forms.id',$id)
         ->join('products','customer_enqiery_forms.product_type','products.id')
         ->join('table_customer','customer_enqiery_forms.eqy_of_cus_enq_tb','table_customer.id')

@@ -38,6 +38,7 @@ class ClEnquiery extends Model
         "enq_doc_name",
         "documents_collected_status",
         "con_lead_before_info",
+        "enq_close_status",
         "created_at",
         "updated_at"
     ];

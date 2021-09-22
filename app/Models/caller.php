@@ -20,7 +20,8 @@ class caller extends Model
         "power",
         "adharnumber",
         "password",
-        "status"
+        "status",
+        "dl_status"
 
     ];
 

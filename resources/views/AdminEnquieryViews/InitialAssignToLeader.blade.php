@@ -21,6 +21,7 @@
                         <th>STATUS</th>
                         <th>TL NAME</th>
                         <th>VIEW</th>
+                        <th>ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,13 @@
                                 <a  href="{{route('DirectLeadsInitialAssign.show',$Quick_enquiery->q_enq_id)}}" class="btn btn-sm btn-success"
                                     > <i class="far fa-edit px-1"></i>More info</a>
                             </td>
+                            <td>
+                                <form action="{{route('DirectLeadsInitialAssign.destroy',$Quick_enquiery->q_enq_id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash px-1"></i>Soft Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -46,8 +54,8 @@
         </div>
     </div>
 @endsection
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

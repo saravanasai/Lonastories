@@ -26,6 +26,8 @@ class CreateTableCustomer extends Migration
             $table->string('cus_referal_code')->default(0);
             $table->string('ref_check')->default(0);
             $table->string('enquiery_form_status')->default('0');
+            $table->string('mandatory_doc')->default('0')->comment("0 means not collected 1 means collected");
+            $table->string('pr_form_status')->default('0')->comment("0 means not filled 1 means filled");
             $table->timestamps();
         });
     }

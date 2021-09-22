@@ -84,7 +84,7 @@ class CallerController extends Controller
     public function create()
     {
 
-        $caller_info=caller::all();
+        $caller_info=caller::where('dl_status','!=','1')->paginate(5);
 
        return view('caller.view',["caller_info"=>$caller_info]);
 
@@ -160,7 +160,7 @@ class CallerController extends Controller
     public function edit($id)
     {
         $caller_info=caller::where('id',$id)->first();
-        return json_encode($caller_info);
+         return view('adminviews.callerEditView',compact('caller_info'));
     }
 
     /**
@@ -172,21 +172,36 @@ class CallerController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $caller_info=caller::where('id',$id)->first();
 
-       $caller_info->firstname=$request->firstname;
-       $caller_info->lastname=$request->lastname;
-       $caller_info->phonenumber=$request->phonenumber;
-       $caller_info->adharnumber=$request->adharnumber;
-       $caller_info->power=$request->power;
+    //   dd($request->caller_adhar_number);
+        $this->validate($request,[
+            "caller_first_name"=>"required",
+            "caller_last_name"=>"required",
+            "caller_phone_number"=>"numeric|min:10",
+            "caller_adhar_number"=>"required|numeric|min:12",
+            "caller_power"=>"required"
+        ]);
+
+       $caller_info=caller::where('id',$id)->first();
+       $caller_info->firstname=$request->caller_first_name;
+       $caller_info->lastname=$request->caller_last_name;
+       $caller_info->phonenumber=$request->caller_phone_number;
+       $caller_info->adharnumber=$request->caller_adhar_number;
+       $caller_info->power=$request->caller_power;
+       if($request->change_password!="")
+       {
+        $caller_info->password=Hash::make($request->change_password);
+       }
 
        if($caller_info->save())
        {
-           return 1;
+
+           return redirect()->route('caller.create')->with('success','Updated Successfully');
        }
        else
        {
-           return 0;
+           return redirect()->back();
+           dd("not ok");
        }
 
 
@@ -202,8 +217,9 @@ class CallerController extends Controller
     public function destroy($id)
     {
         $caller_info=caller::where('id',$id)->first();
-
-        if($caller_info->delete())
+        $caller_info->dl_status=1;
+        $caller_info->status='DISABLED';
+        if($caller_info->save())
         {
             return 1;
         }

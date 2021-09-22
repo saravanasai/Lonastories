@@ -17,7 +17,8 @@ class TeleCallerEnquiery extends Model
         "cus_Phone_number",
         "cus_email",
         "tl_table_assign_to",
-        "Final_assign_after_more_info_telecaller_table"
+        "Final_assign_after_more_info_telecaller_table",
+        "tele_cal_dl"
 
     ];
 }

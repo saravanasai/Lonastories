@@ -13,7 +13,6 @@
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('caller.dashboard',session('caller')->id) }}">Back</a></p></div>
             @endif
         </div>
-
         <div class="container">
             <table class="table table-bordered table table-head-fixed text-nowrap  table-striped yajra-datatable">
                 <thead>
@@ -36,13 +35,13 @@
                             <td>{{ $offer_accepted_customer->email }}</td>
                             <td><span class="badge bg-success">{{ $offer_accepted_customer->status_code}}</span></td>
                             <td class="text-center">
-                                @if($offer_accepted_customer->documents_collected_status==0)
-                                <a  href="{{route('offerAcceptedFileUploadLeader.show',$offer_accepted_customer->enq_id)}}" class="btn  btn-sm btn-success"
+                                @if($offer_accepted_customer->documents_collected_status==0 && $offer_accepted_customer->mandatory_doc!=0)
+                                    <a  href="{{route('offerAcceptedFileUploadLeader.show',$offer_accepted_customer->enq_id)}}" class="btn  btn-sm btn-success"
                                    ><i class="fas fa-upload px-1"></i>Enquiery Docs</a>
                                    @else
                                    <a  href="{{route('offerAcceptedFileUploadLeader.show',$offer_accepted_customer->enq_id)}}" class="btn btn-sm btn-success disabled"
                                     ><i class="fas fa-upload px-1"></i>Enquiery Docs</a>
-                                    @endif
+                                @endif
                             </td>
                             <td class="text-center">
                                 <a  href="{{route('offerAcceptedFileUploadLeader.edit',$offer_accepted_customer->cus_id)}}" class="btn btn-sm btn-danger"

@@ -115,10 +115,9 @@ class AdminController extends Controller
  {
          $new_user=DB::table('table_customer')
         ->join('telecaller','telecaller.id','=','table_customer.refered_by')
-        ->where('cus_tb_assigned_to','=',0)
-        ->where('cus_tb_assigned_to','!=',"ADMIN")
-        ->where('Final_assign_after_more_info_m_cus_tb','=','0')
-        ->select('*','table_customer.id as cus_id')
+        ->join('cl_enquieries','table_customer.id','=','cl_enquieries.enquiery_of_ucs')
+        ->where('cl_enquieries.initial_assign_to','=',null)
+        ->select('*','table_customer.id as cus_id','cl_enquieries.id as enq_id')
         ->paginate(6);
         // dd($new_user);
         return view('adminviews.newcustomerbytelecaller',compact('new_user'));

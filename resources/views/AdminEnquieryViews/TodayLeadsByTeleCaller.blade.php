@@ -22,6 +22,7 @@
                         <th>STATUS</th>
                         <th>TL NAME</th>
                         <th>VIEW</th>
+                        <th>DELETE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,13 @@
                             <td>
                                 <a  href="{{route('TodayCallerLeads.show',$telecaller_lead->cus_Phone_number)}}" class="btn btn-sm btn-success"
                                     > <i class="far fa-edit px-1"></i>More info</a>
+                            </td>
+                            <td>
+                                <form action="{{route('TodayCallerLeads.destroy',$telecaller_lead->cus_Phone_number)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                <button type="submit"  class="btn btn-sm btn-danger"><i class="fas fa-trash px-1"></i>Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

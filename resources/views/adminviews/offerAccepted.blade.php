@@ -33,7 +33,7 @@
                             <td>{{ $offer_accepted_customer->email }}</td>
                             <td><span class="badge bg-success">{{ $offer_accepted_customer->status_code}}</span></td>
                             <td class="text-center">
-                                @if($offer_accepted_customer->documents_collected_status==0)
+                                @if($offer_accepted_customer->documents_collected_status==0 && $offer_accepted_customer->mandatory_doc!=0)
                                 <a  href="{{route('offerAcceptedFileUpload.show',$offer_accepted_customer->enq_id)}}" class="btn  btn-sm btn-success"
                                    ><i class="fas fa-upload px-1"></i>Enquiery Docs</a>
                                    @else

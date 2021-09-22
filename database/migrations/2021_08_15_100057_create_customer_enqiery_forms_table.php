@@ -33,6 +33,7 @@ class CreateCustomerEnqieryFormsTable extends Migration
             $table->string('loan_expected')->nullable();
             $table->string('cibil_score')->nullable();
             $table->string('cs_enq_status_enq_tb')->default('1');
+            $table->string('cs_enq_fn_status_enq_tb')->default('0')->comment('0 means active 1 means closed');
             $table->timestamps();
         });
     }

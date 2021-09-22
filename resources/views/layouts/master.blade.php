@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="navbar-nav ml-auto">
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    {{-- <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fas fa-cog fa-lg"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -69,19 +69,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <div class="dropdown-divider"></div>
 
-                    </div>
+                    </div> --}}
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    {{-- <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                         <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
+                    </a> --}}
                 </li>
                 <li class="nav-item">
                     <form method="POST" action="{{ route('logout') }}">
 
                         @csrf
 
-                        <button type="submit" class="dropdown-item text-center">Logout</button>
+                        <button type="submit" class="dropdown-item text-center"><i class="fas fa-sign-out-alt px-1"></i>Logout</button>
 
                     </form>
 
@@ -104,9 +104,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             @if(session('admin'))
                             <h4>{{ session('admin')->USERNAME }}</h4>
                             @endif
-                            @if(session('caller'))
-                            <h4>{{ session('caller')->firstname }}</h4>
-                            @endif
                         </a>
                     </div>
                 </div>
@@ -128,31 +125,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('admin.NewLeadsbyown')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-street-view nav-icon"></i>
                                         <p>Direct Enquiry</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('admin.LeadsbyCaller')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-headset nav-icon"></i>
                                         <p>Telecaller Leads</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('assignToAdmin.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-map-signs nav-icon"></i>
                                         <p>Direct Leads</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('admin.NewLeadsbyCustomerReferal')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-compass nav-icon"></i>
                                         <p>Indirect Referral Enquiry</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('Directrefferal.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-directions nav-icon"></i>
                                         <p>Direct Referrals</p>
                                     </a>
                                 </li>
@@ -162,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                          <!-- First Nav part-1  section  -->
                          <li class="nav-item ">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-landmark"></i>
+                                <i class="nav-icon fas fa-running"></i>
                                 <p>
                                     My Leads
                                     <i class="right fas fa-angle-left"></i>
@@ -171,31 +168,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('OwnLeadAssigntoadmin.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-user-shield nav-icon"></i>
                                         <p>Admin</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('breakDown.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-user-tie nav-icon"></i>
                                         <p>Profiling</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('offerAcOeDe.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-id-card-alt nav-icon"></i>
                                         <p>Proposal</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('offerAcceptedFileUpload.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-file-upload nav-icon"></i>
                                         <p>Documents Upload</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('feildForConCase.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="fas fa-clipboard-check nav-icon"></i>
                                         <p>Logins</p>
                                     </a>
                                 </li>
@@ -312,7 +309,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <!-- (6th) Nav section  -->
                           <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-cog"></i>
+                                <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>
                                     Reports
                                     <i class="right fas fa-angle-left"></i>
@@ -321,19 +318,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('allCustomer.index')}}" class="nav-link ">
-                                        <i class="fas fa-tools nav-icon"></i>
+                                        <i class="fas fa-globe-asia nav-icon"></i>
                                         <p>All Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('referalofCustomer.index')}}" class="nav-link ">
-                                        <i class="fas fa-tools nav-icon"></i>
+                                        <i class="fas fa-code-branch nav-icon"></i>
                                         <p>Member Referral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('allEnquieryofCustomer.index')}}" class="nav-link ">
-                                        <i class="fas fa-tools nav-icon"></i>
+                                        <i class="fas fa-atlas nav-icon"></i>
                                         <p>Lead Reports</p>
                                     </a>
                                 </li>

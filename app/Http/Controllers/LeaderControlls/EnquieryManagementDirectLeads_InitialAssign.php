@@ -20,7 +20,8 @@ class EnquieryManagementDirectLeads_InitialAssign extends Controller
         ->join('table_customer','customer_enqiery_forms.eqy_of_cus_enq_tb','=','table_customer.id')
         ->select('customer_enqiery_forms.*','customer_enqiery_forms.id as q_enq_id','telecaller.*','statuses.*','table_customer.*')
         ->where('customer_enqiery_forms.initial_assign_to','!=','ADMIN')
-        ->where('customer_enqiery_forms.cs_enq_status_enq_tb','!=','0')->paginate(6);
+        ->where('customer_enqiery_forms.cs_enq_status_enq_tb','!=','0')
+        ->where('customer_enqiery_forms.cs_enq_fn_status_enq_tb','!=','1')->paginate(6);
         // dd($new_Quick_enquiery);
         return view('AdminEnquieryViews.InitialAssignToLeader',["new_Quick_enquiery"=>$new_Quick_enquiery]);
     }
@@ -97,6 +98,11 @@ class EnquieryManagementDirectLeads_InitialAssign extends Controller
      */
     public function destroy($id)
     {
-        //
+         $cus_quick_enq=CustomerEnqieryForm::where('id',$id)->first();
+         $cus_quick_enq->cs_enq_fn_status_enq_tb=1;
+         if($cus_quick_enq->save())
+         {
+            return redirect()->route('DirectLeadsInitialAssign.index')->with('Success','Enquiery Closed');
+         }
     }
 }

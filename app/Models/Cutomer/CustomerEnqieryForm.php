@@ -24,7 +24,8 @@ class CustomerEnqieryForm extends Model
         "current_residance_location",
         "loan_expected",
         "cibil_score",
-        "cs_enq_status_enq_tb"
+        "cs_enq_status_enq_tb",
+        "cs_enq_fn_status_enq_tb"
     ];
 
 }

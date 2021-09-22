@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Prophecy\Call\Call;
 
-class   AdminLeadsByCaller_Controller extends Controller
+class
+AdminLeadsByCaller_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -79,15 +80,14 @@ class   AdminLeadsByCaller_Controller extends Controller
         // dd($id);
     //    //its returns the more detrails of enquiery
        $more_infomation=DB::table('cl_enquieries')
-       ->join('banks', 'cl_enquieries.sa_ac_bank_id', '=', 'banks.id')
        ->join('products', 'cl_enquieries.loan_product_id', '=', 'products.id')
        ->join('subproducts','cl_enquieries.loan_product_sub_id', '=','subproducts.id')
        ->join('table_customer','cl_enquieries.enquiery_of_ucs', '=','table_customer.id')
-       ->select('cl_enquieries.*','banks.*','products.*','subproducts.*','table_customer.*','table_customer.id as cus_id','cl_enquieries.id AS enq_id')
-       ->where('cl_enquieries.enquiery_of_ucs','=',$id)
+       ->select('cl_enquieries.*','products.*','subproducts.*','table_customer.*','table_customer.id as cus_id','cl_enquieries.id AS enq_id')
+       ->where('cl_enquieries.id','=',$id)
        ->first();
        //geting leaders list to give assign to leader option
-       $leader_info=caller::where('power','Leader')->get();
+       $leader_info=caller::where('power','Leader')->where('status','ACTIVE')->paginate(5);
         // dd($more_infomation);
         return view('adminviews.moredetailview',["more_info"=>$more_infomation,"leader_info"=>$leader_info]);
     }

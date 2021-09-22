@@ -23,6 +23,7 @@ class CreateTeleCallerEnquieriesTable extends Migration
             $table->string('cus_email')->unique()->nullable();
             $table->string('tl_table_assign_to')->nullable();
             $table->string('Final_assign_after_more_info_telecaller_table')->default('0');
+            $table->integer('tele_cal_dl')->default('1')->comment('1 means active 0 means deactivated');
             $table->timestamps();
         });
     }

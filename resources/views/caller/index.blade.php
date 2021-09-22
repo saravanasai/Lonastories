@@ -188,7 +188,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                         $("#password").addClass('is-valid');
                         validation_status=true;
                      }
-                     if(password==0)
+                     if(power==0)
                      {
                         $("#callerPower").addClass('is-invalid');
                         validation_status=false;

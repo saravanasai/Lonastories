@@ -10,9 +10,6 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @if(session('admin'))
-                        <li class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></li>
-                        @endif
                         @if(session('caller'))
                         <li class="breadcrumb-item"><a href="{{route('caller.dashboard',session('caller')->id) }}">Back</a></li>
                         @endif
@@ -27,9 +24,9 @@
     <div class="content">
 
         <div class="conatiner col-md-12">
-            <div class="card card-info">
+            <div class="card card-purple">
                 <div class="card-header">
-                    <h5 class="card-title">Add New Customer Form</h5>
+                    <h6 class="card-title">ADD NEW CUSTOMER FORM</h6>
                 </div>
                 <form method="POST"  action="" id="new_customer_form">
                     @csrf
@@ -147,9 +144,7 @@
                                         <option value="0" selected>Exitsing loan type</option>
                                     </select>
                                 </div>
-
                             </div>
-
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="required_loan_amount">Loan Amount Required</label>
@@ -174,31 +169,24 @@
                          </div>
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col col-md-1">
-                                    <button type="reset" class="btn btn-danger" >Reset</button>
+                                <div class="col col-md-2">
+                                    <button type="reset" class="btn btn-danger"> <i class="far fa-edit"></i>Reset</button>
                                 </div>
-                                <div class="col col-md-1 offset-md-8">
-                                    <button type="button" class="btn btn-warning" id="calculate_final_obligation">Calculate</button>
+                                <div class="col col-md-2 offset-md-8">
+                                    <button type="button" class="btn btn-warning" id="calculate_final_obligation"><i class="fas fa-calculator px-1"></i>Calculate</button>
                                 </div>
                                 <div class="col col-md-2">
                                     <button type="submit" class="btn btn-success btnleadgen">Generate lead</button>
-                                    <input type="hidden" value="{{session('caller')->id}}" id="id">
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
             </div>
-
             </form>
         </div>
-    </div>
-    </div>
+        </div>
 
     <!-- /.content -->
-
 @endsection
 
 

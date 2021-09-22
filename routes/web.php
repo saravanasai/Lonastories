@@ -84,7 +84,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('ownleads/assigntoleader',AdminOwnLeadToLeader_Controller::class);
     Route::resource('leadsbyOnline/OwnLeadAssigntoadmin',AssignOwnLeadsToAdmin_controller::class);
     Route::resource('leads/byTelCal/assignToAdmin',AssignTcLeadToAdmin::class);
-
+    
     Route::resource('leads/adminside/breakDown',AdminBreakDownController::class);
     Route::get('leads/adminside/breakDown/{cusid}/{enqid}',[AdminBreakDownController::class,'pdfcreate'])->name('pdfcreate');
     Route::resource('leads/acceptOrDeny/offerAcOeDe',OfferAcceptOrDenyController::class);
@@ -129,7 +129,6 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
     Route::resource('leads/acceptOrDeny/offerAcOeDeLeader',OfferAcceptedOrDeney_LeaderController::class);
     Route::resource('leads/accepted/offerAcceptedFileUploadLeader',offerAcceptedFileUploadLeader_LeaderController::class);
     Route::resource('leads/DocumentCollected/feildForConCaseLeader',feildForConCaseLeader_LeaderController::class);
-
     //routes that handle the My Leads of Caller
     Route::resource('EnquieryManagement/MyLeadsStatus',EnquieryManagement_my_Leads::class);//this views the own Leader
 

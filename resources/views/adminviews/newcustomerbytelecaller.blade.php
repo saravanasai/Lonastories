@@ -37,7 +37,7 @@
                             @else
                             <td><span class="badge bg-danger">unverified</span></td>
                             @endif
-                            <td><a href="{{route('detailview.show',$single_user->cus_id )}}" class="btn btn-sm btn-primary"><i class="fas fa-paper-plane px-1"></i>View</a></td>
+                            <td><a href="{{route('detailview.show',$single_user->enq_id)}}" class="btn btn-sm btn-primary"><i class="fas fa-paper-plane px-1"></i>View</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -43,6 +43,7 @@ class CreateClEnquieriesTable extends Migration
             $table->string('enq_doc_name')->comment('Name of a Document in File Storage');
             $table->string('documents_collected_status')->default('0')->comment('0 means pending 1 means Document Collected');
             $table->string('con_lead_before_info')->default('0')->comment('0 means Not Filled 1 means Filled');
+            $table->string('enq_close_status')->default('1')->comment('1 means Active 0 means closed');
             $table->timestamps();
         });
     }

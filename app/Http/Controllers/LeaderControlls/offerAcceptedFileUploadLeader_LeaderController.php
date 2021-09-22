@@ -67,11 +67,14 @@ class offerAcceptedFileUploadLeader_LeaderController extends Controller
                 Storage::put('userDocuments/'.$pan_card_file_name,file_get_contents($pan_card));
                 Storage::put('userDocuments/'.$adhar_card_file_name,file_get_contents($adhar_card));
                 $user_documents=new UserMandatoryDocuments();
+                $customer_master=CustomerSignup::where('id',$request->cus_id)->first();
+                $customer_master->mandatory_doc=1;
                 $user_documents->doc_of_user=$request->cus_id;
                 $user_documents->Pan_card=$pan_card_file_name;
                 $user_documents->Adhar_card=$adhar_card_file_name;
                 $user_documents->mandatory_doc_status=1;
                 $user_documents->save();
+                $customer_master->save();
                 return back()->with('success',"FILE UPLOADED SUCESSFULLY");
 
         }

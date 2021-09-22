@@ -17,7 +17,9 @@ class EnquieryManagement_Tl_Leads extends Controller
     public function index()
     {
         $leads_by_telecaller=TeleCallerEnquiery::join('telecaller','tele_caller_enquieries.telecaller_id','=','telecaller.id')
-        ->select('tele_caller_enquieries.*','tele_caller_enquieries.id as tc_enq_id','telecaller.*')->paginate(6);
+        ->select('tele_caller_enquieries.*','tele_caller_enquieries.id as tc_enq_id','telecaller.*')
+        ->where('tele_caller_enquieries.tele_cal_dl','!=','0')
+        ->paginate(6);
         // dd($leads_by_telecaller);
         return view('AdminEnquieryViews.TodayLeadsByTeleCaller',['leads_by_telecaller'=>$leads_by_telecaller]);
     }
@@ -91,6 +93,11 @@ class EnquieryManagement_Tl_Leads extends Controller
      */
     public function destroy($id)
     {
-        //
+         $tele_caller=TeleCallerEnquiery::where('cus_Phone_number',$id)->first();
+         $tele_caller->tele_cal_dl=0;
+          if($tele_caller->save())
+          {
+              return redirect()->back();
+          }
     }
 }

@@ -24,6 +24,7 @@
                         <th>STATUS</th>
                         <th>ACTION</th>
                         <th>AC STATUS</th>
+                        <th>DELETE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +58,13 @@
                                     <span class="badge bg-danger">Denied</span>
                                 }
                                 @endif
+                            </td>
+                            <td>
+                                <form action="{{route('DirectLeadsAfterAssignMoreinfo.destroy',$new_single_user->enq_id)}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash px-1"></i>Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

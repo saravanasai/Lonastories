@@ -23,6 +23,7 @@ class EnquieryManagementDirectLeads_AfterAssign extends Controller
         ->select('table_customer.*','cl_enquieries.*','statuses.*')
         ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','!=','ADMIN')
         ->where('table_customer.enquiery_form_status','=',"0")
+        ->where('cl_enquieries.enq_close_status','!=',"0")
         ->select('*','table_customer.id as cus_id','cl_enquieries.*','cl_enquieries.id as enq_id')
         ->paginate(6);
         // dd($new_user);
@@ -100,6 +101,11 @@ class EnquieryManagementDirectLeads_AfterAssign extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cl_enquiery=ClEnquiery::where('id',$id)->first();
+        $cl_enquiery->enq_close_status=0;
+        if($cl_enquiery->save())
+        {
+            return redirect()->back();
+        }
     }
 }
