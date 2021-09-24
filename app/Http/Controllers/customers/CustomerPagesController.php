@@ -62,4 +62,24 @@ class CustomerPagesController extends Controller
     {
         return view('frontend.pages.personalInfoFill');
     }
+    public function personalLoanEmiCalc()
+    {
+        return view('frontend.pages.personalLoanEmiCalc');
+    }
+    public function homeLoanEmiCalc()
+    {
+        return view('frontend.pages.homeLoanEmiCalc');
+    }
+    public function partPayCalc()
+    {
+        return view('frontend.pages.partPayCalc');
+    }
+    public function personalEligibilityCalc()
+    {
+        return view('frontend.pages.personalEligibilityCalc');
+    }
+    public function homeEligibilityCalc()
+    {
+        return view('frontend.pages.homeEligibilityCalc');
+    }
 }

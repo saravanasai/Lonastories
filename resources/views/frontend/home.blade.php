@@ -22,8 +22,13 @@
                 </h4>
                 <br>
                 <div class="pt-md-5 pt-sm-5" data-aos="zoom-in" data-aos-duration="3000">
+                    @if(!session('customer'))
                     <a href="{{route('signup.index')}}" class="col-md-6 col-sm-6 btn btn-primary text-dark btn-light indbtn1"><strong>Become A
                             Member</strong></a>
+                    @else
+                    <a href="{{route('quickEnquieryForm.index')}}" class="col-md-6 col-sm-6 btn btn-primary text-dark btn-light indbtn1"><strong>Become A
+                        Member</strong></a>
+                    @endif
                      @if(!session('customer'))
                     <a href="{{route('signup.index')}}" class="col-md-5 col-sm-4 mt-md-0 mt-sm-5 btn btn-outline-secondary pull-right-lg indbtn2"><strong>Enquiry</strong></a>
                     @else
@@ -52,7 +57,7 @@
                 <h1  class="cust" data-aos="fade-up" data-aos-duration="1000">Get It Customized !</h1>
                 <h2 class="pt-lg-1" data-aos="fade-up" data-aos-duration="3000">Meet Loan Assistant Online</h2>
                 <h5 class="pt-lg-2" data-aos="fade-up" data-aos-duration="2000">Video Call | Audio Call | Chat</h5>
-                <h4 class="pt-lg-2 trn" data-aos="fade-down" data-aos-duration="2000"><a href="./pages/connect.php"
+                <h4 class="pt-lg-2 trn" data-aos="fade-down" data-aos-duration="2000"><a href="{{route('user.connect')}}"
                         class="btn btn-secondary"><strong>Try Now !</strong></a></h4>
                 <h5 class="pt-lg-5" data-aos="fade-up-left" data-aos-duration="3000">
                     <strong>Digital Offer | Value Addition | Client Specific</strong>
@@ -83,7 +88,6 @@
                                 refill
                                 of your stars
                                 on your Birthday every year.
-                                <!-- Why wait? Sign-Up & become a member now! -->
                             </p>
                         </div>
                     </div>
@@ -266,9 +270,15 @@
                         Unlimited
                         !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                 </h3>
-                <h5 class="pt-5 pb-lg-3"><a href="" class="btn btn-outline-dark mt-1"><strong>Share
-                            Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
-                </h5>
+                  @if(!session('customer'))
+                    <h5 class="pt-5 pb-lg-3"><a href="{{route('signup.index')}}" class="btn btn-outline-dark mt-1"><strong>Share
+                    Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
+                    </h5>
+                  @else
+                  <h5 class="pt-5 pb-lg-3"><a href="{{route('user.OneView')}}" class="btn btn-outline-dark mt-1"><strong>Share
+                    Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
+                    </h5>
+                  @endif
 
                 <h3><a href="#" target="_blank" title="Facebook" class="p-lg-4"><i class="fa fa-facebook"></i></a>
                     <a href="#" target="_blank" title="instagram" class="p-lg-4"><i class="fa fa-instagram"></i></a>

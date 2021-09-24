@@ -115,16 +115,14 @@
 @section('content')
 <div class="container-login100">
     <div class="wrap-login100">
-        <form class="login100-form validate-form">
             <div class="text-center">
                 <h3 class="text-center pb-3">Login To Continue</h3>
                 <a href="{{route('home')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="" class="img-fluid text-center pb-4"
                         width="20%"></a>
                 <h4><strong>LOANSTORIES.COM</strong></h4>
             </div>
-
             <div class="py-lg-4">
-                <form action="{{route('checkuser')}}" method="post">
+                <form action="{{route('userLoginPost')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="input-group input-group-merge input-group-alternative">
@@ -136,7 +134,7 @@
                         <span class="text-muted">Remember me</span>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-darkblue"><strong>Get OTP</strong></button>
+                        <button type="submit" class="btn btn-darkblue">Get OTP</button>
                     </div>
                 </form>
                 <br>

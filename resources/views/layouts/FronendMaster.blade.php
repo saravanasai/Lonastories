@@ -47,7 +47,7 @@
     <footer class="main-footer bg-gray pt-lg-5 text-gray">
         <div class="container">
             <a href="./index.php">
-                <h3><img src="./img/logo.png" alt="" width="50vw" />&nbsp;<span
+                <h3><img src="{{asset('frontend/img/logo.png')}}" alt="" width="50vw" />&nbsp;<span
                         class="text-light"><strong>LOANSTORIES.COM</strong></span></h3>
             </a>
             <div class="row pt-5">
@@ -75,10 +75,10 @@
                                     Loan Calculators
                                 </span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="./pages/personalLoanCalc.php">Personal Loan EMI
+                                    <a class="dropdown-item" href="{{route('user.personalLoanEmiCalc')}}">Personal Loan EMI
                                         Calculator</a>
-                                    <a class="dropdown-item" href="./pages/homeLoanCalc.php">Home Loan EMI Calculator</a>
-                                    <a class="dropdown-item" href="./pages/partPayCalc.php">Part Payment Calculator</a>
+                                    <a class="dropdown-item" href="{{route('user.homeLoanEmiCalc')}}">Home Loan EMI Calculator</a>
+                                    <a class="dropdown-item" href="{{route('user.partPayCalc')}}">Part Payment Calculator</a>
                                 </div>
                             </div>
                             </p>
@@ -90,12 +90,12 @@
                                     Eligibility Calculators
                                 </span>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="./pages/personalEligibleCalc.php">Personal
+                                    <a class="dropdown-item" href="{{route('user.personalEligibilityCalc')}}">Personal
                                         Eligibility
                                         Calculator</a>
-                                    <a class="dropdown-item" href="./pages/homeEligibleCalc.php">Home Eligibility
+                                    <a class="dropdown-item" href="{{route('user.homeEligibilityCalc')}}">Home Eligibility
                                         Calculator</a>
-                                    <!-- <a class="dropdown-item" href="./partCalc.php">Part Payment Calculator</a> -->
+
                                 </div>
                             </div>
                         </li>
@@ -159,7 +159,7 @@
                     </ul>
                     <ul class="social-icons list-inline text-center">
                         <li class="list-inline-item">
-                            <a href="#" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.facebook.com/loanstories2021" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>

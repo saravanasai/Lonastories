@@ -3,14 +3,9 @@
 namespace App\Http\Controllers\customers;
 
 use App\Http\Controllers\Controller;
-use App\Mail\DirectReferalLink;
-use App\Models\CustomerSignup;
-use App\Models\Cutomer\DirectReferal;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
-class CustomerDirectReferal extends Controller
+class CustomerSignUpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +14,7 @@ class CustomerDirectReferal extends Controller
      */
     public function index()
     {
-        return view('customerviews.customerDirectRefferal');
+        return view('frontend.login');
     }
 
     /**
@@ -29,7 +24,7 @@ class CustomerDirectReferal extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -40,27 +35,7 @@ class CustomerDirectReferal extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-        //need to validate on intergation with frontend
-        $get_user_referal_id=CustomerSignup::where('id','=',session('customer')->id)->first();
-        $url="http://localhost:8000/user/signup/".$get_user_referal_id->cus_referal_code."/referal/2x";
-        $direct_referal= new DirectReferal();
-        $direct_referal->direct_ref_of_user=$get_user_referal_id->id;
-        $direct_referal->refered_cus_name=$request->refer_to_cus_name;
-        $direct_referal->refered_cus_phonenumber=$request->refer_to_cus_phonenumber;
-        $direct_referal->refered_cus_email=$request->refer_to_cus_email;
-        $direct_referal->refered_cus_relationship=$request->refer_to_relationship;
-        $direct_referal->refered_url=$url;
-
-        if($direct_referal->save())
-        {
-            Log::channel('telecallerlink')->info($url);
-            // Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
-            return redirect('/home');
-        }
-
+        dd($request->all());
     }
 
     /**

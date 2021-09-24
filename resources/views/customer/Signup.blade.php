@@ -66,7 +66,8 @@
                 <a href="{{route('home')}}" class="h4"><i class="fa fa-home" aria-hidden="true"></i></a>
             </div>
             <div class="col-5 text-right">
-                <a href="{{route('userlogin')}}" class=""><small>Already Have An Account !</small></a>
+                {{-- <a href="{{route('userLoginform.index')}}" class=""><small>Already Have An Account !</small></a> --}}
+                <a href="{{route('userLogin')}}" class=""><small>Already Have An Account !</small></a>
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
 
-    private $cus_id;
+
 
     public function index()
     {
@@ -25,7 +25,7 @@ class UserController extends Controller
      }
      public function checkuser(Request $request)
      {
-          dd($request->all());
+
           $this->validate($request,[
               "userphonenumber"=>"required|min:10",
           ]);
@@ -40,9 +40,10 @@ class UserController extends Controller
                 $otp=rand(1000,9999);
                 $check_user_exist->otp=$otp;
                 // Mail::to($check_user_exist->email)->send(new sendOtp($otp));
+                Session::put('customer',$check_user_exist);
                 $check_user_exist->save();
-                Session::put('otp',$check_user_exist);
-                return back();
+                return redirect()->route('signup.show',session('customer')->id);
+
           }
           else
           {

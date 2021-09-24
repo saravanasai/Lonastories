@@ -21,6 +21,7 @@ use App\Http\Controllers\customers\CustomerDataStoreController;
 use App\Http\Controllers\customers\CustomerDirectReferal;
 use App\Http\Controllers\customers\CustomerEnquieryFormController;
 use App\Http\Controllers\customers\CustomerPagesController;
+use App\Http\Controllers\customers\CustomerSignUpController;
 use App\Http\Controllers\LeaderControlls\EnquieryManagement_my_Leads;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementBreakDown;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementDirectLeads_AfterAssign;
@@ -137,11 +138,6 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
 });
 
 
-
-
-
-
-
 //route to fetch the subproducts not checked by middleware because of muliple login
 Route::post('caller/customer/productfetch',[CallerController::class,'handleSubProductRequest'])->name('caller.getsubproductsbyproduct');
 // dummy route for check up
@@ -149,13 +145,20 @@ Route::post('caller/customer/productfetch',[CallerController::class,'handleSubPr
 
 //routes for frontend of a admin panel
 Route::get('/home',[UserController::class,'index'])->name('home');//home page of a frontend
-Route::post('checkuser',[UserController::class,'checkuser'])->name('checkuser');
-Route::resource('/user/signup', CustomerController::class);//sign up route index methode to sign up
+Route::get('loginFormView',[UserController::class,'login'])->name('userLogin');
+Route::post('loginFormSubmit',[UserController::class,'checkuser'])->name('userLoginPost');
+
+Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('user.checkOtp');
+Route::post('/login/checkotp',[UserController::class,'checkuserotp'])->name('checkuserotp');
+Route::post('/login/logout',[UserController::class,'logout'])->name('userlogout');
+Route::get('/user/signup/{id?}/referal/{directref?}',[CustomerController::class,'userSingup'] );
+
 
 Route::prefix('user')->group(function()
 {
 
     Route::get('login',[UserController::class,'login'])->name('userlogin');
+    // Route::post('checkuser',[UserController::class,'checkuser'])->name('userLoginPost');
     Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
     Route::get('connect',[CustomerPagesController::class,'connect'])->name('user.connect');
     Route::get('AboutUs',[CustomerPagesController::class,'About'])->name('user.About');
@@ -176,6 +179,11 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
     Route::get('wallet',[CustomerPagesController::class,'wallet'])->name('user.wallet');
     Route::get('personalInfoForm',[CustomerPagesController::class,'personalInfoFill'])->name('user.personalInfoFill');
+    Route::get('personalLoan/emicalculater',[CustomerPagesController::class,'personalLoanEmiCalc'])->name('user.personalLoanEmiCalc');
+    Route::get('homeLoan/emicalculater',[CustomerPagesController::class,'homeLoanEmiCalc'])->name('user.homeLoanEmiCalc');
+    Route::get('partpayment/emicalculater',[CustomerPagesController::class,'partPayCalc'])->name('user.partPayCalc');
+    Route::get('calculater/EligibilityCalculater',[CustomerPagesController::class,'personalEligibilityCalc'])->name('user.personalEligibilityCalc');
+    Route::get('calculater/Homeloan/EligibilityCalculater',[CustomerPagesController::class,'homeEligibilityCalc'])->name('user.homeEligibilityCalc');
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
@@ -184,17 +192,12 @@ Route::prefix('user')->middleware(['user'])->group(function () {
 //end routes for user after sign up
 
 
-Route::get('/login',[UserController::class,'index']);
 
-Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('user.checkOtp');
-Route::post('/login/checkotp',[UserController::class,'checkuserotp'])->name('checkuserotp');
-Route::post('/login/logout',[UserController::class,'logout'])->name('userlogout');
-Route::get('/user/signup/{id?}/referal/{directref?}',[CustomerController::class,'userSingup'] );
 // Route::post('/login/checkuser',[UserController::class,'checkuser'])->name('checkuser');
 
+Route::resource('/user/signup', CustomerController::class);//sign up route index methode to sign up
 
-
-
+// Route::resource('/user/userLoginform', CustomerSignUpController::class);
 
 
 

@@ -41,17 +41,18 @@ class  CustomerEnquieryFormController extends Controller
      */
     public function store(Request $request)
     {
-           $this->validate($request,[
-               "enq_time"=>"required",
-               "enq_pre_mode"=>"required",
-               "enq_emp_type"=>"required",
-               "enq_pro_type"=>"required",
-               "enq_sub_pro_type"=>"required",
-               "enq_cibil_score"=>"required",
-           ]);
 
+        //    $this->validate($request,[
+        //        "enq_time"=>"required",
+        //        "enq_pre_mode"=>"required",
+        //        "enq_emp_type"=>"required",
+        //        "enq_pro_type"=>"required",
+        //        "enq_sub_pro_type"=>"required",
+        //        "enq_cibil_score"=>"required",
+        //    ]);
+        //    dd($request->all());
            $quick_enquiery_form=new CustomerEnqieryForm();
-           $quick_enquiery_form->eqy_of_cus_enq_tb=$request->cus_id;
+           $quick_enquiery_form->eqy_of_cus_enq_tb=session('customer')->id;
            $quick_enquiery_form->time_to_call=$request->enq_time;
            $quick_enquiery_form->mode_of_contact=$request->enq_pre_mode;
            $quick_enquiery_form->emp_type=$request->enq_emp_type;

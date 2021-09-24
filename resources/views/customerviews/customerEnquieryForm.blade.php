@@ -3,7 +3,8 @@
 <section>
     <div class="container mt-md-5 pt-md-5">
         <div class="row">
-            <form action="#" method="POST" class="col-md-4">
+            <form action="{{route('quickEnquieryForm.store')}}" method="POST" class="col-md-4">
+                @csrf
                 <div id="slider" class="form">
                     <ul class="">
                         <li class="" data-id="slider_start">
@@ -13,7 +14,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="text" id="txtDate" class="form-control" name="day" data-toggle="tooltip"
+                                <input type="text" id="txtDate" class="form-control" name="enq_time" data-toggle="tooltip"
                                     data-placement="top" title="Enter valid email" placeholder="Select Your Day"
                                     onfocus="this.type='date'" onblur="this.type='text'" required>
                             </div>
@@ -24,14 +25,13 @@
                             </div>
                             <br>
                         </li>
-
                         <li>
                             <div class="col-12 text-center">
                                 <h4 class="text-secondary font-weight-bold">I Prefer</h4>
                             </div>
                             <br>
                             <div class="form-group">
-                                <select class="form-control select" name="callTyp">
+                                <select class="form-control select" name="enq_pre_mode">
                                     <option value="" hidden>Call For</option>
                                     <option value="video">Video Call</option>
                                     <option value="audio">Audio Call</option>
@@ -40,7 +40,6 @@
                             </div>
                             <br>
                         </li>
-
                         <li>
                             <div class="row">
                                 <div class="col-md-12">
@@ -48,7 +47,7 @@
                                         Looking For</h4>
                                     <br>
                                     <div class="form-group">
-                                        <select id="loa" class="form-control select">
+                                        <select id="loa" class="form-control select" name="enq_pro_type">
                                             <option value="" hidden>Select Your Desired Loan !
                                             </option>
                                             @foreach ($products as $product)
@@ -64,14 +63,11 @@
                                         </h6>
                                     </div>
                                     <div class="form-group">
-                                        <select class="form-control select" id="loan_typ">
+                                        <select class="form-control select" name="enq_sub_pro_type" >
                                             <option value="" hidden>Select Your Type</option>
-
-                                            <option value="" hidden>PL</option>
-                                            <option value="" hidden>BL - New Loan
-                                            </option>
-                                            <option value="">Transfer</option>
-                                            <option value="">Consolidation</option>
+                                            <option value="1">BL - New Loan</option>
+                                            <option value="2">Transfer</option>
+                                            <option value="3">Consolidation</option>
                                         </select>
                                     </div>
                                 </div>
@@ -182,7 +178,7 @@
                             <div class="col-12 text-center">
                                 <h4 class="text-secondary font-weight-bold">My Cibil Score </h4><br>
                                 <div class="form-group">
-                                    <select class="form-control select" name="cibil">
+                                    <select class="form-control select" name="enq_cibil_score">
                                         <option value="" hidden>Choose What You Got ?</option>
                                         <option value="">
                                             < 800</option>

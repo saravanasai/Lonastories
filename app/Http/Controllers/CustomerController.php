@@ -206,7 +206,7 @@ class CustomerController extends Controller
     {
         Session::put('refer_id',$referal_id);
         Session::put('direct_ref',$direct_ref);
-        return view('customer.index');
+        return view('customer.Signup');
     }
 
 
