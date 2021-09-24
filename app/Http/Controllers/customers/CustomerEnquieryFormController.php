@@ -5,6 +5,7 @@ namespace App\Http\Controllers\customers;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEnqieryForm;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -17,8 +18,9 @@ class  CustomerEnquieryFormController extends Controller
      */
     public function index()
     {
+        $products=Products::all();
         $user_info=CustomerSignup::where('id',session('customer')->id)->first();
-        return view('customerviews.customerEnquieryForm',compact("user_info"));
+        return view('customerviews.customerEnquieryForm',["user_info"=>$user_info,"products"=>$products]);
     }
 
     /**

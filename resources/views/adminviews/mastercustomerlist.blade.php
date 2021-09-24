@@ -25,6 +25,7 @@
                         <th>DOB</th>
                         <th>STATUS</th>
                         <th>ACTION</th>
+                        <th>PR_FORM</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +50,15 @@
                                     <a href="{{ route('OverAllCusEnquiery.edit',$single_user->id)}}" class="btn btn-sm btn-warning"
                                         ><i class="fas fa-file-pdf px-1"></i>Docs</a>
                                 </div>
+                            </td>
+                            <td>
+                                @if($single_user->pr_form_status!=0)
+                                <a href="{{ route('TodayCallerLeads.edit',$single_user->id)}}" class="btn btn-sm btn-success"
+                                    ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
+                                @else
+                                <a class="btn btn-sm btn-danger disabled"
+                                    ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

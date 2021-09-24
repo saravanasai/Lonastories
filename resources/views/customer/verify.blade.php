@@ -1,53 +1,67 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>LoanStories|user verfify</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-
-   <center>
-    <div class="conatiner ml-5 mt-5">
-        <div class="row">
-            <div class="row">
-              <div class="col-xs-1-12">
-                <div class="card">
-                  <div class="card-body">
-                    <form action="{{route('user.checkOtp')}}" method="post">
-                        @csrf
-                        <div class="form-group">
-                          <label for="">OTP</label>
-                          <input type="text"
-                            class="form-control" name="otp"  placeholder="Enter OTP">
-                            <input type="hidden" value="{{$user_info->id}}" name="id">
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">submit</button>
-                        </div>
-                    </form>
-                  </div>
+@extends('layouts.FronendMaster')
+<style>
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: url('{{asset('frontend/img/bullseye-gradient.svg')}}');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+@section('content')
+<div class="main-content">
+    <!-- Header -->
+    <div class="headerpy-4 py-lg-9 pt-lg-5 mt-md-5">
+        <div class="container">
+            <div class="header-body text-center mb-3">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6 col-md-8">
+                        <h3 class="text-white">Enter Your OTP here !</h3>
+                    </div>
                 </div>
-              </div>
-       </div>
+            </div>
+        </div>
     </div>
-
-   </center>
-
-
-
-
-
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    <!-- Page content -->
+    <div class="container mt--8 pb-md-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="card border-0 mb-0">
+                    <div class="card-header text-center">
+                        {{-- <div class="text-center mt-2 mb-4">Sign In with</div> --}}
+                        <a href="{{route('home')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="" class="img-fluid text-center pb-lg-3"
+                                width="15%"></a>
+                        <h5><strong>LOANSTORIES.COM</strong></h5>
+                    </div>
+                    <div class="card-body py-lg-4">
+                        <form action="{{route('user.checkOtp')}}" method="post">
+                            @csrf
+                            <div class="form-group mb-md-4">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <input class="form-control" placeholder="Enter Your OTP" name="otp" type="text">
+                                    <input type="hidden" value="{{$user_info->id}}" name="id">
+                                </div>
+                            </div>
+                            {{-- <div class="form-group text-center mb-md-3">
+                                <a href="">Resend OTP</a>
+                            </div> --}}
+                            <div class="text-center pb-md-2">
+                                <button type="submit" class="btn btn-darkblue"><strong>Verify</strong></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-lg-3">
+                    <div class="col-2 text-right">
+                        <a href="index.html" class="text-light h5"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-10 text-right">
+                        <a href="signup.html" class="text-light">Create new account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

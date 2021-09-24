@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControlls;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClEnquiery;
+use App\Models\Cutomer\PersonalInfoFrom;
 use App\Models\TeleCallerEnquiery;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,8 @@ class EnquieryManagement_Tl_Leads extends Controller
      */
     public function edit($id)
     {
-        //
+         $pr_form=PersonalInfoFrom::where('pr_form_of_user',$id)->first();
+         return view('AdminEnquieryViews.PersonalInfoFormView',compact('pr_form'));
     }
 
     /**

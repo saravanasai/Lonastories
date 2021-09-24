@@ -25,8 +25,9 @@ class UserController extends Controller
      }
      public function checkuser(Request $request)
      {
+          dd($request->all());
           $this->validate($request,[
-              "userphonenumber"=>"required||min:10||max:10",
+              "userphonenumber"=>"required|min:10",
           ]);
 
           $check_user_exist=CustomerSignup::where('cus_phonenumber',$request->userphonenumber)->first();
@@ -38,7 +39,7 @@ class UserController extends Controller
                 //section handling the opt generation
                 $otp=rand(1000,9999);
                 $check_user_exist->otp=$otp;
-                Mail::to($check_user_exist->email)->send(new sendOtp($otp));
+                // Mail::to($check_user_exist->email)->send(new sendOtp($otp));
                 $check_user_exist->save();
                 Session::put('otp',$check_user_exist);
                 return back();

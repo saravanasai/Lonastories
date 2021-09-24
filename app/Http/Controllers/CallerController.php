@@ -12,6 +12,7 @@ use App\Models\Cutomer\CustomerEnqieryForm;
 use App\Models\Products;
 use App\Models\TeleCallerEnquiery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -242,8 +243,20 @@ class CallerController extends Controller
 
         $new_enq_assigned_count=CustomerEnqieryForm::where('initial_assign_to',session('caller')->id)
         ->where('cs_enq_status_enq_tb','1')->count();
-
-        return view('callerdashboard',['new_enq_count'=>$new_enq_assigned_count]);
+        $new_assiged_leads=DB::table('table_customer')
+        ->join('cl_enquieries', 'table_customer.id', '=', 'cl_enquieries.enquiery_of_ucs')
+        ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','=',session('caller')->id)
+        ->where('cl_enquieries.enq_close_status','=',"1")
+        ->count();
+        $converted_Leads=CustomerSignup::join('cl_enquieries','table_customer.id','=','cl_enquieries.enquiery_of_ucs')
+        ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','=',session('caller')->id)
+        ->where('cl_enquieries.enq_close_status','=',"1")
+        ->where('cl_enquieries.profile_accepted_status',1)->count();
+        $leads_by_me=TeleCallerEnquiery::join('telecaller','tele_caller_enquieries.telecaller_id','=','telecaller.id')
+        ->where('tele_caller_enquieries.tele_cal_dl',1)
+        ->where('tele_caller_enquieries.telecaller_id',session('caller')->id)
+        ->count();
+        return view('callerdashboard',['new_enq_count'=>$new_enq_assigned_count,"assigned_count"=>$new_assiged_leads,"con_leads"=>$converted_Leads,"my_leads"=>$leads_by_me]);
     }
 
 

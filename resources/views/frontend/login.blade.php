@@ -1,51 +1,158 @@
+@extends('layouts.FronendMaster')
+<style>
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffff;
+    }
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box
+    }
 
-<body>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Login form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        @if(!session('otp'))
-                        <form id="login-form" class="form" action="{{route('checkuser')}}" method="post">
-                            @csrf
+    .container-login100 {
+        width: 100%;
+        min-height: 100vh;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        background: #f2f2f2
+    }
 
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="username" class="text-info">PhoneNumber</label><br>
-                                <input type="number" name="userphonenumber" id="userphonenumber" class="form-control">
-                            </div>
-                            <div id="register-link" class="text-right">
-                                <button type="submit" class="btn btn-primary">Login</a>
-                            </div>
-                        </form>
-                            @else
-                            <form action="{{route('checkuserotp')}}" method="post">
-                                @csrf
-                                @if(session('no_valid_otp'))
-                                <div class="text-danger">
-                                    {{session('no_valid_otp')}}
-                                </div>
-                                @endif
-                                <div class="form-group">
-                                    <label for="username" class="text-info">Enter otp</label><br>
-                                    <input type="number" name="otp" id="otp" class="form-control">
-                                    <input type="hidden" name="cus_id" value="{{session('otp')->id}}" class="form-control">
-                                </div>
-                                <div id="register-link" class="text-right">
-                                    <button type="submit" class="btn btn-primary">Enter Otp</a>
-                                </div>
-                            </form>
-                            @endif
+    .wrap-login100 {
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        flex-direction: row-reverse;
+    }
+
+    .login100-more {
+        width: calc(100% - 560px);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1
+    }
+
+    .login100-more::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, .1)
+    }
+
+    .login100-form {
+        width: 560px;
+        min-height: 100vh;
+        display: block;
+        background-color: #f7f7f7;
+        padding: 173px 55px 55px
+    }
+
+    @media(max-width:992px) {
+        .login100-form {
+            width: 50%;
+            padding-left: 30px;
+            padding-right: 30px
+        }
+
+        .login100-more {
+            width: 50%
+        }
+    }
+
+    @media(max-width:768px) {
+        .login100-form {
+            width: 100%
+        }
+
+        .login100-more {
+            display: none
+        }
+    }
+
+    @media(max-width:576px) {
+        .login100-form {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 70px
+        }
+    }
+
+    .validate-input {
+        position: relative
+    }
+
+
+
+    @media(max-width:992px) {
+        .alert-validate::before {
+            visibility: visible;
+            opacity: 1
+        }
+    }
+    </style>
+@section('content')
+<div class="container-login100">
+    <div class="wrap-login100">
+        <form class="login100-form validate-form">
+            <div class="text-center">
+                <h3 class="text-center pb-3">Login To Continue</h3>
+                <a href="{{route('home')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="" class="img-fluid text-center pb-4"
+                        width="20%"></a>
+                <h4><strong>LOANSTORIES.COM</strong></h4>
+            </div>
+
+            <div class="py-lg-4">
+                <form action="{{route('checkuser')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <div class="input-group input-group-merge input-group-alternative">
+                            <input class="form-control" name="userphonenumber" placeholder="Enter Your Mobile Number" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="form-check-inline" id="customCheckLogin" type="checkbox">
+                        <span class="text-muted">Remember me</span>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-darkblue"><strong>Get OTP</strong></button>
+                    </div>
+                </form>
+                <br>
+                <div class="row">
+                    <div class="col-2 text-right">
+                        <a href="{{route('home')}}" class="text-dark h5"><i class="fa fa-home"
+                                aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-10 text-right">
+                        <a href="{{route('signup.index')}}" class="text-dark">Create new account</a>
                     </div>
                 </div>
             </div>
+        </form>
+        <div class="login100-more" style="background-image: url('{{asset('frontend/img/login.png')}}');">
         </div>
     </div>
-</body>
-
+</div>
+@endsection

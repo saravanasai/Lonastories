@@ -20,7 +20,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-         return view('customer.index');
+         return view('customer.Signup');
     }
 
 
@@ -86,6 +86,7 @@ class CustomerController extends Controller
 
                                             $dob=$request->date;
                                             $user_info=CustomerSignup::where('cus_phonenumber',$request->phonenumber)->first();
+                                            Session::put("customer",$user_info);
                                             $tele_caller=TeleCallerEnquiery::where('cus_Phone_number',$request->phonenumber)->first();
                                                //section to validate if the its a tellecaller referal
                                                if($tele_caller!=null)
@@ -171,7 +172,7 @@ class CustomerController extends Controller
                                             ]);
                                             $user_info->wallet()->save($walet_info);
 
-                                            return redirect()->route('user.show',$user_info->id);
+                                            return redirect()->route('signup.show',session('customer')->id);
                                         }
 
                                 }
@@ -185,7 +186,7 @@ class CustomerController extends Controller
            }
            else
            {
-               return redirect('customer/login');
+               return redirect()->route('userlogin');
                //nned to implement the user redirect to login page
            }
 
@@ -195,8 +196,7 @@ class CustomerController extends Controller
     public function show($id)
     {
          $user_info=CustomerSignup::where('id',$id)->first();
-
-        return view('customer.verify',["user_info"=>$user_info]);
+         return view('customer.verify',["user_info"=>$user_info]);
     }
 
 
@@ -225,8 +225,7 @@ class CustomerController extends Controller
                $user_info->otp=0;
                if($user_info->save())
                {
-
-                  return redirect('/home');
+                  return redirect()->route('user.wallet');
                }
           }
           else

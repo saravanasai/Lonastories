@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEnqieryForm;
+use App\Models\TeleCallerEnquiery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -91,8 +92,19 @@ class AdminController extends Controller
     //   $new_enquiry=CustomerSignup::where('enquiery_form_status','=','1')->get();
       $new_enquiry=CustomerEnqieryForm::where('cs_enq_status_enq_tb','=','1')
       ->where('initial_assign_to',null)->get();
+      $tele_enquiry=TeleCallerEnquiery::where('cus_id','=','0')
+      ->where('tele_cal_dl',1)->get();
+      $all_customer=CustomerSignup::all();
+      $new_referal_user=CustomerEnqieryForm::join('table_customer','customer_enqiery_forms.eqy_of_cus_enq_tb','=','table_customer.id')
+            ->select('table_customer.*','customer_enqiery_forms.*','table_customer.id as cus_id','customer_enqiery_forms.id as qu_enq_id')
+            ->where('initial_assign_to','=',null)
+            ->where('table_customer.refered_by','like','LN%')
+            ->get();
       $new_enq_count=count($new_enquiry);
-      return view('admindashboard',["new_enq"=>$new_enq_count]);
+      $new_tel_count=count($tele_enquiry);
+      $all_cus=count($all_customer);
+      $all_ref_cus=count($new_referal_user);
+      return view('admindashboard',["new_enq"=>$new_enq_count,"new_tel_enq"=>$new_tel_count,"all_cus"=>$all_cus,"all_ref"=>$all_ref_cus]);
   }
 
   public function logout(Request $request)

@@ -29,7 +29,7 @@
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
-  --warning: #ffc107;
+  --warning: #512000;
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
@@ -2648,8 +2648,8 @@ fieldset:disabled a.btn {
 
 .btn-success {
   color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #005f00;
+  border-color: #005f00;
   box-shadow: none;
 }
 
@@ -2723,16 +2723,16 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #1f2d3d;
-  background-color: #ffc107;
-  border-color: #ffc107;
+  color: #fff;
+  background-color: #512000;
+  border-color: #512000;
   box-shadow: none;
 }
 
 .btn-warning:hover {
-  color: #1f2d3d;
-  background-color: #e0a800;
-  border-color: #d39e00;
+  color: #fff;
+  background-color: #512000;
+  border-color: #512000;
 }
 
 .btn-warning:focus, .btn-warning.focus {
@@ -6818,17 +6818,17 @@ button.bg-primary:focus {
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #545b62 !important;
+  background-color: #005f00 !important;
 }
 
 .bg-success {
-  background-color: #006100 !important;
+  background-color: #005f00 !important;
 }
 
 a.bg-success:hover, a.bg-success:focus,
 button.bg-success:hover,
 button.bg-success:focus {
-  background-color: #006100 !important;
+  background-color: #005f00 !important;
 }
 
 .bg-info {
@@ -6842,7 +6842,7 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background-color: #ffc107 !important;
+  background-color: #512000 !important;
 }
 
 a.bg-warning:hover, a.bg-warning:focus,
@@ -27848,7 +27848,7 @@ body.text-sm .input-group-text {
 .card.bg-gradient-purple .bootstrap-datetimepicker-widget table td.hour:hover,
 .card.bg-gradient-purple .bootstrap-datetimepicker-widget table td.minute:hover,
 .card.bg-gradient-purple .bootstrap-datetimepicker-widget table td.second:hover {
-  background-color: #041e43;
+  background-color: #5d36a4;
   color: #fff;
 }
 
@@ -32207,8 +32207,8 @@ html.maximized-card {
 
 .dark-mode .btn-warning {
   color: #1f2d3d;
-  background-color: #f39c12;
-  border-color: #f39c12;
+  background-color: #512000;
+  border-color: #512000;
   box-shadow: none;
 }
 

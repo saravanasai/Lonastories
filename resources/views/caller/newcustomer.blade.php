@@ -172,11 +172,11 @@
                                 <div class="col col-md-2">
                                     <button type="reset" class="btn btn-danger"> <i class="far fa-edit"></i>Reset</button>
                                 </div>
-                                <div class="col col-md-2 offset-md-8">
+                                <div class="col col-md-2 offset-md-6">
                                     <button type="button" class="btn btn-warning" id="calculate_final_obligation"><i class="fas fa-calculator px-1"></i>Calculate</button>
                                 </div>
                                 <div class="col col-md-2">
-                                    <button type="submit" class="btn btn-success btnleadgen">Generate lead</button>
+                                    <button type="submit" class="btn btn-success btnleadgen"> <i class="fas fa-paper-plane px-1"></i>Generate lead</button>
                                 </div>
                             </div>
                         </div>

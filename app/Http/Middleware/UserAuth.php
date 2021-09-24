@@ -17,17 +17,12 @@ class UserAuth
     public function handle(Request $request, Closure $next)
     {
         //  dd($request->path());
-         if(!session()->has('customer') && $request->path()!='customer/home' && $request->path()!='customer/login')
+         if(!session()->has('customer'))
          {
 
              return redirect('/home');
          }
 
-         if(session()->has('customer') && $request->path()=='login')
-         {
-             return redirect('/home');
-
-         }
         return $next($request);
     }
 }

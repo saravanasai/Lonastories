@@ -12,7 +12,7 @@ class CustomerSignup extends Model
 
     protected $table="table_customer";
 
-    protected $fillable=["name","cus_phonenumber","email","dob","opt","refered_by","status","cus_tb_assigned_to","active_status","cus_referal_code","ref_check","Final_assign_after_more_info_m_cus_tb","enquiery_form_status","mandatory_doc","pr_form_status","created_at","updated_at"];
+    protected $fillable=["name","cus_phonenumber","email","dob","opt","refered_by","status","cus_tb_assigned_to","active_status","cus_referal_code","ref_check","Final_assign_after_more_info_m_cus_tb","enquiery_form_status","mandatory_doc","pr_form_status","customer_one_view_status","created_at","updated_at"];
 
 
     public function bytelecaller()

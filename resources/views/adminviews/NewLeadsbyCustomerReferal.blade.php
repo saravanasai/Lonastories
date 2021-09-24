@@ -25,7 +25,7 @@
                             <td>{{ $single_user->email }}</td>
                             <td>{{ $single_user->dob }}</td>
                             <td>
-                                <a href="{{route('EnquieryAssign.show',$single_user->qu_enq_id)}}" class="btn btn-sm btn-sucess">View</a>
+                                <a href="{{route('EnquieryAssign.show',$single_user->qu_enq_id)}}" class="btn btn-sm btn-success"><i class="fas fa-forward px-1"></i>View</a>
                             </td>
                         </tr>
                     @endforeach

@@ -17,8 +17,10 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\bank\BankController;
 use App\Http\Controllers\CallerController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\customers\CustomerDataStoreController;
 use App\Http\Controllers\customers\CustomerDirectReferal;
 use App\Http\Controllers\customers\CustomerEnquieryFormController;
+use App\Http\Controllers\customers\CustomerPagesController;
 use App\Http\Controllers\LeaderControlls\EnquieryManagement_my_Leads;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementBreakDown;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementDirectLeads_AfterAssign;
@@ -84,7 +86,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('ownleads/assigntoleader',AdminOwnLeadToLeader_Controller::class);
     Route::resource('leadsbyOnline/OwnLeadAssigntoadmin',AssignOwnLeadsToAdmin_controller::class);
     Route::resource('leads/byTelCal/assignToAdmin',AssignTcLeadToAdmin::class);
-    
+
     Route::resource('leads/adminside/breakDown',AdminBreakDownController::class);
     Route::get('leads/adminside/breakDown/{cusid}/{enqid}',[AdminBreakDownController::class,'pdfcreate'])->name('pdfcreate');
     Route::resource('leads/acceptOrDeny/offerAcOeDe',OfferAcceptOrDenyController::class);
@@ -134,16 +136,11 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
 
 });
 
-//routes for hadling user login things need to add middle where customer uses
-Route::resource('/user', CustomerController::class);
-Route::get('/user/signup/{id?}/referal/{directref?}',[CustomerController::class,'userSingup'] );
-Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('user.checkOtp');
-Route::prefix('customer')->middleware(['user'])->group(function () {
-    Route::resource('/quickEnquieryForm',CustomerEnquieryFormController::class);
-    Route::resource('/directReferal',CustomerDirectReferal::class);
-    Route::get('/login',[UserController::class,'login'])->name('userlogin');
 
-});
+
+
+
+
 
 //route to fetch the subproducts not checked by middleware because of muliple login
 Route::post('caller/customer/productfetch',[CallerController::class,'handleSubProductRequest'])->name('caller.getsubproductsbyproduct');
@@ -151,19 +148,72 @@ Route::post('caller/customer/productfetch',[CallerController::class,'handleSubPr
 
 
 //routes for frontend of a admin panel
-Route::get('/home',[UserController::class,'index']);
+Route::get('/home',[UserController::class,'index'])->name('home');//home page of a frontend
+Route::post('checkuser',[UserController::class,'checkuser'])->name('checkuser');
+Route::resource('/user/signup', CustomerController::class);//sign up route index methode to sign up
+
+Route::prefix('user')->group(function()
+{
+
+    Route::get('login',[UserController::class,'login'])->name('userlogin');
+    Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
+    Route::get('connect',[CustomerPagesController::class,'connect'])->name('user.connect');
+    Route::get('AboutUs',[CustomerPagesController::class,'About'])->name('user.About');
+    Route::get('Documents',[CustomerPagesController::class,'Documents'])->name('user.Docs');
+    //routes for products page
+    Route::get('PersonalLoan',[CustomerPagesController::class,'PersonalLoan'])->name('user.PersonalLoan');
+    Route::get('HomeLoan',[CustomerPagesController::class,'HomeLoan'])->name('user.HomeLoan');
+    Route::get('Mortages',[CustomerPagesController::class,'Mortages'])->name('user.Mortages');
+    Route::get('BusinessLoan',[CustomerPagesController::class,'BusinessLoan'])->name('user.BusinessLoan');
+    Route::get('EducationLoan',[CustomerPagesController::class,'EducationLoan'])->name('user.EducationLoan');
+    //end of routes for products page
+
+});
+
+//routes for user after sign up
+Route::prefix('user')->middleware(['user'])->group(function () {
+
+    Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
+    Route::get('wallet',[CustomerPagesController::class,'wallet'])->name('user.wallet');
+    Route::get('personalInfoForm',[CustomerPagesController::class,'personalInfoFill'])->name('user.personalInfoFill');
+    Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
+    Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
+    Route::resource('directReferal',CustomerDirectReferal::class);
+
+});
+//end routes for user after sign up
+
+
 Route::get('/login',[UserController::class,'index']);
 
-Route::post('/login',[UserController::class,'checkuser'])->name('checkuser');
+Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('user.checkOtp');
 Route::post('/login/checkotp',[UserController::class,'checkuserotp'])->name('checkuserotp');
 Route::post('/login/logout',[UserController::class,'logout'])->name('userlogout');
+Route::get('/user/signup/{id?}/referal/{directref?}',[CustomerController::class,'userSingup'] );
+// Route::post('/login/checkuser',[UserController::class,'checkuser'])->name('checkuser');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//routes for test
 Route::get('/test',function()
 {
 
-    $print=AdminBreakDownController::makePdf(1,1);
 
-   return $print->download('test.pdf');
+
+
+    $print=AdminBreakDownController::makePdf(1,1);
+    return $print->download('test.pdf');
 
 });
