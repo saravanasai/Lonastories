@@ -39,7 +39,7 @@ class UserController extends Controller
                 //section handling the opt generation
                 $otp=rand(1000,9999);
                 $check_user_exist->otp=$otp;
-                // Mail::to($check_user_exist->email)->send(new sendOtp($otp));
+                Mail::to($check_user_exist->email)->send(new sendOtp($otp));
                 Session::put('customer',$check_user_exist);
                 $check_user_exist->save();
                 return redirect()->route('signup.show',session('customer')->id);
@@ -68,13 +68,13 @@ class UserController extends Controller
            Session::put("customer",$check_opt);
            $check_opt->otp=0;
            $check_opt->save();
-           return redirect('/home');
+           return redirect()->route('home');
 
      }
 
      public function logout()
      {
             session()->pull('customer');
-            return redirect('/home');
+            return redirect()->route('home');
      }
 }

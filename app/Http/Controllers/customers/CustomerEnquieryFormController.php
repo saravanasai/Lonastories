@@ -66,7 +66,7 @@ class  CustomerEnquieryFormController extends Controller
            $customer_master->save();
            //end updating the master customer table cus_enquiery_form status to 1
 
-           return redirect('/home');
+           return redirect()->route('home');
 
     }
 

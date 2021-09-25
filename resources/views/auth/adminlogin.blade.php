@@ -13,7 +13,7 @@
 <body class="hold-transition login-page bg-light">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{url('/home')}}">Loanstories.com</a>
+    <a href="{{route('home')}}">Loanstories.com</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

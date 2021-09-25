@@ -143,11 +143,10 @@ Route::post('caller/customer/productfetch',[CallerController::class,'handleSubPr
 // dummy route for check up
 
 
-//routes for frontend of a admin panel
-Route::get('/home',[UserController::class,'index'])->name('home');//home page of a frontend
+//routes for frontend of website
+Route::get('/',[UserController::class,'index'])->name('home');//home page of a frontend
 Route::get('loginFormView',[UserController::class,'login'])->name('userLogin');
 Route::post('loginFormSubmit',[UserController::class,'checkuser'])->name('userLoginPost');
-
 Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('user.checkOtp');
 Route::post('/login/checkotp',[UserController::class,'checkuserotp'])->name('checkuserotp');
 Route::post('/login/logout',[UserController::class,'logout'])->name('userlogout');

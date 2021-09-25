@@ -20,7 +20,7 @@ class UserAuth
          if(!session()->has('customer'))
          {
 
-             return redirect('/home');
+             return redirect()->route('home');
          }
 
         return $next($request);
