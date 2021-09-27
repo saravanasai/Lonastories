@@ -27822,6 +27822,7 @@ body.text-sm .input-group-text {
 .bg-purple > .card-header .btn-tool,
 .bg-gradient-purple > .card-header .btn-tool,
 .card-purple:not(.card-outline) > .card-header .btn-tool {
+  /* color: rgba(255, 255, 255, 0.8); */
   color: rgba(255, 255, 255, 0.8);
 }
 

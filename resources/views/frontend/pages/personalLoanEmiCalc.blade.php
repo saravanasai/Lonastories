@@ -74,7 +74,8 @@
     </div>
 </section>
 @endsection
-<script language="javascript">
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript">
 var wwOpenInstalled;
 if (wwOpenInstalled || parent.wwOpenInstalled) {
     if (window.Event) {
