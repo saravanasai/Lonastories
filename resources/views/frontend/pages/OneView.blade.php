@@ -98,7 +98,8 @@ body {
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="basic-form">
+                        <form action="{{route('user.existingEmiShedule')}}" method="POST" enctype="multipart/form-data" id="basic-form">
+                            @csrf
                             <div class="pl-lg-4">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -106,7 +107,7 @@ body {
                                             <label class="form-control-label" for="input-address">Name of
                                                 the Bank
                                             </label>
-                                            <input class="form-control" id="bnkNme" type="text" required>
+                                            <input class="form-control" id="bnkNme" name="bank_name" type="text" required>
                                             <small class="bnkNme text-danger" hidden>Required*</small>
                                         </div>
                                     </div>
@@ -115,7 +116,7 @@ body {
                                             <label class="form-control-label" for="input-address">Type of
                                                 Loan
                                             </label>
-                                            <input class="form-control" id="loanTyp" type="text" required>
+                                            <input class="form-control" id="loanTyp" type="text" name="type_of_loan" required>
                                             <small class="loanTyp text-danger" hidden>Required*</small>
                                         </div>
                                     </div>
@@ -124,7 +125,7 @@ body {
                                             <label class="form-control-label" for="input-country">Loan
                                                 Amount
                                             </label>
-                                            <input type="text" id="amnt" class="form-control" placeholder=""
+                                            <input type="text" id="amnt" class="form-control" name="loan_amount" placeholder=""
                                                 value="" required>
                                         </div>
                                     </div>
@@ -146,7 +147,7 @@ body {
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">ROI</label>
-                                            <input type="text" id="roi" class="form-control" placeholder="In %"
+                                            <input type="text" id="roi" name="roi" class="form-control" placeholder="In %"
                                                 required>
                                         </div>
                                     </div>
@@ -155,16 +156,16 @@ body {
                                             <label class="form-control-label" for="input-city">Tenure
                                             </label>
                                             <input type="text" id="tenure" class="form-control"
-                                                placeholder="In Months" required>
+                                               name="tenure"  placeholder="In Months" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">EMI
                                             </label>
-                                            <input type="text" id="emi" class="form-control"
+                                            <input type="text" id="emi" name="emi" class="form-control"
                                                 placeholder="From Your Loan Taken Date"
-                                                style="background: transparent;" readonly>
+                                                style="background: transparent;" >
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -172,7 +173,7 @@ body {
                                             <label class="form-control-label" for="input-country">Upload Your
                                                 Schedule
                                             </label>
-                                            <input type="file" name="file" class="form-control">
+                                            <input type="file" name="shedule_file" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -252,14 +253,13 @@ body {
         <div class="row">
             <div class="col-md-12">
                 <h3 class="mb-4 text-center text-dark">One View Table</h3>
-                <div class="table-responsive rounded bg-gray">
+                <div class="table-responsive rounded ">
                     <table class="table align-items-center small text-light">
-                        <thead class="">
+                        <thead class="bg-gray">
                             <tr>
                                 <th class="">S.no</th>
                                 <th class="">Lender Name</th>
                                 <th class="">Loan Type</th>
-                                <th class="">First EMI</th>
                                 <th class="">Loan Amount</th>
                                 <th class="">ROI</th>
                                 <th class="">Tenure</th>
@@ -268,7 +268,17 @@ body {
                             </tr>
                         </thead>
                         <tbody id="frontend_existing_loan_detail">
-
+                            @foreach ($emi_shedules as $emi_shedule )
+                              <tr>
+                                  <td>{{$loop->iteration}}</td>
+                                  <td>{{$emi_shedule->emi_sh_name_of_bank}}</td>
+                                  <td>{{$emi_shedule->emi_sh_type_of_loan}}</td>
+                                  <td>{{$emi_shedule->emi_sh_loan_amount}}</td>
+                                  <td>{{$emi_shedule->emi_sh_roi}}</td>
+                                  <td>{{$emi_shedule->emi_sh_tenure}}</td>
+                                  <td>{{$emi_shedule->emi_sh_emi}}</td>
+                              </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

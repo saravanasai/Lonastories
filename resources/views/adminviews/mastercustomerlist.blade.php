@@ -15,7 +15,7 @@
             @if(session('admin'))
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></p></div>
             @endif
-            <table class="table table-bordered table table-head-fixed text-nowrap  table-striped yajra-datatable">
+            <table class="table  table-bordered table-hover table-head-fixed text-nowrap  table-striped yajra-datatable">
                 <thead>
                     <tr>
                         <th>NO</th>
@@ -23,9 +23,9 @@
                         <th>PHONE</th>
                         <th>EMAIL</th>
                         <th>DOB</th>
-                        <th>STATUS</th>
                         <th>ACTION</th>
                         <th>PR_FORM</th>
+                        <th>EX-EMI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,11 +36,6 @@
                             <td>{{ $single_user->cus_phonenumber }}</td>
                             <td>{{ $single_user->email }}</td>
                             <td>{{ $single_user->dob }}</td>
-                            @if($single_user->status==0)
-                            <td><span class="badge bg-success">filled</span></td>
-                            @else
-                            <td><span class="badge bg-danger">Not filled</span></td>
-                            @endif
                             <td>
                                 <div class="btn-group">
                                 <a href="{{ route('wallteByAdmin.show',$single_user->id)}}" class="btn btn-sm btn-success"
@@ -60,11 +55,22 @@
                                     ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
                                 @endif
                             </td>
+                            <td>
+                                @if($single_user->customer_one_view_status!=0)
+                                <a href="{{ route('ExistingLoans.show',$single_user->id)}}" class="btn btn-sm btn-success"
+                                    ><i class="fas fa-history px-1"></i>Exist</a>
+                                @else
+                                <a class="btn btn-sm btn-danger disabled"
+                                    ><i class="far fa-times-circle px-1"></i>Not Exist</a>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{ $new_user->links()}}
+            <div class="float-right">
+                {{ $new_user->links()}}
+            </div>
         </div>
 </div>
 

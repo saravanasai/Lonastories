@@ -4,6 +4,7 @@ namespace App\Http\Controllers\customers;
 
 use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
+use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 
@@ -48,8 +49,9 @@ class CustomerPagesController extends Controller
 
     public function OneView()
     {
+        $emi_shedule=CustomerEmiShedule::where('id',session('customer')->id)->get();
 
-        return view('frontend.pages.OneView');
+        return view('frontend.pages.OneView',["emi_shedules"=>$emi_shedule]);
     }
 
     public function wallet()

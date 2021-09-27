@@ -30,6 +30,6 @@ class TelecallerLinkmail extends Mailable
     public function build()
     {
         // return $this->markdown('Emails.TeleCallerLink');
-        return $this->from('sai@test.com','sai')->subject('Loanstories')->markdown('Emails.TeleCallerLink',["link"=>$this->url]);
+        return $this->from('sai@test.com','sai')->subject('Subject: Sign-up with Loanstories.com - A New way Of Financial Planning!')->markdown('Emails.TeleCallerLink',["link"=>$this->url]);
     }
 }

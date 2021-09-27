@@ -70,6 +70,7 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('enquieryDoc') => storage_path('app/enquieryDoc'),
         public_path('userDocuments') => storage_path('app/userDocuments'),
+        public_path('SheduleDocs') => storage_path('app/ExsitingShedules')
     ],
 
 ];

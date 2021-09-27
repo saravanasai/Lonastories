@@ -18,7 +18,7 @@ class DirectReferalAdminController extends Controller
     public function index()
     {
         $directRefferal_user=DirectReferal::join('table_customer','direct_referals.direct_ref_of_user','=','table_customer.id')
-        ->select('table_customer.*','direct_referals.*')->where('s_del_dir_ref',0)->get();
+        ->select('table_customer.*','direct_referals.*')->where('s_del_dir_ref',0)->paginate(6);
 
         return view('adminviews.DirectreferalAdminView',["dir_ref_user"=>$directRefferal_user]);
     }
@@ -55,7 +55,7 @@ class DirectReferalAdminController extends Controller
          // this methode trigges the resend the url to user
          $refered_customer=DirectReferal::where('id',$id)->first();
          $email=$refered_customer->refered_cus_email;
-         Mail::to($email)->send(new DirectRefferalLinkResend($id));
+        //  Mail::to($email)->send(new DirectRefferalLinkResend($id));
          return 1;
 
     }

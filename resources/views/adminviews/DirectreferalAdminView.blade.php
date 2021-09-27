@@ -46,9 +46,9 @@
             @if(session('admin'))
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></p></div>
             @endif
-            <div class="container">
+            <div class="container table-responsive p-0">
                 <div class="lds-facebook" id="resend_loader"><div></div><div></div><div></div></div>
-                <table class="table table-bordered table table-head-fixed text-nowrap  table-striped " id="yajra-datatable">
+                <table class="table table-hover table-bordered table table-head-fixed text-nowrap  table-striped " id="yajra-datatable">
                     <div id="export"></div>
                     <thead>
                         <tr>
@@ -78,16 +78,15 @@
                                 <td><span class="badge bg-danger">Not Verified</span></td>
                                 @endif
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-danger update" id="{{ $reffered_user->id }}">DELETE</button>
+                                    <button type="button" class="btn btn-sm btn-danger update" id="{{ $reffered_user->id }}"><i class="fas fa-trash px-1"></i>DELETE</button>
                                 </td>
                                 <td>
-
                                         @if ($reffered_user->refered_verification==1)
                                         <button type="button" id="{{ $reffered_user->id }}"
-                                            class="btn btn-sm btn-flat btn-success disabled" disabled>Resend Link</button>
+                                            class="btn btn-sm btn-flat btn-success disabled" disabled><i class="fas fa-paper-plane px-1"></i>Resend Link</button>
                                         @else
                                         <button type="button" id="{{ $reffered_user->id }}"
-                                            class="btn btn-sm btn-flat btn-success resend">Resend Link</button>
+                                            class="btn btn-sm btn-flat btn-success resend"><i class="fas fa-paper-plane px-1"></i>Resend Link</button>
                                         @endif
 
                                 </td>
@@ -95,6 +94,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="float-right">
+                    {{$dir_ref_user->links()}}
+                </div>
             </div>
         </div>
 </div>
@@ -123,7 +125,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
             $('#resend_loader').hide();
 
          $('#yajra-datatable').DataTable( {
-            dom: 'Bfrtip',
+            dom: 'Bfrti',
             buttons: [
             'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5'
                 ]

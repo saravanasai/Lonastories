@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminControlls\AdminBreakDownController;
 use App\Http\Controllers\AdminControlls\AdminLeadsByCaller_Controller;
 use App\Http\Controllers\AdminControlls\AdminOwnLeadToLeader_Controller;
 use App\Http\Controllers\AdminControlls\AdminSettingController;
+use App\Http\Controllers\AdminControlls\CustomerExistingEmiSheduleController;
 use App\Http\Controllers\AdminControlls\CustomerQuickEnquiery_AssignController;
 use App\Http\Controllers\AdminControlls\DirectReferalAdminController;
 use App\Http\Controllers\AdminControlls\EnquieryManagement_Tl_Leads;
@@ -100,6 +101,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/DirectLeadsInitialAssign',EnquieryManagementDirectLeads_InitialAssign::class);//this views initial assigned status
     Route::resource('EnquieryManagement/DirectLeadsAfterAssignMoreinfo',EnquieryManagementDirectLeads_AfterAssign::class);//this views After more info assign
     Route::resource('EnquieryManagement/AssignedToLeaderBreakDown',EnquieryManagementBreakDown::class);//this views After more info assign
+    Route::resource('EnquieryManagement/User/ExistingLoans',CustomerExistingEmiSheduleController::class);//this views After more info assign
 
     //route resouece for adding telecaller
     Route::resource('/caller', CallerController::class);
@@ -184,6 +186,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::get('calculater/EligibilityCalculater',[CustomerPagesController::class,'personalEligibilityCalc'])->name('user.personalEligibilityCalc');
     Route::get('calculater/Homeloan/EligibilityCalculater',[CustomerPagesController::class,'homeEligibilityCalc'])->name('user.homeEligibilityCalc');
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
+    Route::post('existingEmiShedule',[CustomerDataStoreController::class,'existingEmiSheduleStore'])->name('user.existingEmiShedule');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 
