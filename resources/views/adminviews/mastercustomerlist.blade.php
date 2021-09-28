@@ -47,13 +47,11 @@
                                 </div>
                             </td>
                             <td>
-                                @if($single_user->pr_form_status!=0)
-                                <a href="{{ route('TodayCallerLeads.edit',$single_user->id)}}" class="btn btn-sm btn-success"
+
+                                <a href="{{ route('PersonalInfoAdmin.show',$single_user->id)}}" class="btn btn-sm btn-success"
                                     ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
-                                @else
-                                <a class="btn btn-sm btn-danger disabled"
-                                    ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
-                                @endif
+
+
                             </td>
                             <td>
                                 @if($single_user->customer_one_view_status!=0)

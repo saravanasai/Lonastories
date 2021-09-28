@@ -13,16 +13,16 @@ use App\Http\Controllers\AdminControlls\EnquieryOfCustomerView;
 use App\Http\Controllers\AdminControlls\feildForConCase_Controller;
 use App\Http\Controllers\AdminControlls\offerAcceptedUploadFile;
 use App\Http\Controllers\AdminControlls\OfferAcceptOrDenyController;
+use App\Http\Controllers\AdminControlls\PerosnalAddInfoAdminController;
+use App\Http\Controllers\AdminControlls\PerosnalInfoAdminController;
 use App\Http\Controllers\AdminControlls\WalletControllerForAdmin;
 use App\Http\Controllers\Auth\AdminController;
-use App\Http\Controllers\bank\BankController;
 use App\Http\Controllers\CallerController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\customers\CustomerDataStoreController;
 use App\Http\Controllers\customers\CustomerDirectReferal;
 use App\Http\Controllers\customers\CustomerEnquieryFormController;
 use App\Http\Controllers\customers\CustomerPagesController;
-use App\Http\Controllers\customers\CustomerSignUpController;
 use App\Http\Controllers\LeaderControlls\EnquieryManagement_my_Leads;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementBreakDown;
 use App\Http\Controllers\LeaderControlls\EnquieryManagementDirectLeads_AfterAssign;
@@ -36,16 +36,14 @@ use App\Http\Controllers\Leads\AssignTcLeadToAdmin;
 use App\Http\Controllers\Leads\AssignToLeaderController;
 use App\Http\Controllers\products\ProductController;
 use App\Http\Controllers\products\SubProductController;
-use App\Http\Controllers\productsProductController;
+
 use App\Http\Controllers\Reports\AdminReportController;
 use App\Http\Controllers\Website\UserController;
-use App\Models\ClEnquiery;
-use App\Models\CustomerSignup;
-use Carbon\Carbon;
-use FontLib\Table\Type\name;
-use Illuminate\Http\Response;
+use App\Service\TestService;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +100,9 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/DirectLeadsAfterAssignMoreinfo',EnquieryManagementDirectLeads_AfterAssign::class);//this views After more info assign
     Route::resource('EnquieryManagement/AssignedToLeaderBreakDown',EnquieryManagementBreakDown::class);//this views After more info assign
     Route::resource('EnquieryManagement/User/ExistingLoans',CustomerExistingEmiSheduleController::class);//this views After more info assign
+    Route::resource('EnquieryManagement/User/PersonalInfoAdd',PerosnalAddInfoAdminController::class);//this route is for add personal info of user in admin side
+    Route::resource('EnquieryManagement/User/PersonalInfoAdmin',PerosnalInfoAdminController::class);//this route is for view and update personal info of user in admin side
+
 
     //route resouece for adding telecaller
     Route::resource('/caller', CallerController::class);
@@ -206,17 +207,26 @@ Route::resource('/user/signup', CustomerController::class);//sign up route index
 
 
 
+//routes for test
+Route::get('/service',function()
+{
+
+    return view('testviews.service');
+
+});
+//routes for post
+Route::post('/servicepost', function (Request $request,TestService $service) {
 
 
+    $service->handle($request);
+
+})->name('test.post');
 
 
 
 //routes for test
 Route::get('/test',function()
 {
-
-
-
 
     $print=AdminBreakDownController::makePdf(1,1);
     return $print->download('test.pdf');
