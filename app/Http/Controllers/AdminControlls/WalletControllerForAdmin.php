@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers\AdminControlls;
-
 use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
+use App\Models\Cutomer\SuperRewardPointsGiven;
+use App\Models\Cutomer\SuperRewardPointsRedeemed;
 use App\Models\Wallet;
+use App\Service\TestService;
+use App\Service\WalletbyAdminService;
 use Illuminate\Http\Request;
 
 class WalletControllerForAdmin extends Controller
@@ -35,34 +38,12 @@ class WalletControllerForAdmin extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,WalletbyAdminService $service)
     {
-        $table=$request->table;
-        if($table==1)
-        {
-           $user_wallet=Wallet::where('id',$request->wallet_id)->first();
-           $user_wallet->value_coins=($user_wallet->value_coins+$request->chips_value);
 
-           return ($user_wallet->save())?1:0;
+        $response=$service->handle($request);
+        return $response;
 
-        }
-        elseif($table==3)
-        {
-            $user_wallet=Wallet::where('id',$request->wallet_id)->first();
-            $user_wallet->redeem_request=0;
-            $user_wallet->enable_redeem=0;
-            $user_wallet->super_reward_point=0;
-            return ($user_wallet->save())?1:0;
-        }
-        else
-        {
-            $user_wallet=Wallet::where('id',$request->wallet_id)->first();
-            $user_wallet->start_coins=$request->balance_stars;
-            $user_wallet->value_coins=$request->balance_chips;
-            $user_wallet->heart_coins=$request->balance_hearts;
-            $user_wallet->super_reward_point=($user_wallet->super_reward_point+$request->super_reward_points);
-            return ($user_wallet->save())?1:0;
-        }
     }
 
     /**
