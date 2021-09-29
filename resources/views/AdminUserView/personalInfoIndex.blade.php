@@ -10,12 +10,24 @@
                        @if($user_info->pr_form_status==0)
                       <a href="{{route('PersonalInfoAdd.show',$user_info->id)}}" class="btn btn-sm btn-success"><i class="fas fa-paper-plane px-1"></i>ADD</a>
                       @else
-                      <a href="{{url()->previous()}}" class="btn btn-sm btn-info"> <i class="fas fa-user-edit px-1"></i>EDIT</a>
+                      <a href="{{route('PersonalInfoAdmin.edit',$user_info->id)}}" class="btn btn-sm btn-info"> <i class="fas fa-user-edit px-1"></i>EDIT</a>
                       @endif
-                      <a href="{{url()->previous()}}" class="btn btn-sm btn-primary"><i class="fas fa-backward px-2"></i>BACK</a>
+                      <a href="{{route('customer.master')}}" class="btn btn-sm btn-primary"><i class="fas fa-backward px-2"></i>BACK</a>
                   </div>
               </div>
               <div class="card-body">
+                  @if(Session::has('success'))
+                  <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Success!</strong> Perosnal Info Added
+                  </div>
+                  @endif
+                  @if(Session::has('updated'))
+                  <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Success!</strong> Perosnal Info Upadted
+                  </div>
+                  @endif
                  @if($user_info->pr_form_status==1)
                    {{-- first tab --}}
                    <div class="tab-pane active" id="activity">

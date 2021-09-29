@@ -36,7 +36,7 @@
                     <!-- /.login-logo -->
                         <div class="card">
                             <div class="card-body login-card-body">
-                            <h4 class="login-box-msg"><b class="display-6">CALLER LOGIN</b></h4>
+                            <h4 class="login-box-msg"><b class="display-6">EMPLOYEE LOGIN</b></h4>
                             <div class="container">
                                 @if(session()->has('status'))
                                 <div class="text-red text-center"> {{session('status')}} </div>

@@ -12,10 +12,7 @@ class PerosnalInfoAdminController extends Controller
 {
 
 
-    public function AddInfoIndex($id)
-    {
-        dd($id);
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -55,7 +52,6 @@ class PerosnalInfoAdminController extends Controller
      */
     public function show($id)
     {
-        Session::put('cus_id',$id);
         $user_info=CustomerSignup::where('id',$id)->first();
         $pr_form=PersonalInfoFrom::where('pr_form_of_user',$id)->first();
         return view('AdminUserView.personalInfoIndex',['user_info'=>$user_info,'pr_form'=>$pr_form]);
@@ -69,7 +65,8 @@ class PerosnalInfoAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pr_form=PersonalInfoFrom::where('pr_form_of_user',$id)->first();
+        return view('AdminUserView.personalInfoEdit',["pr_info"=>$pr_form]);
     }
 
     /**
@@ -81,7 +78,7 @@ class PerosnalInfoAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
