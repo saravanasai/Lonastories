@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\AdminControlls;
 
 use App\Http\Controllers\Controller;
-use App\Models\CustomerSignup;
-use App\Models\Cutomer\CustomerEmiShedule;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
 
-class CustomerExistingEmiSheduleController extends Controller
+class ExistingEmiSheduleADminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,9 +46,7 @@ class CustomerExistingEmiSheduleController extends Controller
      */
     public function show($id)
     {
-        $user_info=CustomerSignup::where('id',$id)->first();
-        $ex_ln_info=CustomerEmiShedule::where('emi_shedule_of_user',$id)->paginate(8);
-        return view('AdminUserView.existing_loans_Index',["user_info"=>$user_info,"ex_ln_info"=>$ex_ln_info]);
+        //
     }
 
     /**
@@ -86,8 +80,6 @@ class CustomerExistingEmiSheduleController extends Controller
      */
     public function destroy($id)
     {
-         CustomerEmiShedule::destroy($id);
-         Session::flash('deleted');
-         return back();
+        //
     }
 }

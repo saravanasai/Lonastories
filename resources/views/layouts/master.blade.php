@@ -352,6 +352,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <i class="fas fa-tools nav-icon"></i>
                                         <p>Redemption</p>
                                     </a>
+                                    <a href="{{route('admin.PasswordresetIndex')}}" class="nav-link ">
+                                        <i class="fas fa-key nav-icon"></i>
+                                        <p>Change Password</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
