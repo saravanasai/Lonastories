@@ -68,7 +68,7 @@
                         <div class="social-auth-links text-center mb-3">
                           <p><hr></p>
                           <a href="{{route('caller.login')}}" id="admin_cal_lg_btn" class="btn btn-block  text-white">
-                            <i class="fas fa-phone-alt mr-2"></i>CALLER LOGIN
+                            <i class="fas fa-phone-alt mr-2"></i>EMPLOYEE LOGIN
                           </a>
                         </div>
                         <!-- /.social-auth-links -->
