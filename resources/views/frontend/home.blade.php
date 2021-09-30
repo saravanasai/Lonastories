@@ -185,7 +185,7 @@
                     </h3>
                 </div>
                 <div class="col-md-12 pt-5">
-                    <h4><a href="about.php" class="btn btn-outline-primary btn-shadow" data-aos="zoom-in-down"
+                    <h4><a href="{{route('user.About')}}" class="btn btn-outline-primary btn-shadow" data-aos="zoom-in-down"
                             data-aos-duration="1500"><strong>READ MORE</strong></a></h4>
                 </div>
             </div>

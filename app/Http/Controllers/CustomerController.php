@@ -237,7 +237,7 @@ class CustomerController extends Controller
     public function MasterCustomerList()
     {
 
-        $new_user=CustomerSignup::paginate(8);
+        $new_user=CustomerSignup::paginate(5);
 
        return  view('adminviews.mastercustomerlist',compact('new_user'));
     }

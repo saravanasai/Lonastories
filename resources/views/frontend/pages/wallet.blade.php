@@ -49,6 +49,21 @@
                             <p><a href="{{route('user.OneView')}}" class="btn bg-nav text-white">One View</a></p>
                         </div>
                         @endif
+                        <form action="{{route('user.UploadUserImage')}}" enctype="multipart/form-data" method="post">
+                            @csrf
+                            <input type="file" name="profile_img" id="">
+                            <label for="">The file Size should be max 500kb</label>
+                            @error('profile_img')
+                            <div class="text-danger">{{$message}}</div>
+                            @enderror
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </form>
+                        @if(Session::has('profileimage'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Success!</strong> Profile Image Uploaded Successfully
+                          </div>
+                        @endif
                     </div>
                 </div>
             </div>

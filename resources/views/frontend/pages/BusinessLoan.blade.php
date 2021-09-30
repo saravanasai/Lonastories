@@ -325,16 +325,15 @@
         var rate = document.formval.int_rate.value;
         var n = document.formval.period.value;
         var r = rate / (12 * 100);
-        var prate =
-            (P * r * Math.pow(1 + r, n * 12)) / (Math.pow(1 + r, n * 12) - 1);
+        var prate = (P * r * Math.pow(1 + r, n * 12)) / (Math.pow(1 + r, n * 12) - 1);
 
         var emi = (Math.ceil(prate * 100) / 100).toFixed(2);
         var outflow = n * 12 * emi;
         var int_comp = outflow - emi;
 
-        document.getElementById("repayment").innerText = emi;
-        document.getElementById("int_comp").innerText = int_comp;
-        document.getElementById("outflow").innerText = outflow;
+        document.getElementById("repayment").innerText = isNaN(emi) ? '0.00' : emi;
+        document.getElementById("int_comp").innerText = isNaN(int_comp) ? '0.00' : int_comp;
+        document.getElementById("outflow").innerText = isNaN(outflow) ? '0.00' : outflow;
     };
 </script>
 <!--================================= Scripting=================================================== -->

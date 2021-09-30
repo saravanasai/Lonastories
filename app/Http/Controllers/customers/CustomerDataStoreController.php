@@ -7,6 +7,7 @@ use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Cutomer\PersonalInfoFrom;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class CustomerDataStoreController extends Controller
@@ -63,48 +64,71 @@ class CustomerDataStoreController extends Controller
     public function existingEmiSheduleStore(Request $request)
     {
         //need to enable this validation on intergration
-    //    $this->validate($request,[
-    //         "bank_name"=>"required",
-    //         "type_of_loan"=>"required",
-    //         "loan_amount"=>"required|numeric",
-    //         "roi"=>"required|numeric",
-    //         "tenure"=>"required|numeric",
-    //         "emi"=>"required|numeric",
-    //         "shedule_file"=>"mimes:pdf"
-    //     ]);
+        //    $this->validate($request,[
+        //         "bank_name"=>"required",
+        //         "type_of_loan"=>"required",
+        //         "loan_amount"=>"required|numeric",
+        //         "roi"=>"required|numeric",
+        //         "tenure"=>"required|numeric",
+        //         "emi"=>"required|numeric",
+        //         "shedule_file"=>"mimes:pdf"
+        //     ]);
 
-    if($request->file('shedule_file'))
-    {
-        $file=$request->file('shedule_file');
-        $file_name="SH".session('customer')->id."OF".rand(1000,60000).".pdf";
-
-        $existing_loan_info=new CustomerEmiShedule();
-        $existing_loan_info->emi_shedule_of_user=session('customer')->id;
-        $existing_loan_info->emi_sh_name_of_bank=$request->bank_name;
-        $existing_loan_info->emi_sh_type_of_loan=$request->type_of_loan;
-        $existing_loan_info->emi_sh_loan_amount=$request->loan_amount;
-        $existing_loan_info->emi_sh_roi=$request->roi;
-        $existing_loan_info->emi_sh_tenure =$request->tenure;
-        $existing_loan_info->emi_sh_emi=$request->emi;
-        $existing_loan_info->emi_sh_file=$file_name;
-
-         //updating the status in customer master table
-
-         $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
-         $customer_master->customer_one_view_status=1;
-
-
-        if($existing_loan_info->save() && $customer_master->save())
+        if($request->file('shedule_file'))
         {
-          Storage::put('ExsitingShedules/'.$file_name, file_get_contents($file));
-          return redirect()->route('user.OneView');
-        }
-        else
-        {
-            return redirect()->back();
+            $file=$request->file('shedule_file');
+            $file_name="SH".session('customer')->id."OF".rand(1000,60000).".pdf";
+
+            $existing_loan_info=new CustomerEmiShedule();
+            $existing_loan_info->emi_shedule_of_user=session('customer')->id;
+            $existing_loan_info->emi_sh_name_of_bank=$request->bank_name;
+            $existing_loan_info->emi_sh_type_of_loan=$request->type_of_loan;
+            $existing_loan_info->emi_sh_loan_amount=$request->loan_amount;
+            $existing_loan_info->emi_sh_roi=$request->roi;
+            $existing_loan_info->emi_sh_tenure =$request->tenure;
+            $existing_loan_info->emi_sh_emi=$request->emi;
+            $existing_loan_info->emi_sh_file=$file_name;
+
+            //updating the status in customer master table
+
+            $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
+            $customer_master->customer_one_view_status=1;
+
+
+            if($existing_loan_info->save() && $customer_master->save())
+            {
+            Storage::put('ExsitingShedules/'.$file_name, file_get_contents($file));
+            return redirect()->route('user.OneView');
+            }
+            else
+            {
+                return redirect()->back();
+            }
+
         }
 
     }
 
+    //function to upload user profile image
+    public function UploadUserImage(Request $request)
+    {
+         $this->validate($request,[
+             "profile_img"=>"required|mimes:jpg,jpeg|max:500000"
+        ]);
+        if($request->file('profile_img'))
+        {
+            $file=$request->file('profile_img');
+            $file_name="PR_IMG".session('customer')->id.$file->getClientOriginalExtension();
+
+            $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
+            $customer_master->user_profile_img=$file_name;
+            if($customer_master->save())
+            {
+                Storage::put('userprofile/'.$file_name,file_get_contents($file));
+                Session::flash('profileimage','Profile Image Uploaded');
+                return back();
+
+            }
+        }
     }
 }

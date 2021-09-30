@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th>NO</th>
+                        <th>PROFILE</th>
                         <th>NAME</th>
                         <th>PHONE</th>
                         <th>EMAIL</th>
@@ -32,6 +33,7 @@
                     @foreach ($new_user as $sno => $single_user)
                         <tr>
                             <td>{{ ++$sno }}</td>
+                            <td> <a href="{{asset('profileimg/'.$single_user->user_profile_img)}}"><img alt="User Profile Image"  class="profile-user-img img-fluid img-circle" src="{{asset('profileimg/'.$single_user->user_profile_img)}}"></td>
                             <td>{{ $single_user->name }}</td>
                             <td>{{ $single_user->cus_phonenumber }}</td>
                             <td>{{ $single_user->email }}</td>
@@ -47,20 +49,12 @@
                                 </div>
                             </td>
                             <td>
-
                                 <a href="{{ route('PersonalInfoAdmin.show',$single_user->id)}}" class="btn btn-sm btn-success"
                                     ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
-
-
                             </td>
                             <td>
-                                @if($single_user->customer_one_view_status!=0)
                                 <a href="{{ route('ExistingLoans.show',$single_user->id)}}" class="btn btn-sm btn-success"
                                     ><i class="fas fa-history px-1"></i>Exist</a>
-                                @else
-                                <a class="btn btn-sm btn-danger disabled"
-                                    ><i class="far fa-times-circle px-1"></i>Not Exist</a>
-                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -76,7 +70,6 @@
 
 @endsection
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

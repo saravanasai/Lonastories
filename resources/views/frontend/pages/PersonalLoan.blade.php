@@ -227,14 +227,6 @@
                                             <input type="number" id="card_outstanding" name="" class="form-control"
                                                 placeholder="e.g.,100000" required />
                                         </div>
-                                        <!-- <div class="form-group pt-2">
-                                                            <h5 class=""><label for="username">Interest payable towards
-                                                                    overdraft
-                                                                    loans
-                                                                    if any</label></h5>
-                                                            <input type="number" id="interest_overdraft" name="" class="form-control"
-                                                                placeholder="e.g.,1000" required />
-                                                        </div> -->
                                     </div>
                                 </div>
 
@@ -243,10 +235,11 @@
                                         <div class="form-group text-center pt-md-5">
                                             <h3 class="text-secondary"><label for="">Personal Loan
                                                     Eligibility</label></h3>
-                                            <h3 class=""><span id=" result">₹ 0.00</span></h3>
+                                            <h3 class=""><span id="result">₹ 0.00</span></h3>
                                         </div>
 
-                                        <button type="button" class="btn btn-success p_loan"><b>Check</b></button>
+                                        <button type="button" class="btn btn-success"
+                                            onclick="eligibleCalc()"><b>Check</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +319,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-5 pb-5 text-center text-sm-center"><button type="button"
+                        <div class="pt-5 pb-5 text-center text-sm-center"><button type="button" id=""
                                 class="btn btn-darkblue btn-sm" onclick="calc()"><b>CALCULATE</b></button>
                             &nbsp;&nbsp;
                             @if (!session('customer'))
@@ -353,20 +346,28 @@
 
 <!--================================= Scripting=================================================== -->
 <script type="text/javascript">
-    function calc() {
-        var P = document.formval.pr_amt.value;
-        var rate = document.formval.int_rate.value;
-        var n = document.formval.period.value;
-        var r = rate / (12 * 100);
-        var prate = (P * r * Math.pow((1 + r), n * 12)) / (Math.pow((1 + r), n * 12) - 1);
+    // Eligiblity Calculator ============================
+    function eligibleCalc() {
+        var salary = parseInt(document.querySelector('#salary').value);
+        var obligate = parseInt(document.querySelector('#obligate').value);
+        var card_outstanding = parseInt(document.querySelector('#card_outstanding').value);
 
-        var emi = (Math.ceil(prate * 100) / 100).toFixed(0);
-        var outflow = (n * 12) * (emi);
-        var int_comp = outflow - P;
+        var Total_obligate = (0.05 * card_outstanding) + obligate;
 
-        document.getElementById('repayment').innerText = emi;
-        document.getElementById('int_comp').innerText = int_comp.toFixed(0);
-        document.getElementById('outflow').innerText = outflow.toFixed(0);
+        var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
+
+        var result = parseInt((value / 2175) * 1e5);
+
+        console.log(result);
+
+        if (isNaN(result)) {
+            document.getElementById('result').innerText = "₹ 0.00";
+        } else if (0 >= result) {
+            document.getElementById('result').innerText = "You are not Eligible";
+        } else {
+            document.getElementById('result').innerText = result.toFixed(0);
+        }
     };
+    // Eligiblity Calculator ============================
 </script>
 <!--================================= Scripting=================================================== -->

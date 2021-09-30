@@ -1,39 +1,6 @@
 $(function () {
 
     // ------------------------------------------------------- //
-    // Testimonials Slider
-    // ------------------------------------------------------ //
-    // $('.testimonials-slider').owlCarousel({
-    //     loop: true,
-    //     margin: 10,
-    //     dots: false,
-    //     nav: true,
-    //     smartSpeed: 700,
-    //     navText: [
-    //         "<i class='fa fa-angle-left'></i>",
-    //         "<i class='fa fa-angle-right'></i>"
-    //     ],
-    //     responsiveClass: true,
-    //     responsive: {
-    //         0: {
-    //             items: 1,
-    //             nav: false,
-    //             dots: true
-    //         },
-    //         600: {
-    //             items: 1,
-    //             nav: true
-    //         },
-    //         1000: {
-    //             items: 2,
-    //             nav: true,
-    //             loop: false
-    //         }
-    //     }
-    // });
-
-
-    // ------------------------------------------------------- //
     // Scroll Top Button
     // ------------------------------------------------------- //
     $('#scrollTop').on('click', function () {
@@ -123,7 +90,6 @@ $(function () {
 
         return false;
     });
-
 });
 
 // ================================================================================================================================================
@@ -263,21 +229,31 @@ function calculator() {
 // Scroll Animations========================================================
 
 // Personal Loan Eligble Calculator=========================================
-$(function () {
-    $('body').on('click', '.p_loan', function () {
-        var salary = parseInt($('#salary').val());
-        var obligate = parseInt($('#obligate').val());
-        var card_outstanding = parseInt($('#card_outstanding').val());
 
-        var Total_obligate = (0.05 * card_outstanding) + obligate;
 
-        var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
 
-        var result = parseInt((value / 2175) * 1e5);
 
-        $('#result').text(result <= 0 ? 'You are not Eligible' : '₹ ' + result.toFixed(0));
-        // $('#result').text((salary <= 5e4) ? true : false);
 
-    });
 
-})
+
+
+// ================================EMI Calculator - For All Page ===================================
+
+function calc() {
+    var P = document.formval.pr_amt.value;
+    var rate = document.formval.int_rate.value;
+    var n = document.formval.period.value;
+    var r = rate / (12 * 100);
+    var prate = (P * r * Math.pow((1 + r), n * 12)) / (Math.pow((1 + r), n * 12) - 1);
+
+    var emi = (Math.ceil(prate * 100) / 100).toFixed(0);
+    var outflow = (n * 12) * (emi);
+    var int_comp = outflow - P;
+
+    document.getElementById('repayment').innerText = isNaN(emi) ? '0.00' : emi;
+    document.getElementById('int_comp').innerText = isNaN(int_comp) ? '0.00' : int_comp.toFixed(0);
+    document.getElementById('outflow').innerText = isNaN(outflow) ? '0.00' : outflow.toFixed(0);
+};
+
+
+// ================================EMI Calculator - For All Page ===================================

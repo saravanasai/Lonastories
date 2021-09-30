@@ -25,6 +25,7 @@ class CreateTableCustomer extends Migration
             $table->integer('active_status')->default(0);
             $table->string('cus_referal_code')->default(0);
             $table->string('ref_check')->default(0);
+            $table->string('user_profile_img')->nullable();
             $table->string('enquiery_form_status')->default('0');
             $table->string('mandatory_doc')->default('0')->comment("0 means not collected 1 means collected");
             $table->string('pr_form_status')->default('0')->comment("0 means not filled 1 means filled");

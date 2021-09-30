@@ -10,6 +10,8 @@ use App\Http\Controllers\AdminControlls\DirectReferalAdminController;
 use App\Http\Controllers\AdminControlls\EnquieryManagement_Tl_Leads;
 use App\Http\Controllers\AdminControlls\EnquieryOfCusDetailView;
 use App\Http\Controllers\AdminControlls\EnquieryOfCustomerView;
+use App\Http\Controllers\AdminControlls\ExistingEmiSheduleAddAdminController;
+use App\Http\Controllers\AdminControlls\ExistingEmiSheduleADminController;
 use App\Http\Controllers\AdminControlls\feildForConCase_Controller;
 use App\Http\Controllers\AdminControlls\offerAcceptedUploadFile;
 use App\Http\Controllers\AdminControlls\OfferAcceptOrDenyController;
@@ -36,12 +38,10 @@ use App\Http\Controllers\Leads\AssignTcLeadToAdmin;
 use App\Http\Controllers\Leads\AssignToLeaderController;
 use App\Http\Controllers\products\ProductController;
 use App\Http\Controllers\products\SubProductController;
-
 use App\Http\Controllers\Reports\AdminReportController;
 use App\Http\Controllers\Website\UserController;
 use App\Service\TestService;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Route;
 
 
@@ -73,6 +73,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('/admindashboard/customermaster/disable',[CustomerController::class,'CustomerDiable'])->name('customer.disable');
     //route section for admin settings controller
     Route::get('/admin/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
+    Route::get('/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
     Route::post('/admin/setting',[AdminSettingController::class,'enableRedeem']);
     // end route section for admin settings controller
     Route::resource('/wallets/wallteByAdmin',WalletControllerForAdmin::class);
@@ -102,6 +103,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/User/ExistingLoans',CustomerExistingEmiSheduleController::class);//this views After more info assign
     Route::resource('EnquieryManagement/User/PersonalInfoAdd',PerosnalAddInfoAdminController::class);//this route is for add personal info of user in admin side
     Route::resource('EnquieryManagement/User/PersonalInfoAdmin',PerosnalInfoAdminController::class);//this route is for view and update personal info of user in admin side
+    Route::resource('EnquieryManagement/User/ExistingEmiInfoAdmin',ExistingEmiSheduleADminController::class);//this route is for view  ExistingEmiShedule of user in admin side
+    Route::resource('EnquieryManagement/User/ExistingEmiInfoAddAdmin',ExistingEmiSheduleAddAdminController::class);//this route is for Add and update ExistingEmiShedule of user in admin side
 
 
     //route resouece for adding telecaller
@@ -188,6 +191,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::get('calculater/Homeloan/EligibilityCalculater',[CustomerPagesController::class,'homeEligibilityCalc'])->name('user.homeEligibilityCalc');
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
     Route::post('existingEmiShedule',[CustomerDataStoreController::class,'existingEmiSheduleStore'])->name('user.existingEmiShedule');
+    Route::post('UploadUserImage',[CustomerDataStoreController::class,'UploadUserImage'])->name('user.UploadUserImage');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 

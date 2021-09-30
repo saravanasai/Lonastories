@@ -1,16 +1,11 @@
 @extends('layouts.FronendMaster')
-<style>
-    #ab_img {
-        height: 650px;
-        background-size: cover;
-        width: 100%;
-    }
 
-</style>
 @section('content')
 
     <div id="hero abt" class="hero hero-head hero-home d-sm-none d-md-block">
-        <img src="{{ asset('frontend/img/about/banner.png') }}" class="" alt="" srcset="" id=" ab_img">
+        <img src="{{ asset('frontend/img/about/banner.png') }}" class="ab_img" alt="" srcset="" style="height: 650px;
+            background-size: cover;
+            width: 100%;">
     </div>
     <div class="col-md-12 mobban">
         <img src="{{ asset('frontend/img/about/banner 0.png') }}" alt="" class="img-fluid" data-aos="zoom-in"
@@ -99,8 +94,9 @@
                         scope of
                         funding and so we maintain the best approval rate in the industry.</h4>
                 </div>
-                <div class="col-md-6 text-center"><img class="img-fluid" src="{{ asset('frontend/img/about/b2.png') }}"
-                        alt="" data-aos="zoom-in-right" data-aos-duration="2000"></div>
+                <div class="col-md-6 text-center"><img class="img-fluid"
+                        src="{{ asset('frontend/img/about/b2.png') }}" alt="" data-aos="zoom-in-right"
+                        data-aos-duration="2000"></div>
             </div>
         </div>
     </section>
@@ -112,8 +108,8 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-6">
-                    <img src="{{ asset('frontend/img/happy.jpg') }}" alt="" class="img-fluid" data-aos="fade-up-left"
-                        data-aos-duration="2000">
+                    <img src="{{ asset('frontend/img/happy.jpg') }}" alt="" class="img-fluid"
+                        data-aos="fade-up-left" data-aos-duration="2000">
                 </div>
                 <div class="col-md-6 pt-5">
                     <h4 class="text-justify" data-aos="fade-down" data-aos-duration="2000">
@@ -226,7 +222,8 @@
                             !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                     </h3>
                     @if (session('customer'))
-                        <h5 class="pt-5 pb-lg-3"><a href="{{ route('quickEnquieryForm.edit', session('customer')->id) }}"
+                        <h5 class="pt-5 pb-lg-3"><a
+                                href="{{ route('quickEnquieryForm.edit', session('customer')->id) }}"
                                 class="btn btn-outline-dark mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>

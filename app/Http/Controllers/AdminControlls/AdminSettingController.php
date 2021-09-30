@@ -21,4 +21,9 @@ class AdminSettingController extends Controller
             return back()->with('success',"ENABLED REDEEM OPTION FOR ALL USERS");
          }
     }
+
+    public function PasswordresetIndex()
+    {
+        return view('adminsettings.passwordresetindex');
+    }
 }
