@@ -263,18 +263,21 @@ function calculator() {
 // Scroll Animations========================================================
 
 // Personal Loan Eligble Calculator=========================================
-$('.p_loan').click(function () {
-    var salary = parseInt($('#salary').val());
-    var obligate = parseInt($('#obligate').val());
-    var card_outstanding = parseInt($('#card_outstanding').val());
+$(function () {
+    $('body').on('click', '.p_loan', function () {
+        var salary = parseInt($('#salary').val());
+        var obligate = parseInt($('#obligate').val());
+        var card_outstanding = parseInt($('#card_outstanding').val());
 
-    var Total_obligate = (0.05 * card_outstanding) + obligate;
+        var Total_obligate = (0.05 * card_outstanding) + obligate;
 
-    var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
+        var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
 
-    var result = parseInt((value / 2175) * 1e5);
+        var result = parseInt((value / 2175) * 1e5);
 
-    $('#result').text(result <= 0 ? 'You are not Eligible' : '₹ ' + result.toFixed(0));
-    // $('#result').text((salary <= 5e4) ? true : false);
+        $('#result').text(result <= 0 ? 'You are not Eligible' : '₹ ' + result.toFixed(0));
+        // $('#result').text((salary <= 5e4) ? true : false);
 
-});
+    });
+
+})
