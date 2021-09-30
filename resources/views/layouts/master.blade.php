@@ -248,8 +248,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-
                         <!--End Third Nav section  -->
+                        <!-- Third part-1 Nav section  -->
+                        <li class="nav-item {{ (request()->segment(1)=='wallets') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='wallets') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-wallet"></i>
+                                <p>
+                                    Wallet Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('wallteByAdmin.index')}}" class="nav-link {{ (request()->is('wallets/wallteByAdmin')) ? 'active' : '' }}">
+                                        <i class="fas fa-retweet nav-icon"></i>
+                                        <p>Request For Redeem</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--End Third part-1 Nav section  -->
                         <!-- Fourth Nav section  -->
                             <li class="nav-item {{ (request()->segment(1)=='Usermanagement') ? 'menu-open' : '' }}  ">
                                 <a href="#" class="nav-link {{ (request()->segment(1)=='Usermanagement') ? 'active' : '' }}">

@@ -134,9 +134,19 @@
                 </div>
             </div>
         </div>
+         @if (Session::has('redeemRequest'))
+         <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Success!</strong> Requested successfully.
+          </div>
+         @endif
         <div class="text-center mt-md-5">
             @if($wallet_info->enable_redeem==1 && $wallet_info->redeem_request==0 )
-            <h4><button class="btn btn-outline-success btn-lg rounded-pill"><strong>REDEEM</strong></button></h4>
+             <form action="{{route('user.RedeemRequest')}}" method="post">
+                 @csrf
+                 <input type="hidden" name="cus_id" value="{{session('customer')->id}}">
+            <h4><button type="submit" class="btn btn-outline-success btn-lg rounded-pill"><strong>REDEEM</strong></button></h4>
+            </form>
             @endif
         </div>
     </div>

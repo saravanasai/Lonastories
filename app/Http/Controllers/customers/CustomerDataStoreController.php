@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Cutomer\PersonalInfoFrom;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -130,5 +131,21 @@ class CustomerDataStoreController extends Controller
 
             }
         }
+    }
+
+    //function handle the redem request from user
+    public function RedeemRequest(Request $request)
+    {
+         //this section actualy resets the value after giving cash to user
+         $user_wallet=Wallet::where('wallet_of_user',$request->cus_id)->first();
+         $user_wallet->redeem_request=1;
+         $user_wallet->enable_redeem=0;
+         if($user_wallet->save())
+         {
+            Session::flash('redeemRequest','Requested for Redeem');
+            return back();
+         }
+
+
     }
 }

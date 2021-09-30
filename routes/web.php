@@ -197,6 +197,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
     Route::post('existingEmiShedule',[CustomerDataStoreController::class,'existingEmiSheduleStore'])->name('user.existingEmiShedule');
     Route::post('UploadUserImage',[CustomerDataStoreController::class,'UploadUserImage'])->name('user.UploadUserImage');
+    Route::post('RedeemRequest',[CustomerDataStoreController::class,'RedeemRequest'])->name('user.RedeemRequest');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 
