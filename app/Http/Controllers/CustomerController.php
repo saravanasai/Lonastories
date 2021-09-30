@@ -91,7 +91,7 @@ class CustomerController extends Controller
                                                //section to validate if the its a tellecaller referal
                                                if($tele_caller!=null)
                                                {
-                                                $user_info->refered_by=$tele_caller->id;
+                                                $user_info->refered_by=$tele_caller->telecaller_id;
                                                 $tele_caller->cus_id=$user_info->id;
                                                 $tele_caller->save();
                                                }
@@ -237,7 +237,7 @@ class CustomerController extends Controller
     public function MasterCustomerList()
     {
 
-        $new_user=CustomerSignup::paginate(5);
+        $new_user=CustomerSignup::get();
 
        return  view('adminviews.mastercustomerlist',compact('new_user'));
     }

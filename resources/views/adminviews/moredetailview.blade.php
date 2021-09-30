@@ -148,70 +148,79 @@
                                     <!-- / end of first tab.tab-pane -->
                                     <!-- start of second tab.tab-pane -->
                                     <div class="tab-pane" id="timeline">
-
-                                        <div class="row">
-                                            <div class="col col-md-6">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-book mr-1"></i>Name</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $more_info->name }}
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                                                    <p class="text-muted">{{ $more_info->current_loation }}</p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fab fa-product-hunt mr-1"></i>Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span class="tag tag-danger">{{ $more_info->productname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-info-circle mr-1"></i>Additinal Info</strong>
-
-                                                    <p class="text-muted mt-1">{{ $more_info->additional_details }}</p>
+                                        <div class="tab-pane" id="timeline">
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Phone number:</strong></b>
+                                                    {{ $more_info->enquiery_cus_ph }}
                                                 </div>
-
-                                            </div>
-                                            <div class="col">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-phone-alt mr-1"></i>Phone Number</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $more_info->enquiery_cus_ph }}
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-map-marker-alt mr-1"></i>Dob</strong>
-
-                                                    <p class="text-muted">{{ $more_info->dob }}</p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-sitemap mr-1"></i>Sub Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span
-                                                            class="tag tag-danger">{{ $more_info->subproductname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-
+                                                <div class="col col-md-4">
+                                                    <b><strong>Company Name:</strong></b>
+                                                    {{ $more_info->companyname }}
                                                 </div>
-
+                                                <div class="col col-md-4">
+                                                    <b><strong>Take Home Salary:</strong></b>
+                                                    {{ $more_info->take_home_salary}}
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Total Obligation:</strong></b>
+                                                    {{ $more_info->total_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>No Of Credit Card:</strong></b>
+                                                    {{ $more_info->no_of_credit_card}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Credit Card Outstanding:</strong></b>
+                                                    {{ $more_info->no_of_credit_card_outstanding}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Credit Card Obligation:</strong></b>
+                                                    {{ $more_info->credit_card_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Salary Bank Account Name:</strong></b>
+                                                    {{ $more_info->sa_ac_bank_id}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Product Type:</strong></b>
+                                                    {{ $more_info->productname}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Sub Product Type:</strong></b>
+                                                    {{ $more_info->subproductname}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Final Obligation:</strong></b>
+                                                    {{ $more_info->final_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Existing Foir:</strong></b>
+                                                    {{ $more_info->existing_foir}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Loan Amount Required:</strong></b>
+                                                    {{ $more_info->loan_amount_required}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Current Location:</strong></b>
+                                                    {{ $more_info->current_loation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Additional details:</strong></b>
+                                                    {{ $more_info->additional_details}}
+                                                </div>
+                                            </div>
+                                    </div>
+
                                     </div>
                                     <!-- / end of second tab.tab-pane -->
                                     <div class="tab-pane" id="settings">

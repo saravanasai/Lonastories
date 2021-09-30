@@ -30,7 +30,7 @@ class SubProductController extends Controller
     {
         $all_pro_sub = SubProducts::join('products','subproducts.product_id','=','products.id')
         ->select('subproducts.*','subproducts.id as sub_pro_id','products.*','products.id as pro_id')
-        ->paginate(6);
+        ->paginate(10);
 
         // with('subproductof')->get();
         $product=Products::all();

@@ -44,7 +44,6 @@
             </table>
             {{$new_user->links()}}
         </div>
-    </div>
 </div>
 
 

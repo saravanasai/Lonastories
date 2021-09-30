@@ -1,24 +1,17 @@
 @extends('layouts.master')
 
-
 @section('content')
-
-    <!-- jQuery library -->
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
     <!-- Main content -->
     <div class="content">
         <div class="container mt-1">
-            <h4 class="mb-4">SUB PRODUCT LIST</h4>
+            <h4 class="mb-2">SUB PRODUCT LIST</h4>
             @if(session('admin'))
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></p></div>
             @endif
         </div>
             <div class="container">
             <table class="table table-bordered text-nowrap">
-                <thead class="bg-purple">
+                <thead class="bg-white">
                     <tr>
                         <th>No</th>
                         <th>Sub Product Name</th>
@@ -35,9 +28,9 @@
                             <td>
                                 <div class="btn-group">
                                     <button type="button" id="{{ $single_product->id }}"
-                                        class="btn btn-sm btn-danger delete"><i class="fa fa-dribbble" aria-hidden="true"></i> DELETE</button>
-                                        <button type="button" id="{{ $single_product->id }}" class="btn btn-success edit"
-                                            data-toggle="modal"> <i class="far fa-edit px-1"></i>EDIT</button>
+                                        class="btn btn-sm btn-danger delete"><i class="fas fa-trash-alt px-2"></i> DELETE</button>
+                                        <button type="button" id="{{ $single_product->id }}" class="btn btn-sm btn-success edit"
+                                            data-toggle="modal" data-target="#subproductEdit"> <i class="far fa-edit px-1"></i>EDIT</button>
                                 </div>
                             </td>
                         </tr>
@@ -48,7 +41,7 @@
                 {{$allproduct_with_sub->links()}}
             </div>
         </div>
-     <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+     <div class="modal fade" id="subproductEdit" style="display: none;" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

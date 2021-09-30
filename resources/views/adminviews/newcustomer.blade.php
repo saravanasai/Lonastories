@@ -36,13 +36,7 @@
         </table>
         {{$new_user->links()}}
     </div>
-
-
 </div>
-</div>
-
-
-
 @endsection
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

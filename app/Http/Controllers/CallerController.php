@@ -271,6 +271,9 @@ class CallerController extends Controller
      public function StoreNewCustomer(Request $request)
      {
 
+
+
+
          $caller=caller::where('id',session('caller')->id)->first();
          $checking_for_exist=TeleCallerEnquiery::where('cus_Phone_number',$request->phonenumber)->first();
         if($checking_for_exist==null)
@@ -306,7 +309,7 @@ class CallerController extends Controller
                    if($caller->telecallerenquiery()->save($enquiery) && $more_details->save())
                    {
 
-                     $url="http://localhost:8000/user/signup/".session('caller')->id."/referal";
+                     $url=env('APP_URL')."/user/signup/".session('caller')->id."/referal";
                      Log::channel('telecallerlink')->info($url);
                      Mail::to($mail_to)->send(new TelecallerLinkmail($url));
                      return 1;

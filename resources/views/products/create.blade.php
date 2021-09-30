@@ -67,7 +67,7 @@
                                                 <td>{{ $single_product->id }}</td>
                                                 <td>{{ $single_product->productname }}</td>
                                                 <td><button type="button" id="{{ $single_product->id }}"
-                                                        class="btn btn-success edit" data-toggle="modal">EDIT</button></td>
+                                                        class="btn btn-success edit" data-toggle="modal" data-target="#modal-default">EDIT</button></td>
                                                 <td> <button type="button" id="{{ $single_product->id }}"
                                                         class="btn btn-danger delete">DELETE</button>
                                                 </td>
@@ -83,7 +83,7 @@
             </div>
             {{-- end of card --}}
         </div>
-    </div> {{-- section for model --}}
+     {{-- section for model --}}
     <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -115,87 +115,74 @@
     </div>
     <!-- /.modal-dialog --> {{-- end  section for model --}}
     </div>
-<!-- /.content -->@endsection
+<!-- /.content -->
+@endsection
 {{-- section ajax --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
     $(function() {
-        $('.yajra-datatable').DataTable();
-        //section to handle the form submission
-        $("#product_form").submit(function(event) {
-        event.preventDefault();
-         //section for revoke validation
-        $("#ProductName").removeClass('is-invalid');
-        var validation_status = true;
-        var product_name = $("#ProductName").val();
-        //validation
-        if (product_name === "") {
-        $("#ProductName").addClass('is-invalid');
-        validation_status = false;
-    } else {
-        $("#ProductName").addClass('is-valid');
-        validation_status = true;
-    }
-    product_name = product_name.toUpperCase();
-     //section if all then field are ok
-    if (validation_status) {
-        $.ajax({
-            url: '{{ route('products.store') }}',
-            type: 'POST',
-            data: {
-                _token: "{{ csrf_token() }}",
-                productname: product_name,
-            },
-            success: function(data) {
-                if (data == 1) {
-                    Swal.fire({
-                        title: 'you Have Added Product Sucessfully',
-                        showDenyButton: false,
-                        showCancelButton: false,
-                        confirmButtonText: `Ok`,
-                        denyButtonText: `Don't save`,
-                    }).then(() => {
-                        //section after added a product
-                        $("#ProductName").val("");
-                        $("#ProductName").removeClass('is-valid');
-                        location.reload();
-                    })
-                } else {
-                    Swal.fire(
-                        'Product not added!',
-                        'Something went Wrong',
-                        'warning'
-                    )
-                }
-            }
-        });
-    }
+                        $('.yajra-datatable').DataTable(
+                            {
+                            dom: 'Bfrt',
+                            buttons: [
+                            'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5'
+                                ]
+                            }
+                        );
+                            //section to handle the form submission
+                            $("#product_form").submit(function(event) {
+                            event.preventDefault();
+                            //section for revoke validation
+                            $("#ProductName").removeClass('is-invalid');
+                            var validation_status = true;
+                            var product_name = $("#ProductName").val();
+                            //validation
+                            if (product_name === "") {
+                            $("#ProductName").addClass('is-invalid');
+                            validation_status = false;
+                            } else {
+                                $("#ProductName").addClass('is-valid');
+                                validation_status = true;
+                            }
+                        product_name = product_name.toUpperCase();
+                        //section if all then field are ok
+                        if (validation_status)
+                        {
+                            $.ajax({
+                                url: '{{ route('products.store') }}',
+                                type: 'POST',
+                                data: {
+                                    _token: "{{ csrf_token() }}",
+                                    productname: product_name,
+                                },
+                                success: function(data) {
+                                    if (data == 1) {
+                                        Swal.fire({
+                                            title: 'you Have Added Product Sucessfully',
+                                            showDenyButton: false,
+                                            showCancelButton: false,
+                                            confirmButtonText: `Ok`,
+                                            denyButtonText: `Don't save`,
+                                        }).then(() => {
+                                            //section after added a product
+                                            $("#ProductName").val("");
+                                            $("#ProductName").removeClass('is-valid');
+                                            location.reload();
+                                        })
+                                    } else {
+                                        Swal.fire(
+                                            'Product not added!',
+                                            'Something went Wrong',
+                                            'warning'
+                                        )
+                                    }
+                                }
+                            });
+                        }
     })
     //end section submission
-    //section to handle the edit button
-    $('body').on('click', '.edit', function(event) {
-        event.preventDefault();
-        $('.modal').modal('show');
-        var id = $(this).attr('id');
-        var url = '{{ route('products.edit', ':id') }}';
-        url = url.replace(':id', id);
-        $.ajax({
-            url: url,
-            type: "GET",
-            data: {
-                _token: "{{ csrf_token() }}",
-                id: id
-            },
-            success: function(data) {
-                var repsonse = JSON.parse(data);
-                $("#product_name_update").val(repsonse.productname);
-                $("#update_id").val(repsonse.id);
-            }
-        });
-    }) //end section to handle the edit button
+
     //SECTION FOR HANDLING THE DELETE REQUEST
      $('body').on('click', '.delete', function(event) {
     event.preventDefault();
@@ -320,6 +307,28 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
         })
 
         //end section to handle the update button
+
+         //section to handle the edit button
+        $('body').on('click', '.edit', function(event) {
+            event.preventDefault();
+
+            var id = $(this).attr('id');
+            var url = '{{ route('products.edit', ':id') }}';
+            url = url.replace(':id', id);
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(data) {
+                    var repsonse = JSON.parse(data);
+                    $("#product_name_update").val(repsonse.productname);
+                    $("#update_id").val(repsonse.id);
+                }
+            });
+        }) //end section to handle the edit button
 
     });
 </script>

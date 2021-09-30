@@ -47,7 +47,7 @@ class UserController extends Controller
           }
           else
           {
-              return redirect()->route('user.index');
+              return redirect()->route('home');
           }
      }
 

@@ -69,32 +69,32 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('/admindashboard/newLeads',[AdminController::class,'NewLeadsbyown'])->name('admin.NewLeadsbyown');
     Route::resource('/admindasboard/EnquieryAssign',CustomerQuickEnquiery_AssignController::class);
     Route::get('/admindashboard/newLeads/customerReferal',[AdminController::class,'NewLeadsbyCustomerReferal'])->name('admin.NewLeadsbyCustomerReferal');
-    Route::get('/admindashboard/customermaster/all',[CustomerController::class,'MasterCustomerList'])->name('customer.master');
+    Route::get('master/admindashboard/customermaster/all',[CustomerController::class,'MasterCustomerList'])->name('customer.master');
     Route::post('/admindashboard/customermaster/disable',[CustomerController::class,'CustomerDiable'])->name('customer.disable');
     //route section for admin settings controller
-    Route::get('/admin/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
-    Route::get('/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
-    Route::post('/admin/setting',[AdminSettingController::class,'enableRedeem']);
+    Route::get('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
+    Route::get('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
+    Route::post('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'enableRedeem']);
     // end route section for admin settings controller
     Route::resource('/wallets/wallteByAdmin',WalletControllerForAdmin::class);
     Route::resource('/viewEnquieryOfSingleCustomer/OverAllCusEnquiery',EnquieryOfCustomerView::class);
     Route::resource('/customerdetailedEnquiery/view/CustomerEnquierydetailview',EnquieryOfCusDetailView::class);
     // routes for products
-    Route::resource('/products',ProductController::class);
-    Route::resource('/subproducts',SubProductController::class);
+    Route::resource('productManagement/products',ProductController::class);
+    Route::resource('productManagement/subproducts',SubProductController::class);
     //routes to handle the leades of a  telecaller by admin
     Route::resource('callerleads/Enquieryview/detailview',AdminLeadsByCaller_Controller::class);
     Route::resource('ownleads/assigntoleader',AdminOwnLeadToLeader_Controller::class);
-    Route::resource('leadsbyOnline/OwnLeadAssigntoadmin',AssignOwnLeadsToAdmin_controller::class);
-    Route::resource('leads/byTelCal/assignToAdmin',AssignTcLeadToAdmin::class);
-
+    Route::resource('leads/leadsbyOnline/OwnLeadAssigntoadmin',AssignOwnLeadsToAdmin_controller::class);
+    Route::resource('admindashboard/leads/byTelCal/assignToAdmin',AssignTcLeadToAdmin::class);
+     //route resource for viewing the direct referal
+    Route::resource('admindashboard/leads/Directrefferal',DirectReferalAdminController::class);
     Route::resource('leads/adminside/breakDown',AdminBreakDownController::class);
     Route::get('leads/adminside/breakDown/{cusid}/{enqid}',[AdminBreakDownController::class,'pdfcreate'])->name('pdfcreate');
     Route::resource('leads/acceptOrDeny/offerAcOeDe',OfferAcceptOrDenyController::class);
     Route::resource('leads/accepted/offerAcceptedFileUpload',offerAcceptedUploadFile::class);
     Route::resource('leads/DocumentCollected/feildForConCase',feildForConCase_Controller::class);
-     //route resource for viewing the direct referal
-    Route::resource('leads/Directrefferal',DirectReferalAdminController::class);
+
     //resouece controller for admin enquiery Management
     Route::resource('EnquieryManagement/TodayCallerLeads',EnquieryManagement_Tl_Leads::class);//this views the customer spoked by a tele caller
     Route::resource('EnquieryManagement/DirectLeadsInitialAssign',EnquieryManagementDirectLeads_InitialAssign::class);//this views initial assigned status
@@ -108,20 +108,20 @@ Route::middleware(['is_admin'])->group(function () {
 
 
     //route resouece for adding telecaller
-    Route::resource('/caller', CallerController::class);
+    Route::resource('Usermanagement/caller', CallerController::class);
     //route seperation for genrating reports for admin
-    Route::get('/admin/all/customerReports',[AdminReportController::class,'AllCustomerView'])->name('allCustomer.index');
-    Route::post('/admin/all/customer/exports',[AdminReportController::class,'AllCustomerView_export'])->name('allcustomer.export');
-    Route::get('/admin/all/customer/referal/Reports',[AdminReportController::class,'ReferalOfCustomer'])->name('referalofCustomer.index');
-    Route::post('/admin/all/customer/referal/search',[AdminReportController::class,'ReferalOfCustomer_search'])->name('referalofCustomer.search');
-    Route::get('/admin/all/customer/referalIndirect/{cus_referal_id}',[AdminReportController::class,'IndirectReferalOfCustomer'])->name('IndirectReferalOfCustomer.index');
-    Route::post('/admin/all/customer/IndirectReferalOfCustomer_export',[AdminReportController::class,'IndirectReferalOfCustomer_export'])->name('IndirectReferalOfCustomer.export');
-    Route::get('/admin/all/customer/referaldirect/{id}',[AdminReportController::class,'directReferalOfCustomer'])->name('directReferalOfCustomer.index');
-    Route::post('/admin/all/customer/directReferalOfCustomer_export',[AdminReportController::class,'directReferalOfCustomer_export'])->name('directReferalOfCustomer.export');
-    Route::get('/admin/allEnquieryofCustomer',[AdminReportController::class,'allEnquieryofCustomer'])->name('allEnquieryofCustomer.index');
-    Route::get('/admin/EnquierysofCustomer/{from_date}/to/{to_date}/{Report_type}',[AdminReportController::class,'allEnquieryofCustomer_view'])->name('allEnquieryofCustomer.view');
-    Route::post('/admin/all/customer/ConvertedEnquieryReports',[AdminReportController::class,'ConvertedEnquieryReports_export'])->name('ConvertedEnquieryReports.export');
-    Route::post('/admin/all/customer/NonConvertedEnquieryReports',[AdminReportController::class,'NonConvertedEnquieryReports_export'])->name('NonConvertedEnquieryReports.export');
+    Route::get('reportsManagement/admin/all/customerReports',[AdminReportController::class,'AllCustomerView'])->name('allCustomer.index');
+    Route::post('reportsManagement/admin/all/customer/exports',[AdminReportController::class,'AllCustomerView_export'])->name('allcustomer.export');
+    Route::get('reportsManagement/admin/all/customer/referal/Reports',[AdminReportController::class,'ReferalOfCustomer'])->name('referalofCustomer.index');
+    Route::post('reportsManagement/admin/all/customer/referal/search',[AdminReportController::class,'ReferalOfCustomer_search'])->name('referalofCustomer.search');
+    Route::get('reportsManagement/admin/all/customer/referalIndirect/{cus_referal_id}',[AdminReportController::class,'IndirectReferalOfCustomer'])->name('IndirectReferalOfCustomer.index');
+    Route::post('reportsManagement/admin/all/customer/IndirectReferalOfCustomer_export',[AdminReportController::class,'IndirectReferalOfCustomer_export'])->name('IndirectReferalOfCustomer.export');
+    Route::get('reportsManagement/admin/all/customer/referaldirect/{id}',[AdminReportController::class,'directReferalOfCustomer'])->name('directReferalOfCustomer.index');
+    Route::post('reportsManagement/admin/all/customer/directReferalOfCustomer_export',[AdminReportController::class,'directReferalOfCustomer_export'])->name('directReferalOfCustomer.export');
+    Route::get('reportsManagement/admin/allEnquieryofCustomer',[AdminReportController::class,'allEnquieryofCustomer'])->name('allEnquieryofCustomer.index');
+    Route::get('reportsManagement/admin/EnquierysofCustomer/{from_date}/to/{to_date}/{Report_type}',[AdminReportController::class,'allEnquieryofCustomer_view'])->name('allEnquieryofCustomer.view');
+    Route::post('reportsManagement/admin/all/customer/ConvertedEnquieryReports',[AdminReportController::class,'ConvertedEnquieryReports_export'])->name('ConvertedEnquieryReports.export');
+    Route::post('reportsManagement/admin/all/customer/NonConvertedEnquieryReports',[AdminReportController::class,'NonConvertedEnquieryReports_export'])->name('NonConvertedEnquieryReports.export');
 });
 //route that controllers fro callers
 Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
@@ -131,22 +131,27 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
     Route::post('caller/customerEntry',[CallerController::class,'StoreNewCustomer'])->name('caller.StoreNewCustomer');
      //Route Resource For leads assigned by admin to leader
      //!!! important NOW ACUALLY WORKING ON THIS ROUTE !!//
-    Route::resource('assignedNewLeads',AssignedOwnLeadsToLeader::class);
-    Route::resource('assignedleads',AssignToLeaderController::class);//this controller is to handle request after moreinfo filled assigned by Admin controller
-    //cmomment for upper route its handles all breakdown view adding forms for every obligation
+
     Route::get('leads/callerside/breakDown/{cusid}/{enqid}',[AssignToLeaderController::class,'pdfcreate'])->name('pdfcreate.caller');
+    //routes that handle the My Leads of Caller
+
+
+});
+Route::prefix('own')->middleware(['Authcaller'])->group(function () {
+    Route::resource('Leader/assignedNewLeads',AssignedOwnLeadsToLeader::class);
+    Route::resource('Leader/assignedleads',AssignToLeaderController::class);//this controller is to handle request after moreinfo filled assigned by Admin controller
+    //cmomment for upper route its handles all breakdown view adding forms for every obligation
     Route::resource('leads/acceptOrDeny/offerAcOeDeLeader',OfferAcceptedOrDeney_LeaderController::class);
     Route::resource('leads/accepted/offerAcceptedFileUploadLeader',offerAcceptedFileUploadLeader_LeaderController::class);
     Route::resource('leads/DocumentCollected/feildForConCaseLeader',feildForConCaseLeader_LeaderController::class);
-    //routes that handle the My Leads of Caller
+});
+Route::prefix('caller')->middleware(['Authcaller'])->group(function () {
+
     Route::resource('EnquieryManagement/MyLeadsStatus',EnquieryManagement_my_Leads::class);//this views the own Leader
 
 });
-
-
 //route to fetch the subproducts not checked by middleware because of muliple login
 Route::post('caller/customer/productfetch',[CallerController::class,'handleSubProductRequest'])->name('caller.getsubproductsbyproduct');
-// dummy route for check up
 
 
 //routes for frontend of website

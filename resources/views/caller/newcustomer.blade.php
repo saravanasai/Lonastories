@@ -166,6 +166,11 @@
                                     <textarea class="form-control" rows="3" placeholder="Enter ..." id="additional_detail"></textarea>
                                   </div>
                              </div>
+                             <div class="col col-md-4">
+                                 <div class="mt-5" id="loading">
+                                    <img src="{{asset('img/loader.gif')}}" alt="" srcset="">
+                                 </div>
+                             </div>
                          </div>
                         <div class="card-footer">
                             <div class="row">
@@ -204,7 +209,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
               //hiding the generate lead button
               $('.btnleadgen').hide();
-
+              $("#loading").hide();
 
 
             //section to handle teh final  obligation
@@ -469,7 +474,12 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
 
                                 },
-
+                                beforeSend: function(){
+                                    $("#loading").show();
+                                },
+                                complete: function(){
+                                    $("#loading").hide();
+                                },
                                 success: function(data) {
 
                                       if(data==1)

@@ -114,8 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <!-- First Nav section  -->
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item {{ (request()->segment(1)=='admindashboard') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='admindashboard') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-landmark"></i>
                                 <p>
                                     Lead Management
@@ -124,31 +124,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('admin.NewLeadsbyown')}}" class="nav-link">
+                                    <a href="{{route('admin.NewLeadsbyown')}}" class="nav-link {{ (request()->is('admindashboard/newLeads')) ? 'active' : '' }}">
                                         <i class="fas fa-street-view nav-icon"></i>
                                         <p>Direct Enquiry</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.LeadsbyCaller')}}" class="nav-link">
+                                    <a href="{{route('admin.LeadsbyCaller')}}" class="nav-link {{ (request()->is('admindashboard/CustomerToday')) ? 'active' : '' }}">
                                         <i class="fas fa-headset nav-icon"></i>
                                         <p>Telecaller Leads</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('assignToAdmin.index')}}" class="nav-link">
+                                    <a href="{{route('assignToAdmin.index')}}" class="nav-link {{ (request()->is('admindashboard/leads/byTelCal/assignToAdmin')) ? 'active' : '' }}">
                                         <i class="fas fa-map-signs nav-icon"></i>
                                         <p>Direct Leads</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('admin.NewLeadsbyCustomerReferal')}}" class="nav-link">
+                                    <a href="{{route('admin.NewLeadsbyCustomerReferal')}}" class="nav-link {{ (request()->is('admindashboard/newLeads/customerReferal')) ? 'active' : '' }}">
                                         <i class="far fa-compass nav-icon"></i>
                                         <p>Indirect Referral Enquiry</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('Directrefferal.index')}}" class="nav-link">
+                                    <a href="{{route('Directrefferal.index')}}" class="nav-link {{ (request()->is('admindashboard/leads/Directrefferal')) ? 'active' : '' }}">
                                         <i class="fas fa-directions nav-icon"></i>
                                         <p>Direct Referrals</p>
                                     </a>
@@ -157,8 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <!--End First Nav section  -->
                          <!-- First Nav part-1  section  -->
-                         <li class="nav-item ">
-                            <a href="#" class="nav-link active">
+                         <li class="nav-item {{ (request()->segment(1)=='leads') ? 'menu-open' : '' }} ">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='leads') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-running"></i>
                                 <p>
                                     My Leads
@@ -167,31 +167,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('OwnLeadAssigntoadmin.index')}}" class="nav-link">
+                                    <a href="{{route('OwnLeadAssigntoadmin.index')}}" class="nav-link {{ (request()->is('leads/leadsbyOnline/OwnLeadAssigntoadmin')) ? 'active' : '' }}">
                                         <i class="fas fa-user-shield nav-icon"></i>
                                         <p>Admin</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('breakDown.index')}}" class="nav-link">
+                                    <a href="{{route('breakDown.index')}}" class="nav-link {{ (request()->is('leads/adminside/breakDown')) ? 'active' : '' }}">
                                         <i class="fas fa-user-tie nav-icon"></i>
                                         <p>Profiling</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('offerAcOeDe.index')}}" class="nav-link">
+                                    <a href="{{route('offerAcOeDe.index')}}" class="nav-link {{ (request()->is('leads/acceptOrDeny/offerAcOeDe')) ? 'active' : '' }}">
                                         <i class="fas fa-id-card-alt nav-icon"></i>
                                         <p>Proposal</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('offerAcceptedFileUpload.index')}}" class="nav-link">
+                                    <a href="{{route('offerAcceptedFileUpload.index')}}" class="nav-link {{ (request()->is('leads/accepted/offerAcceptedFileUpload')) ? 'active' : '' }}">
                                         <i class="fas fa-file-upload nav-icon"></i>
                                         <p>Documents Upload</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('feildForConCase.index')}}" class="nav-link">
+                                    <a href="{{route('feildForConCase.index')}}" class="nav-link {{ (request()->is('leads/DocumentCollected/feildForConCase')) ? 'active' : '' }}">
                                         <i class="fas fa-clipboard-check nav-icon"></i>
                                         <p>Logins</p>
                                     </a>
@@ -200,8 +200,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <!--End First Nav  part-1 section  -->
                         <!-- Second Nav section  -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item {{ (request()->segment(1)=='master') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='master') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-cog"></i>
                                 <p>
                                     Members
@@ -210,7 +210,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('customer.master')}}" class="nav-link ">
+                                    <a href="{{route('customer.master')}}" class="nav-link {{ (request()->is('master/admindashboard/customermaster/all')) ? 'active' : '' }} ">
                                         <i class="fas fa-chalkboard-teacher nav-icon"></i>
                                         <p>Master Data</p>
                                     </a>
@@ -219,8 +219,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <!--End Second Nav section  -->
                         <!-- Third Nav section  -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active ">
+                        <li class="nav-item {{ (request()->segment(1)=='EnquieryManagement') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='EnquieryManagement') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-plus"></i>
                                 <p>
                                     Enquiry Management
@@ -229,19 +229,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('TodayCallerLeads.index')}}" class="nav-link">
+                                    <a href="{{route('TodayCallerLeads.index')}}" class="nav-link {{ (request()->is('EnquieryManagement/TodayCallerLeads')) ? 'active' : '' }}">
                                         <i class="fas fa-layer-group nav-icon"></i>
                                         <p>TD Leads TeleCaller</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('DirectLeadsInitialAssign.index')}}" class="nav-link">
+                                    <a href="{{route('DirectLeadsInitialAssign.index')}}" class="nav-link {{ (request()->is('EnquieryManagement/DirectLeadsInitialAssign')) ? 'active' : '' }}">
                                         <i class="fas fa-envelope-open-text nav-icon"></i>
                                         <p>DL Assigned To Leader</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link">
+                                    <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link {{ (request()->is('EnquieryManagement/DirectLeadsAfterAssignMoreinfo')) ? 'active' : '' }}">
                                         <i class="fas fa-comment-medical nav-icon"></i>
                                         <p>DL Assign To TL TO BR</p>
                                     </a>
@@ -251,8 +251,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <!--End Third Nav section  -->
                         <!-- Fourth Nav section  -->
-                            <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                            <li class="nav-item {{ (request()->segment(1)=='Usermanagement') ? 'menu-open' : '' }}  ">
+                                <a href="#" class="nav-link {{ (request()->segment(1)=='Usermanagement') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-users-cog"></i>
                                     <p>
                                         User Management
@@ -260,14 +260,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="{{ route('caller.index') }}" class="nav-link">
+                                    <li class="nav-item ">
+                                        <a href="{{ route('caller.index') }}" class="nav-link {{ (request()->is('Usermanagement/caller')) ? 'active' : '' }} ">
                                             <i class="fas fa-plus-square nav-icon"></i>
                                             <p>Add IDs</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('caller.create') }}" class="nav-link">
+                                        <a href="{{ route('caller.create') }}" class="nav-link {{ (request()->is('Usermanagement/caller/create')) ? 'active' : '' }}">
                                             <i class="far fa-eye nav-icon"></i>
                                             <p>View IDs</p>
                                         </a>
@@ -276,8 +276,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         <!--End Fourth Nav section  -->
                         <!-- Fifth Nav section  -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item {{ (request()->segment(1)=='productManagement') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='productManagement') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Product List
@@ -286,19 +286,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('products.index')}}" class="nav-link">
+                                    <a href="{{route('products.index')}}" class="nav-link {{ (request()->is('productManagement/products')) ? 'active' : '' }} ">
                                         <i class="fas fa-warehouse nav-icon"></i>
                                         <p>Products Master</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('subproducts.index')}}" class="nav-link">
+                                    <a href="{{route('subproducts.index')}}" class="nav-link {{ (request()->is('productManagement/subproducts')) ? 'active' : '' }}">
                                         <i class="fas fa-boxes nav-icon"></i>
                                         <p>Add Sub Products</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('subproducts.create')}}" class="nav-link">
+                                    <a href="{{route('subproducts.create')}}" class="nav-link {{ (request()->is('productManagement/subproducts/create')) ? 'active' : '' }}">
                                         <i class="fas fa-sitemap nav-icon"></i>
                                         <p>Sub Products Master</p>
                                     </a>
@@ -307,8 +307,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                          <!--End Fifth Nav section  -->
                           <!-- (6th) Nav section  -->
-                          <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                          <li class="nav-item {{ (request()->segment(1)=='reportsManagement') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='reportsManagement') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-bar"></i>
                                 <p>
                                     Reports
@@ -317,19 +317,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('allCustomer.index')}}" class="nav-link ">
+                                    <a href="{{route('allCustomer.index')}}" class="nav-link {{ (request()->is('reportsManagement/admin/all/customerReports')) ? 'active' : '' }}">
                                         <i class="fas fa-globe-asia nav-icon"></i>
                                         <p>All Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('referalofCustomer.index')}}" class="nav-link ">
+                                    <a href="{{route('referalofCustomer.index')}}" class="nav-link {{ (request()->is('reportsManagement/admin/all/customer/referal/Reports')) ? 'active' : '' }} ">
                                         <i class="fas fa-code-branch nav-icon"></i>
                                         <p>Member Referral</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('allEnquieryofCustomer.index')}}" class="nav-link ">
+                                    <a href="{{route('allEnquieryofCustomer.index')}}" class="nav-link {{ (request()->is('reportsManagement/admin/allEnquieryofCustomer')) ? 'active' : '' }} ">
                                         <i class="fas fa-atlas nav-icon"></i>
                                         <p>Lead Reports</p>
                                     </a>
@@ -338,8 +338,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <!--End 6th Nav section  -->
                         <!-- (7th) Nav section  -->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item {{ (request()->segment(1)=='CrmManagenment') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='CrmManagenment') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
                                     Settings
@@ -348,11 +348,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('redeemsetting.master')}}" class="nav-link ">
+                                    <a href="{{route('redeemsetting.master')}}" class="nav-link {{ (request()->is('CrmManagenment/admin/Redemetion/setting')) ? 'active' : '' }} ">
                                         <i class="fas fa-tools nav-icon"></i>
                                         <p>Redemption</p>
                                     </a>
-                                    <a href="{{route('admin.PasswordresetIndex')}}" class="nav-link ">
+                                    <a href="{{route('admin.PasswordresetIndex')}}" class="nav-link {{ (request()->is('CrmManagenment/admin/setting/resetPassword')) ? 'active' : '' }}">
                                         <i class="fas fa-key nav-icon"></i>
                                         <p>Change Password</p>
                                     </a>
@@ -383,12 +383,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </footer>
     </div>
     <!-- ./wrapper -->
-
-
 </body>
 <!-- REQUIRED SCRIPTS -->
-
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.2/b-2.0.0/b-html5-2.0.0/datatables.min.js"></script>

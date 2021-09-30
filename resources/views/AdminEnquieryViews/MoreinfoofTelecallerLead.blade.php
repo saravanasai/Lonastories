@@ -20,12 +20,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card card-purple">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity"
+                                    <li class="nav-item"><a class="nav-link active text-white" href="#activity"
                                             data-toggle="tab">General info</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summarized View</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#timeline" data-toggle="tab">Summarized View</a></li>
                                     {{-- <li class="nav-item"><a class="nav-link " href="#settings" data-toggle="tab">Assign To
                                         </a>
                                     </li> --}}
@@ -50,8 +50,8 @@
                                                     <div class="col-12 col-sm-4">
                                                         <div class="info-box bg-light">
                                                             <div class="info-box-content">
-                                                                <span class="info-box-text text-center text-muted">Cibil
-                                                                    Score</span>
+                                                                <span class="info-box-text text-center text-muted">Final Obligation
+                                                                    </span>
                                                                 <span
                                                                     class="info-box-number text-center text-muted mb-0">{{ $cl_enquiery->final_obligation }}</span>
                                                             </div>
@@ -83,6 +83,10 @@
                                                             <li class="list-group-item">
                                                                 <b>Product</b> <a
                                                                     class=" float-right text-md">{{ $cl_enquiery->productname }}</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Product Sub Type</b> <a
+                                                                    class=" float-right text-md">{{ $cl_enquiery->subproductname }}</a>
                                                             </li>
                                                             <li class="list-group-item">
                                                                 <b>Product Sub Type</b> <a
@@ -121,63 +125,76 @@
                                     <!-- / end of first tab.tab-pane -->
                                     <!-- start of second tab.tab-pane -->
                                     <div class="tab-pane" id="timeline">
-
-                                        <div class="row">
-                                            <div class="col col-md-6">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-book mr-1"></i>Name</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $cl_enquiery->cus_first_name }}
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                                                    <p class="text-muted">{{ $cl_enquiery->current_loation }}</p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fab fa-product-hunt mr-1"></i>Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span class="tag tag-danger">{{ $cl_enquiery->productname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-info-circle mr-1"></i>Additinal Info</strong>
-
-                                                    <p class="text-muted mt-1">{{ $cl_enquiery->additional_details }}</p>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Phone number:</strong></b>
+                                                    {{ $cl_enquiery->enquiery_cus_ph }}
                                                 </div>
-
-                                            </div>
-                                            <div class="col">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-phone-alt mr-1"></i>Phone Number</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $cl_enquiery->enquiery_cus_ph }}
-                                                    </p>
-
-                                                    <hr>
-                                                    <strong><i class="fas fa-sitemap mr-1"></i>Sub Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span
-                                                            class="tag tag-danger">{{ $cl_enquiery->subproductname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-
+                                                <div class="col col-md-4">
+                                                    <b><strong>Company Name:</strong></b>
+                                                    {{ $cl_enquiery->companyname }}
                                                 </div>
-
+                                                <div class="col col-md-4">
+                                                    <b><strong>Take Home Salary:</strong></b>
+                                                    {{ $cl_enquiery->take_home_salary}}
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Total Obligation:</strong></b>
+                                                    {{ $cl_enquiery->total_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>No Of Credit Card:</strong></b>
+                                                    {{ $cl_enquiery->no_of_credit_card}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Credit Card Outstanding:</strong></b>
+                                                    {{ $cl_enquiery->no_of_credit_card_outstanding}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Credit Card Obligation:</strong></b>
+                                                    {{ $cl_enquiery->credit_card_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Salary Bank Account Name:</strong></b>
+                                                    {{ $cl_enquiery->sa_ac_bank_id}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Product Type:</strong></b>
+                                                    {{ $cl_enquiery->productname}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Sub Product Type:</strong></b>
+                                                    {{ $cl_enquiery->subproductname}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Final Obligation:</strong></b>
+                                                    {{ $cl_enquiery->final_obligation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Existing Foir:</strong></b>
+                                                    {{ $cl_enquiery->existing_foir}}
+                                                </div>
+                                            </div>
+                                            <div class="row mt-4">
+                                                <div class="col col-md-4">
+                                                    <b><strong>Loan Amount Required:</strong></b>
+                                                    {{ $cl_enquiery->loan_amount_required}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Current Location:</strong></b>
+                                                    {{ $cl_enquiery->current_loation}}
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <b><strong>Additional details:</strong></b>
+                                                    {{ $cl_enquiery->additional_details}}
+                                                </div>
+                                            </div>
                                     </div>
                                     <!-- / end of second tab.tab-pane -->
                                     <div class="tab-pane" id="settings">
