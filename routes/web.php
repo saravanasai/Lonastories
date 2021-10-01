@@ -73,8 +73,9 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('/admindashboard/customermaster/disable',[CustomerController::class,'CustomerDiable'])->name('customer.disable');
     //route section for admin settings controller
     Route::get('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
-    Route::get('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
     Route::post('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'enableRedeem']);
+    Route::get('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
+    Route::post('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordChange']);
     // end route section for admin settings controller
     Route::resource('/wallets/wallteByAdmin',WalletControllerForAdmin::class);
     Route::resource('/viewEnquieryOfSingleCustomer/OverAllCusEnquiery',EnquieryOfCustomerView::class);

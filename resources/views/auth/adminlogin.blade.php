@@ -35,6 +35,12 @@
                     <div class="card">
                       <div class="card-body login-card-body">
                         <h4 class="login-box-msg"> <b class="display-6"> ADMIN LOGIN</b> </h4>
+                        @if (Session::has('passwordChanged'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Success!</strong> Password Changed Successfully
+                          </div>
+                        @endif
                         <form action="{{route('admin.login')}}" method="post">
                           @csrf
                           <div class="input-group mb-3">
