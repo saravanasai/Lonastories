@@ -29,6 +29,6 @@ class sendOtp extends Mailable
      */
     public function build()
     {
-        return $this->from('sai@test.com','sai')->subject('Loanstories')->markdown('Emails.Sendotp',["otp"=>$this->otp]);
+        return $this->from('sai@test.com','sai')->subject('One Time Password form Loanstories.com')->markdown('Emails.Sendotp',["otp"=>$this->otp]);
     }
 }
