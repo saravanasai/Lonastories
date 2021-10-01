@@ -39,7 +39,7 @@
                     </li>
 
                     <li class="nav-item text-center ml-lg-4">
-                        @if(!session('customer'))
+                        @if(session('customer'))
                         <a href="{{route('signup.index')}}" class="btn btn-light text-dark pull-right mysts"><strong>
                                 SIGN UP</strong></a>
                         @else
@@ -47,7 +47,7 @@
                             STORIES</strong></a>
                         @endif
                     </li>
-                    @if(!session('customer'))
+                    @if(session('customer'))
                     <li class="nav-item text-center ml-lg-4">
                         <form action="{{route('userlogout')}}" method="post">
                         @csrf

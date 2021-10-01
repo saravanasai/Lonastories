@@ -186,7 +186,7 @@ Route::prefix('user')->group(function()
 });
 
 //routes for user after sign up
-// Route::prefix('user')->middleware(['user'])->group(function () {
+Route::prefix('user')->middleware(['user'])->group(function () {
 
     Route::get('meter',[CustomerPagesController::class,'Meter'])->name('user.meter');
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
@@ -204,16 +204,16 @@ Route::prefix('user')->group(function()
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 
-// });
+});
 //end routes for user after sign up
 
 
 
-// Route::post('/login/checkuser',[UserController::class,'checkuser'])->name('checkuser');
+Route::post('/login/checkuser',[UserController::class,'checkuser'])->name('checkuser');
 
 Route::resource('/user/signup', CustomerController::class);//sign up route index methode to sign up
 
-// Route::resource('/user/userLoginform', CustomerSignUpController::class);
+Route::resource('/user/userLoginform', CustomerSignUpController::class);
 
 
 

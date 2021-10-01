@@ -60,7 +60,7 @@
                             <p><a href="{{ route('user.privacypolicy') }}">Privacy Policy</a></p>
                         </li>
 
-                        @if (!session('customer'))
+                        @if (session('customer'))
                             <li>
                                 <p><a href="{{ route('user.OneView') }}">One View</a></p>
                             </li>
