@@ -49,15 +49,17 @@ class CustomerPagesController extends Controller
 
     public function OneView()
     {
-        $emi_shedule=CustomerEmiShedule::where('id',session('customer')->id)->get();
+        // $emi_shedule=CustomerEmiShedule::where('id',session('customer')->id)->get();
 
-        return view('frontend.pages.OneView',["emi_shedules"=>$emi_shedule]);
+        // return view('frontend.pages.OneView',["emi_shedules"=>$emi_shedule]);
+        return view('frontend.pages.OneView');
     }
 
     public function wallet()
     {
-        $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
-        return view('frontend.pages.wallet',["wallet_info"=>$wallet_info]);
+        // $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
+        // return view('frontend.pages.wallet',["wallet_info"=>$wallet_info]);
+        return view('frontend.pages.wallet');
     }
 
     public function personalInfoFill()
@@ -83,5 +85,9 @@ class CustomerPagesController extends Controller
     public function homeEligibilityCalc()
     {
         return view('frontend.pages.homeEligibilityCalc');
+    }
+    public function Meter()
+    {
+        return view('frontend.pages.EmiMeter');
     }
 }
