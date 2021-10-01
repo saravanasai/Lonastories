@@ -37,10 +37,7 @@
                                     Loan</strong></a>
                         </div>
                     </li>
-                    {{-- !!!!!!!!Impotant hiden only for dev pupose!!!! --}}
-                    {{-- <li class="nav-item ml-lg-4">
-                        <a href="./pages/story.php" class="nav-link link-scroll"><strong>CLIENT STORIES</strong></a>
-                    </li> --}}
+
                     <li class="nav-item text-center ml-lg-4">
                         @if(!session('customer'))
                         <a href="{{route('signup.index')}}" class="btn btn-light text-dark pull-right mysts"><strong>
@@ -50,7 +47,7 @@
                             STORIES</strong></a>
                         @endif
                     </li>
-                    @if(session('customer'))
+                    @if(!session('customer'))
                     <li class="nav-item text-center ml-lg-4">
                         <form action="{{route('userlogout')}}" method="post">
                         @csrf
