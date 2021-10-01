@@ -47,6 +47,7 @@ AdminLeadsByCaller_Controller extends Controller
     public function store(Request $request)
     {
 
+
         $assign=$request->asignid;
         // dd($request->all());
         //section to assign the customer to admin its self
@@ -114,6 +115,7 @@ AdminLeadsByCaller_Controller extends Controller
     {
 
          //section to assign the the leader from admin side
+        //  dd($request->all());
          $caller_enquiery=ClEnquiery::where('enquiery_of_ucs',$id)->where('id',$request->enq_id)->first();
          $tl_enquiery=TeleCallerEnquiery::where('cus_id',$id)->first();
          if($tl_enquiery!=null)

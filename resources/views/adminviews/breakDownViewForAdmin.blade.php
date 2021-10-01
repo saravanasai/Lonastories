@@ -1,5 +1,11 @@
 @extends('layouts.master')
 
+<style>
+    .scroll {
+    max-height: 550px;
+    overflow-y: auto;
+}
+</style>
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -15,9 +21,6 @@
                     <ol class="breadcrumb float-sm-right">
                         @if (session('admin'))
                             <li class="breadcrumb-item"><a href="{{ route('breakDown.index') }}">Back</a></li>
-                        @endif
-                        @if (session('caller'))
-                            <li class="breadcrumb-item"><a href="{{ route('assignedownLeads.index') }}">Back</a></li>
                         @endif
                     </ol>
                 </div><!-- /.col -->
@@ -98,7 +101,7 @@
                         <div id="Customer_verification" class="content active dstepper-block" role="tabpanel"
                             aria-labelledby="logins-part-trigger">
                             <div class="col col-md-12">
-                                <div class="card card-purple card-outline">
+                                <div class="card card-primary card-outline">
                                     <div class="card-body box-profile">
                                         <div class="text-center">
                                             <img class="profile-user-img img-fluid img-circle"
@@ -161,153 +164,153 @@
                         <div id="Loan_Additional" class="content" role="tabpanel"
                             aria-labelledby="logins-part-trigger">
                             <div class="col col-md-12">
-                                <div class="card card-purple card-outline">
-                                    <div class="container mt-2">
-                                        <div id="pl_section">
-                                            {{-- section if product is Home Loan --}}
-                                            <h5 class="py-2"><strong>ADDITIONAL FEILDS FOR HOME LOAN</strong>
-                                            </h5>
-                                            <div id="hl_alert" class="text-danger"></div>
-                                            <div class="row">
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_age">AGE</label>
-                                                        <input type="number" class="form-control" id="hl_age"
-                                                            placeholder="AGE">
+                                <div class="card card-primary card-outline">
+                                        <div class="container mt-2">
+                                            <div id="pl_section">
+                                                {{-- section if product is Home Loan --}}
+                                                <h5 class="py-2"><strong>ADDITIONAL FEILDS FOR HOME LOAN</strong>
+                                                </h5>
+                                                <div id="hl_alert" class="text-danger"></div>
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_age">AGE</label>
+                                                            <input type="number" class="form-control" id="hl_age"
+                                                                placeholder="AGE">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label>PROPERTY TYPE</label>
+                                                            <select class="form-control" id="hl_property_type">
+                                                                <option selected value="0">CHOOSE THE PROPERTY TYPE</option>
+                                                                <option value="BUILDER APARTMENT">BUILDER APARTMENT</option>
+                                                                <option value="VILLA">VILLA</option>
+                                                                <option value="RESALE">RESALE</option>
+                                                                <option value="RESIDENT SALE PLOT">RESIDENT SALE PLOT
+                                                                </option>
+                                                                <option value="COMMERCIAL BUILDING">COMMERCIAL BUILDING
+                                                                </option>
+                                                                <option value="OTHERS">OTHERS</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_builder_name">BUILDER NAME</label>
+                                                            <input type="text" class="form-control" id="hl_builder_name"
+                                                                placeholder="BUILDER NAME">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label>PROPERTY TYPE</label>
-                                                        <select class="form-control" id="hl_property_type">
-                                                            <option selected value="0">CHOOSE THE PROPERTY TYPE</option>
-                                                            <option value="BUILDER APARTMENT">BUILDER APARTMENT</option>
-                                                            <option value="VILLA">VILLA</option>
-                                                            <option value="RESALE">RESALE</option>
-                                                            <option value="RESIDENT SALE PLOT">RESIDENT SALE PLOT
-                                                            </option>
-                                                            <option value="COMMERCIAL BUILDING">COMMERCIAL BUILDING
-                                                            </option>
-                                                            <option value="OTHERS">OTHERS</option>
-                                                        </select>
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_property_value">PROPERTY VALUE</label>
+                                                            <input type="number" class="form-control"
+                                                                id="hl_property_value" placeholder="PROPERTY VALUE">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_property_area">PROPERTY AREA</label>
+                                                            <input type="text" class="form-control" id="hl_property_area"
+                                                                placeholder="PROPERTY AREA">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_property_city">PROPERTY CITY</label>
+                                                            <input type="text" class="form-control" id="hl_property_city"
+                                                                placeholder="PROPERTY CITY">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_builder_name">BUILDER NAME</label>
-                                                        <input type="text" class="form-control" id="hl_builder_name"
-                                                            placeholder="BUILDER NAME">
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_gross_salary">GROSS SALARY</label>
+                                                            <input type="number" class="form-control"
+                                                                id="hl_gross_salary" placeholder="GROSS SALARY">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_net_salary">NET SALARY</label>
+                                                            <input type="number" class="form-control" id="hl_net_salary"
+                                                                placeholder="NET SALARY">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_co_joint">CO-JOINT</label>
+                                                            <input type="text" class="form-control" id="hl_co_joint"
+                                                                placeholder="CO-JOINT">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_property_value">PROPERTY VALUE</label>
-                                                        <input type="number" class="form-control"
-                                                            id="hl_property_value" placeholder="PROPERTY VALUE">
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_ltv_1">LTV 1</label>
+                                                            <input type="number" class="form-control" id="hl_ltv_1"
+                                                                placeholder="LTV 1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_ltv_2">LTV 2</label>
+                                                            <input type="number" class="form-control" id="hl_ltv_2"
+                                                                placeholder="LTV 2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_ltv_3">LTV 3</label>
+                                                            <input type="number" class="form-control" id="hl_ltv_3"
+                                                                placeholder="LTV 3">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_property_area">PROPERTY AREA</label>
-                                                        <input type="text" class="form-control" id="hl_property_area"
-                                                            placeholder="PROPERTY AREA">
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_fn_ltv_1">FINAL LTV 1</label>
+                                                            <input type="number" class="form-control" id="hl_fn_ltv_1"
+                                                                placeholder="FINAL LTV 1" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_fn_ltv_2">FINAL LTV 2</label>
+                                                            <input type="number" class="form-control" id="hl_fn_ltv_2"
+                                                                placeholder="FINAL LTV 2" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="hl_fn_ltv_3">FINAL LTV 3</label>
+                                                            <input type="number" class="form-control" id="hl_fn_ltv_3"
+                                                                placeholder="FINAL LTV 3" disabled>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_property_city">PROPERTY CITY</label>
-                                                        <input type="text" class="form-control" id="hl_property_city"
-                                                            placeholder="PROPERTY CITY">
+                                                <div class="row py-2">
+                                                    <div class="col col-md-6 offset-md-6 text-center">
+                                                        <button type="button" class="btn btn-primary previous"><i
+                                                            class="fas fa-backward px-2"></i>Previous</button>
+                                                        <button class="btn btn-success hl_profile_submit"><i
+                                                                class="fas fa-calculator px-1"></i>CALC</button>
+                                                        <button class="btn btn-danger hl_profile_edit"><i
+                                                                class="far fa-edit px-1"></i>EDIT</button>
+                                                        <button class="btn btn-primary hl_profile_add"><i
+                                                                class="fas fa-paper-plane px-1"></i>ADD</button>
+                                                        <button id="hl_next" class="btn btn-info text-white next">Next<i
+                                                                class="fas fa-forward px-2"></i></button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_gross_salary">GROSS SALARY</label>
-                                                        <input type="number" class="form-control"
-                                                            id="hl_gross_salary" placeholder="GROSS SALARY">
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_net_salary">NET SALARY</label>
-                                                        <input type="number" class="form-control" id="hl_net_salary"
-                                                            placeholder="NET SALARY">
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_co_joint">CO-JOINT</label>
-                                                        <input type="text" class="form-control" id="hl_co_joint"
-                                                            placeholder="CO-JOINT">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_ltv_1">LTV 1</label>
-                                                        <input type="number" class="form-control" id="hl_ltv_1"
-                                                            placeholder="LTV 1">
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_ltv_2">LTV 2</label>
-                                                        <input type="number" class="form-control" id="hl_ltv_2"
-                                                            placeholder="LTV 2">
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_ltv_3">LTV 3</label>
-                                                        <input type="number" class="form-control" id="hl_ltv_3"
-                                                            placeholder="LTV 3">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_fn_ltv_1">FINAL LTV 1</label>
-                                                        <input type="number" class="form-control" id="hl_fn_ltv_1"
-                                                            placeholder="FINAL LTV 1" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_fn_ltv_2">FINAL LTV 2</label>
-                                                        <input type="number" class="form-control" id="hl_fn_ltv_2"
-                                                            placeholder="FINAL LTV 2" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="col col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="hl_fn_ltv_3">FINAL LTV 3</label>
-                                                        <input type="number" class="form-control" id="hl_fn_ltv_3"
-                                                            placeholder="FINAL LTV 3" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row py-2">
-                                                <div class="col col-md-6 offset-md-6 text-center">
-                                                    <button type="button" class="btn btn-primary previous"><i
-                                                        class="fas fa-backward px-2"></i>Previous</button>
-                                                    <button class="btn btn-success hl_profile_submit"><i
-                                                            class="fas fa-calculator px-1"></i>CALC</button>
-                                                    <button class="btn btn-danger hl_profile_edit"><i
-                                                            class="far fa-edit px-1"></i>EDIT</button>
-                                                    <button class="btn btn-primary hl_profile_add"><i
-                                                            class="fas fa-paper-plane px-1"></i>ADD</button>
-                                                    <button id="hl_next" class="btn btn-info text-white next">Next<i
-                                                            class="fas fa-forward px-2"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -315,355 +318,395 @@
                         <div id="Break_down_obligation" class="content" role="tabpanel"
                             aria-labelledby="information-part-trigger">
                             <div class="card">
-                                <div class="alert alert-danger" id="ob_alert" role="alert"></div>
-                                <div class="row">
-                                    <div class="col col-md-8">
-                                        <table class="table table-striped table-inverse table-responsive">
-                                            <thead class="thead-inverse">
-                                                <tr>
-                                                    <th>LOAN TYPE</th>
-                                                    <th>BANK NAME</th>
-                                                    <th>LOAN AMOUNT</th>
-                                                    <th>ROI</th>
-                                                    <th>TENURE</th>
-                                                    <th>EMI</th>
-                                                    <th>POS</th>
-                                                    <th>BT</th>
-                                                    <th>ACTION</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="inserted_ob">
+                                <div class="scroll">
+                                    <div class="alert alert-danger" id="ob_alert" role="alert"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-12">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-inverse">
+                                                        <tr>
+                                                            <th>LOAN TYPE</th>
+                                                            <th>BANK NAME</th>
+                                                            <th>LOAN AMOUNT</th>
+                                                            <th>ROI</th>
+                                                            <th>TENURE</th>
+                                                            <th>EMI</th>
+                                                            <th>POS</th>
+                                                            <th>BT</th>
+                                                            <th>ACTION</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="inserted_ob">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col col-md-4">
-
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="ob_loan_type">LOAN TYPE</label>
-                                                <input type="text" class="form-control" id="ob_loan_type"
-                                                    placeholder="LOAN TYPE">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="ob_bank_name">BANK NAME</label>
-                                                <input type="text" class="form-control" id="ob_bank_name"
-                                                    placeholder="BANK NAME">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="ob_loan_amount">LOAN AMOUNT</label>
-                                                <input type="number" class="form-control" id="ob_loan_amount"
-                                                    placeholder="LOAN AMOUNT">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="ob_roi">ROI</label>
-                                                <input type="number" class="form-control" id="ob_roi" placeholder="ROI">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_tennure">TENURE</label>
-                                                <input type="number" class="form-control" id="ob_tennure"
-                                                    placeholder="TENURE IN MONTHS">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_loan_type">LOAN TYPE</label>
+                                                    <input type="text" class="form-control" id="ob_loan_type"
+                                                        placeholder="LOAN TYPE">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_bank_name">BANK NAME</label>
+                                                    <input type="text" class="form-control" id="ob_bank_name"
+                                                        placeholder="BANK NAME">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="ob_loan_amount">LOAN AMOUNT</label>
+                                                    <input type="number" class="form-control" id="ob_loan_amount"
+                                                        placeholder="LOAN AMOUNT">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="ob_roi">ROI</label>
+                                                    <input type="number" class="form-control" id="ob_roi" placeholder="ROI">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="ob_ri">DUMMY EMI</label>
+                                                    <input type="number" class="form-control" id="ob_ri" placeholder="EMI">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_emi">EMI</label>
-                                                <input type="number" class="form-control" id="ob_emi" placeholder="EMI"
-                                                    disabled>
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_tennure">TENURE</label>
+                                                    <input type="number" class="form-control" id="ob_tennure"
+                                                        placeholder="TENURE IN MONTHS">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_emi">EMI</label>
+                                                    <input type="number" class="form-control" id="ob_emi" placeholder="EMI"
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_pos">POS</label>
+                                                    <input type="number" class="form-control" id="ob_pos" placeholder="POS"
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label>OBLIGATE</label>
+                                                    <select class="form-control" id="ob_bt" disabled>
+                                                        <option selected value="0">NO</option>
+                                                        <option value="1">YES</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_pos">POS</label>
-                                                <input type="number" class="form-control" id="ob_pos" placeholder="POS"
-                                                    disabled>
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_sum_of_emi_bt_yes">OBLIGATIONS NOT APPLICABLE</label>
+                                                    <input type="number" class="form-control" id="ob_sum_of_emi_bt_yes"
+                                                        placeholder="OBLIGATIONS NOT APPLICABLE" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_sum_of_emi_bt_no">OBLIGATIONS APPLICABLE</label>
+                                                    <input type="number" class="form-control" id="ob_sum_of_emi_bt_no"
+                                                        placeholder="OBLIGATIONS APPLICABLE" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_sum_of_pos_bt_yes">BT POS-TOTAL</label>
+                                                    <input type="number" class="form-control" id="ob_sum_of_pos_bt_yes"
+                                                        placeholder="BT POS-TOTAL" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="ob_sum_of_pos_bt_no">OTHER POS-TOTAL</label>
+                                                    <input type="number" class="form-control" id="ob_sum_of_pos_bt_no"
+                                                        placeholder="OTHER POS-TOTAL" disabled>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label>OBLIGATE</label>
-                                                <select class="form-control" id="ob_bt" disabled>
-                                                    <option selected value="0">NO</option>
-                                                    <option value="1">YES</option>
-                                                </select>
-                                            </div>
+                                        <div class="float-right mb-2">
+                                            <button type="button" class="btn btn-primary previous"><i
+                                                    class="fas fa-backward px-2"></i>Previous</button>
+                                            <button type="button" class="btn btn-danger calculate"><i
+                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
+                                            <button type="button" class="btn btn-success add"><i
+                                                    class="fas fa-paper-plane px-1"></i>Add</button>
+                                            <button type="button" class="btn btn-primary next">Next<i
+                                                    class="fas fa-forward px-2"></i></button>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_sum_of_emi_bt_yes">OBLIGATIONS NOT APPLICABLE</label>
-                                                <input type="number" class="form-control" id="ob_sum_of_emi_bt_yes"
-                                                    placeholder="OBLIGATIONS NOT APPLICABLE" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_sum_of_emi_bt_no">OBLIGATIONS APPLICABLE</label>
-                                                <input type="number" class="form-control" id="ob_sum_of_emi_bt_no"
-                                                    placeholder="OBLIGATIONS APPLICABLE" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_sum_of_pos_bt_yes">BT POS-TOTAL</label>
-                                                <input type="number" class="form-control" id="ob_sum_of_pos_bt_yes"
-                                                    placeholder="BT POS-TOTAL" disabled>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="ob_sum_of_pos_bt_no">OTHER POS-TOTAL</label>
-                                                <input type="number" class="form-control" id="ob_sum_of_pos_bt_no"
-                                                    placeholder="OTHER POS-TOTAL" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="float-right mb-2">
-                                        <button type="button" class="btn btn-primary previous"><i
-                                                class="fas fa-backward px-2"></i>Previous</button>
-                                        <button type="button" class="btn btn-danger calculate"><i
-                                                class="fas fa-calculator px-1"></i>Calcualte</button>
-                                        <button type="button" class="btn btn-success add"><i
-                                                class="fas fa-paper-plane px-1"></i>Add</button>
-                                        <button type="button" class="btn btn-primary next">Next<i
-                                                class="fas fa-forward px-2"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="credit_card_break_down" class="content" role="tabpanel" aria-labelledby="step3">
                             <div class="card">
-                                <div class="alert alert-danger" id="cr_alert" role="alert"></div>
-                                <div class="row">
-                                    <div class="col col-md-8">
-                                        <table class="table table-striped table-inverse table-responsive p-1">
-                                            <thead class="thead-inverse">
-                                                <tr>
-                                                    <th>BANK NAME</th>
-                                                    <th>CARD LIMIT</th>
-                                                    <th>CARD O/S</th>
-                                                    <th>EMI</th>
-                                                    <th>BT</th>
-                                                    <th>ACTION</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="inserted_cr">
+                                <div class="scroll">
+                                    <div class="alert alert-danger" id="cr_alert" role="alert"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-12">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-inverse">
+                                                        <tr>
+                                                            <th>BANK NAME</th>
+                                                            <th>CARD LIMIT</th>
+                                                            <th>CARD O/S</th>
+                                                            <th>EMI</th>
+                                                            <th>BT</th>
+                                                            <th>ACTION</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="inserted_cr">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col col-md-4">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="cr_bank_name">BANK NAME</label>
-                                                <input type="text" class="form-control" id="cr_bank_name"
-                                                    placeholder="BANK NAME">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cr_limit">CARD LIMIT</label>
-                                                <input type="number" class="form-control" id="cr_limit"
-                                                    placeholder="CARD LIMIT">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cr_card_outstanding">CARD OUTSTANDING</label>
-                                                <input type="number" class="form-control" id="cr_card_outstanding"
-                                                    placeholder="CARD OUTSTANDING">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="cr_emi">CC OBLIGATION</label>
-                                                <input type="number" class="form-control" id="cr_emi" placeholder="EMI"
-                                                    disabled>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_bank_name">BANK NAME</label>
+                                                    <input type="text" class="form-control" id="cr_bank_name"
+                                                        placeholder="BANK NAME">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_limit">CARD LIMIT</label>
+                                                    <input type="number" class="form-control" id="cr_limit"
+                                                        placeholder="CARD LIMIT">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_card_outstanding">CARD OUTSTANDING</label>
+                                                    <input type="number" class="form-control" id="cr_card_outstanding"
+                                                        placeholder="CARD OUTSTANDING">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_card_outstanding">DUMMY FEILD</label>
+                                                    <input type="number" class="form-control" id="cr"
+                                                        placeholder="CARD OUTSTANDING">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label>OBLIGATE</label>
-                                                <select class="form-control" id="cr_bt" disabled>
-                                                    <option selected value="0">NO</option>
-                                                    <option value="1">YES</option>
-                                                </select>
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_emi">CC OBLIGATION</label>
+                                                    <input type="number" class="form-control" id="cr_emi" placeholder="EMI"
+                                                        disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label>OBLIGATE</label>
+                                                    <select class="form-control" id="cr_bt" disabled>
+                                                        <option selected value="0">NO</option>
+                                                        <option value="1">YES</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="cr_emi_bt_yes">OBLIGATIONS NOT APPLICABLE</label>
-                                                <input type="number" class="form-control" id="cr_emi_bt_yes"
-                                                    placeholder="OBLIGATIONS NOT APPLICABLE" disabled>
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_emi_bt_yes">OBLIGATIONS NOT APPLICABLE</label>
+                                                    <input type="number" class="form-control" id="cr_emi_bt_yes"
+                                                        placeholder="OBLIGATIONS NOT APPLICABLE" disabled>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="cr_emi_bt_no">OBLIGATIONS APPLICABLE</label>
-                                                <input type="number" class="form-control" id="cr_emi_bt_no"
-                                                    placeholder="OBLIGATIONS APPLICABLE" disabled>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_emi_bt_no">OBLIGATIONS APPLICABLE</label>
+                                                    <input type="number" class="form-control" id="cr_emi_bt_no"
+                                                        placeholder="OBLIGATIONS APPLICABLE" disabled>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="cr_tb_final_obligation">TOTAL OBLIGATIONS</label>
-                                                <input type="number" class="form-control" id="cr_tb_final_obligation"
-                                                    placeholder="TOTAL OBLIGATIONS" disabled>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_tb_final_obligation">TOTAL OBLIGATIONS</label>
+                                                    <input type="number" class="form-control" id="cr_tb_final_obligation"
+                                                        placeholder="TOTAL OBLIGATIONS" disabled>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    </div>
-                                    <div class="float-right mb-2">
-                                        <button type="button" class="btn btn-primary previous"><i
-                                                class="fas fa-backward px-2"></i>Previous</button>
-                                        <button type="button" class="btn btn-danger cr_calculate"><i
-                                                class="fas fa-calculator px-1"></i>Calculate</button>
-                                        <button type="button" class="btn btn-success cr_add"><i
-                                                class="fas fa-paper-plane px-1"></i>Add</button>
-                                        <button type="button" class="btn btn-primary next">Next<i
-                                                class="fas fa-forward px-2"></i></button>
+                                        </div>
+                                        <div class="float-right mb-2">
+                                            <button type="button" class="btn btn-primary previous"><i
+                                                    class="fas fa-backward px-2"></i>Previous</button>
+                                            <button type="button" class="btn btn-danger cr_calculate"><i
+                                                    class="fas fa-calculator px-1"></i>Calculate</button>
+                                            <button type="button" class="btn btn-success cr_add"><i
+                                                    class="fas fa-paper-plane px-1"></i>Add</button>
+                                            <button type="button" class="btn btn-primary next">Next<i
+                                                    class="fas fa-forward px-2"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="credit_card_break_down_eg" class="content" role="tabpanel" aria-labelledby="step3">
                             <div class="card">
-                                <div class="alert alert-danger" id="el_alert" role="alert"></div>
-                                <div class="row">
-                                    <div class="col col-md-8">
-                                        <table class="table table-striped table-inverse table-responsive">
-                                            <thead class="thead-inverse">
-                                                <tr>
-                                                    <th>BANK</th>
-                                                    <th>CAT</th>
-                                                    <th>MULTIPLIER</th>
-                                                    <th>FOIR</th>
-                                                    <th>M-ELG</th>
-                                                    <th>ROI</th>
-                                                    <th>EMI / LAKH</th>
-                                                    <th>FOIR ELG</th>
-                                                    <th>ACTION</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="inserted_el">
+                                <div class="scroll">
+                                    <div class="alert alert-danger" id="el_alert" role="alert"></div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-12">
+                                                <table class="table table-striped">
+                                                    <thead class="thead-inverse">
+                                                        <tr>
+                                                            <th>BANK</th>
+                                                            <th>CAT</th>
+                                                            <th>MULTIPLIER</th>
+                                                            <th>FOIR</th>
+                                                            <th>M-ELG</th>
+                                                            <th>ROI</th>
+                                                            <th>EMI / LAKH</th>
+                                                            <th>FOIR ELG</th>
+                                                            <th>ACTION</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="inserted_el">
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="col col-md-4">
-                                        <div class="card-body">
-                                            <div class="form-group">
-                                                <label for="el_bank_name">BANK NAME</label>
-                                                <input type="text" class="form-control" id="el_bank_name"
-                                                    placeholder="BANK NAME">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="el_em_cat">EMPLOYER CATEGORY</label>
-                                                <input type="text" class="form-control" id="el_em_cat"
-                                                    placeholder="EMPLOYER CATEGORY">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="el_multiplier">MULTIPLIER</label>
-                                                <input type="number" class="form-control" id="el_multiplier"
-                                                    placeholder="MULTIPLIER">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="el_foir">FOIR</label>
-                                                <input type="number" class="form-control" id="el_foir"
-                                                    placeholder="FOIR">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_mul_eligibility">MULTIPLIER ELIGIBILITY</label>
-                                                <input type="number" class="form-control" id="el_mul_eligibility"
-                                                    placeholder="MULTIPLIER ELIGIBILITY">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_bank_name">BANK NAME</label>
+                                                    <input type="text" class="form-control" id="el_bank_name"
+                                                        placeholder="BANK NAME">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_em_cat">EMPLOYER CATEGORY</label>
+                                                    <input type="text" class="form-control" id="el_em_cat"
+                                                        placeholder="EMPLOYER CATEGORY">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_multiplier">MULTIPLIER</label>
+                                                    <input type="number" class="form-control" id="el_multiplier"
+                                                        placeholder="MULTIPLIER">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_foir">FOIR</label>
+                                                    <input type="number" class="form-control" id="el_foir"
+                                                        placeholder="FOIR">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_roi">ROI</label>
-                                                <input type="number" class="form-control" id="el_roi" placeholder="ROI">
+                                        <div class="row">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_mul_eligibility">MULTIPLIER ELIGIBILITY</label>
+                                                    <input type="number" class="form-control" id="el_mul_eligibility"
+                                                        placeholder="MULTIPLIER ELIGIBILITY">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_roi">ROI</label>
+                                                    <input type="number" class="form-control" id="el_roi" placeholder="ROI">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_emi_per_lak">EMI PER LAKH</label>
+                                                    <input type="number" class="form-control" id="el_emi_per_lak"
+                                                        placeholder="EMI PER LAKH" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_emi_foir_eligibility">FOIR ELIGIBILITY</label>
+                                                    <input type="number" class="form-control" id="el_emi_foir_eligibility"
+                                                        placeholder="FOIR ELIGIBILITY" disabled>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_emi_per_lak">EMI PER LAKH</label>
-                                                <input type="number" class="form-control" id="el_emi_per_lak"
-                                                    placeholder="EMI PER LAKH" disabled>
+                                        <div class="float-right mb-1">
+                                            {{-- <button type="button" class="btn btn-primary previous">Previous</button> --}}
+                                            <button type="button" class="btn btn-danger  el_calculate"><i
+                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
+                                            <button type="button" class="btn btn-success el_add"><i
+                                                    class="fas fa-paper-plane px-1"></i>Add</button>
+                                            {{-- <button type="button" class="btn btn-primary next">Next</button> --}}
+                                        </div>
+                                        <div class="row my-5">
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon1">MONTH 1</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon1"
+                                                        placeholder="MONTH 1">
+                                                    <span id="el_sal_mon1_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon2">MONTH 2</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon2"
+                                                        placeholder="MONTH 2">
+                                                    <span id="el_sal_mon2_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon3">MONTH 3</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon3"
+                                                        placeholder="MONTH 3">
+                                                    <span id="el_sal_mon3_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_tb_final_salary">INCOME CONSIDERED</label>
+                                                    <input type="number" class="form-control" id="cr_tb_final_salary"
+                                                        placeholder="INCOME CONSIDERED" disabled>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_emi_foir_eligibility">FOIR ELIGIBILITY</label>
-                                                <input type="number" class="form-control" id="el_emi_foir_eligibility"
-                                                    placeholder="FOIR ELIGIBILITY" disabled>
-                                            </div>
+                                        <div class="float-right mb-1 p-2">
+                                            <button type="button" class="btn btn-primary previous"> <i
+                                                    class="fas fa-backward px-2"></i>Previous</button>
+                                            <button type="button" id="el_cal_salary_btn" class="btn btn-danger"><i
+                                                    class="fas fa-calculator px-1"></i>Income</button>
+                                            <button type="button" id="el_cal_edit_btn" class="btn btn-success"><i
+                                                    class="far fa-edit"></i>Edit</button>
+                                            <button type="button" class="btn btn-primary next">Next<i
+                                                    class="fas fa-forward px-2"></i></button>
                                         </div>
-                                    </div>
-                                    <div class="float-right mb-1">
-                                        {{-- <button type="button" class="btn btn-primary previous">Previous</button> --}}
-                                        <button type="button" class="btn btn-danger  el_calculate"><i
-                                                class="fas fa-calculator px-1"></i>Calcualte</button>
-                                        <button type="button" class="btn btn-success el_add"><i
-                                                class="fas fa-paper-plane px-1"></i>Add</button>
-                                        {{-- <button type="button" class="btn btn-primary next">Next</button> --}}
-                                    </div>
-                                    <div class="row my-5">
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_sal_mon1">MONTH 1</label>
-                                                <input type="number" class="form-control" id="el_sal_mon1"
-                                                    placeholder="MONTH 1">
-                                                <span id="el_sal_mon1_error" class="error invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_sal_mon2">MONTH 2</label>
-                                                <input type="number" class="form-control" id="el_sal_mon2"
-                                                    placeholder="MONTH 2">
-                                                <span id="el_sal_mon2_error" class="error invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="el_sal_mon3">MONTH 3</label>
-                                                <input type="number" class="form-control" id="el_sal_mon3"
-                                                    placeholder="MONTH 3">
-                                                <span id="el_sal_mon3_error" class="error invalid-feedback"></span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-md-3">
-                                            <div class="form-group">
-                                                <label for="cr_tb_final_salary">INCOME CONSIDERED</label>
-                                                <input type="number" class="form-control" id="cr_tb_final_salary"
-                                                    placeholder="INCOME CONSIDERED" disabled>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="float-right mb-1 p-2">
-                                        <button type="button" class="btn btn-primary previous"> <i
-                                                class="fas fa-backward px-2"></i>Previous</button>
-                                        <button type="button" id="el_cal_salary_btn" class="btn btn-danger"><i
-                                                class="fas fa-calculator px-1"></i>Income</button>
-                                        <button type="button" id="el_cal_edit_btn" class="btn btn-success"><i
-                                                class="far fa-edit"></i>Edit</button>
-                                        <button type="button" class="btn btn-primary next">Next<i
-                                                class="fas fa-forward px-2"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -672,181 +715,185 @@
                             <div id="Loan_comparison" class="content" role="tabpanel" aria-labelledby="step3">
                                 <div class="card">
                                     <div class="alert alert-danger" id="ln_com_alert" role="alert"></div>
-                                    <div class="container py-3">
-                                        <h5 class="font-weight-bold">EXSTISTING LOAN</h5>
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ln_loan_amount">LOAN AMOUNT</label>
-                                                    <input type="number" class="form-control" id="ex_ln_loan_amount"
-                                                        placeholder="LOAN AMOUNT">
+                                    <div class="scroll">
+                                        <div class="container">
+                                            <div class="container">
+                                                <h5 class="font-weight-bold py-3">EXSTISTING LOAN</h5>
+                                                <div class="row">
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ln_loan_amount">LOAN AMOUNT</label>
+                                                            <input type="number" class="form-control" id="ex_ln_loan_amount"
+                                                                placeholder="LOAN AMOUNT">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ln_tennure">TENURE</label>
+                                                            <input type="number" class="form-control" id="ex_ln_tennure"
+                                                                placeholder="TENURE">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_roi">ROI</label>
+                                                            <input type="number" class="form-control" id="ex_ln_roi"
+                                                                placeholder="ROI">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_emi">EMI</label>
+                                                            <input type="number" class="form-control" id="ex_ln_emi"
+                                                                placeholder="EMI" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- second row --}}
+                                                <div class="row">
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_pos">POS</label>
+                                                            <input type="number" class="form-control" id="ex_ln_pos"
+                                                                placeholder="POS">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_no_of_emi_paid">NO OF EMI PAID (Months)</label>
+                                                            <input type="number" class="form-control" id="ex_ln_no_of_emi_paid"
+                                                                placeholder="NO OF EMI PAID">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_balance_emi">BALANCE EMI (Months)</label>
+                                                            <input type="number" class="form-control" id="ex_ln_balance_emi"
+                                                                placeholder="BALANCE EMI" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="ex_ln_exsting_out_flow">EXISTING OUTFLOW</label>
+                                                            <input type="number" class="form-control" id="ex_ln_exsting_out_flow"
+                                                                placeholder="EXISTING OUTFLOW" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button type="button" id="ex_ln_calculate" class="btn btn-sm btn-success"><i
+                                                            class="fas fa-calculator px-1"></i>Calcualte</button>
+                                                    <button type="button" id="ex_ln_edit" class="btn btn-sm btn-primary "><i
+                                                            class="far fa-edit"></i>Edit</button>
+                                                </div>
+                                                <h5 class="font-weight-bold my-3">NEW LOAN</h5>
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_loan_amount">LOAN AMOUNT</label>
+                                                            <input type="number" class="form-control" id="ln_com_new_loan_amount"
+                                                                placeholder="LOAN AMOUNT" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_roi">ROI</label>
+                                                            <input type="number" class="form-control" id="ln_com_new_roi"
+                                                                placeholder="ROI">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_tennure">TENURE</label>
+                                                            <input type="number" class="form-control" id="ln_com_new_tennure"
+                                                                placeholder="TENURE" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{-- second row --}}
+                                                <div class="row">
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_emi">NEW EMI</label>
+                                                            <input type="number" class="form-control" id="ln_com_new_emi"
+                                                                placeholder="NEW LOAN" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_proposed_outflow">PROPOSED OUTFLOW</label>
+                                                            <input type="number" class="form-control"
+                                                                id="ln_com_new_proposed_outflow" placeholder="PROPOSED OUTFLOW"
+                                                                disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_new_gross_sav">GROSS SAVEINGS</label>
+                                                            <input type="number" class="form-control" id="ln_com_new_gross_sav"
+                                                                placeholder="GROSS SAVEINGS" disabled>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="float-right">
+                                                    <button type="button" id="ex_new_ln_calculate" class="btn btn-sm btn-success"><i
+                                                            class="fas fa-calculator px-1"></i>Calcualte</button>
+                                                    <button type="button" id="ex_new_ln_edit" class="btn btn-sm btn-primary "><i
+                                                            class="far fa-edit"></i>Edit</button>
+                                                </div>
+                                                <h5 class="font-weight-bold my-3">CHARGES</h5>
+                                                <div class="row">
+                                                    <div class="col col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_motd">MOTD</label>
+                                                            <input type="number" class="form-control" id="ln_com_motd"
+                                                                placeholder="MOTD">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_pro_fee">PROCESSING FEES</label>
+                                                            <input type="number" class="form-control" id="ln_com_pro_fee"
+                                                                placeholder="PROCESSING FEES">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_ot_charges">OTHER CHARGES-(If-Any)</label>
+                                                            <input type="number" class="form-control" id="ln_com_ot_charges"
+                                                                placeholder="OTHER CHARGES" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_total_cost">TOTAL COST</label>
+                                                            <input type="number" class="form-control" id="ln_com_total_cost"
+                                                                placeholder="TOTAL COST" disabled>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="ln_com_net_sav">NET SAVINGS</label>
+                                                            <input type="number" class="form-control" id="ln_com_net_sav"
+                                                                placeholder="NET SAVINGS" disabled>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ln_tennure">TENURE</label>
-                                                    <input type="number" class="form-control" id="ex_ln_tennure"
-                                                        placeholder="TENURE">
+                                            <div class="row mb-2">
+                                                <div class="col col-md-6 offset-md-6 float-right">
+                                                    <button type="button" class="btn btn-primary previous"><i
+                                                            class="fas fa-backward px-2"></i>Previous</button>
+                                                    <button type="button" id="ln_com_final_cal" class="btn btn-danger"><i
+                                                            class="fas fa-calculator px-1"></i>Calcualte</button>
+                                                    <button type="button" id="ln_com_final_edit" class="btn btn-danger"><i
+                                                            class="far fa-edit"></i>Edit</button>
+                                                    <button type="button" id="ln_com_final_add" class="btn btn-success"><i
+                                                            class="fas fa-paper-plane px-1"></i>Add</button>
+                                                    <button type="button" class="btn btn-primary next">Next <i
+                                                            class="fas fa-forward px-2"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_roi">ROI</label>
-                                                    <input type="number" class="form-control" id="ex_ln_roi"
-                                                        placeholder="ROI">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_emi">EMI</label>
-                                                    <input type="number" class="form-control" id="ex_ln_emi"
-                                                        placeholder="EMI" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- second row --}}
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_pos">POS</label>
-                                                    <input type="number" class="form-control" id="ex_ln_pos"
-                                                        placeholder="POS">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_no_of_emi_paid">NO OF EMI PAID (Months)</label>
-                                                    <input type="number" class="form-control" id="ex_ln_no_of_emi_paid"
-                                                        placeholder="NO OF EMI PAID">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_balance_emi">BALANCE EMI (Months)</label>
-                                                    <input type="number" class="form-control" id="ex_ln_balance_emi"
-                                                        placeholder="BALANCE EMI" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="ex_ln_exsting_out_flow">EXISTING OUTFLOW</label>
-                                                    <input type="number" class="form-control" id="ex_ln_exsting_out_flow"
-                                                        placeholder="EXISTING OUTFLOW" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right">
-                                            <button type="button" id="ex_ln_calculate" class="btn btn-success"><i
-                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
-                                            <button type="button" id="ex_ln_edit" class="btn btn-primary "><i
-                                                    class="far fa-edit"></i>Edit</button>
-                                        </div>
-                                        <h5 class="font-weight-bold my-3">NEW LOAN</h5>
-                                        <div class="row">
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_loan_amount">LOAN AMOUNT</label>
-                                                    <input type="number" class="form-control" id="ln_com_new_loan_amount"
-                                                        placeholder="LOAN AMOUNT" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_roi">ROI</label>
-                                                    <input type="number" class="form-control" id="ln_com_new_roi"
-                                                        placeholder="ROI">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_tennure">TENURE</label>
-                                                    <input type="number" class="form-control" id="ln_com_new_tennure"
-                                                        placeholder="TENURE" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- second row --}}
-                                        <div class="row">
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_emi">NEW EMI</label>
-                                                    <input type="number" class="form-control" id="ln_com_new_emi"
-                                                        placeholder="NEW LOAN" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_proposed_outflow">PROPOSED OUTFLOW</label>
-                                                    <input type="number" class="form-control"
-                                                        id="ln_com_new_proposed_outflow" placeholder="PROPOSED OUTFLOW"
-                                                        disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_new_gross_sav">GROSS SAVEINGS</label>
-                                                    <input type="number" class="form-control" id="ln_com_new_gross_sav"
-                                                        placeholder="GROSS SAVEINGS" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right">
-                                            <button type="button" id="ex_new_ln_calculate" class="btn btn-success"><i
-                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
-                                            <button type="button" id="ex_new_ln_edit" class="btn btn-primary "><i
-                                                    class="far fa-edit"></i>Edit</button>
-                                        </div>
-                                        <h5 class="font-weight-bold my-3">CHARGES</h5>
-                                        <div class="row">
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="ln_com_motd">MOTD</label>
-                                                    <input type="number" class="form-control" id="ln_com_motd"
-                                                        placeholder="MOTD">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="ln_com_pro_fee">PROCESSING FEES</label>
-                                                    <input type="number" class="form-control" id="ln_com_pro_fee"
-                                                        placeholder="PROCESSING FEES">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-4">
-                                                <div class="form-group">
-                                                    <label for="ln_com_ot_charges">OTHER CHARGES-(If-Any)</label>
-                                                    <input type="number" class="form-control" id="ln_com_ot_charges"
-                                                        placeholder="OTHER CHARGES" value="0">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="ln_com_total_cost">TOTAL COST</label>
-                                                    <input type="number" class="form-control" id="ln_com_total_cost"
-                                                        placeholder="TOTAL COST" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="ln_com_net_sav">NET SAVINGS</label>
-                                                    <input type="number" class="form-control" id="ln_com_net_sav"
-                                                        placeholder="NET SAVINGS" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col col-md-6 offset-md-6 float-right">
-                                            <button type="button" class="btn btn-primary previous"><i
-                                                    class="fas fa-backward px-2"></i>Previous</button>
-                                            <button type="button" id="ln_com_final_cal" class="btn btn-danger"><i
-                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
-                                            <button type="button" id="ln_com_final_edit" class="btn btn-danger"><i
-                                                    class="far fa-edit"></i>Edit</button>
-                                            <button type="button" id="ln_com_final_add" class="btn btn-success"><i
-                                                    class="fas fa-paper-plane px-1"></i>Add</button>
-                                            <button type="button" class="btn btn-primary next">Next <i
-                                                    class="fas fa-forward px-2"></i></button>
                                         </div>
                                     </div>
                                 </div>
