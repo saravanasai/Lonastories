@@ -73,8 +73,9 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('/admindashboard/customermaster/disable',[CustomerController::class,'CustomerDiable'])->name('customer.disable');
     //route section for admin settings controller
     Route::get('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
-    Route::get('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
     Route::post('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'enableRedeem']);
+    Route::get('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordresetIndex'])->name('admin.PasswordresetIndex');
+    Route::post('CrmManagenment/admin/setting/resetPassword',[AdminSettingController::class,'PasswordChange']);
     // end route section for admin settings controller
     Route::resource('/wallets/wallteByAdmin',WalletControllerForAdmin::class);
     Route::resource('/viewEnquieryOfSingleCustomer/OverAllCusEnquiery',EnquieryOfCustomerView::class);
@@ -199,6 +200,7 @@ Route::prefix('user')->group(function()
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
     Route::post('existingEmiShedule',[CustomerDataStoreController::class,'existingEmiSheduleStore'])->name('user.existingEmiShedule');
     Route::post('UploadUserImage',[CustomerDataStoreController::class,'UploadUserImage'])->name('user.UploadUserImage');
+    Route::post('RedeemRequest',[CustomerDataStoreController::class,'RedeemRequest'])->name('user.RedeemRequest');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 

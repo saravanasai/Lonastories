@@ -9,6 +9,7 @@ use App\Models\Wallet;
 use App\Service\TestService;
 use App\Service\WalletbyAdminService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class WalletControllerForAdmin extends Controller
 {
@@ -19,7 +20,10 @@ class WalletControllerForAdmin extends Controller
      */
     public function index()
     {
-        //
+        $user_wallet=CustomerSignup::join('wallets','table_customer.id','=','wallets.wallet_of_user')
+         ->select('table_customer.*','wallets.*','wallets.id as wallet_id')->where('wallets.redeem_request',1)->paginate(8);
+        //  dd($user_wallet);
+         return view('adminviews.RedeemRequestAdminSide',["user_wallet"=>$user_wallet]);
     }
 
     /**
@@ -69,6 +73,19 @@ class WalletControllerForAdmin extends Controller
     public function edit($id)
     {
         //
+        $point_given_info=SuperRewardPointsGiven::where('spr_to_user',$id)->get();
+        $points_redemed_info=SuperRewardPointsRedeemed::where('spr_redem_of_user',$id)->get();
+        // dd($point_given_info->count()>0);
+        if($point_given_info->count()>0)
+        {
+            return view('adminviews.HistoryOfWalletSingleUseradmin',["point_given_info"=>$point_given_info,"points_redemed_info"=>$points_redemed_info]);
+        }
+        else
+        {
+            Session::flash('nohistory',"NO TRNSACTION HISTORY AVAIABLE");
+            return back();
+        }
+
     }
 
     /**

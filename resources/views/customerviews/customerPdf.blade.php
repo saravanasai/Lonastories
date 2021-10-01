@@ -114,7 +114,7 @@
 <body>
     <header>
         <div class="container">
-            <center><img src="{{ public_path('img/logo.jpg') }}" width="17%" alt=""></center>
+            <center><img src="{{ asset('img/logo.jpg') }}" width="17%" alt=""></center>
         </div>
     </header>
     <hr>

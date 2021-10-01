@@ -104,8 +104,19 @@
                                     <button type="button" class="btn btn-danger" id="super_reward_points">
                                         Add Super Reward points
                                     </button>
+                                    <a href="{{route('wallteByAdmin.edit',$user_wallet->wallet_of_user)}}" class="btn btn-primary"><i class="fas fa-history px-1"></i>History</a>
                                 </div>
                             </div>
+                            @if(Session::has('nohistory'))
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Error!</strong> No Transaction is Available.
+                                          </div>
+                                    </div>
+                                </div>
+                                @endif
                             <div id="super_reward_points_section">
                                 <div class="row" >
                                     <div class="col-md-3">
@@ -215,13 +226,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-    </div>
-
 @endsection
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

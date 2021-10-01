@@ -248,8 +248,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </li>
                             </ul>
                         </li>
-
                         <!--End Third Nav section  -->
+                        <!-- Third part-1 Nav section  -->
+                        <li class="nav-item {{ (request()->segment(1)=='wallets') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='wallets') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-wallet"></i>
+                                <p>
+                                    Wallet Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('wallteByAdmin.index')}}" class="nav-link {{ (request()->is('wallets/wallteByAdmin')) ? 'active' : '' }}">
+                                        <i class="fas fa-retweet nav-icon"></i>
+                                        <p>Request For Redeem</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--End Third part-1 Nav section  -->
                         <!-- Fourth Nav section  -->
                             <li class="nav-item {{ (request()->segment(1)=='Usermanagement') ? 'menu-open' : '' }}  ">
                                 <a href="#" class="nav-link {{ (request()->segment(1)=='Usermanagement') ? 'active' : '' }}">
@@ -391,5 +409,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.2/b-2.0.0/b-html5-2.0.0/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
-
+{{-- <script src="https://www.jsdelivr.com/package/npm/chart.js?path=dist"></script> --}}
+ @yield('js')
 </html>

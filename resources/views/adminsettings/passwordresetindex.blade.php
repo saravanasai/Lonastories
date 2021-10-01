@@ -29,12 +29,13 @@
                   </div>
                   <!-- /.lockscreen-image -->
                   <!-- lockscreen credentials (contains the form) -->
-                  <form class="lockscreen-credentials">
+                  <form action="{{route('admin.PasswordresetIndex')}}" class="lockscreen-credentials" method="POST">
+                      @csrf
                     <div class="input-group">
-                      <input type="password" class="form-control" placeholder="password">
+                      <input type="password" name="new_password" class="form-control" placeholder="password">
 
                       <div class="input-group-append">
-                        <button type="button" class="btn">
+                        <button type="submit" class="btn">
                           <i class="fas fa-arrow-right text-muted"></i>
                         </button>
                       </div>

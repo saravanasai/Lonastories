@@ -1,11 +1,9 @@
 @component('mail::message')
-Your OTP Dont share it With Any One
+Dear Member
+
+Thank you for being with us. Please use the below given OTP for login
 
 OTP : {{$otp}}
-
-{{-- @component('mail::button', ['url' => ''])
-Button Text
-@endcomponent --}}
 
 Thanks,<br>
 {{ config('app.name') }}

@@ -18,13 +18,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card card-purple">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity"
+                                    <li class="nav-item"><a class="nav-link active text-white" href="#activity"
                                             data-toggle="tab">General info</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summarized View</a></li>
-                                    <li class="nav-item"><a class="nav-link " href="#settings" data-toggle="tab">Assign To
+                                    <li class="nav-item"><a class="nav-link text-white" href="#timeline" data-toggle="tab">Summarized View</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#settings" data-toggle="tab">Assign To
                                         </a></li>
                                 </ul>
                             </div><!-- /.card-header -->
@@ -239,13 +239,12 @@
                                                         <td>{{ $single_leader->firstname }}</td>
                                                         <td>{{ $single_leader->phonenumber }}</td>
                                                         <td>{{ $single_leader->status }}</td>
-                                                        <td><button type="button"
+                                                        <td><button type="button" id="{{ $single_leader->id }}"
                                                                 class="btn btn-sm btn-primary assign"><i class="fas fa-clipboard-check px-1"></i>Assign</button>
                                                             <input type="hidden" value="{{ $more_info->cus_id}}"
                                                                 id="assignment_for_user">
                                                         </td>
-                                                        <input type="hidden" value="{{ $single_leader->id }}"
-                                                            id="single_leader_id">
+
                                                         <input type="hidden" value="{{ $single_leader->id }}"
                                                             id="enquiery_id">
                                                         </td>
@@ -279,7 +278,7 @@
                 $('body').on('click', '.assign', function(event) {
                     event.preventDefault();
                     var id = $('#assignment_for_user').val();
-                    var leaderid = $('#single_leader_id').val();
+                    var leaderid = $(this).attr('id');
                     var enq_id = $('#enq_id').val();
                     var url = '{{ route('detailview.update', ':id') }}';
                     url = url.replace(':id', id);
