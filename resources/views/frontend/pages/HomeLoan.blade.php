@@ -34,7 +34,8 @@
                             <a href="{{ route('signup.index') }}" class="btn btn-success btn-sm"><strong>APPLY</strong></a>
                             <a href="{{ route('signup.index') }}"
                                 class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
-                            <a href="{{ route('signup.index') }}" class="btn btn-darkblue btn-sm"><strong>SHARE</strong></a>
+                            <a href="{{ route('signup.index') }}"
+                                class="btn btn-darkblue btn-sm"><strong>SHARE</strong></a>
                         @else
                             <a href="{{ route('quickEnquieryForm.index') }}"
                                 class="btn btn-success btn-sm"><strong>APPLY</strong></a>
@@ -100,13 +101,14 @@
                                 assist higher loan amount on your income and the loan eligibility can be
                                 further enhanced by including income of the co-applicant(s).</p>
                             <p class="">Home Loan eligibility of the salaried customer is calculated
-                                    based on the current age, type of company employed in, age of retirement.
-                                    The eligibility depends on various factors, such as monthly income, current
-                                    age, profile of the customer, monthly obligations, credit history,
-                                    retirement age, etc.</p>
-                            </div>
-                            <hr>
-                            <h3 class=" text-center"><b>EMI Eligibility Calculator for Homeloans</b></h3>
+                                                    based on the current age, type of company employed in, age of retirement.
+                                                    The eligibility depends on various factors, such as monthly income, current
+                                                    age, profile of the customer, monthly obligations, credit history,
+                                                    retirement age, etc.</p>
+                                            </div>
+                                            <hr>
+                                            <h3 class="     text-center"><b>EMI Eligibility Calculator for Homeloans</b>
+                                    </h3>
                                 <form class="lead">
                                     <div class="row justify-content-center pt-md-3">
                                         <div class="col-md-7 card">
@@ -125,26 +127,25 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <h5><label for="username">Preferred Tenure: </label></h5>
-                                                    <select name="" id="tenure" class="form-control">
-                                                        <option value="" hidden>Select Years</option>
-                                                        <option value="5">5 years</option>
-                                                        <option value="10">10 years</option>
-                                                        <option value="15">15 years</option>
-                                                        <option value="20">20 years</option>
-                                                        <option value="25">25 years</option>
-                                                        <option value="30">30 years</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        {{-- <div class="col-md-6">
                                                             <h5><label for="">Property Type :</label></h5>
                                                             <input type="radio" id="purchase" name="apr" placeholder=""
                                                                 required> <label for="">Purchase</label>
                                                             &nbsp;&nbsp;<input type="radio" id="construction" name="apr"
                                                                 placeholder="" required> <label for="">Construction</label>
+                                                        </div> --}}
+                                                        <div class="col-md-6">
+                                                            <h5><label for="username">Preferred Tenure: </label></h5>
+                                                            <select name="" id="tenure" class="form-control">
+                                                                <option value="" hidden>Select Years</option>
+                                                                <option value="5">5 years</option>
+                                                                <option value="10">10 years</option>
+                                                                <option value="15">15 years</option>
+                                                                <option value="20">20 years</option>
+                                                                <option value="25">25 years</option>
+                                                                <option value="30">30 years</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <h5><label for="">Property Value :</label></h5>
@@ -261,7 +262,8 @@
                                     <a href="{{ route('signup.index') }}" class="btn btn-success btn-sm"><b>Apply
                                             Now</b></a>
                                 @else
-                                    <a href="{{ route('quickEnquieryForm.index') }}" class="btn btn-success btn-sm"><b>Apply
+                                    <a href="{{ route('quickEnquieryForm.index') }}"
+                                        class="btn btn-success btn-sm"><b>Apply
                                             Now</b></a>
                                 @endif
                             </div>
@@ -280,10 +282,10 @@
 <script type="text/javascript">
     // Homeloan Eligibility Calculator========================================================
     function h_loan() {
-        let salary = parseInt($('#salary').val()) * 0.7;
-        let other_emi = parseInt($('#other_emi').val());
-        let tenure = parseInt($("#tenure").val());
-        let propVal = parseInt($("#propVal").val());
+        let salary = parseInt(document.querySelector('#salary').value) * 0.7;
+        let other_emi = parseInt(document.querySelector('#other_emi').value);
+        let tenure = parseInt(document.querySelector("#tenure").value);
+        let propVal = parseInt(document.querySelector("#propVal").value);
 
         let income, property;
         // Income Eligibility
@@ -307,7 +309,7 @@
                 income = ((salary - other_emi) / 665) * 1e5;
                 break;
             default:
-                alert(salary);
+                alert("Fields Are Incorrect");
         }
 
         if (propVal >= 9e6) {
@@ -317,10 +319,10 @@
             property = propVal * 0.8;
         }
 
-        $('#income').text(income.toFixed(0));
-        $('#property').text(property.toFixed(0));
+        document.getElementById('income').innerText = (income <= 0) ? '0.00' : income.toFixed(0);
+        document.getElementById('property').innerText = (property <= 0) ? '0.00' : property.toFixed(0);
 
-    });
+    };
     // Homeloan Eligibility Calculator========================================================
 </script>
 <!--================================= Scripting=================================================== -->

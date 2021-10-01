@@ -7,30 +7,19 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="all,follow" />
-    {{-- <link rel="icon" href="./img/logo.png" /> --}}
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
-    {{-- <link rel="stylesheet" href="{{asset('./vendor/bootstrap/css/bootstrap.min.css')}}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
-    {{-- <link rel="stylesheet" href="./vendor/font-awesome/css/font-awesome.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.min.css') }}">
-    {{-- <link rel="stylesheet" href="./css/landy-iconfont.css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/landy-iconfont.css') }}">
-    {{-- <link rel="stylesheet" href="./vendor/owl.carousel/assets/owl.carousel.css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/vendor/owl.carousel/assets/owl.carousel.css') }}">
-    {{-- <link rel="stylesheet" href="./vendor/owl.carousel/assets/owl.theme.default.css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/vendor/owl.carousel/assets/owl.theme.default.css') }}">
-    {{-- <link rel="stylesheet" href="./css/style.default.css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/style.default.css') }}">
-    {{-- <link rel="stylesheet" href="./css/custom.css"> --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/emoji.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800">
-    {{-- <<<<<<< HEAD --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-    {{-- ======= --}}
-    {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"> --}}
-    {{-- >>>>>>> 3225ec83c498cf43926a2603116766fba6b32461 --}}
-    {{-- <link rel="stylesheet" href="https://emoji-css.afeld.me/emoji.css"> --}}
+
 </head>
 <style>
     .hr {
@@ -61,18 +50,19 @@
                 <div class="col-md-3">
                     <ul class="list-unstyled">
                         <li>
-                            <p><a href="{{ route('user.Docs') }}">FAQ</a></p>
+                            <p><a href="#">FAQ</a></p>
                         </li>
                         <li>
-                            <p><a href="./pages/docs.php">List Of Documents</a></p>
+                            <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>
                         </li>
 
                         <li>
                             <p><a href="{{ route('user.privacypolicy') }}">Privacy Policy</a></p>
                         </li>
-                        @if (session('customer'))
+
+                        @if (!session('customer'))
                             <li>
-                                <p><a href="./pages/oneview.php">One View</a></p>
+                                <p><a href="{{ route('user.OneView') }}">One View</a></p>
                             </li>
                             <li>
                                 <p>
@@ -197,25 +187,14 @@
         </div>
     </footer>
     <!--================================= Scripting=================================================== -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
-    {{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
     <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-
     <script src="{{ asset('frontend/js/front.js') }}"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <!--================================= Scripting=================================================== -->
     <script>
         AOS.init();

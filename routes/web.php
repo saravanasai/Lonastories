@@ -174,13 +174,15 @@ Route::prefix('user')->group(function()
     Route::get('Mortages',[CustomerPagesController::class,'Mortages'])->name('user.Mortages');
     Route::get('BusinessLoan',[CustomerPagesController::class,'BusinessLoan'])->name('user.BusinessLoan');
     Route::get('EducationLoan',[CustomerPagesController::class,'EducationLoan'])->name('user.EducationLoan');
+
     //end of routes for products page
 
 });
 
 //routes for user after sign up
-Route::prefix('user')->middleware(['user'])->group(function () {
+// Route::prefix('user')->middleware(['user'])->group(function () {
 
+    Route::get('meter',[CustomerPagesController::class,'Meter'])->name('user.meter');
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
     Route::get('wallet',[CustomerPagesController::class,'wallet'])->name('user.wallet');
     Route::get('personalInfoForm',[CustomerPagesController::class,'personalInfoFill'])->name('user.personalInfoFill');
@@ -195,7 +197,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);
     Route::resource('directReferal',CustomerDirectReferal::class);
 
-});
+// });
 //end routes for user after sign up
 
 
