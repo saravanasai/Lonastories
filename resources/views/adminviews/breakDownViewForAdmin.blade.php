@@ -215,6 +215,7 @@
                                                             <th>ROI</th>
                                                             <th>TENURE</th>
                                                             <th>EMI</th>
+                                                            <th>EMI CP</th>
                                                             <th>POS</th>
                                                             <th>BT</th>
                                                             <th>ACTION</th>
@@ -264,18 +265,24 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
                                                     <label for="ob_tennure">TENURE</label>
                                                     <input type="number" class="form-control" id="ob_tennure"
                                                         placeholder="TENURE IN MONTHS">
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
                                                     <label for="ob_emi">EMI</label>
                                                     <input type="number" class="form-control" id="ob_emi" placeholder="EMI"
                                                         disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="ob_comp_emi">EMI CP</label>
+                                                    <input type="number" class="form-control" id="ob_comp_emi" placeholder="EMI COMPLETED">
                                                 </div>
                                             </div>
                                             <div class="col col-md-3">
@@ -287,7 +294,7 @@
                                             </div>
                                             <div class="col col-md-3">
                                                 <div class="form-group">
-                                                    <label>OBLIGATE</label>
+                                                    <label>BT</label>
                                                     <select class="form-control" id="ob_bt" disabled>
                                                         <option selected value="0">NO</option>
                                                         <option value="1">YES</option>
@@ -398,7 +405,7 @@
                                             </div>
                                             <div class="col col-md-3">
                                                 <div class="form-group">
-                                                    <label>OBLIGATE</label>
+                                                    <label>BT</label>
                                                     <select class="form-control" id="cr_bt" disabled>
                                                         <option selected value="0">NO</option>
                                                         <option value="1">YES</option>
@@ -450,162 +457,273 @@
                             <div class="card">
                                 <div class="scroll">
                                     <div class="alert alert-danger" id="el_alert" role="alert"></div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col col-md-12">
-                                                <table class="table table-striped">
-                                                    <thead class="thead-inverse">
-                                                        <tr>
-                                                            <th>BANK</th>
-                                                            <th>CAT</th>
-                                                            <th>MULTIPLIER</th>
-                                                            <th>FOIR</th>
-                                                            <th>M-LTV</th>
-                                                            <th>ROI</th>
-                                                            <th>TENURE</th>
-                                                            <th>EMI / LAKH</th>
-                                                            <th>FOIR ELG</th>
-                                                            <th>ACTION</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="inserted_el">
-
-                                                    </tbody>
-                                                </table>
+                                    <div id="additional_info_home_loan_div1">
+                                        <div class="col col-md-12">
+                                            <div class="" id="">
+                                                    <div class="container mt-2">
+                                                        <div id="pl_section">
+                                                            {{-- section if product is Home Loan --}}
+                                                            <h5 class="py-2"><strong>ADDITIONAL FEILDS FOR HOME LOAN</strong>
+                                                            </h5>
+                                                            <div id="hl_alert" class="text-danger"></div>
+                                                            <div class="row">
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_age">AGE</label>
+                                                                        <input type="number" class="form-control" id="hl_age"
+                                                                            placeholder="AGE">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>PROPERTY TYPE</label>
+                                                                        <select class="form-control" id="hl_property_type">
+                                                                            <option selected value="0">CHOOSE THE PROPERTY TYPE</option>
+                                                                            <option value="BUILDER APARTMENT">BUILDER APARTMENT</option>
+                                                                            <option value="VILLA">VILLA</option>
+                                                                            <option value="RESALE">RESALE</option>
+                                                                            <option value="RESIDENT SALE PLOT">RESIDENT SALE PLOT
+                                                                            </option>
+                                                                            <option value="COMMERCIAL BUILDING">COMMERCIAL BUILDING
+                                                                            </option>
+                                                                            <option value="OTHERS">OTHERS</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_builder_name">BUILDER NAME</label>
+                                                                        <input type="text" class="form-control" id="hl_builder_name"
+                                                                            placeholder="BUILDER NAME">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_property_value">PROPERTY VALUE</label>
+                                                                        <input type="number" class="form-control"
+                                                                            id="hl_property_value" placeholder="PROPERTY VALUE">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_property_area">PROPERTY AREA</label>
+                                                                        <input type="text" class="form-control" id="hl_property_area"
+                                                                            placeholder="PROPERTY AREA">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_property_city">PROPERTY CITY</label>
+                                                                        <input type="text" class="form-control" id="hl_property_city"
+                                                                            placeholder="PROPERTY CITY">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_gross_salary">GROSS SALARY</label>
+                                                                        <input type="number" class="form-control"
+                                                                            id="hl_gross_salary" placeholder="GROSS SALARY">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_net_salary">NET SALARY</label>
+                                                                        <input type="number" class="form-control" id="hl_net_salary"
+                                                                            placeholder="NET SALARY">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label for="hl_co_joint">CO-APPLICANT</label>
+                                                                        <input type="text" class="form-control" id="hl_co_joint"
+                                                                            placeholder="CO-APPLICANT">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row py-4">
+                                                                <div class="col col-md-3 offset-md-9 text-center">
+                                                                    <button class="btn btn-sm btn-success hl_profile_add"><i
+                                                                            class="fas fa-paper-plane px-1"></i>ADD</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="hl_property_value">PROPERTY VALUE</label>
-                                                    <input type="number" class="form-control"
-                                                        id="hl_property_value" placeholder="PROPERTY VALUE">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon1">MONTH 1</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon1"
-                                                        placeholder="MONTH 1">
-                                                    <span id="el_sal_mon1_error" class="error invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon2">MONTH 2</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon2"
-                                                        placeholder="MONTH 2">
-                                                    <span id="el_sal_mon2_error" class="error invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon3">MONTH 3</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon3"
-                                                        placeholder="MONTH 3">
-                                                    <span id="el_sal_mon3_error" class="error invalid-feedback"></span>
+                                    <div id="additional_info_home_loan_div2">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col col-md-12">
+                                                    <div class="alert alert-danger" id="hl_eg_alert" role="alert"></div>
+                                                    <table class="table table-striped">
+                                                        <thead class="thead-inverse">
+                                                            <tr>
+                                                                <th>BANK</th>
+                                                                <th>LTV</th>
+                                                                <th>LTV-EL</th>
+                                                                <th>FOIR</th>
+                                                                <th>FOIR ELG</th>
+                                                                <th>ROI</th>
+                                                                <th>TENURE</th>
+                                                                <th>EMI / LAKH</th>
+                                                                <th>ACTION</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="inserted_hl_el">
+
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="cr_tb_final_salary">INCOME CONSIDERED</label>
-                                                    <input type="number" class="form-control" id="cr_tb_final_salary"
-                                                        placeholder="INCOME CONSIDERED" disabled>
+                                        <div class="container mt-3">
+                                            <div class="row">
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_sal_mon1">PROPERTY VALUE</label>
+                                                        <input type="number" class="form-control" id="hl_el_property_value"
+                                                            placeholder="PROPERTY VALUE" disabled>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="hl_gross_salary">GROSS SALARY</label>
-                                                    <input type="number" class="form-control"
-                                                        id="hl_gross_salary" placeholder="GROSS SALARY">
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_el_gross_salary">GROSS SALARY</label>
+                                                        <input type="number" class="form-control" id="hl_el_gross_salary"
+                                                            placeholder="GROSS SALARY" disabled>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group mt-4">
-                                                    <button type="button" class="btn btn-sm btn-danger mt-1  el_calculate"><i
-                                                        class="fas fa-calculator px-1"></i>Calcualte</button>
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_sal_mon1">MONTH 1</label>
+                                                        <input type="number" class="form-control" id="hl_sal_mon1"
+                                                            placeholder="MONTH 1">
+                                                        <span id="hl_sal_mon1_error" class="error invalid-feedback"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_bank_name">BANK NAME</label>
-                                                    <input type="text" class="form-control" id="el_bank_name"
-                                                        placeholder="BANK NAME">
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_sal_mon2">MONTH 2</label>
+                                                        <input type="number" class="form-control" id="hl_sal_mon2"
+                                                            placeholder="MONTH 2">
+                                                        <span id="hl_sal_mon2_error" class="error invalid-feedback"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_em_cat">EMPLOYER CATEGORY</label>
-                                                    <input type="text" class="form-control" id="el_em_cat"
-                                                        placeholder="EMPLOYER CATEGORY">
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_sal_mon3">MONTH 3</label>
+                                                        <input type="number" class="form-control" id="hl_sal_mon3"
+                                                            placeholder="MONTH 3">
+                                                        <span id="hl_sal_mon3_error" class="error invalid-feedback"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="el_multiplier">MULTIPLIER</label>
-                                                    <input type="number" class="form-control" id="el_multiplier"
-                                                        placeholder="MULTIPLIER">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="el_foir">FOIR</label>
-                                                    <input type="number" class="form-control" id="el_foir"
-                                                        placeholder="FOIR">
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-2">
-                                                <div class="form-group">
-                                                    <label for="el_foir">LTV</label>
-                                                    <input type="number" class="form-control" id="el_foir"
-                                                        placeholder="LTV">
+                                                <div class="col col-md-2 mt-4">
+                                                    <button type="button" id="hl_cal_salary_btn" class="btn py-2 btn-danger"><i
+                                                        class="fas fa-calculator px-1"></i>Income</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_mul_eligibility">MULTIPLIER LTV</label>
-                                                    <input type="number" class="form-control" id="el_mul_eligibility"
-                                                        placeholder="MULTIPLIER LTV">
+                                        <div class="container">
+                                            <div class="row my-3">
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_tb_income_consi">INCOME CONSIDERED</label>
+                                                        <input type="number" class="form-control" id="hl_tb_income_consi"
+                                                            placeholder="INCOME CONSIDERED" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="hl_final_obligation">FINAL OBLIGATION</label>
+                                                        <input type="number" class="form-control"
+                                                            id="hl_final_obligation" placeholder="FINAL OBLIGATION" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-2 mt-4">
+                                                    <button type="button" id="hl_cal_edit_btn" class="btn py-2 btn-info" disabled> <i class="fas fa-user-edit px-1"></i>EDIT</button>
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_roi">ROI</label>
-                                                    <input type="number" class="form-control" id="el_roi" placeholder="ROI">
+                                            <div class="row">
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_bank_name">BANK NAME</label>
+                                                        <input type="text" class="form-control" id="hl_bank_name"
+                                                            placeholder="BANK NAME">
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_ltv">LTV</label>
+                                                        <input type="number" class="form-control" id="hl_ltv"
+                                                            placeholder="LTV IN %">
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_ltv_eligibility">LTV ELIGIBILITY</label>
+                                                        <input type="number" class="form-control" id="hl_ltv_eligibility"
+                                                            placeholder="LTV ELIGIBILITY" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="hl_foir">FOIR</label>
+                                                        <input type="number" class="form-control" id="hl_foir"
+                                                            placeholder="FOIR">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_roi">ROI</label>
+                                                        <input type="number" class="form-control" id="hl_roi" placeholder="ROI">
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label>TENURE</label>
+                                                        <select class="form-control" id="hl_tenure">
+                                                          <option value="5">5 years</option>
+                                                          <option value="10">10 years</option>
+                                                          <option value="15">15 years</option>
+                                                          <option value="20">20 years</option>
+                                                          <option value="25">25 years</option>
+                                                          <option value="30">30 years</option>
+                                                        </select>
+                                                      </div>
+                                                </div>
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_emi_per_lak">EMI PER LAKH</label>
+                                                        <input type="number" class="form-control" id="hl_emi_per_lak"
+                                                            placeholder="EMI PER LAKH" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="hl_emi_foir_eligibility">FOIR ELIGIBILITY</label>
+                                                        <input type="number" class="form-control" id="hl_emi_foir_eligibility"
+                                                            placeholder="FOIR ELIGIBILITY" disabled>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_emi_per_lak">EMI PER LAKH</label>
-                                                    <input type="number" class="form-control" id="el_emi_per_lak"
-                                                        placeholder="EMI PER LAKH" disabled>
-                                                </div>
+                                            <div class="float-right mb-1 p-2">
+                                                <button type="button" class="btn btn-primary previous"> <i
+                                                        class="fas fa-backward px-2"></i>Previous</button>
+                                                <button type="button" id="hl_el_cal_btn" class="btn btn-danger"><i
+                                                        class="fas fa-calculator px-1"></i>Calculate</button>
+                                                <button type="button" id="hl_el_edit_btn" class="btn btn-success" disabled><i
+                                                        class="far fa-edit"></i>Edit</button>
+                                                <button type="button" id="hl_el_add_btn" class="btn btn-success"><i class="fas fa-paper-plane px-1"></i>Add</button>
+                                                <button type="button" class="btn btn-primary next">Next<i
+                                                        class="fas fa-forward px-2"></i></button>
                                             </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_emi_foir_eligibility">FOIR ELIGIBILITY</label>
-                                                    <input type="number" class="form-control" id="el_emi_foir_eligibility"
-                                                        placeholder="FOIR ELIGIBILITY" disabled>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="float-right mb-1 p-2">
-                                            <button type="button" class="btn btn-primary previous"> <i
-                                                    class="fas fa-backward px-2"></i>Previous</button>
-                                            <button type="button" id="el_cal_salary_btn" class="btn btn-danger"><i
-                                                    class="fas fa-calculator px-1"></i>Income</button>
-                                            <button type="button" id="el_cal_edit_btn" class="btn btn-success"><i
-                                                    class="far fa-edit"></i>Edit</button>
-                                            <button type="button" class="btn btn-primary next">Next<i
-                                                    class="fas fa-forward px-2"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -1017,6 +1135,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        <div class="form-group">
+                                            <label>Remarks</label>
+                                            <textarea class="form-control" id="Final_page_remarks" rows="3" placeholder="Enter ..."></textarea>
+                                          </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="container">
                                 <div class="float-right mb-1 mt-1">
@@ -1035,10 +1161,7 @@
         <!-- /.content -->
     </div>
 @endsection
-{{-- section ajax --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@section('js')
 <script>
     $(function() {
 
@@ -1047,120 +1170,529 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         //hide on load feild
-
-        $('#ob_alert').hide();
-        $('#cr_alert').hide();
-        $('#el_alert').hide();
-        $('#final_alert').hide();
-        $('#final_edit').hide();
-        $('#hl_alert').hide();
-        $('#ln_com_alert').hide();
-        $('.hl_profile_edit').hide();
-        $('#ln_com_final_edit').hide();
-        $('.add').prop('disabled', true);
-        $('.cr_add').prop('disabled', true);
-        $('.el_add').prop('disabled', true);
-        $('#final_submit').prop('disabled', true);
-        $('#hl_profile_add').prop('disabled', true);
-        $('#hl_next').prop('disabled', false); //change to true after devlepoment
-        $('.hl_profile_add').prop('disabled', true);
-        $('#ex_ln_edit').prop('disabled', true);
-        $('#ln_com_final_add').prop('disabled', true);
-        $('#ln_com_final_cal').prop('disabled', true);
-        $('#el_cal_edit_btn').prop('disabled', true);
-
+            $('#ob_alert').hide();
+            $('#cr_alert').hide();
+            $('#el_alert').hide();
+            $('#final_alert').hide();
+            $('#final_edit').hide();
+            $('#hl_alert').hide();
+            $('#hl_eg_alert').hide();
+            $('#ln_com_alert').hide();
+            $('.hl_profile_edit').hide();
+            $('#ln_com_final_edit').hide();
+            $('#hl_el_add_btn').hide();
+            $('.add').prop('disabled', true);
+            $('.cr_add').prop('disabled', true);
+            $('.el_add').prop('disabled', true);
+            $('#final_submit').prop('disabled', true);
+            $('#hl_profile_add').prop('disabled', true);
+            $('#hl_next').prop('disabled', false); //change to true after devlepoment
+            $('.hl_profile_add').prop('disabled', false);
+            $('#ex_ln_edit').prop('disabled', true);
+            $('#ln_com_final_add').prop('disabled', true);
+            $('#ln_com_final_cal').prop('disabled', true);
+            $('#el_cal_edit_btn').prop('disabled', true);
+            $('#additional_info_home_loan_div2').show(); //chage to hide after developement
+        //end on load feild
 
         //initialization for stepper
-        var stepper = new Stepper($('.bs-stepper')[0]);
-        //section to handle the next  step
-        $('body').on('click', '.next', function() {
-            stepper.next();
+            var stepper = new Stepper($('.bs-stepper')[0]);
+            //section to handle the next  step
+            $('body').on('click', '.next', function() {
+                stepper.next();
+            });
+            //section to handle the previous step
+            $('body').on('click', '.previous', function() {
+                stepper.previous();
+            });
+        //END INITIALIZATION FOR STEPPER
+
+
+    // !================================ALL LOAN OBLIGATION ADD SECTION ===========!
+
+
+        //PERONAL LOAN EMI OBLIGATION ADD TO DATABASE SECTION
+        $('body').on('click', '.add', function(e) {
+            e.preventDefault();
+            $('#ob_alert').hide();
+
+            let loan_type = $("#ob_loan_type").val();
+            let bank_name = $("#ob_bank_name").val();
+            let loan_amount = $("#ob_loan_amount").val();
+            let roi = $("#ob_roi").val();
+            let tennure = $("#ob_tennure").val();
+            let original_emi = $("#ob_original_emi").val();
+            let emi = $("#ob_emi").val();
+            let ob_comp_emi = $("#ob_comp_emi").val();
+            let pos = $("#ob_pos").val();
+            let bt = $("#ob_bt").val();
+            let cus_id = $('#cus_id').val();
+            let enq_id = $('#enq_id').val();
+            if (check_null(pos) || check_null(ob_comp_emi)) {
+                $('#ob_alert').show();
+                $('#ob_alert').html("FILL POS FEILD && EMI COMPLETED");
+            } else {
+                if (check_numeric(pos) || check_numeric(ob_comp_emi)) {
+                    $('#ob_alert').show();
+                    $('#ob_alert').html("POS & EMI COMPLETED FEILD SHOULD BE NUMBER");
+                } else {
+                    $.ajax({
+
+                        type: 'POST',
+
+                        url: "{{ route('breakDown.store') }}",
+
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            loanType: loan_type,
+                            bankName: bank_name,
+                            loanAmount: loan_amount,
+                            rateOfInterest: roi,
+                            tennure: tennure,
+                            emi: original_emi,
+                            ob_comp_emi:ob_comp_emi,
+                            pos: pos,
+                            bt: bt,
+                            cusid: cus_id,
+                            enqid: enq_id,
+                            table: 1
+                        },
+
+                        success: function(data) {
+
+
+                            let response = JSON.parse(data);
+                            let sum_of_pos_bt_yes = 0;
+                            let sum_of_pos_bt_no = 0;
+                            let sum_of_emi_bt_yes = 0;
+                            let sum_of_emi_bt_no = 0;
+                            $('#inserted_ob').empty();
+                            $.each(response, function(i, item) {
+
+
+                                var bt_yes_no = "NO";
+                                if (item.ob_bt == 1) {
+                                    bt_yes_no = "YES";
+                                }
+
+                                //calcuation for bt-yes and bt-no
+                                if (item.ob_bt == 1) {
+                                    sum_of_pos_bt_yes = sum_of_pos_bt_yes + Number(
+                                        item.ob_pos);
+                                } else {
+                                    sum_of_pos_bt_no = sum_of_pos_bt_no + Number(
+                                        item.ob_pos);
+                                }
+                                //end calcuation for bt-yes and bt-no
+                                //calcuation for emi bt-yes and bt-no
+                                if (item.ob_bt == 1) {
+                                    sum_of_emi_bt_yes = sum_of_emi_bt_yes + Number(
+                                        item.ob_emi);
+                                } else {
+                                    sum_of_emi_bt_no = sum_of_emi_bt_no + Number(
+                                        item.ob_emi);
+                                }
+                                //end calcuation for emi bt-yes and bt-no
+
+                                var $tr = $('<tr>').append(
+                                    $('<td>').text(item.ob_Loan_type),
+                                    $('<td>').text(item.ob_Bank_name),
+                                    $('<td>').text(item.ob_Loan_amount),
+                                    $('<td>').text(item.ob_roi),
+                                    $('<td>').text(item.ob_tennure),
+                                    $('<td>').text(item.ob_emi),
+                                    $('<td>').text(item.ob_comp_emi),
+                                    $('<td>').text(item.ob_pos),
+                                    $('<td>').text(bt_yes_no),
+                                    $('<td>').html('<button type="button" id=' +
+                                        item.id +
+                                        ' class="btn btn-sm btn-danger delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                                    ),
+                                );
+                                $tr.appendTo('#inserted_ob');
+                                $("#ob_sum_of_pos_bt_yes").val(sum_of_pos_bt_yes);
+                                $("#ob_sum_of_pos_bt_no").val(sum_of_pos_bt_no);
+                                $("#ob_sum_of_emi_bt_no").val(sum_of_emi_bt_no);
+                                $("#ob_sum_of_emi_bt_yes").val(sum_of_emi_bt_yes);
+                                $("#ob_bt").prop('disabled', true);
+                                $("#ob_bt").prop('selectedIndex', 0);
+                                $("#ob_pos").prop('disabled', true);
+                                $("#ob_pos").val('');
+                                $('.add').prop('disabled', true);
+                                $('#ob_emi').val('');
+                                $("#ob_loan_type").prop('disabled', false);
+                                $("#ob_loan_type").val('');
+                                $("#ob_bank_name").prop('disabled', false);
+                                $("#ob_bank_name").val('');
+                                $("#ob_loan_amount").prop('disabled', false);
+                                $("#ob_loan_amount").val('');
+                                $("#ob_roi").prop('disabled', false);
+                                $("#ob_roi").val('');
+                                $("#ob_tennure").prop('disabled', false);
+                                $("#ob_tennure").val('');
+                                $("#ob_original_emi").val('');
+                                $("#ob_comp_emi").val('');
+
+                            });
+
+                        }
+
+                    });
+                }
+            }
+
         });
-        //section to handle the previous step
-        $('body').on('click', '.previous', function() {
-            stepper.previous();
-        });
+        //END PERONAL LOAN EMI OBLIGATION ADD TO DATABASE SECTION
 
-
-
-
-
-
-
-
-
-        //salary average_edit
-        $('body').on('click', '#el_cal_edit_btn', function(e) {
+        // PERSONAL LOAN CREDIT CARD OBLIGATION ADD TO DATABASE SECTION
+        $('body').on('click', '.cr_add', function(e) {
             e.preventDefault();
 
-            $('#el_sal_mon1').val('');
-            $('#el_sal_mon2').val('');
-            $('#el_sal_mon3').val('');
-            $('#el_sal_mon1').prop('disabled', false);
-            $('#el_sal_mon2').prop('disabled', false);
-            $('#el_sal_mon3').prop('disabled', false);
-            $('#cr_tb_final_salary').val('');
-            $('#el_cal_edit_btn').prop('disabled', true);
-            $('#el_cal_salary_btn').prop('disabled', false);
+            let cr_bank_name = $("#cr_bank_name").val();
+            let cr_limit = $("#cr_limit").val();
+            let cr_card_outstanding = $("#cr_card_outstanding").val();
+            let cr_emi = $("#cr_emi").val();
+            let cr_bt = $("#cr_bt").val();
+            let cus_id = $('#cus_id').val();
+            let enq_id = $('#enq_id').val();
+            if (check_numeric(cr_bt)) {
+                $('#cr_alert').show();
+                $('#cr_alert').html("BT FEILD SHOULD BE NUMBER");
+            } else {
+                $.ajax({
 
-        })
-        //end salary average_edit
+                    type: 'POST',
 
-        //salary avreage calculation
-        $('body').on('click', '#el_cal_salary_btn', function(e) {
+                    url: "{{ route('breakDown.store') }}",
 
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        crBankName: cr_bank_name,
+                        cr_limit: cr_limit,
+                        cr_card_outstanding: cr_card_outstanding,
+                        cr_emi: cr_emi,
+                        cr_bt: cr_bt,
+                        cusid: cus_id,
+                        enqid: enq_id,
+                        table: 2
+                    },
+
+                    success: function(data) {
+
+
+                        let response = JSON.parse(data);
+
+                        let sum_of_emi_bt_yes_cr = 0;
+                        let sum_of_emi_bt_no_cr = 0;
+                        let final_obligation_cr = 0;
+
+                        $('#inserted_cr').empty();
+                        $.each(response, function(i, item) {
+
+                            var bt_yes_no = "NO";
+                            if (item.cr_bt == 1) {
+                                bt_yes_no = "YES";
+                            }
+                            //calcuation for emi bt-yes and bt-no
+                            if (item.cr_bt == 1) {
+                                sum_of_emi_bt_yes_cr = sum_of_emi_bt_yes_cr +
+                                    Number(item.cr_emi);
+                            } else {
+                                sum_of_emi_bt_no_cr = sum_of_emi_bt_no_cr + Number(
+                                    item.cr_emi);
+                            }
+                            //end calcuation for emi bt-yes and bt-no
+
+                            var $tr = $('<tr>').append(
+                                $('<td>').text(item.cr_Bank_name),
+                                $('<td>').text(item.cr_card_limit),
+                                $('<td>').text(item.cr_card_outstanding),
+                                $('<td>').text(item.cr_emi),
+                                $('<td>').text(bt_yes_no),
+                                $('<td>').html('<button type="button" id=' +
+                                    item.id +
+                                    ' class="btn btn-sm btn-danger cr_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                                ),
+                            );
+                            $tr.appendTo('#inserted_cr');
+                            $("#cr_bt").prop('disabled', true);
+                            $("#cr_bt").prop('selectedIndex', 0);
+                            $('.cr_add').prop('disabled', true);
+                            $('#cr_emi').val('');
+                            $("#cr_bank_name").prop('disabled', false);
+                            $("#cr_bank_name").val('');
+                            $("#cr_limit").prop('disabled', false);
+                            $("#cr_limit").val('');
+                            $("#cr_card_outstanding").prop('disabled', false);
+                            $("#cr_card_outstanding").val('');
+                        });
+                        $("#cr_emi_bt_yes").val(sum_of_emi_bt_yes_cr);
+                        $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
+                        let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
+                        let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
+                        $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no));
+                        $("#hl_final_obligation").val(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no));
+                    }
+
+                });
+            }
+        });
+        //END PERSONAL LOAN CREDIT CARD OBLIGATION ADD TO DATABASE SECTION
+
+        //PERSONAL LOAN ELIGIBILITY ADD TO DATABASE SECTION
+        $('body').on('click', '.el_add', function(e) {
             e.preventDefault();
-            //validation reset
-            $('#el_sal_mon1').removeClass('is-invalid');
-            $('#el_sal_mon2').removeClass('is-invalid');
-            $('#el_sal_mon3').removeClass('is-invalid');
 
-            let mon1 = $('#el_sal_mon1').val();
-            let mon2 = $('#el_sal_mon2').val();
-            let mon3 = $('#el_sal_mon3').val();
-            let validation_check = true;
+            let elg_bank_name = $("#el_bank_name").val();
+            let elg_emp_cat = $("#el_em_cat").val();
+            let elg_multiplier = $("#el_multiplier").val();
+            let elg_foir = $("#el_foir").val();
+            let elg_mul_eligibility = $("#el_mul_eligibility").val();
+            let elg_roi = $("#el_roi").val();
+            let elg_emi_per_lak = $("#el_emi_per_lak").val();
+            let elg_emi_foir_eligibility = $("#el_emi_foir_eligibility").val();
+            let cus_id = $('#cus_id').val();
+            let enq_id = $('#enq_id').val();
 
-            if (check_null(mon1)) {
-                $('#el_sal_mon1').addClass('is-invalid');
-                $('#el_sal_mon1_error').html('Not a Valid Input');
-                validation_check = false;
+            $.ajax({
+
+                type: 'POST',
+
+                url: "{{ route('breakDown.store') }}",
+
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    el_bank_name: elg_bank_name,
+                    el_emp_cat: elg_emp_cat,
+                    el_multiplier: elg_multiplier,
+                    el_foir: elg_foir,
+                    el_mul_eligibility: elg_mul_eligibility,
+                    el_roi: elg_roi,
+                    el_emi_per_lak: elg_emi_per_lak,
+                    el_emi_foir_eligibility: elg_emi_foir_eligibility,
+                    cusid: cus_id,
+                    enqid: enq_id,
+                    table: 3
+                },
+
+                success: function(data) {
+
+
+                    let response = JSON.parse(data);
+                    $('#inserted_el').empty();
+                    $.each(response, function(i, item) {
+
+
+                        var $tr = $('<tr>').append(
+                            $('<td>').text(item.el_Bank_name),
+                            $('<td>').text(item.el_employee_category),
+                            $('<td>').text(item.el_multiplier),
+                            $('<td>').text(item.el_foir),
+                            $('<td>').text(item.el_mutiplier_eligibility),
+                            $('<td>').text(item.el_roi),
+                            $('<td>').text(item.el_emi_per_lak),
+                            $('<td>').text(item.el_foir_eligibility),
+                            $('<td>').html('<button type="button" id=' +
+                                item.id +
+                                ' class="btn btn-sm btn-danger el_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                            ),
+                        );
+                        $tr.appendTo('#inserted_el');
+                        $(".el_add").prop('disabled', true);
+                        $("#el_bank_name").prop('disabled', false);
+                        $('#el_bank_name').val('');
+                        $("#el_em_cat").prop('disabled', false);
+                        $('#el_em_cat').val('');
+                        $("#el_multiplier").prop('disabled', false);
+                        $('#el_multiplier').val('');
+                        $("#el_foir").prop('disabled', false);
+                        $('#el_foir').val('');
+                        $("#el_mul_eligibility").prop('disabled', false);
+                        $('#el_mul_eligibility').val('');
+                        $("#el_roi").prop('disabled', false);
+                        $('#el_roi').val('');
+                        $('#el_emi_per_lak').val('');
+                        $('#el_emi_foir_eligibility').val('');
+                        $("#el_add").prop('disabled', true);
+                    });
+
+                }
+
+            });
+
+        });
+        //END PERSONAL LOAN ELIGIBILITY ADD TO DATABASE SECTION
+
+        //HOME LOAN ADDITIONAL FEILD ADDING TO DATABASE
+        $('body').on('click', '.hl_profile_add', function(e) {
+            e.preventDefault();
+
+            $('#hl_alert').hide();
+            let hl_age = $("#hl_age").val();
+            let hl_property_type = $("select#hl_property_type").val();
+            let hl_builder_name = $("#hl_builder_name").val();
+            let hl_property_value = $("#hl_property_value").val();
+            let hl_property_area = $("#hl_property_area").val();
+            let hl_property_city = $("#hl_property_city").val();
+            let hl_gross_salary = $("#hl_gross_salary").val();
+            let hl_net_salary = $("#hl_net_salary").val();
+            let hl_co_joint = $("#hl_co_joint").val();
+            let cus_id = $('#cus_id').val();
+            let enq_id = $('#enq_id').val();
+
+
+            if (check_null(hl_age) || check_null(hl_property_type) ||
+                check_null(hl_builder_name) || check_null(hl_property_value) ||
+                check_null(hl_property_area) || check_null(hl_gross_salary) ||
+                check_null(hl_net_salary) || check_null(hl_co_joint) ||
+                hl_property_type == 0) {
+                $('#hl_alert').show();
+                $('#hl_alert').html("CHOOSE PROPERTY TYPE & FILL ALL THE FEILDS");
             } else {
-                $('#el_sal_mon1').removeClass('is-invalid');
-                $('#el_sal_mon1_error').html('');
+                if (check_numeric(hl_property_value) || check_numeric(hl_gross_salary) ||
+                    check_numeric(hl_net_salary)) {
+                    $('#hl_alert').show();
+                    $('#hl_alert').html(
+                        "PROPERTY VALUE & GROSS SALARY & NET SALARY SHOULD BE IN NUMERIC VALUE");
+
+                } else {
+
+                $.ajax({
+
+                        type: 'POST',
+
+                        url: "{{ route('breakDown.store') }}",
+
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            hl_age: hl_age,
+                            hl_property_type: hl_property_type,
+                            hl_builder_name: hl_builder_name,
+                            hl_property_value: hl_property_value,
+                            hl_property_area: hl_property_area,
+                            hl_property_city: hl_property_city,
+                            hl_gross_salary: hl_gross_salary,
+                            hl_net_salary: hl_net_salary,
+                            hl_co_joint: hl_co_joint,
+                            cusid: cus_id,
+                            enqid: enq_id,
+                            table: 4
+                        },
+
+                        success: function(data) {
+
+                            if (data == 1) {
+
+                                $('#additional_info_home_loan_div1').hide();
+                                $('#additional_info_home_loan_div2').show();
+                                $('#hl_el_property_value').val(hl_property_value);
+                                $('#hl_el_gross_salary').val(hl_gross_salary);
+
+                                Swal.fire(
+                                    'HOME LOAN INFO ADDED!',
+                                    'FILL THE ELIGIBILITY!',
+                                    'success'
+                                )
+                            }
+
+
+                        }
+
+                    });
+
+                }
             }
-            if (check_null(mon2)) {
-                $('#el_sal_mon2').addClass('is-invalid');
-                $('#el_sal_mon2_error').html('Not a Valid Input');
-                validation_check = false;
+        });
+        //END HOME LOAN ADDITIONAL FEILD ADDING TO DATABASE
 
-            } else {
-                $('#el_sal_mon2').removeClass('is-invalid');
-                $('#el_sal_mon2_error').html('');
-            }
-            if (check_null(mon3)) {
-                $('#el_sal_mon3').addClass('is-invalid');
-                $('#el_sal_mon3_error').html('Not a Valid Input');
-                validation_check = false;
-            } else {
-                $('#el_sal_mon3').removeClass('is-invalid');
-                $('#el_sal_mon3_error').html('');
-            }
+        //HOME LOAN ELIGIBILITY ADD TO DATABASE SECTION
+         $('body').on('click', '#hl_el_add_btn', function(e) {
+            e.preventDefault();
 
-            if (validation_check) {
-                $('#cr_tb_final_salary').val(Math.round(average_income(mon1, mon2, mon3)));
-                $('#el_cal_edit_btn').prop('disabled', false);
-                $('#el_cal_salary_btn').prop('disabled', true);
-                $('#el_sal_mon1').prop('disabled', true);
-                $('#el_sal_mon2').prop('disabled', true);
-                $('#el_sal_mon3').prop('disabled', true);
-            }
+            let hl_bank_name = $("#hl_bank_name").val();
+            let hl_ltv = $("#hl_ltv").val();
+            let hl_ltv_eligibility = $("#hl_ltv_eligibility").val();
+            let hl_foir = $("#hl_foir").val();
+            let hl_roi = $("#hl_roi").val();
+            let hl_tenure = $("#hl_tenure").val();
+            let hl_emi_per_lak = $("#hl_emi_per_lak").val();
+            let hl_emi_foir_eligibility = $("#hl_emi_foir_eligibility").val();
+            let cus_id = $('#cus_id').val();
+            let enq_id = $('#enq_id').val();
 
-        })
-        //end salary avreage calculation
+            $.ajax({
+
+                type: 'POST',
+
+                url: "{{ route('breakDown.store') }}",
+
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    hl_bank_name: hl_bank_name,
+                    hl_ltv: hl_ltv,
+                    hl_ltv_eligibility: hl_ltv_eligibility,
+                    hl_foir: hl_foir,
+                    hl_roi: hl_roi,
+                    hl_tenure: hl_tenure,
+                    hl_emi_per_lak: hl_emi_per_lak,
+                    hl_emi_foir_eligibility: hl_emi_foir_eligibility,
+                    cusid: cus_id,
+                    enqid: enq_id,
+                    table: 6
+                },
+
+                success: function(data) {
 
 
-        //hl_profile_final_loan_comparison_add_to_database
+                    let response = JSON.parse(data);
+                    $('#inserted_hl_el').empty();
+                    $.each(response, function(i, item) {
+
+
+                        var $tr = $('<tr>').append(
+                            $('<td>').text(item.hl_bank_name),
+                            $('<td>').text(item.hl_ltv),
+                            $('<td>').text(item.hl_ltv_eligibility),
+                            $('<td>').text(item.hl_foir),
+                            $('<td>').text(item.hl_roi),
+                            $('<td>').text(item.hl_tenure),
+                            $('<td>').text(item.hl_emi_per_lak),
+                            $('<td>').text(item.hl_emi_foir_eligibility),
+                            $('<td>').html('<button type="button" id=' +
+                                item.id +
+                                ' class="btn btn-sm btn-danger hl_el_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                            ),
+                        );
+                        $tr.appendTo('#inserted_hl_el');
+                        $('#hl_bank_name').val('');
+                        $('#hl_ltv').val('');
+                        $('#hl_foir').val('');
+                        $('#hl_roi').val('');
+                        $('#hl_emi_per_lak').val('');
+                        $('#hl_emi_per_lak').val('');
+                        $('#hl_ltv_eligibility').val('');
+                        $('#hl_bank_name').prop('disabled', false);
+                        $('#hl_ltv').prop('disabled', false);
+                        $('#hl_foir').prop('disabled', false);
+                        $('#hl_roi').prop('disabled', false);
+                        $('#hl_tenure').prop('disabled', false);
+                        $('#hl_el_edit_btn').hide();
+                        $("#hl_el_cal_btn").show();
+                        $("#hl_el_add_btn").prop('disabled', true);
+                    });
+
+                }
+
+            });
+
+        });
+        //END HOME LOAN ELIGIBILITY ADD TO DATABASE SECTION
+
+        //HL_PROFILE_FINAL_LOAN_COMPARISON_ADD_TO_DATABASE
         $('body').on('click', '#ln_com_final_add', function(e) {
             e.preventDefault();
             $('#ln_com_final_edit').prop('disabled', true);
@@ -1235,498 +1767,9 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
             });
 
         })
-        //end hl_profile_final_loan_comparison_add_to_database
+        //END HL_PROFILE_FINAL_LOAN_COMPARISON_ADD_TO_DATABASE
 
-        //hl_profile loan_comparison_final_edit
-        $('body').on('click', '#ln_com_final_edit', function(e) {
-            e.preventDefault();
-            $('#ln_com_final_edit').hide();
-            $('#ln_com_final_cal').prop('disabled', false);
-            $('#ln_com_motd').prop('disabled', false);
-            $('#ln_com_pro_fee').prop('disabled', false);
-            $('#ln_com_ot_charges').prop('disabled', false);
-            $('#ln_com_motd').val('');
-            $('#ln_com_pro_fee').val('');
-            $('#ln_com_ot_charges').val('');
-            $('#ln_com_total_cost').val('');
-            $('#ln_com_net_sav').val('');
-
-        })
-        //end of hl_profile loan_comparison_final_edit
-
-        //hl_profile loan_comparison_final_submit
-        $('body').on('click', '#ln_com_final_cal', function(e) {
-            $('#ln_com_motd').removeClass('is-invalid');
-            $('#ln_com_pro_fee').removeClass('is-invalid');
-            e.preventDefault();
-            let com_motd = $('#ln_com_motd').val();
-            let com_pro_fee = $('#ln_com_pro_fee').val();
-            let com_ot_charges = $('#ln_com_ot_charges').val();
-            let com_net_sav = $('#ln_com_net_sav').val();
-            let com_gross_sav = $('#ln_com_new_gross_sav').val();
-
-            if (check_null(com_motd) || check_null(com_pro_fee)) {
-                $('#ln_com_motd').addClass('is-invalid');
-                $('#ln_com_pro_fee').addClass('is-invalid');
-            } else {
-                $('#ln_com_total_cost').val(Number(com_motd) + Number(com_pro_fee) + Number(
-                    com_ot_charges));
-                let com_total_cost = $('#ln_com_total_cost').val();
-                $('#ln_com_net_sav').val(Number(com_gross_sav) - Number(com_total_cost));
-                $('#ln_com_motd').prop('disabled', true);
-                $('#ln_com_pro_fee').prop('disabled', true);
-                $('#ln_com_ot_charges').prop('disabled', true);
-                $('#ln_com_final_cal').prop('disabled', true);
-                $('#ln_com_final_edit').show();
-                $('#ln_com_final_add').prop('disabled', false);
-
-            }
-
-
-        })
-        //end hl_profile loan_comparison_final_submit
-
-
-        //ex_ln_new edit button
-        $('body').on('click', '#ex_new_ln_edit', function(e) {
-            $('#ln_com_new_roi').prop('disabled', false);
-            $('#ln_com_new_roi').val('');
-            $('#ex_new_ln_calculate').prop('disabled', false);
-            $('#ex_new_ln_edit').prop('disabled', true);
-            $('#ln_com_final_cal').prop('disabled', true);
-        })
-        //end ex_ln_new edit button
-
-        //ex_ln_new comparison calculate button
-        $('body').on('click', '#ex_new_ln_calculate', function(e) {
-            e.preventDefault();
-            $('#ln_com_new_roi').removeClass('is-invalid');
-            let new_loan_amount = $('#ln_com_new_loan_amount').val();
-            let new_roi = $('#ln_com_new_roi').val();
-            let new_tennure = $('#ln_com_new_tennure').val();
-            let exiting_outflow = $('#ex_ln_exsting_out_flow').val();
-            let new_gross_sav = $('#ln_com_new_gross_sav').val();
-
-            if (check_null(new_roi)) {
-                $('#ln_com_new_roi').addClass('is-invalid');
-            } else {
-
-                $('#ln_com_new_emi').val(calculate_emi(new_loan_amount, new_roi, new_tennure));
-                let new_emi = $('#ln_com_new_emi').val();
-                $('#ex_new_ln_calculate').prop('disabled', true);
-                $('#ln_com_new_roi').prop('disabled', true);
-                $('#ex_new_ln_edit').prop('disabled', false);
-                $('#ln_com_new_proposed_outflow').val(Number(new_emi) * Number(new_tennure));
-                let new_proposed_outflow = $('#ln_com_new_proposed_outflow').val();
-                $('#ln_com_new_gross_sav').val(Number(exiting_outflow) - Number(new_proposed_outflow));
-                $('#ln_com_final_cal').prop('disabled', false);
-            }
-
-
-
-        })
-        //edit ex_ln_new_comparison calculate button
-
-        //ex_ln_comparison edit button
-        $('body').on('click', '#ex_ln_edit', function(e) {
-            $('#ex_ln_calculate').prop('disabled', false);
-            $('#ex_new_ln_calculate').prop('disabled', false);
-            $('#ex_ln_edit').prop('disabled', true);
-            $('#ex_new_ln_edit').prop('disabled', true);
-            $('#ex_ln_loan_amount').val('');
-            $('#ex_ln_tennure').val('');
-            $('#ex_ln_roi').val('');
-            $('#ex_ln_emi').val('');
-            $('#ex_ln_pos').val('');
-            $('#ex_ln_no_of_emi_paid').val('');
-            $('#ex_ln_balance_emi').val('');
-            $('#ex_ln_exsting_out_flow').val('');
-            $('#ln_com_new_roi').val('');
-            $('#ex_ln_loan_amount').prop('disabled', false);
-            $('#ln_com_new_roi').prop('disabled', false);
-            $('#ex_ln_no_of_emi_paid').prop('disabled', false);
-            $('#ex_ln_tennure').prop('disabled', false);
-            $('#ex_ln_roi').prop('disabled', false);
-            $('#ex_ln_pos').prop('disabled', false);
-            $('#ln_com_new_loan_amount').val("");
-            $('#ln_com_new_tennure').val("");
-
-        })
-        //end ex_ln_comparison edit button
-
-        //ex_ln_comparison calculate button
-        $('body').on('click', '#ex_ln_calculate', function(e) {
-            e.preventDefault();
-            let ln_loan_amount = $('#ex_ln_loan_amount').val();
-            let ln_tennure = $('#ex_ln_tennure').val();
-            let ln_roi = $('#ex_ln_roi').val();
-            let ln_pos = $('#ex_ln_pos').val();
-            let ln_no_of_emi_paid = $('#ex_ln_no_of_emi_paid').val();
-
-            if (check_null(ln_loan_amount) || check_null(ln_tennure) || check_null(ln_roi) ||
-                check_null(ln_pos) || check_null(ln_no_of_emi_paid)) {
-                $('#ln_com_alert').show();
-                $('#ln_com_alert').html("FILL ALL THE FEILDS & SHOULD BE NUMERIC");
-            } else {
-                $('#ln_com_alert').hide();
-                let emi = calculate_emi(ln_loan_amount, ln_roi, ln_tennure);
-                $('#ex_ln_emi').val(Number(emi));
-                $('#ln_com_new_loan_amount').val(Number(ln_pos));
-                let ex_ln_emi_cal = $('#ex_ln_emi').val();
-                $('#ex_ln_balance_emi').val(Number(ln_tennure) - Number(ln_no_of_emi_paid));
-                let balance_emi = $('#ex_ln_balance_emi').val();
-                $('#ln_com_new_tennure').val(Number(balance_emi));
-                $('#ex_ln_exsting_out_flow').val(Number(balance_emi) * Number(emi));
-                $('#ex_ln_loan_amount').prop('disabled', true);
-                $('#ex_ln_tennure').prop('disabled', true);
-                $('#ex_ln_roi').prop('disabled', true);
-                $('#ex_ln_pos').prop('disabled', true);
-                $('#ex_ln_balance_emi').prop('disabled', true);
-                $('#ex_ln_calculate').prop('disabled', true);
-                $('#ex_ln_no_of_emi_paid').prop('disabled', true);
-                $('#ex_ln_edit').prop('disabled', false);
-            }
-
-
-
-        })
-        //edit ex_ln_comparison calculate button
-
-        //home loan additional feild adding to database
-        $('body').on('click', '.hl_profile_add', function(e) {
-            e.preventDefault();
-
-            let hl_age = $("#hl_age").val();
-            let hl_property_type = $("select#hl_property_type").val();
-            let hl_builder_name = $("#hl_builder_name").val();
-            let hl_property_value = $("#hl_property_value").val();
-            let hl_property_area = $("#hl_property_area").val();
-            let hl_property_city = $("#hl_property_city").val();
-            let hl_gross_salary = $("#hl_gross_salary").val();
-            let hl_net_salary = $("#hl_net_salary").val();
-            let hl_co_joint = $("#hl_co_joint").val();
-            let hl_ltv_1 = $("#hl_ltv_1").val();
-            let hl_ltv_2 = $("#hl_ltv_2").val();
-            let hl_ltv_3 = $("#hl_ltv_3").val();
-            let hl_fn_ltv_1 = $("#hl_fn_ltv_1").val();
-            let hl_fn_ltv_2 = $("#hl_fn_ltv_2").val();
-            let hl_fn_ltv_3 = $("#hl_fn_ltv_3").val();
-            let cus_id = $('#cus_id').val();
-            let enq_id = $('#enq_id').val();
-
-            $.ajax({
-
-                type: 'POST',
-
-                url: "{{ route('breakDown.store') }}",
-
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    hl_age: hl_age,
-                    hl_property_type: hl_property_type,
-                    hl_builder_name: hl_builder_name,
-                    hl_property_value: hl_property_value,
-                    hl_property_area: hl_property_area,
-                    hl_property_city: hl_property_city,
-                    hl_gross_salary: hl_gross_salary,
-                    hl_net_salary: hl_net_salary,
-                    hl_co_joint: hl_co_joint,
-                    hl_ltv_1: hl_ltv_1,
-                    hl_ltv_2: hl_ltv_2,
-                    hl_ltv_3: hl_ltv_3,
-                    hl_fn_ltv_1: hl_fn_ltv_1,
-                    hl_fn_ltv_2: hl_fn_ltv_2,
-                    hl_fn_ltv_3: hl_fn_ltv_3,
-                    cusid: cus_id,
-                    enqid: enq_id,
-                    table: 4
-                },
-
-                success: function(data) {
-
-                    if (data == 1) {
-                        $("#hl_next").prop('disabled', false);
-                        $('.hl_profile_edit').hide();
-                        $('.hl_profile_add').hide();
-                        Swal.fire(
-                            'HOME LOAN INFO ADDED!',
-                            'MOVE TO NEXT PAGE!',
-                            'success'
-                        )
-                    }
-
-
-                }
-
-            });
-
-        });
-        //end home loan additional feild adding to database
-
-        //home loan hl-profile edit button
-        $('body').on('click', '.hl_profile_edit', function() {
-            $('.hl_profile_edit').hide();
-            $('.hl_profile_submit').show();
-            $('.hl_profile_add').prop('disabled', true);
-            $('#hl_age').prop('disabled', false);
-            $('#hl_age').val('');
-            $('#hl_property_type').prop('disabled', false);
-            $('#hl_property_type').val(0);
-            $('#hl_builder_name').prop('disabled', false);
-            $('#hl_builder_name').val('');
-            $('#hl_property_value').prop('disabled', false);
-            $('#hl_property_value').val('');
-            $('#hl_property_area').prop('disabled', false);
-            $('#hl_property_area').val('');
-            $('#hl_property_city').prop('disabled', false);
-            $('#hl_property_city').val('');
-            $('#hl_gross_salary').prop('disabled', false);
-            $('#hl_gross_salary').val('');
-            $('#hl_net_salary').prop('disabled', false);
-            $('#hl_net_salary').val('');
-            $('#hl_co_joint').prop('disabled', false);
-            $('#hl_co_joint').val('');
-            $("#hl_ltv_1").val('');
-            $("#hl_ltv_2").val('');
-            $("#hl_ltv_3").val('');
-            $("#hl_fn_ltv_1").val('');
-            $("#hl_fn_ltv_2").val('');
-            $("#hl_fn_ltv_3").val('');
-            $('#hl_ltv_1').prop('disabled', false);
-            $('#hl_ltv_2').prop('disabled', false);
-            $('#hl_ltv_3').prop('disabled', false);
-
-        })
-        //end home loan hl-profile edit button
-
-        //home loan extra feils submit to database
-        $('body').on('click', '.hl_profile_submit', function(e) {
-            e.preventDefault();
-            $('#hl_alert').hide();
-            let hl_age = $("#hl_age").val();
-            let hl_property_type = $("select#hl_property_type").val();
-            let hl_builder_name = $("#hl_builder_name").val();
-            let hl_property_value = $("#hl_property_value").val();
-            let hl_property_area = $("#hl_property_area").val();
-            let hl_property_city = $("#hl_property_city").val();
-            let hl_gross_salary = $("#hl_gross_salary").val();
-            let hl_net_salary = $("#hl_net_salary").val();
-            let hl_co_joint = $("#hl_co_joint").val();
-            let ltv_1 = $("#hl_ltv_1").val();
-            let ltv_2 = $("#hl_ltv_2").val();
-            let ltv_3 = $("#hl_ltv_3").val();
-
-
-
-
-            if (check_null(hl_age) || check_null(hl_property_type) ||
-                check_null(hl_builder_name) || check_null(hl_property_value) ||
-                check_null(hl_property_area) || check_null(hl_gross_salary) ||
-                check_null(hl_net_salary) || check_null(hl_co_joint) ||
-                hl_property_type == 0 || check_null(ltv_1) || check_null(ltv_2) || check_null(ltv_3)) {
-                $('#hl_alert').show();
-                $('#hl_alert').html("CHOOSE PROPERTY TYPE & FILL ALL THE FEILDS");
-            } else {
-                if (check_numeric(hl_property_value) || check_numeric(hl_gross_salary) ||
-                    check_numeric(hl_net_salary) || check_numeric(ltv_1) || check_numeric(ltv_2) ||
-                    check_numeric(ltv_3)) {
-                    $('#hl_alert').show();
-                    $('#hl_alert').html(
-                        "PROPERTY VALUE & GROSS SALARY & NET SALARY SHOULD BE IN NUMERIC VALUE");
-
-                } else {
-                    $('#hl_alert').hide();
-                    $('.hl_profile_edit').show();
-                    $('.hl_profile_submit').hide();
-                    $('.hl_profile_add').prop('disabled', false);
-                    $("#hl_age").prop('disabled', true);
-                    $("#hl_property_type").prop('disabled', true);
-                    $("#hl_builder_name").prop('disabled', true);
-                    $("#hl_property_value").prop('disabled', true);
-                    $("#hl_property_area").prop('disabled', true);
-                    $("#hl_property_city").prop('disabled', true);
-                    $("#hl_gross_salary").prop('disabled', true);
-                    $("#hl_net_salary").prop('disabled', true);
-                    $("#hl_co_joint").prop('disabled', true);
-                    $("#hl_ltv_1").prop('disabled', true);
-                    $("#hl_ltv_2").prop('disabled', true);
-                    $("#hl_ltv_3").prop('disabled', true);
-                    $("#hl_fn_ltv_1").val(loan_ltv(hl_property_value, ltv_1));
-                    $("#hl_fn_ltv_2").val(loan_ltv(hl_property_value, ltv_2));
-                    $("#hl_fn_ltv_3").val(loan_ltv(hl_property_value, ltv_3));
-
-                }
-            }
-
-        });
-        //home loan extra feils submit to database
-
-        //Personal Loan Profile obligation calculate section
-        $('body').on('click', '.calculate', function(e) {
-            e.preventDefault();
-            let loan_type = $("#ob_loan_type").val();
-            let bank_name = $("#ob_bank_name").val();
-            let loan_amount = $("#ob_loan_amount").val();
-            let roi = $("#ob_roi").val();
-            let tennure = $("#ob_tennure").val();
-            let original_emi = $("#ob_original_emi").val();
-
-
-
-            if (check_null(loan_type) || check_null(bank_name) || check_null(loan_amount) || check_null(
-                    roi) || check_null(tennure) || check_null(original_emi)) {
-                $('#ob_alert').show();
-                $('#ob_alert').html("FILL ALL THE FEILDS");
-            } else {
-                if (check_numeric(loan_amount) || check_numeric(roi) || check_numeric(tennure) || check_numeric(original_emi)) {
-                    $('#ob_alert').show();
-                    $('#ob_alert').html("ROI & LOAN AMOUNT & TENURE SHOULD BE IN NUMERIC VALUE");
-
-                } else {
-                    $('#ob_alert').hide();
-                    $("#ob_bt").prop('disabled', false);
-                    $("#ob_pos").prop('disabled', false);
-                    $('.add').prop('disabled', false);
-                    $('#ob_emi').val(calculate_emi(loan_amount, roi, tennure));
-                    $("#ob_loan_type").prop('disabled', false   );
-                    $("#ob_bank_name").prop('disabled', false);
-                    $("#ob_loan_amount").prop('disabled', false);
-                    $("#ob_roi").prop('disabled', false);
-                    $("#ob_tennure").prop('disabled', true);
-                }
-            }
-
-        });
-        //Personal Loan Profile obligation calculate section
-
-        //personal LOan cr_obligation Calculate
-        $('body').on('click', '.cr_calculate', function(e) {
-            e.preventDefault();
-            let cr_bank_name = $("#cr_bank_name").val();
-            let cr_limit = $("#cr_limit").val();
-            let cr_card_outstanding = $("#cr_card_outstanding").val();
-
-            if (check_null(cr_bank_name) || check_null(cr_limit || check_null(cr_card_outstanding))) {
-                $('#cr_alert').show();
-                $('#cr_alert').html("FILL ALL THE FEILDS");
-            } else {
-                if (check_numeric(cr_limit) || check_numeric(cr_card_outstanding)) {
-                    $('#cr_alert').show();
-                    $('#cr_alert').html("CARD OUSTANDING AND CARD LIMIT SHOULD BE NUMBERIC VALUE");
-
-                } else {
-                    $('#cr_alert').hide();
-                    $("#cr_bt").prop('disabled', false);
-                    $('.cr_add').prop('disabled', false);
-                    $('#cr_emi').val(card_emi(cr_card_outstanding));
-                    $("#cr_bank_name").prop('disabled', true);
-                    $("#cr_limit").prop('disabled', true);
-                    $("#cr_card_outstanding").prop('disabled', true);
-
-                }
-            }
-
-        });
-        //end personal LOan cr_obligation Calculate
-
-        //personal Loan el_obligation Calculate
-        $('body').on('click', '.el_calculate', function(e) {
-            e.preventDefault();
-            let el_bank_name = $("#el_bank_name").val();
-            let el_em_cat = $("#el_em_cat").val();
-            let el_multiplier = $("#el_multiplier").val();
-            let el_foir = $("#el_foir").val();
-            let el_mul_eligibility = $("#el_mul_eligibility").val();
-            let el_roi = $("#el_roi").val();
-
-            if (check_null(el_bank_name) || check_null(el_em_cat) || check_null(el_multiplier) ||
-                check_null(el_foir) || check_null(el_mul_eligibility) || check_null(el_roi)) {
-                $('#el_alert').show();
-                $('#el_alert').html("FILL ALL THE FEILDS");
-            } else {
-                if (check_numeric(el_multiplier) || check_numeric(el_foir) || check_numeric(
-                        el_mul_eligibility) || check_numeric(el_roi)) {
-                    $('#el_alert').show();
-                    $('#el_alert').html("ELG-MUL & FOIR & MUL-ELG & ROI SHOULD BE NUMBERIC VALUE");
-
-                } else {
-                    $('#el_alert').hide();
-                    $("#el_bank_name").prop('disabled', true);
-                    $("#el_em_cat").prop('disabled', true);
-                    $("#el_multiplier").prop('disabled', true);
-                    $("#el_foir").prop('disabled', true);
-                    $("#el_mul_eligibility").prop('disabled', true);
-                    $("#el_roi").prop('disabled', true);
-                    $('.el_add').prop('disabled', false);
-                    $('#el_emi_per_lak').val(per_lak_emi(el_roi));
-                    let emi_per_lak = $("#el_emi_per_lak").val();
-                    $('#el_emi_foir_eligibility').val(foir_eligibility(el_foir, emi_per_lak));
-
-                }
-            }
-
-        });
-        //end personal Loan el_obligation Calculate
-
-        //final calcuation section
-        $('body').on('click', '#final_calculate', function() {
-            let f_loan_amount = $('#Final_Loan_amount').val();
-            let f_roi = $('#final_roi').val();
-            let f_tennure = $('#final_tenure').val();
-
-            if (check_null(f_loan_amount) || check_null(f_roi) || check_null(f_tennure)) {
-                $('#final_alert').show();
-                $('#final_alert').html("ENTER ALL THE FEILDS");
-            } else {
-                if (check_numeric(f_loan_amount) || check_numeric(f_roi) || check_numeric(f_tennure)) {
-                    $('#final_alert').show();
-                    $('#final_alert').html("ALL THE FEILDS SHOULD BE NUMERIC");
-                } else {
-                    $('#final_alert').hide();
-                    $('#final_calculate').hide();
-                    $('#final_edit').show();
-                    $('#Final_Loan_amount').prop('disabled', true);
-                    $('#final_roi').prop('disabled', true);
-                    $('#final_tenure').prop('disabled', true);
-                    $('#final_emi').val(calculate_emi(f_loan_amount, f_roi, f_tennure));
-                    let f_emi = $('#final_emi').val();
-                    let f_obligation = $('#cr_tb_final_obligation').val();
-                    $('#final_proposed_total_emi').val(Math.round(Number(f_emi) + Number(
-                    f_obligation)));
-                    let f_ob_con = $('#final_proposed_total_emi').val();
-                    let f_net_salary = $('#cr_tb_final_salary').val();
-                    $('#final_current_foir').val(current_foir(f_ob_con, f_net_salary) + "%");
-                    $('#final_proposed_foir').val(proposed_foir(f_ob_con, f_net_salary, f_emi) + "%");
-                    $('#Final_page_sal_con').val(Math.round(Number(f_net_salary)));
-                    $('#Final_page_obl_con').val(Math.round(Number(f_obligation)));
-                    $('#final_submit').prop('disabled', false);
-                }
-            }
-        })
-        //end final calcuation section
-
-        //final edit button
-        $('body').on('click', '#final_edit', function() {
-            $('#final_edit').hide();
-            $('#final_calculate').show();
-            $('#final_submit').prop('disabled', true);
-            $('#Final_Loan_amount').prop('disabled', false);
-            $('#Final_Loan_amount').val('');
-            $('#final_roi').prop('disabled', false);
-            $('#final_roi').val('');
-            $('#final_tenure').prop('disabled', false);
-            $('#final_tenure').val('');
-            $('#final_emi').val('');
-            $('#final_proposed_total_emi').val('');
-            $('#final_current_foir').val('');
-            $('#final_proposed_foir').val('');
-            $('#Final_page_sal_con').val('');
-            $('#Final_page_obl_con').val('');
-
-        })
-        //end final edit button
-
-        //final submit
+        //FINAL SUBMIT FOR ALL TO DATABASE SECTION
         $('body').on('click', '#final_submit', function(e) {
             e.preventDefault();
             let final_loan_amount = $('#Final_Loan_amount').val();
@@ -1736,6 +1779,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
             let final_proposed_total_emi = $('#final_proposed_total_emi').val();
             let final_current_foir = $('#final_current_foir').val();
             let final_proposed_foir = $('#final_proposed_foir').val();
+            let Final_page_remarks = $('#Final_page_remarks').val();
             let final_sal_mon1 = $('#el_sal_mon1').val();
             let final_sal_mon2 = $('#el_sal_mon2').val();
             let final_sal_mon3 = $('#el_sal_mon3').val();
@@ -1765,6 +1809,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                     final_proposed_total_emi: final_proposed_total_emi,
                     final_current_foir: final_current_foir,
                     final_proposed_foir: final_proposed_foir,
+                    Final_page_remarks: Final_page_remarks,
                     final_sal_mon1: final_sal_mon1,
                     final_sal_mon2: final_sal_mon2,
                     final_sal_mon3: final_sal_mon3,
@@ -1808,317 +1853,549 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
             });
         });
-        //end of final submit
+        //FINAL SUBMIT FOR ALL TO DATABASE SECTION
 
-        //  personal loan el_obligation add section
-        $('body').on('click', '.el_add', function(e) {
+
+
+    // !================================ END ALL LOAN OBLIGATION ADD SECTION ===========!
+
+    // !==============SECTION FOR ALL CALCUALTION BUTTON IN PAGE ================!
+
+        // LOAN EMI OBLIGATION CALCULATE SECTION
+        $('body').on('click', '.calculate', function(e) {
             e.preventDefault();
-
-            let elg_bank_name = $("#el_bank_name").val();
-            let elg_emp_cat = $("#el_em_cat").val();
-            let elg_multiplier = $("#el_multiplier").val();
-            let elg_foir = $("#el_foir").val();
-            let elg_mul_eligibility = $("#el_mul_eligibility").val();
-            let elg_roi = $("#el_roi").val();
-            let elg_emi_per_lak = $("#el_emi_per_lak").val();
-            let elg_emi_foir_eligibility = $("#el_emi_foir_eligibility").val();
-            let cus_id = $('#cus_id').val();
-            let enq_id = $('#enq_id').val();
-
-            $.ajax({
-
-                type: 'POST',
-
-                url: "{{ route('breakDown.store') }}",
-
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    el_bank_name: elg_bank_name,
-                    el_emp_cat: elg_emp_cat,
-                    el_multiplier: elg_multiplier,
-                    el_foir: elg_foir,
-                    el_mul_eligibility: elg_mul_eligibility,
-                    el_roi: elg_roi,
-                    el_emi_per_lak: elg_emi_per_lak,
-                    el_emi_foir_eligibility: elg_emi_foir_eligibility,
-                    cusid: cus_id,
-                    enqid: enq_id,
-                    table: 3
-                },
-
-                success: function(data) {
-
-
-                    let response = JSON.parse(data);
-                    $('#inserted_el').empty();
-                    $.each(response, function(i, item) {
-
-
-                        var $tr = $('<tr>').append(
-                            $('<td>').text(item.el_Bank_name),
-                            $('<td>').text(item.el_employee_category),
-                            $('<td>').text(item.el_multiplier),
-                            $('<td>').text(item.el_foir),
-                            $('<td>').text(item.el_mutiplier_eligibility),
-                            $('<td>').text(item.el_roi),
-                            $('<td>').text(item.el_emi_per_lak),
-                            $('<td>').text(item.el_foir_eligibility),
-                            $('<td>').html('<button type="button" id=' +
-                                item.id +
-                                ' class="btn btn-primary el_delete">Remove</button>'
-                            ),
-                        );
-                        $tr.appendTo('#inserted_el');
-                        $(".el_add").prop('disabled', true);
-                        $("#el_bank_name").prop('disabled', false);
-                        $('#el_bank_name').val('');
-                        $("#el_em_cat").prop('disabled', false);
-                        $('#el_em_cat').val('');
-                        $("#el_multiplier").prop('disabled', false);
-                        $('#el_multiplier').val('');
-                        $("#el_foir").prop('disabled', false);
-                        $('#el_foir').val('');
-                        $("#el_mul_eligibility").prop('disabled', false);
-                        $('#el_mul_eligibility').val('');
-                        $("#el_roi").prop('disabled', false);
-                        $('#el_roi').val('');
-                        $('#el_emi_per_lak').val('');
-                        $('#el_emi_foir_eligibility').val('');
-                        $("#el_add").prop('disabled', true);
-                    });
-
-                }
-
-            });
-
-        });
-        // end personal loan el_obligation add section
-
-        //  personal loan cr_obligation add section
-        $('body').on('click', '.cr_add', function(e) {
-            e.preventDefault();
-
-            let cr_bank_name = $("#cr_bank_name").val();
-            let cr_limit = $("#cr_limit").val();
-            let cr_card_outstanding = $("#cr_card_outstanding").val();
-            let cr_emi = $("#cr_emi").val();
-            let cr_bt = $("#cr_bt").val();
-            let cus_id = $('#cus_id').val();
-            let enq_id = $('#enq_id').val();
-            if (check_numeric(cr_bt)) {
-                $('#cr_alert').show();
-                $('#cr_alert').html("BT FEILD SHOULD BE NUMBER");
-            } else {
-                $.ajax({
-
-                    type: 'POST',
-
-                    url: "{{ route('breakDown.store') }}",
-
-                    data: {
-                        _token: "{{ csrf_token() }}",
-                        crBankName: cr_bank_name,
-                        cr_limit: cr_limit,
-                        cr_card_outstanding: cr_card_outstanding,
-                        cr_emi: cr_emi,
-                        cr_bt: cr_bt,
-                        cusid: cus_id,
-                        enqid: enq_id,
-                        table: 2
-                    },
-
-                    success: function(data) {
-
-
-                        let response = JSON.parse(data);
-
-                        let sum_of_emi_bt_yes_cr = 0;
-                        let sum_of_emi_bt_no_cr = 0;
-                        let final_obligation_cr = 0;
-
-                        $('#inserted_cr').empty();
-                        $.each(response, function(i, item) {
-
-                            var bt_yes_no = "NO";
-                            if (item.cr_bt == 1) {
-                                bt_yes_no = "YES";
-                            }
-                            //calcuation for emi bt-yes and bt-no
-                            if (item.cr_bt == 1) {
-                                sum_of_emi_bt_yes_cr = sum_of_emi_bt_yes_cr +
-                                    Number(item.cr_emi);
-                            } else {
-                                sum_of_emi_bt_no_cr = sum_of_emi_bt_no_cr + Number(
-                                    item.cr_emi);
-                            }
-                            //end calcuation for emi bt-yes and bt-no
-
-                            var $tr = $('<tr>').append(
-                                $('<td>').text(item.cr_Bank_name),
-                                $('<td>').text(item.cr_card_limit),
-                                $('<td>').text(item.cr_card_outstanding),
-                                $('<td>').text(item.cr_emi),
-                                $('<td>').text(bt_yes_no),
-                                $('<td>').html('<button type="button" id=' +
-                                    item.id +
-                                    ' class="btn btn-primary cr_delete">Remove</button>'
-                                ),
-                            );
-                            $tr.appendTo('#inserted_cr');
-                            $("#cr_bt").prop('disabled', true);
-                            $("#cr_bt").prop('selectedIndex', 0);
-                            $('.cr_add').prop('disabled', true);
-                            $('#cr_emi').val('');
-                            $("#cr_bank_name").prop('disabled', false);
-                            $("#cr_bank_name").val('');
-                            $("#cr_limit").prop('disabled', false);
-                            $("#cr_limit").val('');
-                            $("#cr_card_outstanding").prop('disabled', false);
-                            $("#cr_card_outstanding").val('');
-                        });
-                        $("#cr_emi_bt_yes").val(sum_of_emi_bt_yes_cr);
-                        $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
-                        let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
-                        let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
-                        $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) +
-                            Number(final_ob_sum_of_emi_no));
-                    }
-
-                });
-            }
-        });
-        // end  personal loan cr_obligation add section
-
-        //Personal Loan Profile obligation save
-        $('body').on('click', '.add', function(e) {
-            e.preventDefault();
-            $('#ob_alert').hide();
-
             let loan_type = $("#ob_loan_type").val();
             let bank_name = $("#ob_bank_name").val();
             let loan_amount = $("#ob_loan_amount").val();
             let roi = $("#ob_roi").val();
             let tennure = $("#ob_tennure").val();
             let original_emi = $("#ob_original_emi").val();
-            let emi = $("#ob_emi").val();
-            let pos = $("#ob_pos").val();
-            let bt = $("#ob_bt").val();
-            let cus_id = $('#cus_id').val();
-            let enq_id = $('#enq_id').val();
-            if (check_null(pos)) {
+
+
+
+            if (check_null(loan_type) || check_null(bank_name) || check_null(loan_amount) || check_null(
+                    roi) || check_null(tennure) || check_null(original_emi)) {
                 $('#ob_alert').show();
-                $('#ob_alert').html("FILL POS FEILD");
+                $('#ob_alert').html("FILL ALL THE FEILDS");
             } else {
-                if (check_numeric(pos)) {
+                if (check_numeric(loan_amount) || check_numeric(roi) || check_numeric(tennure) || check_numeric(original_emi)) {
                     $('#ob_alert').show();
-                    $('#ob_alert').html("POS FEILD SHOULD BE NUMBER");
+                    $('#ob_alert').html("ROI & LOAN AMOUNT & TENURE SHOULD BE IN NUMERIC VALUE");
+
                 } else {
-                    $.ajax({
-
-                        type: 'POST',
-
-                        url: "{{ route('breakDown.store') }}",
-
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            loanType: loan_type,
-                            bankName: bank_name,
-                            loanAmount: loan_amount,
-                            rateOfInterest: roi,
-                            tennure: tennure,
-                            emi: original_emi,
-                            pos: pos,
-                            bt: bt,
-                            cusid: cus_id,
-                            enqid: enq_id,
-                            table: 1
-                        },
-
-                        success: function(data) {
-
-
-                            let response = JSON.parse(data);
-                            let sum_of_pos_bt_yes = 0;
-                            let sum_of_pos_bt_no = 0;
-                            let sum_of_emi_bt_yes = 0;
-                            let sum_of_emi_bt_no = 0;
-                            $('#inserted_ob').empty();
-                            $.each(response, function(i, item) {
-
-
-                                var bt_yes_no = "NO";
-                                if (item.ob_bt == 1) {
-                                    bt_yes_no = "YES";
-                                }
-
-                                //calcuation for bt-yes and bt-no
-                                if (item.ob_bt == 1) {
-                                    sum_of_pos_bt_yes = sum_of_pos_bt_yes + Number(
-                                        item.ob_pos);
-                                } else {
-                                    sum_of_pos_bt_no = sum_of_pos_bt_no + Number(
-                                        item.ob_pos);
-                                }
-                                //end calcuation for bt-yes and bt-no
-                                //calcuation for emi bt-yes and bt-no
-                                if (item.ob_bt == 1) {
-                                    sum_of_emi_bt_yes = sum_of_emi_bt_yes + Number(
-                                        item.ob_emi);
-                                } else {
-                                    sum_of_emi_bt_no = sum_of_emi_bt_no + Number(
-                                        item.ob_emi);
-                                }
-                                //end calcuation for emi bt-yes and bt-no
-
-                                var $tr = $('<tr>').append(
-                                    $('<td>').text(item.ob_Loan_type),
-                                    $('<td>').text(item.ob_Bank_name),
-                                    $('<td>').text(item.ob_Loan_amount),
-                                    $('<td>').text(item.ob_roi),
-                                    $('<td>').text(item.ob_tennure),
-                                    $('<td>').text(item.ob_emi),
-                                    $('<td>').text(item.ob_pos),
-                                    $('<td>').text(bt_yes_no),
-                                    $('<td>').html('<button type="button" id=' +
-                                        item.id +
-                                        ' class="btn btn-sm btn-danger delete"><i class="fas fa-trash-alt px-2"></i></button>'
-                                    ),
-                                );
-                                $tr.appendTo('#inserted_ob');
-                                $("#ob_sum_of_pos_bt_yes").val(sum_of_pos_bt_yes);
-                                $("#ob_sum_of_pos_bt_no").val(sum_of_pos_bt_no);
-                                $("#ob_sum_of_emi_bt_no").val(sum_of_emi_bt_no);
-                                $("#ob_sum_of_emi_bt_yes").val(sum_of_emi_bt_yes);
-                                $("#ob_bt").prop('disabled', true);
-                                $("#ob_bt").prop('selectedIndex', 0);
-                                $("#ob_pos").prop('disabled', true);
-                                $("#ob_pos").val('');
-                                $('.add').prop('disabled', true);
-                                $('#ob_emi').val('');
-                                $("#ob_loan_type").prop('disabled', false);
-                                $("#ob_loan_type").val('');
-                                $("#ob_bank_name").prop('disabled', false);
-                                $("#ob_bank_name").val('');
-                                $("#ob_loan_amount").prop('disabled', false);
-                                $("#ob_loan_amount").val('');
-                                $("#ob_roi").prop('disabled', false);
-                                $("#ob_roi").val('');
-                                $("#ob_tennure").prop('disabled', false);
-                                $("#ob_tennure").val('');
-                                $("#ob_original_emi").val('');
-
-                            });
-
-                        }
-
-                    });
+                    $('#ob_alert').hide();
+                    $("#ob_bt").prop('disabled', false);
+                    $("#ob_pos").prop('disabled', false);
+                    $('.add').prop('disabled', false);
+                    $('#ob_emi').val(calculate_emi(loan_amount, roi, tennure));
+                    $("#ob_loan_type").prop('disabled', false   );
+                    $("#ob_bank_name").prop('disabled', false);
+                    $("#ob_loan_amount").prop('disabled', false);
+                    $("#ob_roi").prop('disabled', false);
+                    $("#ob_tennure").prop('disabled', true);
                 }
             }
 
         });
-        //END Personal Loan Profile obligation save
+        //END LOAN EMI OBLIGATION CALCULATE SECTION
 
-        //section to delete table ob record
+        //LOAN CREDIT OBLIGATION CALCULATE
+        $('body').on('click', '.cr_calculate', function(e) {
+            e.preventDefault();
+            let cr_bank_name = $("#cr_bank_name").val();
+            let cr_limit = $("#cr_limit").val();
+            let cr_card_outstanding = $("#cr_card_outstanding").val();
+
+            if (check_null(cr_bank_name) || check_null(cr_limit || check_null(cr_card_outstanding))) {
+                $('#cr_alert').show();
+                $('#cr_alert').html("FILL ALL THE FEILDS");
+            } else {
+                if (check_numeric(cr_limit) || check_numeric(cr_card_outstanding)) {
+                    $('#cr_alert').show();
+                    $('#cr_alert').html("CARD OUSTANDING AND CARD LIMIT SHOULD BE NUMBERIC VALUE");
+
+                } else {
+                    $('#cr_alert').hide();
+                    $("#cr_bt").prop('disabled', false);
+                    $('.cr_add').prop('disabled', false);
+                    $('#cr_emi').val(card_emi(cr_card_outstanding));
+                    $("#cr_bank_name").prop('disabled', true);
+                    $("#cr_limit").prop('disabled', true);
+                    $("#cr_card_outstanding").prop('disabled', true);
+
+                }
+            }
+
+        });
+        //END LOAN CREDIT OBLIGATION CALCULATE
+
+        //SALARY AVREAGE CALCULATION FOR PL LOAN && BS LOAN
+        $('body').on('click', '#el_cal_salary_btn', function(e) {
+            e.preventDefault();
+            //validation reset
+            $('#el_sal_mon1').removeClass('is-invalid');
+            $('#el_sal_mon2').removeClass('is-invalid');
+            $('#el_sal_mon3').removeClass('is-invalid');
+
+            let mon1 = $('#el_sal_mon1').val();
+            let mon2 = $('#el_sal_mon2').val();
+            let mon3 = $('#el_sal_mon3').val();
+            let validation_check = true;
+
+            if (check_null(mon1)) {
+                $('#el_sal_mon1').addClass('is-invalid');
+                $('#el_sal_mon1_error').html('Not a Valid Input');
+                validation_check = false;
+            } else {
+                $('#el_sal_mon1').removeClass('is-invalid');
+                $('#el_sal_mon1_error').html('');
+            }
+            if (check_null(mon2)) {
+                $('#el_sal_mon2').addClass('is-invalid');
+                $('#el_sal_mon2_error').html('Not a Valid Input');
+                validation_check = false;
+
+            } else {
+                $('#el_sal_mon2').removeClass('is-invalid');
+                $('#el_sal_mon2_error').html('');
+            }
+            if (check_null(mon3)) {
+                $('#el_sal_mon3').addClass('is-invalid');
+                $('#el_sal_mon3_error').html('Not a Valid Input');
+                validation_check = false;
+            } else {
+                $('#el_sal_mon3').removeClass('is-invalid');
+                $('#el_sal_mon3_error').html('');
+            }
+
+            if (validation_check) {
+                $('#cr_tb_final_salary').val(Math.round(average_income(mon1, mon2, mon3)));
+                $('#el_cal_edit_btn').prop('disabled', false);
+                $('#el_cal_salary_btn').prop('disabled', true);
+                $('#el_sal_mon1').prop('disabled', true);
+                $('#el_sal_mon2').prop('disabled', true);
+                $('#el_sal_mon3').prop('disabled', true);
+            }
+
+        })
+        //END SALARY AVREAGE CALCULATION FOR PL LOAN && BS LOAN
+
+        //SALARY AVREAGE CALCULATION FOR HL LOAN && MORTAGES LOAN
+        $('body').on('click', '#hl_cal_salary_btn', function(e) {
+            e.preventDefault();
+            //validation reset
+            $('#hl_sal_mon1').removeClass('is-invalid');
+            $('#hl_sal_mon2').removeClass('is-invalid');
+            $('#hl_sal_mon3').removeClass('is-invalid');
+
+            let mon1 = $('#hl_sal_mon1').val();
+            let mon2 = $('#hl_sal_mon2').val();
+            let mon3 = $('#hl_sal_mon3').val();
+            let validation_check = true;
+
+            if (check_null(mon1)) {
+                $('#hl_sal_mon1').addClass('is-invalid');
+                $('#hl_sal_mon1_error').html('Not a Valid Input');
+                validation_check = false;
+            } else {
+                $('#hl_sal_mon1').removeClass('is-invalid');
+                $('#hl_sal_mon1_error').html('');
+            }
+            if (check_null(mon2)) {
+                $('#hl_sal_mon2').addClass('is-invalid');
+                $('#hl_sal_mon2_error').html('Not a Valid Input');
+                validation_check = false;
+
+            } else {
+                $('#hl_sal_mon2').removeClass('is-invalid');
+                $('#hl_sal_mon2_error').html('');
+            }
+            if (check_null(mon3)) {
+                $('#hl_sal_mon3').addClass('is-invalid');
+                $('#hl_sal_mon3_error').html('Not a Valid Input');
+                validation_check = false;
+            } else {
+                $('#hl_sal_mon3').removeClass('is-invalid');
+                $('#hl_sal_mon3_error').html('');
+            }
+
+            if (validation_check) {
+                $('#hl_tb_income_consi').val(Math.round(average_income(mon1, mon2, mon3)));
+                $('#hl_cal_edit_btn').prop('disabled', false);
+                $('#hl_cal_salary_btn').prop('disabled', true);
+                $('#hl_sal_mon1').prop('disabled', true);
+                $('#hl_sal_mon2').prop('disabled', true);
+                $('#hl_sal_mon3').prop('disabled', true);
+            }
+
+        })
+        //END SALARY AVREAGE CALCULATION FOR HL LOAN && MORTAGES LOAN
+
+        //PERSONAL LOAN EL_OBLIGATION CALCULATE
+        $('body').on('click', '.el_calculate', function(e) {
+            e.preventDefault();
+            let el_bank_name = $("#el_bank_name").val();
+            let el_em_cat = $("#el_em_cat").val();
+            let el_multiplier = $("#el_multiplier").val();
+            let el_foir = $("#el_foir").val();
+            let el_mul_eligibility = $("#el_mul_eligibility").val();
+            let el_roi = $("#el_roi").val();
+
+            if (check_null(el_bank_name) || check_null(el_em_cat) || check_null(el_multiplier) ||
+                check_null(el_foir) || check_null(el_mul_eligibility) || check_null(el_roi)) {
+                $('#el_alert').show();
+                $('#el_alert').html("FILL ALL THE FEILDS");
+            } else {
+                if (check_numeric(el_multiplier) || check_numeric(el_foir) || check_numeric(
+                        el_mul_eligibility) || check_numeric(el_roi)) {
+                    $('#el_alert').show();
+                    $('#el_alert').html("ELG-MUL & FOIR & MUL-ELG & ROI SHOULD BE NUMBERIC VALUE");
+
+                } else {
+                    $('#el_alert').hide();
+                    $("#el_bank_name").prop('disabled', true);
+                    $("#el_em_cat").prop('disabled', true);
+                    $("#el_multiplier").prop('disabled', true);
+                    $("#el_foir").prop('disabled', true);
+                    $("#el_mul_eligibility").prop('disabled', true);
+                    $("#el_roi").prop('disabled', true);
+                    $('.el_add').prop('disabled', false);
+                    $('#el_emi_per_lak').val(per_lak_emi(el_roi));
+                    let emi_per_lak = $("#el_emi_per_lak").val();
+                    $('#el_emi_foir_eligibility').val(foir_eligibility(el_foir, emi_per_lak));
+
+                }
+            }
+
+        });
+        //END PERSONAL LOAN EL_OBLIGATION CALCULATE
+
+         //HOME LOAN && MORTAGELOAN EL_OBLIGATION CALCULATE
+        $('body').on('click', '#hl_el_cal_btn', function(e) {
+            e.preventDefault();
+            let hl_bank_name = $("#hl_bank_name").val();
+            let hl_ltv = $("#hl_ltv").val();
+
+            let hl_foir = $("#hl_foir").val();
+            let hl_roi = $("#hl_roi").val();
+            let hl_tenure = $("select#hl_tenure").val();
+            let property_value = $("#hl_el_property_value").val();
+
+
+            if (check_null(hl_bank_name) || check_null(hl_ltv) || check_null(hl_foir) ||
+                check_null(hl_roi) || check_null(hl_tenure)) {
+                $('#hl_eg_alert').show();
+                $('#hl_eg_alert').html("FILL ALL THE FEILDS");
+            } else {
+                if (check_numeric(hl_ltv) || check_numeric(hl_foir) || check_numeric(
+                    hl_roi) ) {
+                    $('#hl_eg_alert').show();
+                    $('#hl_eg_alert').html("ELG-MUL & FOIR & MUL-ELG & ROI SHOULD BE NUMBERIC VALUE");
+
+                } else {
+                    $('#hl_eg_alert').hide();
+                    $("#hl_bank_name").prop('disabled', true);
+                    $("#hl_ltv").prop('disabled', true);
+                    $("#hl_foir").prop('disabled', true);
+                    $("#hl_roi").prop('disabled', true);
+                    $("select#hl_tenure").prop('disabled', true);
+                    $("#hl_el_cal_btn").hide();
+                    $("#hl_el_add_btn").show();
+                    $("#hl_el_add_btn").prop('disabled', false);
+                    $('#hl_el_edit_btn').prop('disabled', false);
+                    $("#hl_ltv_eligibility").val(Number(property_value)*Number(hl_ltv));
+                    $('#hl_emi_per_lak').val(per_lak_emi(hl_roi));
+                    let emi_per_lak = $("#hl_emi_per_lak").val();
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility_home_loan(hl_foir, emi_per_lak));
+
+
+                }
+            }
+
+        });
+        //END HOME LOAN && MORTAGELOAN EL_OBLIGATION CALCULATE
+
+        //EX_LN_COMPARISON CALCULATE BUTTON
+        $('body').on('click', '#ex_ln_calculate', function(e) {
+            e.preventDefault();
+            let ln_loan_amount = $('#ex_ln_loan_amount').val();
+            let ln_tennure = $('#ex_ln_tennure').val();
+            let ln_roi = $('#ex_ln_roi').val();
+            let ln_pos = $('#ex_ln_pos').val();
+            let ln_no_of_emi_paid = $('#ex_ln_no_of_emi_paid').val();
+
+            if (check_null(ln_loan_amount) || check_null(ln_tennure) || check_null(ln_roi) ||
+                check_null(ln_pos) || check_null(ln_no_of_emi_paid)) {
+                $('#ln_com_alert').show();
+                $('#ln_com_alert').html("FILL ALL THE FEILDS & SHOULD BE NUMERIC");
+            } else {
+                $('#ln_com_alert').hide();
+                let emi = calculate_emi(ln_loan_amount, ln_roi, ln_tennure);
+                $('#ex_ln_emi').val(Number(emi));
+                $('#ln_com_new_loan_amount').val(Number(ln_pos));
+                let ex_ln_emi_cal = $('#ex_ln_emi').val();
+                $('#ex_ln_balance_emi').val(Number(ln_tennure) - Number(ln_no_of_emi_paid));
+                let balance_emi = $('#ex_ln_balance_emi').val();
+                $('#ln_com_new_tennure').val(Number(balance_emi));
+                $('#ex_ln_exsting_out_flow').val(Number(balance_emi) * Number(emi));
+                $('#ex_ln_loan_amount').prop('disabled', true);
+                $('#ex_ln_tennure').prop('disabled', true);
+                $('#ex_ln_roi').prop('disabled', true);
+                $('#ex_ln_pos').prop('disabled', true);
+                $('#ex_ln_balance_emi').prop('disabled', true);
+                $('#ex_ln_calculate').prop('disabled', true);
+                $('#ex_ln_no_of_emi_paid').prop('disabled', true);
+                $('#ex_ln_edit').prop('disabled', false);
+            }
+
+
+
+        })
+        //END EX_LN_COMPARISON CALCULATE BUTTON
+
+        //EX_LN_NEW COMPARISON CALCULATE BUTTON
+        $('body').on('click', '#ex_new_ln_calculate', function(e) {
+            e.preventDefault();
+            $('#ln_com_new_roi').removeClass('is-invalid');
+            let new_loan_amount = $('#ln_com_new_loan_amount').val();
+            let new_roi = $('#ln_com_new_roi').val();
+            let new_tennure = $('#ln_com_new_tennure').val();
+            let exiting_outflow = $('#ex_ln_exsting_out_flow').val();
+            let new_gross_sav = $('#ln_com_new_gross_sav').val();
+
+            if (check_null(new_roi)) {
+                $('#ln_com_new_roi').addClass('is-invalid');
+            } else {
+
+                $('#ln_com_new_emi').val(calculate_emi(new_loan_amount, new_roi, new_tennure));
+                let new_emi = $('#ln_com_new_emi').val();
+                $('#ex_new_ln_calculate').prop('disabled', true);
+                $('#ln_com_new_roi').prop('disabled', true);
+                $('#ex_new_ln_edit').prop('disabled', false);
+                $('#ln_com_new_proposed_outflow').val(Number(new_emi) * Number(new_tennure));
+                let new_proposed_outflow = $('#ln_com_new_proposed_outflow').val();
+                $('#ln_com_new_gross_sav').val(Number(exiting_outflow) - Number(new_proposed_outflow));
+                $('#ln_com_final_cal').prop('disabled', false);
+            }
+
+
+
+        })
+        //END EX_LN_NEW_COMPARISON CALCULATE BUTTON
+
+        //HL_PROFILE LOAN_COMPARISON_FINAL_CALCUATION_FOR_CHARAGES
+        $('body').on('click', '#ln_com_final_cal', function(e) {
+            $('#ln_com_motd').removeClass('is-invalid');
+            $('#ln_com_pro_fee').removeClass('is-invalid');
+            e.preventDefault();
+            let com_motd = $('#ln_com_motd').val();
+            let com_pro_fee = $('#ln_com_pro_fee').val();
+            let com_ot_charges = $('#ln_com_ot_charges').val();
+            let com_net_sav = $('#ln_com_net_sav').val();
+            let com_gross_sav = $('#ln_com_new_gross_sav').val();
+
+            if (check_null(com_motd) || check_null(com_pro_fee)) {
+                $('#ln_com_motd').addClass('is-invalid');
+                $('#ln_com_pro_fee').addClass('is-invalid');
+            } else {
+                $('#ln_com_total_cost').val(Number(com_motd) + Number(com_pro_fee) + Number(
+                    com_ot_charges));
+                let com_total_cost = $('#ln_com_total_cost').val();
+                $('#ln_com_net_sav').val(Number(com_gross_sav) - Number(com_total_cost));
+                $('#ln_com_motd').prop('disabled', true);
+                $('#ln_com_pro_fee').prop('disabled', true);
+                $('#ln_com_ot_charges').prop('disabled', true);
+                $('#ln_com_final_cal').prop('disabled', true);
+                $('#ln_com_final_edit').show();
+                $('#ln_com_final_add').prop('disabled', false);
+
+            }
+
+
+        })
+        //END HL_PROFILE LOAN_COMPARISON_FINAL_CALCUATION_FOR_CHARAGES
+
+        //FINAL CALCUATION SECTION
+        $('body').on('click', '#final_calculate', function() {
+            let f_loan_amount = $('#Final_Loan_amount').val();
+            let f_roi = $('#final_roi').val();
+            let f_tennure = $('#final_tenure').val();
+
+                if (check_null(f_loan_amount) || check_null(f_roi) || check_null(f_tennure)) {
+                    $('#final_alert').show();
+                    $('#final_alert').html("ENTER ALL THE FEILDS");
+                } else {
+                    if (check_numeric(f_loan_amount) || check_numeric(f_roi) || check_numeric(f_tennure)) {
+                        $('#final_alert').show();
+                        $('#final_alert').html("ALL THE FEILDS SHOULD BE NUMERIC");
+                    } else {
+                        $('#final_alert').hide();
+                        $('#final_calculate').hide();
+                        $('#final_edit').show();
+                        $('#Final_Loan_amount').prop('disabled', true);
+                        $('#final_roi').prop('disabled', true);
+                        $('#final_tenure').prop('disabled', true);
+                        $('#final_emi').val(calculate_emi(f_loan_amount, f_roi, f_tennure));
+                        let f_emi = $('#final_emi').val();
+                        let f_obligation = $('#cr_tb_final_obligation').val();
+                        $('#final_proposed_total_emi').val(Math.round(Number(f_emi) + Number(
+                        f_obligation)));
+                        let f_ob_con = $('#final_proposed_total_emi').val();
+                        let f_net_salary = $('#cr_tb_final_salary').val();
+                        $('#final_current_foir').val(current_foir(f_ob_con, f_net_salary) + "%");
+                        $('#final_proposed_foir').val(proposed_foir(f_ob_con, f_net_salary, f_emi) + "%");
+                        $('#Final_page_sal_con').val(Math.round(Number(f_net_salary)));
+                        $('#Final_page_obl_con').val(Math.round(Number(f_obligation)));
+                        $('#final_submit').prop('disabled', false);
+                    }
+                }
+        })
+        //END FINAL CALCUATION SECTION
+
+
+    // !==============END SECTION FOR ALL CALCUALTION BUTTON IN PAGE ================!
+
+
+    // !===============ALL LOAN EDIT SECTION ==================================!
+
+        //EX_LN_COMPARISON EDIT BUTTON
+        $('body').on('click', '#ex_ln_edit', function(e) {
+            $('#ex_ln_calculate').prop('disabled', false);
+            $('#ex_new_ln_calculate').prop('disabled', false);
+            $('#ex_ln_edit').prop('disabled', true);
+            $('#ex_new_ln_edit').prop('disabled', true);
+            $('#ex_ln_loan_amount').val('');
+            $('#ex_ln_tennure').val('');
+            $('#ex_ln_roi').val('');
+            $('#ex_ln_emi').val('');
+            $('#ex_ln_pos').val('');
+            $('#ex_ln_no_of_emi_paid').val('');
+            $('#ex_ln_balance_emi').val('');
+            $('#ex_ln_exsting_out_flow').val('');
+            $('#ln_com_new_roi').val('');
+            $('#ex_ln_loan_amount').prop('disabled', false);
+            $('#ln_com_new_roi').prop('disabled', false);
+            $('#ex_ln_no_of_emi_paid').prop('disabled', false);
+            $('#ex_ln_tennure').prop('disabled', false);
+            $('#ex_ln_roi').prop('disabled', false);
+            $('#ex_ln_pos').prop('disabled', false);
+            $('#ln_com_new_loan_amount').val("");
+            $('#ln_com_new_tennure').val("");
+
+        })
+        //END EX_LN_COMPARISON EDIT BUTTON
+
+        //EX_LN_NEW EDIT BUTTON
+        $('body').on('click', '#ex_new_ln_edit', function(e) {
+            $('#ln_com_new_roi').prop('disabled', false);
+            $('#ln_com_new_roi').val('');
+            $('#ex_new_ln_calculate').prop('disabled', false);
+            $('#ex_new_ln_edit').prop('disabled', true);
+            $('#ln_com_final_cal').prop('disabled', true);
+        })
+        //END EX_LN_NEW EDIT BUTTON
+
+        //HL_PROFILE LOAN_COMPARISON_FINAL_EDIT
+        $('body').on('click', '#ln_com_final_edit', function(e) {
+            e.preventDefault();
+            $('#ln_com_final_edit').hide();
+            $('#ln_com_final_cal').prop('disabled', false);
+            $('#ln_com_motd').prop('disabled', false);
+            $('#ln_com_pro_fee').prop('disabled', false);
+            $('#ln_com_ot_charges').prop('disabled', false);
+            $('#ln_com_motd').val('');
+            $('#ln_com_pro_fee').val('');
+            $('#ln_com_ot_charges').val('');
+            $('#ln_com_total_cost').val('');
+            $('#ln_com_net_sav').val('');
+
+        })
+        //END OF HL_PROFILE LOAN_COMPARISON_FINAL_EDIT
+
+        //SALARY AVERAGE_EDIT FOR PL LOAN && BUSSINESS LOAN
+        $('body').on('click', '#el_cal_edit_btn', function(e) {
+            e.preventDefault();
+
+            $('#el_sal_mon1').val('');
+            $('#el_sal_mon2').val('');
+            $('#el_sal_mon3').val('');
+            $('#el_sal_mon1').prop('disabled', false);
+            $('#el_sal_mon2').prop('disabled', false);
+            $('#el_sal_mon3').prop('disabled', false);
+            $('#cr_tb_final_salary').val('');
+            $('#el_cal_edit_btn').prop('disabled', true);
+            $('#el_cal_salary_btn').prop('disabled', false);
+
+        })
+        //END SALARY AVERAGE_EDIT FOR PL LOAN && BUSSINESS LOAN
+
+        //SALARY AVERAGE_EDIT FOR PL LOAN && BUSSINESS LOAN
+         $('body').on('click', '#hl_cal_edit_btn', function(e) {
+            e.preventDefault();
+
+            $('#hl_sal_mon1').val('');
+            $('#hl_sal_mon2').val('');
+            $('#hl_sal_mon3').val('');
+            $('#hl_sal_mon1').prop('disabled', false);
+            $('#hl_sal_mon2').prop('disabled', false);
+            $('#hl_sal_mon3').prop('disabled', false);
+            $('#hl_tb_income_consi').val('');
+            $('#hl_cal_edit_btn').prop('disabled', true);
+            $('#hl_cal_salary_btn').prop('disabled', false);
+
+        })
+        //END SALARY AVERAGE_EDIT FOR PL LOAN && BUSSINESS LOAN
+
+        //EDIT BUTTON FOR HL && MT LOAN EDIT BUTTON
+        $('body').on('click', '#hl_el_edit_btn', function(e) {
+            e.preventDefault();
+
+            $('#hl_bank_name').val('');
+            $('#hl_ltv').val('');
+            $('#hl_foir').val('');
+            $('#hl_roi').val('');
+            $('#hl_emi_per_lak').val('');
+            $('#hl_emi_per_lak').val('');
+            $('#hl_ltv_eligibility').val('');
+            $('#hl_bank_name').prop('disabled', false);
+            $('#hl_ltv').prop('disabled', false);
+            $('#hl_foir').prop('disabled', false);
+            $('#hl_roi').prop('disabled', false);
+            $('#hl_tenure').prop('disabled', false);
+            $('#hl_el_edit_btn').hide();
+            $("#hl_el_cal_btn").show();
+            $("#hl_el_add_btn").prop('disabled', true);
+
+        })
+        //END EDIT BUTTON FOR HL && MT LOAN EDIT BUTTON
+
+        //FINAL EDIT BUTTON
+        $('body').on('click', '#final_edit', function() {
+            $('#final_edit').hide();
+            $('#final_calculate').show();
+            $('#final_submit').prop('disabled', true);
+            $('#Final_Loan_amount').prop('disabled', false);
+            $('#Final_Loan_amount').val('');
+            $('#final_roi').prop('disabled', false);
+            $('#final_roi').val('');
+            $('#final_tenure').prop('disabled', false);
+            $('#final_tenure').val('');
+            $('#final_emi').val('');
+            $('#final_proposed_total_emi').val('');
+            $('#final_current_foir').val('');
+            $('#final_proposed_foir').val('');
+            $('#Final_page_sal_con').val('');
+            $('#Final_page_obl_con').val('');
+
+        })
+        //END FINAL EDIT BUTTON
+
+    // !===============END SECTION ALL LOAN EDIT SECTION ==================================!
+
+
+    // !========================DELETE SECTION TO ALL LOANS ==========================!
+
+        //SECTION TO DELETE TABLE OB RECORD
         $('body').on('click', '.delete', function() {
             var del_id = $(this).attr('id');
             // console.log(id);
@@ -2126,245 +2403,294 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
             let enq_id = $('#enq_id').val();
             delete_tb_row(del_id, 1, cus_id, enq_id);
         });
-        //end section to delete table ob record
+        //END SECTION TO DELETE TABLE OB RECORD
 
-        //section to delete table cr_record
+        //SECTION TO DELETE TABLE CR_RECORD
         $('body').on('click', '.cr_delete', function() {
             var del_id_cr = $(this).attr('id');
             let cus_id_cr = $('#cus_id').val();
             let enq_id_cr = $('#enq_id').val();
             delete_tb_row(del_id_cr, 2, cus_id_cr, enq_id_cr);
         });
-        //end section to delete table  cr_record
+        //END SECTION TO DELETE TABLE  CR_RECORD
 
-        //section to delete table el_record
+        //SECTION TO DELETE TABLE EL_RECORD FOR PL AND BL LOAN
         $('body').on('click', '.el_delete', function() {
             var del_id_cr = $(this).attr('id');
             let cus_id_cr = $('#cus_id').val();
             let enq_id_cr = $('#enq_id').val();
             delete_tb_row(del_id_cr, 3, cus_id_cr, enq_id_cr);
         });
-        //end section to delete table  el_record
+        //END SECTION TO DELETE TABLE EL_RECORD FOR PL AND BL LOAN
 
+        //SECTION TO DELETE TABLE EL_RECORD FOR PL AND BL LOAN
+        $('body').on('click', '.hl_el_delete', function() {
+            var del_id_cr = $(this).attr('id');
+            let cus_id_cr = $('#cus_id').val();
+            let enq_id_cr = $('#enq_id').val();
+            delete_tb_row(del_id_cr, 6, cus_id_cr, enq_id_cr);
+        });
+        //END SECTION TO DELETE TABLE EL_RECORD FOR PL AND BL LOAN
 
-        //uility function
+    // !========================END DELETE SECTION TO ALL LOANS ==========================!
+
+    //!==============================SECTION FOR THIS PAGE UTILITY FUNCTIOND ======================!
         function calculate_emi(Ln_amount, Roi, Tennure) {
-            var r = Number(Roi) / 12 / 100;
-            var n = Tennure;
-            var p = Ln_amount;
-            var TotalEmi = Math.round(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
-                1));
-            return TotalEmi;
-        }
-
-        function per_lak_emi(Roi) {
-            var r = Number(Roi) / 12 / 100;
-            var n = 60;
-            var p = 100000;
-            var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
-                1));
-            return TotalEmi;
-        }
-
-        function check_null(text) {
-            if (text == "") {
-                return true;
-            } else {
-                return false;
+                var r = Number(Roi) / 12 / 100;
+                var n = Tennure;
+                var p = Ln_amount;
+                var TotalEmi = Math.round(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                    1));
+                return TotalEmi;
             }
-        }
 
-        function check_numeric(value) {
-            if ($.isNumeric(value)) {
-                return false;
-            } else {
-                return true;
+            function per_lak_emi(Roi) {
+                var r = Number(Roi) / 12 / 100;
+                var n = 60;
+                var p = 100000;
+                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                    1));
+                return TotalEmi;
             }
-        }
 
-        function delete_tb_row(id, ontable, cus_id, enq_id) {
-            var del_to_table = ontable;
-            var del_rec_id = id;
-            var url = '{{ route('breakDown.update', ':id') }}';
-            url = url.replace(':id', del_rec_id);
-            $.ajax({
+            function check_null(text) {
+                if (text == "") {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
-                type: 'PUT',
+            function check_numeric(value) {
+                if ($.isNumeric(value)) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
 
-                url: url,
+            function delete_tb_row(id, ontable, cus_id, enq_id) {
+                var del_to_table = ontable;
+                var del_rec_id = id;
+                var url = '{{ route('breakDown.update', ':id') }}';
+                url = url.replace(':id', del_rec_id);
+                $.ajax({
 
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    table: ontable,
-                    cusid: cus_id,
-                    enqid: enq_id
-                },
+                    type: 'PUT',
 
-                success: function(data) {
+                    url: url,
 
-                    let response = JSON.parse(data);
-                    // console.log(response.data);
-                    if (ontable == 1) {
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        table: ontable,
+                        cusid: cus_id,
+                        enqid: enq_id
+                    },
 
-                        let sum_of_pos_bt_yes = 0;
-                        let sum_of_pos_bt_no = 0;
-                        let sum_of_emi_bt_yes = 0;
-                        let sum_of_emi_bt_no = 0;
-                        $('#inserted_ob').empty();
-                        $.each(response, function(i, item) {
+                    success: function(data) {
 
-                            var bt_yes_no = "NO";
-                            if (item.ob_bt == 1) {
-                                bt_yes_no = "YES";
-                            }
-                            //calcuation for bt-yes and bt-no
-                            if (item.ob_bt == 1) {
-                                sum_of_pos_bt_yes = sum_of_pos_bt_yes + Number(item.ob_pos);
-                            } else {
-                                sum_of_pos_bt_no = sum_of_pos_bt_no + Number(item.ob_pos);
-                            }
-                            //end calcuation for bt-yes and bt-no
-                            //calcuation for emi bt-yes and bt-no
-                            if (item.ob_bt == 1) {
-                                sum_of_emi_bt_yes = sum_of_emi_bt_yes + Number(item.ob_emi);
-                            } else {
-                                sum_of_emi_bt_no = sum_of_emi_bt_no + Number(item.ob_emi);
-                            }
-                            //end calcuation for emi bt-yes and bt-no
-                            var $tr = $('<tr>').append(
-                                $('<td>').text(item.ob_Loan_type),
-                                $('<td>').text(item.ob_Bank_name),
-                                $('<td>').text(item.ob_Loan_amount),
-                                $('<td>').text(item.ob_roi),
-                                $('<td>').text(item.ob_tennure),
-                                $('<td>').text(item.ob_emi),
-                                $('<td>').text(item.ob_pos),
-                                $('<td>').text(bt_yes_no),
-                                $('<td>').html('<button type="button" id=' + item.id +
-                                    ' class="btn btn-danger delete"><i class="fas fa-trash-alt px-2"></i></button>'),
-                            );
-                            $tr.appendTo('#inserted_ob');
-                        });
-                        $("#ob_sum_of_pos_bt_yes").val(sum_of_pos_bt_yes);
-                        $("#ob_sum_of_pos_bt_no").val(sum_of_pos_bt_no);
-                        $("#ob_sum_of_emi_bt_no").val(sum_of_emi_bt_no);
-                        $("#ob_sum_of_emi_bt_yes").val(sum_of_emi_bt_yes);
+                        let response = JSON.parse(data);
+                        // console.log(response.data);
+                        if (ontable == 1) {
 
-                    } else if (ontable == 2) {
+                            let sum_of_pos_bt_yes = 0;
+                            let sum_of_pos_bt_no = 0;
+                            let sum_of_emi_bt_yes = 0;
+                            let sum_of_emi_bt_no = 0;
+                            $('#inserted_ob').empty();
+                            $.each(response, function(i, item) {
 
+                                var bt_yes_no = "NO";
+                                if (item.ob_bt == 1) {
+                                    bt_yes_no = "YES";
+                                }
+                                //calcuation for bt-yes and bt-no
+                                if (item.ob_bt == 1) {
+                                    sum_of_pos_bt_yes = sum_of_pos_bt_yes + Number(item.ob_pos);
+                                } else {
+                                    sum_of_pos_bt_no = sum_of_pos_bt_no + Number(item.ob_pos);
+                                }
+                                //end calcuation for bt-yes and bt-no
+                                //calcuation for emi bt-yes and bt-no
+                                if (item.ob_bt == 1) {
+                                    sum_of_emi_bt_yes = sum_of_emi_bt_yes + Number(item.ob_emi);
+                                } else {
+                                    sum_of_emi_bt_no = sum_of_emi_bt_no + Number(item.ob_emi);
+                                }
+                                //end calcuation for emi bt-yes and bt-no
+                                var $tr = $('<tr>').append(
+                                    $('<td>').text(item.ob_Loan_type),
+                                    $('<td>').text(item.ob_Bank_name),
+                                    $('<td>').text(item.ob_Loan_amount),
+                                    $('<td>').text(item.ob_roi),
+                                    $('<td>').text(item.ob_tennure),
+                                    $('<td>').text(item.ob_emi),
+                                    $('<td>').text(item.ob_comp_emi),
+                                    $('<td>').text(item.ob_pos),
+                                    $('<td>').text(bt_yes_no),
+                                    $('<td>').html('<button type="button" id=' + item.id +
+                                        ' class="btn btn-danger delete"><i class="fas fa-trash-alt px-2"></i></button>'),
+                                );
+                                $tr.appendTo('#inserted_ob');
+                            });
+                            $("#ob_sum_of_pos_bt_yes").val(sum_of_pos_bt_yes);
+                            $("#ob_sum_of_pos_bt_no").val(sum_of_pos_bt_no);
+                            $("#ob_sum_of_emi_bt_no").val(sum_of_emi_bt_no);
+                            $("#ob_sum_of_emi_bt_yes").val(sum_of_emi_bt_yes);
 
-                        let sum_of_emi_bt_yes_cr = 0;
-                        let sum_of_emi_bt_no_cr = 0;
-                        let final_obligation_cr = 0;
-                        $('#inserted_cr').empty();
-                        $.each(response, function(i, item) {
-
-                            var bt_yes_no = "NO";
-                            if (item.ob_bt == 1) {
-                                bt_yes_no = "YES";
-                            }
-                            //calcuation for emi bt-yes and bt-no
-                            if (item.cr_bt == 1) {
-                                sum_of_emi_bt_yes_cr = sum_of_emi_bt_yes_cr + Number(item
-                                    .cr_emi);
-                            } else {
-                                sum_of_emi_bt_no_cr = sum_of_emi_bt_no_cr + Number(item
-                                    .cr_emi);
-                            }
-                            //end calcuation for emi bt-yes and bt-no
-                            var $tr = $('<tr>').append(
-                                $('<td>').text(item.cr_Bank_name),
-                                $('<td>').text(item.cr_card_limit),
-                                $('<td>').text(item.cr_card_outstanding),
-                                $('<td>').text(item.cr_emi),
-                                $('<td>').text(bt_yes_no),
-                                $('<td>').html('<button type="button" id=' + item.id +
-                                    ' class="btn btn-primary cr_delete">Remove</button>'
-                                ),
-                            );
-                            $tr.appendTo('#inserted_cr');
+                        } else if (ontable == 2) {
 
 
-                        });
-                        $("#cr_emi_bt_yes").val(sum_of_emi_bt_yes_cr);
-                        $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
-                        let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
-                        let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
-                        $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) + Number(
-                            final_ob_sum_of_emi_no));
-                    } else if (ontable == 3) {
+                            let sum_of_emi_bt_yes_cr = 0;
+                            let sum_of_emi_bt_no_cr = 0;
+                            let final_obligation_cr = 0;
+                            $('#inserted_cr').empty();
+                            $.each(response, function(i, item) {
+
+                                var bt_yes_no = "NO";
+                                if (item.ob_bt == 1) {
+                                    bt_yes_no = "YES";
+                                }
+                                //calcuation for emi bt-yes and bt-no
+                                if (item.cr_bt == 1) {
+                                    sum_of_emi_bt_yes_cr = sum_of_emi_bt_yes_cr + Number(item
+                                        .cr_emi);
+                                } else {
+                                    sum_of_emi_bt_no_cr = sum_of_emi_bt_no_cr + Number(item
+                                        .cr_emi);
+                                }
+                                //end calcuation for emi bt-yes and bt-no
+                                var $tr = $('<tr>').append(
+                                    $('<td>').text(item.cr_Bank_name),
+                                    $('<td>').text(item.cr_card_limit),
+                                    $('<td>').text(item.cr_card_outstanding),
+                                    $('<td>').text(item.cr_emi),
+                                    $('<td>').text(bt_yes_no),
+                                    $('<td>').html('<button type="button" id=' + item.id +
+                                        ' class="btn btn-danger btn-sm cr_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                                    ),
+                                );
+                                $tr.appendTo('#inserted_cr');
 
 
-                        $('#inserted_el').empty();
-                        $.each(response, function(i, item) {
-
-                            var $tr = $('<tr>').append(
-                                $('<td>').text(item.el_Bank_name),
-                                $('<td>').text(item.el_employee_category),
-                                $('<td>').text(item.el_multiplier),
-                                $('<td>').text(item.el_foir),
-                                $('<td>').text(item.el_mutiplier_eligibility),
-                                $('<td>').text(item.el_roi),
-                                $('<td>').text(item.el_emi_per_lak),
-                                $('<td>').text(item.el_foir_eligibility),
-                                $('<td>').html('<button type="button" id=' +
-                                    item.id +
-                                    ' class="btn btn-primary el_delete">Remove</button>'
-                                ),
-                            );
-                            $tr.appendTo('#inserted_el');
+                            });
+                            $("#cr_emi_bt_yes").val(sum_of_emi_bt_yes_cr);
+                            $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
+                            let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
+                            let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
+                            $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) + Number(
+                                final_ob_sum_of_emi_no));
+                        } else if (ontable == 3) {
 
 
-                        });
+                            $('#inserted_el').empty();
+                            $.each(response, function(i, item) {
+
+                                var $tr = $('<tr>').append(
+                                    $('<td>').text(item.el_Bank_name),
+                                    $('<td>').text(item.el_employee_category),
+                                    $('<td>').text(item.el_multiplier),
+                                    $('<td>').text(item.el_foir),
+                                    $('<td>').text(item.el_mutiplier_eligibility),
+                                    $('<td>').text(item.el_roi),
+                                    $('<td>').text(item.el_emi_per_lak),
+                                    $('<td>').text(item.el_foir_eligibility),
+                                    $('<td>').html('<button type="button" id=' +
+                                        item.id +
+                                        ' class="btn btn-sm btn-danger el_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                                    ),
+                                );
+                                $tr.appendTo('#inserted_el');
+
+
+                            });
+
+                        } else if (ontable == 6) {
+
+                            $('#inserted_hl_el').empty();
+                            $.each(response, function(i, item) {
+
+                                var $tr = $('<tr>').append(
+                                    $('<td>').text(item.hl_bank_name),
+                                    $('<td>').text(item.hl_ltv),
+                                    $('<td>').text(item.hl_ltv_eligibility),
+                                    $('<td>').text(item.hl_foir),
+                                    $('<td>').text(item.hl_roi),
+                                    $('<td>').text(item.hl_tenure),
+                                    $('<td>').text(item.hl_emi_per_lak),
+                                    $('<td>').text(item.hl_emi_foir_eligibility),
+                                    $('<td>').html('<button type="button" id=' +
+                                        item.id +
+                                        ' class="btn btn-sm btn-danger hl_el_delete"><i class="fas fa-trash-alt px-2"></i></button>'
+                                    ),
+                                );
+                                $tr.appendTo('#inserted_hl_el');
+
+                            });
+
+                        }
 
                     }
 
+                });
+            }
 
+            function card_emi(outstanding) {
+                var card_emi = (outstanding * 5) / 100;
+                return card_emi;
+            }
+
+            function foir_eligibility(foir_per, emi_per_lak) {
+
+                let foir = foir_per;
+                let per_lak_emi = emi_per_lak;
+                let final_salary = $('#cr_tb_final_salary').val();
+                let total_obligation = $('#cr_tb_final_obligation').val();
+                let foir_per_of_salary = (final_salary * foir / 100);
+                console.log("foir percentage of salary\t" + foir_per_of_salary);
+                let fo_per_sal_sub_obligation = foir_per_of_salary - total_obligation;
+                console.log("salary - obligation\t" + fo_per_sal_sub_obligation);
+                let total = (fo_per_sal_sub_obligation / per_lak_emi) * 100000;
+                return Math.round(total);
+            }
+
+            function foir_eligibility_home_loan(foir_per, emi_per_lak) {
+
+                let foir = foir_per;
+                let per_lak_emi = emi_per_lak;
+                let final_salary = $('#hl_tb_income_consi').val();
+                let total_obligation = $('#cr_tb_final_obligation').val();
+                let foir_per_of_salary = (final_salary * foir / 100);
+                console.log("foir percentage of salary\t" + foir_per_of_salary);
+                let fo_per_sal_sub_obligation = foir_per_of_salary - total_obligation;
+                console.log("salary - obligation\t" + fo_per_sal_sub_obligation);
+                let total = (fo_per_sal_sub_obligation / per_lak_emi) * 100000;
+                return Math.round(total);
                 }
 
+            function current_foir(final_ob_con, net_take_home_salary) {
+                let current_foir = (Number(final_ob_con) / Number(net_take_home_salary)) * 100;
+                 alert(current_foir);
+                return Math.round(current_foir);
+            }
 
+            function proposed_foir(f_ob_con, net_take_home_salary, f_emi) {
+                let proposed_foir = ((Number(f_ob_con) + Number(f_emi)) / Number(net_take_home_salary)) * 100;
+                return Math.round(proposed_foir);
+            }
 
-            });
-        }
+            function average_income(mon1, mon2, mon3) {
+                let total = Number(mon1) + Number(mon2) + Number(mon3);
+                let average = total / 3;
+                return average;
+            }
 
-        function card_emi(outstanding) {
-            var card_emi = (outstanding * 5) / 100;
-            return card_emi;
-        }
+            function loan_ltv(propertyValue, propertyPercentage) {
+                let ltvPercentage = (propertyValue * propertyPercentage / 100);
+                return Math.round(ltvPercentage);
+            }
 
-        function foir_eligibility(foir_per, emi_per_lak) {
-
-            let foir = foir_per;
-            let per_lak_emi = emi_per_lak;
-            let final_salary = $('#cr_tb_final_salary').val();
-            let total_obligation = $('#cr_tb_final_obligation').val();
-            let foir_per_of_salary = (final_salary * foir / 100);
-            console.log("foir percentage of salary\t" + foir_per_of_salary);
-            let fo_per_sal_sub_obligation = foir_per_of_salary - total_obligation;
-            console.log("salary - obligation\t" + fo_per_sal_sub_obligation);
-            let total = (fo_per_sal_sub_obligation / per_lak_emi) * 100000;
-            return Math.round(total);
-        }
-
-        function current_foir(final_ob_con, net_take_home_salary) {
-            let current_foir = (Number(final_ob_con) / Number(net_take_home_salary)) * 100;
-            return Math.round(current_foir);
-        }
-
-        function proposed_foir(f_ob_con, net_take_home_salary, f_emi) {
-            let proposed_foir = ((Number(f_ob_con) + Number(f_emi)) / Number(net_take_home_salary)) * 100;
-            return Math.round(proposed_foir);
-        }
-
-        function average_income(mon1, mon2, mon3) {
-            let total = Number(mon1) + Number(mon2) + Number(mon3);
-            let average = total / 3;
-            return average;
-        }
-
-        function loan_ltv(propertyValue, propertyPercentage) {
-            let ltvPercentage = (propertyValue * propertyPercentage / 100);
-            return Math.round(ltvPercentage);
-        }
+    //!==============================END SECTION FOR THIS PAGE UTILITY FUNCTIOND ======================!
     });
 </script>
+@endsection

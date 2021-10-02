@@ -26,12 +26,6 @@ class CreateHlProfileAdditionalsTable extends Migration
             $table->string('hl_gross_salary')->nullable();
             $table->string('hl_net_salary')->nullable();
             $table->string('hl_co_joint')->nullable();
-            $table->string('hl_ltv_1')->nullable();
-            $table->string('hl_ltv_2')->nullable();
-            $table->string('hl_ltv_3')->nullable();
-            $table->string('hl_fn_ltv_1')->nullable();
-            $table->string('hl_fn_ltv_2')->nullable();
-            $table->string('hl_fn_ltv_3')->nullable();
             $table->timestamps();
         });
     }

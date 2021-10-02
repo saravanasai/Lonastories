@@ -24,6 +24,7 @@ class CreateFinalBreakDownsTable extends Migration
             $table->string('final_proposed_total_emi');
             $table->string('final_current_foir');
             $table->string('final_proposed_foir');
+            $table->string('Final_page_remarks');
             $table->string('final_mon_1_salary');
             $table->string('final_mon_2_salary');
             $table->string('final_mon_3_salary');

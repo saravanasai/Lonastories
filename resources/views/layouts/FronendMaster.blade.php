@@ -187,8 +187,10 @@
         </div>
     </footer>
     <!--================================= Scripting=================================================== -->
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    {{-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> --}}
+    {{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
@@ -199,5 +201,6 @@
     <script>
         AOS.init();
     </script>
+    @yield('js')
     <!--================================= Scripting=================================================== -->
 </body>
