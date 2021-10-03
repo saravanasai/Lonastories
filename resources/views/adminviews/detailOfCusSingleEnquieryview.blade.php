@@ -1,16 +1,13 @@
 @extends('layouts.master')
-
-
 @section('content')
-
     <div class="container p-3">
         <h4>More Deatils Of enquiery</h4>
     </div>
     <!-- Main content -->
     <div class="content ">
         <div class="container mt-1 p-3">
-            <div class="card bg-light d-flex flex-fill">
-                <div class="card-header bg-purple text-white border-bottom-0">
+            <div class="card card-purple bg-light d-flex flex-fill">
+                <div class="card-header  text-white border-bottom-0">
                   Infomation Of Enquiery
                 </div>
                 <div class="card-body pt-0">
@@ -211,25 +208,5 @@
 
         </div>
     </div>
-</div>
-
-
-
 @endsection
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-
-
-
-
-
-
-
-<script>
-    $(function() {
-
-    })
-</script>

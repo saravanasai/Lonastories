@@ -234,9 +234,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- ./wrapper -->
     </body>
     <!-- REQUIRED SCRIPTS -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.2/b-2.0.0/b-html5-2.0.0/datatables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/jszip-2.5.0/dt-1.11.2/b-2.0.0/b-html5-2.0.0/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     @yield('js')
 </html>

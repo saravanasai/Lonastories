@@ -638,9 +638,9 @@
                                                 </div>
                                                 <div class="col col-md-4">
                                                     <div class="form-group">
-                                                        <label for="hl_final_obligation">FINAL OBLIGATION</label>
+                                                        <label for="hl_final_obligation">TOTAL OBLIGATION</label>
                                                         <input type="number" class="form-control"
-                                                            id="hl_final_obligation" placeholder="FINAL OBLIGATION" disabled>
+                                                            id="hl_final_obligation" placeholder="TOTAL OBLIGATION" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="col col-md-2 mt-4">
@@ -1069,10 +1069,34 @@
                                 <div class="row">
                                     <div class="col col-md-4">
                                         <div class="form-group">
+                                            <label for="Final_page_obl_con">EXISTING OBLIGATIONS CONSIDERED</label>
+                                            <input type="text" class="form-control" id="Final_page_obl_con"
+                                                placeholder="EXISTING OBLIGATIONS CONSIDERED" value="0" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group">
+                                            <label for="Final_page_sal_con">INCOME CONSIDERED</label>
+                                            <input type="text" class="form-control" id="Final_page_sal_con"
+                                                placeholder="INCOME CONSIDERED" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group">
+                                            <label for="final_proposed_total_emi">PROPOSED TOTAL EMI</label>
+                                            <input type="text" class="form-control" id="final_proposed_total_emi"
+                                                placeholder="PROPOSED TOTAL EMI" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group">
                                             <label for="Final_Loan_amount">LOAN AMOUNT</label>
                                             <input type="number" class="form-control" id="Final_Loan_amount"
                                                 placeholder="LOAN AMOUNT">
                                         </div>
+
                                     </div>
                                     <div class="col col-md-4">
                                         <div class="form-group">
@@ -1097,13 +1121,7 @@
                                                 disabled>
                                         </div>
                                     </div>
-                                    <div class="col col-md-4">
-                                        <div class="form-group">
-                                            <label for="final_proposed_total_emi">PROPOSED TOTAL EMI</label>
-                                            <input type="text" class="form-control" id="final_proposed_total_emi"
-                                                placeholder="PROPOSED TOTAL EMI" disabled>
-                                        </div>
-                                    </div>
+
                                     <div class="col col-md-4">
                                         <div class="form-group">
                                             <label for="final_current_foir">CURRENT FOIR</label>
@@ -1111,27 +1129,11 @@
                                                 placeholder="CURRENT FOIR" disabled>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col col-md-4">
                                         <div class="form-group">
                                             <label for="final_proposed_foir">PROPOSED FOIR</label>
                                             <input type="text" class="form-control" id="final_proposed_foir"
                                                 placeholder="PROPOSED FOIR" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-4">
-                                        <div class="form-group">
-                                            <label for="Final_page_sal_con">INCOME CONSIDERED</label>
-                                            <input type="text" class="form-control" id="Final_page_sal_con"
-                                                placeholder="INCOME CONSIDERED" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col col-md-4">
-                                        <div class="form-group">
-                                            <label for="Final_page_obl_con">EXISTING OBLIGATIONS CONSIDERED</label>
-                                            <input type="text" class="form-control" id="Final_page_obl_con"
-                                                placeholder="EXISTING OBLIGATIONS CONSIDERED" value="0" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -1141,6 +1143,13 @@
                                             <label>Remarks</label>
                                             <textarea class="form-control" id="Final_page_remarks" rows="3" placeholder="Enter ..."></textarea>
                                           </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        <div class="mt-5" id="loading">
+                                           <img src="{{asset('img/loader.gif')}}" alt="" srcset="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1194,6 +1203,7 @@
             $('#ln_com_final_add').prop('disabled', true);
             $('#ln_com_final_cal').prop('disabled', true);
             $('#el_cal_edit_btn').prop('disabled', true);
+            $("#loading").hide();
             $('#additional_info_home_loan_div2').show(); //chage to hide after developement
         //end on load feild
 
@@ -1432,10 +1442,12 @@
                         $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
                         let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
                         let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
-                        $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) +
-                            Number(final_ob_sum_of_emi_no));
-                        $("#hl_final_obligation").val(Number(final_cr_sum_of_emi_no) +
-                            Number(final_ob_sum_of_emi_no));
+                        $("#cr_tb_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no)));
+                        $("#hl_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no)));
+                        $("#Final_page_obl_con").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                        Number(final_ob_sum_of_emi_no)));
                     }
 
                 });
@@ -1780,9 +1792,15 @@
             let final_current_foir = $('#final_current_foir').val();
             let final_proposed_foir = $('#final_proposed_foir').val();
             let Final_page_remarks = $('#Final_page_remarks').val();
-            let final_sal_mon1 = $('#el_sal_mon1').val();
-            let final_sal_mon2 = $('#el_sal_mon2').val();
-            let final_sal_mon3 = $('#el_sal_mon3').val();
+            let el_sal_mon1 = $('#el_sal_mon1').val();
+            let el_sal_mon2 = $('#el_sal_mon2').val();
+            let el_sal_mon3 = $('#el_sal_mon3').val();
+            let hl_sal_mon1 = $('#hl_sal_mon1').val();
+            let hl_sal_mon2 = $('#hl_sal_mon2').val();
+            let hl_sal_mon3 = $('#hl_sal_mon3').val();
+            let final_sal_mon1 = Number(el_sal_mon1)+Number(hl_sal_mon1);
+            let final_sal_mon2 = Number(el_sal_mon2)+Number(hl_sal_mon2);
+            let final_sal_mon3 = Number(el_sal_mon3)+Number(hl_sal_mon3);
             let final_salary_considered = $('#Final_page_sal_con').val();
             let final_obligation_considered = $('#Final_page_obl_con').val();
             let final_ob_pos_sum_of_bt_yes = $('#ob_sum_of_pos_bt_yes').val();
@@ -1825,7 +1843,12 @@
                     enqid: enq_id,
 
                 },
-
+                beforeSend: function(){
+                    $("#loading").show();
+                },
+                complete: function(){
+                    $("#loading").hide();
+                },
                 success: function(data) {
 
                     let response = JSON.parse(data);
@@ -2021,6 +2044,7 @@
 
             if (validation_check) {
                 $('#hl_tb_income_consi').val(Math.round(average_income(mon1, mon2, mon3)));
+                $('#Final_page_sal_con').val(Math.round(average_income(mon1, mon2, mon3)));
                 $('#hl_cal_edit_btn').prop('disabled', false);
                 $('#hl_cal_salary_btn').prop('disabled', true);
                 $('#hl_sal_mon1').prop('disabled', true);
@@ -2237,15 +2261,13 @@
                         $('#final_tenure').prop('disabled', true);
                         $('#final_emi').val(calculate_emi(f_loan_amount, f_roi, f_tennure));
                         let f_emi = $('#final_emi').val();
-                        let f_obligation = $('#cr_tb_final_obligation').val();
+                        let f_obligation = $('#Final_page_obl_con').val();
                         $('#final_proposed_total_emi').val(Math.round(Number(f_emi) + Number(
                         f_obligation)));
                         let f_ob_con = $('#final_proposed_total_emi').val();
-                        let f_net_salary = $('#cr_tb_final_salary').val();
-                        $('#final_current_foir').val(current_foir(f_ob_con, f_net_salary) + "%");
-                        $('#final_proposed_foir').val(proposed_foir(f_ob_con, f_net_salary, f_emi) + "%");
-                        $('#Final_page_sal_con').val(Math.round(Number(f_net_salary)));
-                        $('#Final_page_obl_con').val(Math.round(Number(f_obligation)));
+                        let f_salary_con = $('#Final_page_sal_con').val();
+                        $('#final_current_foir').val(current_foir(f_ob_con, f_salary_con) + "%");
+                        $('#final_proposed_foir').val(proposed_foir(f_ob_con, f_salary_con, f_emi) + "%");
                         $('#final_submit').prop('disabled', false);
                     }
                 }
@@ -2670,7 +2692,6 @@
 
             function current_foir(final_ob_con, net_take_home_salary) {
                 let current_foir = (Number(final_ob_con) / Number(net_take_home_salary)) * 100;
-                 alert(current_foir);
                 return Math.round(current_foir);
             }
 

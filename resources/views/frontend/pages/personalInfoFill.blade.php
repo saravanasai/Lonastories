@@ -6,7 +6,6 @@
                 <div class="col-md-12 col-sm-6 col-xs-12">
                     <form action="{{ route('user.personalInfoFillStore') }}" method="post">
                         @csrf
-
                         <div class="card">
                             <div class="card-header bg-nav text-center">
                                 <h2 class="text-light">Fill Your Details</h2>
@@ -447,8 +446,8 @@
                                     </div>
                                 </div>
                                 <br>
-                                <input type="submit" name="submit" class="btn btn-success btn-block"
-                                    value="Submit Your Details">
+                                <button type="submit" name="submit" class="btn btn-success btn-block"
+                                    value="">Submit Your Details</button>
                             </div>
                         </div>
                     </form>

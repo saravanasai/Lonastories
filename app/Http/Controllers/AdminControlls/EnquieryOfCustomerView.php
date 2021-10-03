@@ -57,7 +57,6 @@ class EnquieryOfCustomerView extends Controller
          ->join('offer_pdfs','cl_enquieries.id','=','offer_pdfs.pdf_of_enq')
          ->select('table_customer.*','cl_enquieries.*','cl_enquieries.id as enq_id','products.*','subproducts.*','statuses.*','offer_pdfs.*')
          ->where('cl_enquieries.enquiery_of_ucs',$id)->paginate(6);
-            // dd($user_enquiery);
          return view('adminviews.cusManagementEnquieryview',["user_enquiery"=>$user_enquiery]);
     }
 

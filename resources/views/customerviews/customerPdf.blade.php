@@ -1,10 +1,8 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>LoanStories.com</title>
-
     <style type="text/css">
         @page {
             margin: 0px;
@@ -110,11 +108,10 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <div class="container">
-            <center><img src="{{ asset('img/logo.jpg') }}" width="17%" alt=""></center>
+            <center><img src="{{ public_path('img/logo.jpg') }}" width="17%" alt=""></center>
         </div>
     </header>
     <hr>
@@ -154,6 +151,7 @@
                     <th>ROI</th>
                     <th>TENNURE</th>
                     <th>EMI</th>
+                    <th>EMI PAID</th>
                     <th>POS</th>
                     <th>BANK TRANSFER</th>
                 </tr>
@@ -167,10 +165,10 @@
                     <td>{{$obligation->ob_roi}}</td>
                     <td>{{$obligation->ob_tennure}}</td>
                     <td>{{$obligation->ob_emi}}</td>
+                    <td>{{$obligation->ob_comp_emi}}</td>
                     <td>{{$obligation->ob_pos}}</td>
                     <td>@if($obligation->ob_bt==0) No @else Yes @endif</td>
                 </tr>
-
                 @endforeach
             </tbody>
         </table>
@@ -238,11 +236,9 @@
   </div>
   <br>
   <br>
-  <br>
   <div class="invoice">
     <h5>REMARKS</h5>
-        {{$basic_info->additional_details }}
-        <br>
+        <p style="margin-left: 45px">{{$fn_details->Final_page_remarks}}</p>
         <br>
     </div>
   <div class="invoice" >
@@ -282,37 +278,30 @@
                 <tr>
                     <th><h3>Aditional Infromation Home Loan</h3></th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tr style="padding: 1rem">
-                <td align="left" style="width: 25%;">
+                <td align="left" style="width: 50%;">
                     <p> <b> Age :</b> {{$additional_details->hl_age}}</p>
                     <p> <b> Property Type : </b>{{$additional_details->hl_property_type}}</p>
                     <p> <b> Property Value : </b>{{$additional_details->hl_property_value}}</p>
                     <p> <b> Builder Name :</b> {{$additional_details->hl_builder_name}}</p>
                 </td>
-                <td align="center" style="width: 25%; text-align:justify; padding-left:2rem;" >
+                <td align="center" style="width: 50%; text-align:justify; padding-left:2rem;" >
                     <p> <b> Property Area :</b>{{$additional_details->hl_property_area }}</p>
                     <p> <b> Property City :</b>{{$additional_details->hl_property_city }}</p>
                     <p> <b> G-salary :</b>{{$additional_details->hl_gross_salary}}</p>
                     <p> <b> Co-Joint :</b>{{$additional_details->hl_co_joint}}</p>
                 </td>
-                <td align="right" style="width: 10%;padding-right:1rem;">
-                    <p> <b> LTV 1 :</b> {{$additional_details->hl_ltv_1 }} %</p>
-                    <p> <b> LTV 2 :</b> {{$additional_details->hl_ltv_2 }} %</p>
-                    <p> <b> LTV 3 :</b> {{$additional_details->hl_ltv_3}} %</p>
-                    <p> <b> &nbsp;</p>
-                </td>
-                <td align="right" style="width: 10%;padding-right:2rem;">
-                    <p> <b> LTV 1 :</b>{{$additional_details->hl_fn_ltv_1}}</p>
-                    <p> <b> LTV 2 :</b>{{$additional_details->hl_fn_ltv_2 }}</p>
-                    <p> <b> LTV 3 :</b>{{$additional_details->hl_fn_ltv_3}}</p>
-                    <p> <b> &nbsp;</p>
-                </td>
             </tr>
         </table>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <br />
     <div class="invoice">
         <table width="100%">
@@ -364,6 +353,13 @@
     <br>
     <br>
     <br>
+<div class="invoice" >
+    <h5 id="note_sec">NOTE:</h5>
+    <div id="note">
+        <p><small>Please note that this tentative offer is shared only based on the information shared about  income & obligations. Final offer may vary if any other obligations are observed during the verification process. The final approval shall be communicated only after the Application is processed subject to CIBIL & other verification parameters & as per the sole discretion of the respective lenders</small></p>
+    </div>
+ </div>
+
     <hr>
     {{-- <footer>
     </footer> --}}
