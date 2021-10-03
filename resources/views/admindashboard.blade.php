@@ -206,8 +206,12 @@
 <div class="content">
     <div class="container">
         <div class="card-body">
-            <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-              <canvas id="myChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 275px;" class="chartjs-render-monitor" width="275" height="250"></canvas>
+            <div class="row">
+                <div class="col col-md-6">
+                    <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <canvas id="myChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 275px;" class="chartjs-render-monitor" width="275" height="250"></canvas>
+                  </div>
+                </div>
             </div>
           </div>
     </div>
@@ -222,23 +226,24 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Direct', 'Referal', 'New Enquiery', 'TeleMarketing'],
+            labels: ['DirectEnquiries', 'TeleCaller Leads', 'Total SignUp', 'Referal'],
             datasets: [{
-                label: 'Reports',
-                data: [0, 0,{{$all_cus}},0],
+                label: 'Enquries Reports',
+                data: [{{$new_enq}}, {{$new_tel_enq}},{{$all_cus}},{{$all_ref}}],
+                // data: [7, 10,{{$all_cus}},6],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(rgba(20, 114, 248, 0.8)',
+                    'rgba(20, 176, 46, 0.8)',
+                    'rgba(rgba(221, 226, 23, 0.65)',
+                    'rgba(227, 23, 23, 0.65)',
                     'rgba(153, 102, 255, 0.2)',
                     'rgba(255, 159, 64, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
+                    'rgba(20, 114, 248, 0.8)',
+                    'rgba(20, 176, 46, 1)',
+                    'rgba(221, 226, 23, 0.65)',
+                    'rgba(227, 23, 23, 0.65)',
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
