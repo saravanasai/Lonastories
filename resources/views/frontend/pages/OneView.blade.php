@@ -1,18 +1,19 @@
-@extends('layouts.FronendMaster');
+@extends('layouts.FronendMaster')
+<style>
+    th {
+        text-align: center !important;
+    }
 
+</style>
 @section('content')
-    <section class="bg-transparent">
-        <div class="container-fluid">
-            <!-- <div class="container"> -->
+    <section class="bg-transparent m-0 p-0">
+        <div class="container-fluid pt-3">
             <div class="row justify-content-center">
-                <img src="{{ asset('frontend/img/oneview.png') }}" class="mt-md-4 pt-md-5 rounded" alt=""
-                    style="width: 81%;">
+                <img src="{{ asset('frontend/img/oneview.png') }}" class="rounded" alt=""
+                    style="width: 80vw">
             </div>
-            <!-- </div> -->
-            <h2 class="text-center pt-lg-3 mb-lg-4">
-                One View
-            </h2>
-            <div class="row justify-content-center">
+
+            <div class="row justify-content-center pt-4">
                 <div class="col-md-10">
                     <div class="card">
                         <div class="card-header bg-gray">
@@ -89,7 +90,7 @@
                                                 <label class="form-control-label" for="input-country">Upload Your
                                                     Schedule
                                                 </label>
-                                                <input type="file" name="shedule_file" class="form-control">
+                                                <input type="file" name="shedule_file" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -117,32 +118,35 @@
                 <div class="col-md-12">
                     <h3 class="mb-4 text-center text-dark">One View Table</h3>
                     <div class="table-responsive rounded ">
-                        <table class="table align-items-center small text-light">
+                        <table class="table table-bordered align-items-center text-light">
                             <thead class="bg-gray">
-                                <tr>
+                                <tr class="">
                                     <th class="">S.no</th>
-                                <th class="">Lender Name</th>
-                                                            <th class="       ">Loan Type</th>
-                                    <th class="">Loan Amount
+                                    <th class="
+                                    ">Lender Name</th>
+                                                                        <th class=" ">Loan Type</th>
+                                        <th class="
+                                    ">Loan Amount
                                     </th>
-                                    <th class="">ROI</th>
-                                                        <th class="      ">Tenure</th>
+                                    <th class="">
+                                    ROI</th>
+                                    <th class="         ">Tenure</th>
                                     <th class=" ">EMI</th>
                                     {{-- <th class="">Schedule</th> --}}
                                 </tr>
                             </thead>
                             <tbody id=" frontend_existing_loan_detail">
-                                {{-- @foreach ($emi_shedules as $emi_shedule) --}}
-                                <tr>
-                                    {{-- <td>{{$loop->iteration}}</td>
-                                  <td>{{$emi_shedule->emi_sh_name_of_bank}}</td>
-                                  <td>{{$emi_shedule->emi_sh_type_of_loan}}</td>
-                                  <td>{{$emi_shedule->emi_sh_loan_amount}}</td>
-                                  <td>{{$emi_shedule->emi_sh_roi}}</td>
-                                  <td>{{$emi_shedule->emi_sh_tenure}}</td>
-                                  <td>{{$emi_shedule->emi_sh_emi}}</td> --}}
-                                </tr>
-                                {{-- @endforeach --}}
+                                @foreach ($emi_shedules as $emi_shedule)
+                                    <tr class="text text-dark text-center">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_name_of_bank }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_type_of_loan }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_loan_amount }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_roi }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_tenure }}</td>
+                                        <td>{{ $emi_shedule->emi_sh_emi }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

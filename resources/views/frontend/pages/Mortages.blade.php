@@ -44,7 +44,7 @@
                                 class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
                             <a href="{{ route('quickEnquieryForm.store', session('customer')->id) }}"
                                 class="btn btn-darkblue btn-sm">
-                                < strong>SHARE</strong>
+                                <strong>SHARE</strong>
                             </a>
                         @endif
                     </div>

@@ -43,7 +43,7 @@ class CustomerController extends Controller
              "date"=>"required"
          ]);
 
-        //  $check_if_exist=new CustomerSignup();
+         $check_if_exist=new CustomerSignup();
 
          $customer_exist=CustomerSignup::where('cus_phonenumber','=',$request->phonenumber)->first();
 

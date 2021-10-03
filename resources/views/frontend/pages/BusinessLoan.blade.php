@@ -30,7 +30,7 @@
                             custom-fit Business Loan
                         </p>
                     </div>
-                    <div class="pt-5 pb-5 text-lg-center text-sm-center ">
+                    <div class="pt-5 pb-5 text-center text-sm-center ">
                         @if (!session('customer'))
                             <a href="{{ route('signup.index') }}" class="btn btn-success btn-sm"><strong>APPLY</strong></a>
                             <a href="{{ route('signup.index') }}"
@@ -44,7 +44,7 @@
                                 class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
                             <a href="{{ route('quickEnquieryForm.store', session('customer')->id) }}"
                                 class="btn btn-darkblue btn-sm">
-                                < strong>SHARE</strong>
+                                <strong>SHARE</strong>
                             </a>
                         @endif
                     </div>

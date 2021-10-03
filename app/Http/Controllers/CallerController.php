@@ -311,7 +311,7 @@ class CallerController extends Controller
 
                      $url=env('APP_URL')."/user/signup/".session('caller')->id."/referal";
                      Log::channel('telecallerlink')->info($url);
-                     Mail::to($mail_to)->send(new TelecallerLinkmail($url));
+                    //  Mail::to($mail_to)->send(new TelecallerLinkmail($url));
                      return 1;
                    }
                    else

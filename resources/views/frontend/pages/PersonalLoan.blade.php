@@ -60,7 +60,7 @@
                                 class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
                             <a href="{{ route('quickEnquieryForm.store', session('customer')->id) }}"
                                 class="btn btn-darkblue btn-sm">
-                                < strong>SHARE</strong>
+                                <strong>SHARE</strong>
                             </a>
                         @endif
                     </div>
@@ -347,27 +347,27 @@
 <!--================================= Scripting=================================================== -->
 <script type="text/javascript">
     // Eligiblity Calculator ============================
-    function eligibleCalc() {
-        var salary = parseInt(document.querySelector('#salary').value);
-        var obligate = parseInt(document.querySelector('#obligate').value);
-        var card_outstanding = parseInt(document.querySelector('#card_outstanding').value);
+    // function eligibleCalc() {
+    //     var salary = parseInt(document.querySelector('#salary').value);
+    //     var obligate = parseInt(document.querySelector('#obligate').value);
+    //     var card_outstanding = parseInt(document.querySelector('#card_outstanding').value);
 
-        var Total_obligate = (0.05 * card_outstanding) + obligate;
+    //     var Total_obligate = (0.05 * card_outstanding) + obligate;
 
-        var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
+    //     var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
 
-        var result = parseInt((value / 2175) * 1e5);
+    //     var result = parseInt((value / 2175) * 1e5);
 
-        console.log(result);
+    //     console.log(result);
 
-        if (isNaN(result)) {
-            document.getElementById('result').innerText = "₹ 0.00";
-        } else if (0 >= result) {
-            document.getElementById('result').innerText = "You are not Eligible";
-        } else {
-            document.getElementById('result').innerText = result.toFixed(0);
-        }
-    };
+    //     if (isNaN(result)) {
+    //         document.getElementById('result').innerText = "₹ 0.00";
+    //     } else if (0 >= result) {
+    //         document.getElementById('result').innerText = "You are not Eligible";
+    //     } else {
+    //         document.getElementById('result').innerText = result.toFixed(0);
+    //     }
+    // };
     // Eligiblity Calculator ============================
 </script>
 <!--================================= Scripting=================================================== -->
