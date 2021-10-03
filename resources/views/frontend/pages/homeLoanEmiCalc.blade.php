@@ -46,7 +46,7 @@
                     <div class="pull-right">
                         <input type="button" id="calculate" class="btn btn-darkblue" value="Calculate"
                             onclick="getValues()" />
-                        <input type="button" id="getPdf" class="btn btn-warning disabled" onclick="get_Pdf()"
+                        <input type="button" id="getPdf" class="btn btn-info" disabled onclick="get_Pdf()"
                             value="Get Pdf" />
                     </div>
                 </fieldset>
@@ -71,8 +71,9 @@
 
     function getValues() {
 
-        $('#calculate').attr('disabled', 'disabled');
-        $('#getPdf').removeClass('disabled');
+        $('#calculate').prop('disabled', true);
+
+        $('#getPdf').removeAttr('disabled');
         //button click gets values from inputs
         var balance = parseFloat(document.getElementById("principal").value);
         var interestRate =

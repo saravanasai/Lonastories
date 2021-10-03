@@ -2526,7 +2526,7 @@ a.text-dark:hover {
 input[type="text"],
 [type="number"],
 select.form-control {
-  background: transparent;
+  /* background: transparent; */
   border: none;
   border-bottom: 1px solid #041e43;
   -webkit-box-shadow: none;

@@ -79,7 +79,7 @@
         <h3 class="text-center pb-md-2 pt-md-2 font-weight-bold">EMI METER</h3>
         <div class="container">
             <div class="row align-items-center">
-                <img src="{{ asset('frontend/img/meter.png') }}" class="rounded" alt="" style="width: 100%;">
+                <img src="{{ asset('frontend/img/meter.png') }}" class="rounded" alt="" style="width: 100%;" loading="lazy">
             </div>
 
             <div class="row mt-md-5 bg-light p-3">

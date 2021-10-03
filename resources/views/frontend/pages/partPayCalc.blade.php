@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <button type="submit" onclick="partPayCalc()"
                                         class="btn btn-darkblue"><strong>Calculate</strong></button>
-                                    <button class="btn btn-warning pull-right disabled" id="getPdf" onclick="get_Pdf()">Get
+                                    <button class="btn btn-info" id="getPdf" onclick="get_Pdf()" disabled>Get
                                         PDF</button>
                                 </div>
                             </div>
@@ -128,8 +128,8 @@
     // =================Part Payment calculator===============
     function partPayCalc() {
 
-        $('#partPayCalc').attr('disabled', 'disabled');
-        $("#getPdf").removeClass('disabled');
+        $('#partPayCalc').prop('disabled', true);
+        $("#getPdf").removeAttr('disabled');
         $('#partPayTbl').removeClass('d-none');
 
         let TotLoanAmt = parseInt($('#outstandLoan').val());
@@ -226,29 +226,27 @@
                 "<td>" + (nofpay * partPrePayAmt) + "</td>" +
                 "</tr>");
             // Savings Table ========================================
-
-
         }
-
-        // =================Get Pdf==========================
-        function get_Pdf() {
-            const {
-                jsPDF
-            } = window.jspdf;
-
-            var doc = new jsPDF('l', 'mm', [1200, 1200]);
-            var pdfjs = document.querySelector('#partPayTbl');
-
-            doc.html(pdfjs, {
-                callback: function(doc) {
-                    doc.save("Part_Pay_Ment_Caluculator.pdf");
-                },
-                x: 30,
-                y: 10
-            });
-        };
-        // =================Get Pdf==========================
     };
+
+    // =================Get Pdf==========================
+    function get_Pdf() {
+        const {
+            jsPDF
+        } = window.jspdf;
+
+        var doc = new jsPDF('l', 'mm', [1200, 1200]);
+        var pdfjs = document.querySelector('#partPayTbl');
+
+        doc.html(pdfjs, {
+            callback: function(doc) {
+                doc.save("Part Payment Calculations.pdf");
+            },
+            x: 30,
+            y: 10
+        });
+    };
+    // =================Get Pdf==========================
     // =================Part Payment calculator===============
 </script>
 <!--================================= Scripting=================================================== -->

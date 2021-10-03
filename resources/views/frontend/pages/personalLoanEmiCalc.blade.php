@@ -45,7 +45,7 @@
                     <div class="pull-right">
                         <input type="button" id="calculate" class="btn btn-dark" value="Calculate"
                             onclick="getValues()" />
-                        <input type="button" id="getPdf" class="btn btn-info disabled" onclick="get_Pdf()"
+                        <input type="button" id="getPdf" class="btn btn-info" disabled onclick="get_Pdf()"
                             value="Get Pdf" />
                     </div>
                 </fieldset>
@@ -59,9 +59,7 @@
         </div>
     </section>
 @endsection
-{{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-<script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
+
 <script type="text/javascript">
     var wwOpenInstalled;
     if (wwOpenInstalled || parent.wwOpenInstalled) {
@@ -73,8 +71,8 @@
 
     function getValues() {
 
-        $('#calculate').attr('disabled', 'disabled');
-        $('#getPdf').removeClass('disabled');
+        $('#calculate').prop('disabled', true);
+        $('#getPdf').removeAttr('disabled');
         //button click gets values from inputs
         var balance = parseFloat(document.getElementById("principal").value);
         var interestRate =
@@ -182,29 +180,19 @@
 
     // =================Get Pdf==========================
     function get_Pdf() {
-        // window.html2canvas = html2canvas;
-        // const {
-        //     jsPDF
-        // } = window.jspdf;
+        const {
+            jsPDF
+        } = window.jspdf;
 
-        // var doc = new jsPDF('l', 'mm', [1200, 1200]);
-        // var pdfjs = document.querySelector('#personalTbl');
+        var doc = new jsPDF('l', 'mm', [1200, 1200]);
+        var pdfjs = document.querySelector('#personalTbl');
 
-        // doc.html(pdfjs, {
-        //     callback: function(doc) {
-        //         doc.save("Personal Loan Calculations.pdf");
-        //     },
-        //     x: 30,
-        //     y: 10
-        // });
-
-        var doc = new jsPDF(
-            'p', 'pt', 'a4'
-        );
-        doc.html(document.querySelector("#personalTbl"), {
-            callback: function(pdf) {
-                pdf.save("cv-a4.pdf");
-            }
+        doc.html(pdfjs, {
+            callback: function(doc) {
+                doc.save("Personal Loan Calculations.pdf");
+            },
+            x: 30,
+            y: 10
         });
     };
     // =================Get Pdf==========================

@@ -94,7 +94,7 @@
                                             <h3 class="text-secondary"><label for="">Personal Loan
                                                     Eligibility</label></h3>
                                             <h3 class=""><span id="result">₹ 0.00</span></h3>
-                                        </div>`
+                                        </div>
 
                                         <button type="button" class="btn btn-success"
                                             onclick="eligibleCalc()"><b>Check</b></button>
