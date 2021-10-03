@@ -3,76 +3,62 @@
     th {
         text-align: center;
     }
-    </style>
+
+</style>
 @section('content')
-<section>
-    <div class="container">
-        <h3 class="text-center">Home Loan Emi Calculator</h3>
-        <br>
-        <form class="card">
-            <div class="card-header">
-                <h5 class="text-center font-weight-bold">Fill Your Detials </h5>
-            </div>
-            <fieldset class="card-body">
-                <div class="row">
-                    <div class="col col-md-4">
-                        <div class="form-group">
-                            <h5><label for="name" class="control-label">I Want To Borrow</label>
-                            </h5>
-                            <input type="text" class="form-control" id="principal" name="pr_amt"
-                                placeholder="Enter Loan Amount">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <h5><label for="name" class="control-label">Interest Rate %
-                                    p.a</label>
-                            </h5>
-                            <input type="text" class="form-control" id="interest" name="int_rate"
-                                placeholder="Enter Your ROI">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <h5><label for="name" class="control-label">Tenure</label></h5>
-                            <input type="text" class="form-control" id="terms" placeholder="in months"
-                                name="period">
-                        </div>
-                    </div>
+    <section>
+        <div class="container">
+            <h3 class="text-center">Home Loan Emi Calculator</h3>
+            <br>
+            <form class="card">
+                <div class="card-header">
+                    <h5 class="text-center font-weight-bold">Fill Your Detials </h5>
                 </div>
+                <fieldset class="card-body">
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="form-group">
+                                <h5><label for="name" class="control-label">I Want To Borrow</label>
+                                </h5>
+                                <input type="text" class="form-control" id="principal" name="pr_amt"
+                                    placeholder="Enter Loan Amount">
+                            </div>
+                        </div>
 
-                <!-- <label for="principal"><b>Principal:</b></label>
-                <input type="text" id="principal" />
-                <br />
-                <label for="interest"><b>Interest:</b></label>
-                <input type="text" id="interest" />
-                <br />
-                <label for="terms"><b>Terms:</b></label>
-                <select id="terms">
-                    <option value="12">12 Months</option>
-                    <option value="24">24 Months</option>
-                    <option value="36">36 Months</option>
-                    <option value="48">48 Months</option>
-                    <option value="60">60 Months</option>
-                    <option value="60">72 Months</option>
-                </select> -->
-                <div class="pull-right">
-                    <input type="button" id="calculate" class="btn btn-darkblue" value="Calculate"
-                        onclick="getValues()" />
-                    <input type="button" id="getPdf" class="btn btn-secondary disabled" value="Get Pdf" />
-                </div>
-            </fieldset>
-        </form>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h5><label for="name" class="control-label">Interest Rate %
+                                        p.a</label>
+                                </h5>
+                                <input type="text" class="form-control" id="interest" name="int_rate"
+                                    placeholder="Enter Your ROI">
+                            </div>
+                        </div>
 
-        <form>
-            <fieldset>
-                <div id="Result"></div>
-            </fieldset>
-        </form>
-    </div>
-</section>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <h5><label for="name" class="control-label">Tenure</label></h5>
+                                <input type="text" class="form-control" id="terms" placeholder="in months" name="period">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pull-right">
+                        <input type="button" id="calculate" class="btn btn-darkblue" value="Calculate"
+                            onclick="getValues()" />
+                        <input type="button" id="getPdf" class="btn btn-warning disabled" onclick="get_Pdf()"
+                            value="Get Pdf" />
+                    </div>
+                </fieldset>
+            </form>
+
+            <form>
+                <fieldset>
+                    <div id="Result"></div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
 @endsection
 <script language="javascript">
     var wwOpenInstalled;
@@ -134,7 +120,7 @@
 
         //add header row for table to return string
         result += "<div class='border text-center' id='homeTbl'>" +
-            "<img src='../img/pdfLogo.png' class='img-fluid' width='20%'>" +
+            "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='20%'>" +
             "<h4 class='font-weight-bold'>Home Loan Emi Calculations</h4>" +
             "<hr>" +
             "<table class='table table-bordered justify-content-center'>" +
@@ -193,7 +179,7 @@
     };
 
     // =================Get Pdf==========================
-    $('#getPdf').click(function() {
+    function get_Pdf() {
         const {
             jsPDF
         } = window.jspdf;
@@ -208,7 +194,7 @@
             x: 30,
             y: 10
         });
-    });
+    };
     // =================Get Pdf==========================
 
     function validateInputs(value) {
@@ -219,4 +205,4 @@
             return true;
         }
     }
-    </script>
+</script>

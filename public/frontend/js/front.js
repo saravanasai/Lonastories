@@ -233,12 +233,10 @@ function calculator() {
 
 
 
+// ================================Calculators Functions Starts=============================
 
 
-
-
-// ================================EMI Calculator - For All Page ===================================
-
+// ================================EMI Calculator - For All Page ===========================
 function calc() {
     var P = document.formval.pr_amt.value;
     var rate = document.formval.int_rate.value;
@@ -254,6 +252,79 @@ function calc() {
     document.getElementById('int_comp').innerText = isNaN(int_comp) ? '0.00' : int_comp.toFixed(0);
     document.getElementById('outflow').innerText = isNaN(outflow) ? '0.00' : outflow.toFixed(0);
 };
+// ================================EMI Calculator - For All Page ============================
 
+// ------------------------------------------------------------------------------------------
 
-// ================================EMI Calculator - For All Page ===================================
+// ================================Personal Loan Eligible Calculator ========================
+function eligibleCalc() {
+    var salary = parseInt(document.querySelector('#salary').value);
+    var obligate = parseInt(document.querySelector('#obligate').value);
+    var card_outstanding = parseInt(document.querySelector('#card_outstanding').value);
+
+    var Total_obligate = (0.05 * card_outstanding) + obligate;
+
+    var value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
+
+    var result = parseInt((value / 2175) * 1e5);
+
+    console.log(result);
+
+    if (isNaN(result)) {
+        document.getElementById('result').innerText = "₹ 0.00";
+    } else if (0 >= result) {
+        document.getElementById('result').innerText = "You are not Eligible";
+    } else {
+        document.getElementById('result').innerText = result.toFixed(0);
+    }
+};
+// ================================Personal Loan Eligible Calculator ========================
+
+// ------------------------------------------------------------------------------------------
+
+// ================================Homeloan Eligibility Calculator===========================
+function h_loan() {
+    let salary = parseInt(document.querySelector('#salary').value) * 0.7;
+    let other_emi = parseInt(document.querySelector('#other_emi').value);
+    let tenure = parseInt(document.querySelector("#tenure").value);
+    let propVal = parseInt(document.querySelector("#propVal").value);
+
+    let income, property;
+    // Income Eligibility
+    switch (true) {
+        case (tenure == 5):
+            income = ((salary - other_emi) / 1989) * 1e5;
+            break;
+        case (tenure == 10):
+            income = ((salary - other_emi) / 1161) * 1e5;
+            break;
+        case (tenure == 15):
+            income = ((salary - other_emi) / 898) * 1e5;
+            break;
+        case (tenure == 20):
+            income = ((salary - other_emi) / 775) * 1e5;
+            break;
+        case (tenure == 25):
+            income = ((salary - other_emi) / 707) * 1e5;
+            break;
+        case (tenure == 30):
+            income = ((salary - other_emi) / 665) * 1e5;
+            break;
+        default:
+            alert("Fields Are Incorrect");
+    }
+
+    if (propVal >= 9e6) {
+        property = propVal * 0.75;
+
+    } else if (propVal <= 9e6) {
+        property = propVal * 0.8;
+    }
+
+    document.getElementById('income').innerText = (income <= 0) ? '0.00' : income.toFixed(0);
+    document.getElementById('property').innerText = (property <= 0) ? '0.00' : property.toFixed(0);
+
+};
+// ================================Homeloan Eligibility Calculator===========================
+
+// ------------------------------------------------------------------------------------------

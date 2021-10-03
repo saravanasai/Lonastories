@@ -188,9 +188,14 @@ Route::prefix('user')->group(function()
 //routes for user after sign up
 Route::prefix('user')->middleware(['user'])->group(function () {
 
-    Route::get('meter',[CustomerPagesController::class,'Meter'])->name('user.meter');
+
+
+    Route::get('profile',[CustomerPagesController::class,'profile'])->name('user.profile');
+
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
-    Route::get('wallet',[CustomerPagesController::class,'wallet'])->name('user.wallet');
+    Route::get('myWallet',[CustomerPagesController::class,'myWallet'])->name('user.myWallet');
+    Route::get('meter',[CustomerPagesController::class,'Meter'])->name('user.meter');
+
     Route::get('personalInfoForm',[CustomerPagesController::class,'personalInfoFill'])->name('user.personalInfoFill');
     Route::get('personalLoan/emicalculater',[CustomerPagesController::class,'personalLoanEmiCalc'])->name('user.personalLoanEmiCalc');
     Route::get('homeLoan/emicalculater',[CustomerPagesController::class,'homeLoanEmiCalc'])->name('user.homeLoanEmiCalc');

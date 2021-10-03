@@ -57,7 +57,7 @@ class CustomerDirectReferal extends Controller
         if($direct_referal->save())
         {
             Log::channel('telecallerlink')->info($url);
-            Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
+            // Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
             return redirect()->route('home');
         }
 

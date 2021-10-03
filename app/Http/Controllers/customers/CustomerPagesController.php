@@ -47,17 +47,27 @@ class CustomerPagesController extends Controller
         return view('frontend.pages.Documents');
     }
 
+    public function profile() //This to be rename Profile
+    {
+        $profile_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
+        return view('frontend.pages.profile',["wallet_info"=>$profile_info]);
+    }
+
+    public function myWallet()
+    {
+        $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
+        return view('frontend.pages.myWallet',["wallet_info"=>$wallet_info]);
+    }
+
     public function OneView()
     {
         $emi_shedule=CustomerEmiShedule::where('id',session('customer')->id)->get();
         return view('frontend.pages.OneView',["emi_shedules"=>$emi_shedule]);
     }
 
-    public function wallet()
+    public function Meter()
     {
-        $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
-        return view('frontend.pages.wallet',["wallet_info"=>$wallet_info]);
-
+        return view('frontend.pages.EmiMeter');
     }
 
     public function personalInfoFill()
@@ -83,9 +93,5 @@ class CustomerPagesController extends Controller
     public function homeEligibilityCalc()
     {
         return view('frontend.pages.homeEligibilityCalc');
-    }
-    public function Meter()
-    {
-        return view('frontend.pages.EmiMeter');
     }
 }

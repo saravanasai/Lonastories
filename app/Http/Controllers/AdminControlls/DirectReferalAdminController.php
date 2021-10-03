@@ -55,7 +55,7 @@ class DirectReferalAdminController extends Controller
          // this methode trigges the resend the url to user
          $refered_customer=DirectReferal::where('id',$id)->first();
          $email=$refered_customer->refered_cus_email;
-         Mail::to($email)->send(new DirectRefferalLinkResend($id));
+        //  Mail::to($email)->send(new DirectRefferalLinkResend($id));
          return 1;
 
     }

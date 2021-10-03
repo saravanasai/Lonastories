@@ -43,7 +43,7 @@ class CustomerController extends Controller
              "date"=>"required"
          ]);
 
-        //  $check_if_exist=new CustomerSignup();
+         $check_if_exist=new CustomerSignup();
 
          $customer_exist=CustomerSignup::where('cus_phonenumber','=',$request->phonenumber)->first();
 
@@ -60,7 +60,7 @@ class CustomerController extends Controller
                             //     'text' => 'Your one time password for LN- '.$otp.' valid till 5min'
                             // ]);
                              // end section to overcome otp !important shoen dont delete it
-                             Mail::to($request->email)->send(new sendOtp($otp));
+                            //  Mail::to($request->email)->send(new sendOtp($otp));
                                  if($otp_status)
                                   {
                                         $activation_status=1;

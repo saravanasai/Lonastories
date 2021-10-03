@@ -128,13 +128,6 @@
 
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        {{-- <div class="col-md-6">
-                                                            <h5><label for="">Property Type :</label></h5>
-                                                            <input type="radio" id="purchase" name="apr" placeholder=""
-                                                                required> <label for="">Purchase</label>
-                                                            &nbsp;&nbsp;<input type="radio" id="construction" name="apr"
-                                                                placeholder="" required> <label for="">Construction</label>
-                                                        </div> --}}
                                                         <div class="col-md-6">
                                                             <h5><label for="username">Preferred Tenure: </label></h5>
                                                             <select name="" id="tenure" class="form-control">
@@ -279,50 +272,3 @@
         </div>
     </section>
 @endsection
-<script type="text/javascript">
-    // Homeloan Eligibility Calculator========================================================
-    function h_loan() {
-        let salary = parseInt(document.querySelector('#salary').value) * 0.7;
-        let other_emi = parseInt(document.querySelector('#other_emi').value);
-        let tenure = parseInt(document.querySelector("#tenure").value);
-        let propVal = parseInt(document.querySelector("#propVal").value);
-
-        let income, property;
-        // Income Eligibility
-        switch (true) {
-            case (tenure == 5):
-                income = ((salary - other_emi) / 1989) * 1e5;
-                break;
-            case (tenure == 10):
-                income = ((salary - other_emi) / 1161) * 1e5;
-                break;
-            case (tenure == 15):
-                income = ((salary - other_emi) / 898) * 1e5;
-                break;
-            case (tenure == 20):
-                income = ((salary - other_emi) / 775) * 1e5;
-                break;
-            case (tenure == 25):
-                income = ((salary - other_emi) / 707) * 1e5;
-                break;
-            case (tenure == 30):
-                income = ((salary - other_emi) / 665) * 1e5;
-                break;
-            default:
-                alert("Fields Are Incorrect");
-        }
-
-        if (propVal >= 9e6) {
-            property = propVal * 0.75;
-
-        } else if (propVal <= 9e6) {
-            property = propVal * 0.8;
-        }
-
-        document.getElementById('income').innerText = (income <= 0) ? '0.00' : income.toFixed(0);
-        document.getElementById('property').innerText = (property <= 0) ? '0.00' : property.toFixed(0);
-
-    };
-    // Homeloan Eligibility Calculator========================================================
-</script>
-<!--================================= Scripting=================================================== -->

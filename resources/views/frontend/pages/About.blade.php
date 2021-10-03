@@ -224,7 +224,7 @@
                     @if (session('customer'))
                         <h5 class="pt-5 pb-lg-3"><a
                                 href="{{ route('quickEnquieryForm.edit', session('customer')->id) }}"
-                                class="btn btn-outline-dark mt-1"><strong>Share
+                                class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else

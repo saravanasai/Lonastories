@@ -39,11 +39,11 @@
                     </li>
 
                     <li class="nav-item text-center ml-lg-4">
-                        @if(session('customer'))
+                        @if(!session('customer'))
                         <a href="{{route('signup.index')}}" class="btn btn-light text-dark pull-right mysts"><strong>
                                 SIGN UP</strong></a>
                         @else
-                        <a href="{{route('quickEnquieryForm.index')}}" class="btn btn-light text-dark pull-right mysts"><strong>MY
+                        <a href="{{route('user.profile')}}" class="text-gray nav-link mysts"><strong>MY
                             STORIES</strong></a>
                         @endif
                     </li>

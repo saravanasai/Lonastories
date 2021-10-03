@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.default.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/emoji.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/button.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">

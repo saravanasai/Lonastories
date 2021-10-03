@@ -3,7 +3,7 @@
     <div id="hero" class="hero hero-head hero-home bg-gray pt-lg-5 pt-sm-0">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text pl-md-3 pr-md-5 pt-md-5 pt-sm-2 mt-lg-2 mt-sm-2">
+                <div class="col-md-6 text pl-md-3 pr-md-5 pt-md-5 pt-sm-2 mt-lg-2 mt-sm-2 pb-5">
                     <h1 class="text-light display-4 text-lg-left text-md-center pb-md-0 pb-sm-3" id="typed-text"
                         data-aos="zoom-out-right" data-aos-duration="1000">
                         A
@@ -185,7 +185,7 @@
                     </h3>
                 </div>
                 <div class="col-md-12 pt-5">
-                    <h4><a href="{{route('user.About')}}" class="btn btn-outline-primary btn-shadow" data-aos="zoom-in-down"
+                    <h4><a href="{{route('user.About')}}" class="btn btn-dark btn-shadow" data-aos="zoom-in-down"
                             data-aos-duration="1500"><strong>READ MORE</strong></a></h4>
                 </div>
             </div>
@@ -289,7 +289,7 @@
                         </h5>
                     @else
                         <h5 class="pt-5 pb-lg-3"><a href="{{ route('user.OneView') }}"
-                                class="btn btn-outline-dark mt-1"><strong>Share
+                                class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @endif
