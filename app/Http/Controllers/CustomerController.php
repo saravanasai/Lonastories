@@ -43,7 +43,7 @@ class CustomerController extends Controller
              "date"=>"required"
          ]);
 
-         $check_if_exist=new CustomerSignup();
+         $customer_exist=new CustomerSignup();
 
          $customer_exist=CustomerSignup::where('cus_phonenumber','=',$request->phonenumber)->first();
 
@@ -225,7 +225,7 @@ class CustomerController extends Controller
                $user_info->otp=0;
                if($user_info->save())
                {
-                  return redirect()->route('user.wallet');
+                  return redirect()->route('user.myWallet');
                }
           }
           else

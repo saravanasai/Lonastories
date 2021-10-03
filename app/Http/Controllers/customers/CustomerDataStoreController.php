@@ -15,6 +15,7 @@ class CustomerDataStoreController extends Controller
 {
     public function personalInfoFillStore(Request $request)
     {
+
          $personal_info= new PersonalInfoFrom();
          $personal_info->pr_form_of_user=session('customer')->id;
          $personal_info->Original_Name=$request->Original_Name;
@@ -57,7 +58,7 @@ class CustomerDataStoreController extends Controller
 
           if($personal_info->save() && $customer_master->save())
           {
-              return redirect()->route('user.wallet');
+              return redirect()->route('user.profile');
           }
     }
 

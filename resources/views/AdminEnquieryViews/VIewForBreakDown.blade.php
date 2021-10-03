@@ -125,6 +125,7 @@
                                 <th>Roi</th>
                                 <th>Tenure</th>
                                 <th>Emi</th>
+                                <th>Emi Paid</th>
                                 <th>Pos</th>
                                 <th>BT Yes/Nos</th>
                               </tr>
@@ -139,6 +140,7 @@
                                     <td>{{$obligation->ob_roi}}</td>
                                     <td>{{$obligation->ob_tennure}}</td>
                                     <td>{{$obligation->ob_emi}}</td>
+                                    <td>{{$obligation->ob_comp_emi}}</td>
                                     <td>{{$obligation->ob_pos}}</td>
                                     <td>
                                         @if($obligation->ob_bt==1)
@@ -192,6 +194,40 @@
                     </div>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-el" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+                    @if ($data['enquiery_details']->loan_product_id==2 || $enquiery_details->loan_product_id==4)
+                    <div class="container">
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th style="width: 10px">S.no</th>
+                                <th>Bank Name</th>
+                                <th>Ltv</th>
+                                <th>Ltv Eligibility</th>
+                                <th>Foir</th>
+                                <th>Roi</th>
+                                <th>Tenure</th>
+                                <th>Emi Per/lak</th>
+                                <th>Foir Eligibility</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data['hl_el_table'] as $obligation )
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$obligation->hl_bank_name }}</td>
+                                    <td>{{$obligation->hl_ltv}}</td>
+                                    <td>{{$obligation->hl_ltv_eligibility}}</td>
+                                    <td>{{$obligation->hl_foir}}</td>
+                                    <td>{{$obligation->hl_roi}}</td>
+                                    <td>{{$obligation->hl_tenure}}</td>
+                                    <td>{{$obligation->hl_emi_per_lak}}</td>
+                                    <td>{{$obligation->hl_emi_foir_eligibility}}</td>
+                                  </tr>
+                                @endforeach
+                            </tbody>
+                          </table>
+                    </div>
+                    @else
                     <div class="container">
                         <table class="table table-bordered">
                             <thead>
@@ -224,6 +260,7 @@
                             </tbody>
                           </table>
                     </div>
+                    @endif
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                     <div class="card bg-light d-flex flex-fill">
@@ -295,12 +332,12 @@
                                 </ul>
                               </div>
                               <div class="col col-md-4">
-                                <h1 class="lead"><b>LTV Info</b></h1>
+                                {{-- <h1 class="lead"><b>LTV Info</b></h1>
                                 <ul class="ml-4 mb-0 mt-4 fa-ul text-muted">
                                     <li class="p-2"><span class="fa-li"></span> LTV-1 : {{$data['additional_details']->hl_fn_ltv_1}}</li>
                                     <li class="p-2"><span class="fa-li"></span> LTV-2 : {{$data['additional_details']->hl_fn_ltv_2}}</li>
                                     <li class="p-2"><span class="fa-li"></span> LTV-3 : {{$data['additional_details']->hl_fn_ltv_3}}</li>
-                                </ul>
+                                </ul> --}}
                               </div>
                           </div>
                           <div class="row mt-3">

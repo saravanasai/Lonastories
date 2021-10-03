@@ -54,8 +54,6 @@ class EnquieryOfCusDetailView extends Controller
          ->join('offer_pdfs','cl_enquieries.id','=','offer_pdfs.pdf_of_enq')
          ->select('table_customer.*','cl_enquieries.*','cl_enquieries.id as enq_id','products.*','subproducts.*','statuses.*','offer_pdfs.*')
          ->where('cl_enquieries.id',$id)->first();
-        //  dd($user_enquiery);
-
         return view('adminviews.detailOfCusSingleEnquieryview',["con_lead_info"=>$con_lead_info,"user_enquiery"=>$user_enquiery]);
     }
 

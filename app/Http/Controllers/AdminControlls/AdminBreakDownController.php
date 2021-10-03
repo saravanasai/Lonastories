@@ -31,19 +31,33 @@ class AdminBreakDownController extends Controller
     public static function makePdf($cus_id,$enqid)
 
     {
+        $customer_additional_details=0;
+        $ln_comparison_table=0;
+        $customer_hl_el_breakDown=0;
+        $customer_ob_breakDown=0;
+        $customer_cr_breakDown=0;
+        $customer_el_breakDown=0;
 
-            // dd($enqid);
          $customer_basic_info=CustomerSignup::where('id',$cus_id)->first();
          $customer_enquiery=ClEnquiery::join('products','cl_enquieries.loan_product_id','=','products.id')
          ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
             ->where('cl_enquieries.id',$enqid)
             ->first();
-            // dd($customer_enquiery);
-         $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$enqid)->first();
-         $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$enqid)->first();
-         $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
-         $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
-         $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+         if($customer_enquiery->loan_product_id==2 || $customer_enquiery->loan_product_id==4)
+         {
+            $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
+            $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
+            $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+            $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$enqid)->first();
+            $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$enqid)->first();
+            $customer_hl_el_breakDown=HomeLoanEligibility::where('hl_el_of_cus',$cus_id)->where('hl_el_to_enquiery',$enqid)->get();
+         }
+          else
+          {
+            $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
+            $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
+            $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+          }
          $customer_fn_breakDown=FinalBreakDown::where('fn_of_cus',$cus_id)->where('fn_to_enquiery',$enqid)->first();
 
          $data=[
@@ -54,6 +68,7 @@ class AdminBreakDownController extends Controller
              "ob_details"=>$customer_ob_breakDown,
              "cr_details"=>$customer_cr_breakDown,
              "el_details"=>$customer_el_breakDown,
+             "hl_el_details"=>$customer_hl_el_breakDown,
              "fn_details"=>$customer_fn_breakDown
          ];
 
@@ -255,7 +270,7 @@ class AdminBreakDownController extends Controller
 
             try{
 
-                $this->cus_id=$request->cusid;
+            $this->cus_id=$request->cusid;
             $this->enq_id=$request->enqid;//storing this to process pdf
             $final_break_down=new FinalBreakDown();
             $final_break_down->fn_to_enquiery=$request->enqid;

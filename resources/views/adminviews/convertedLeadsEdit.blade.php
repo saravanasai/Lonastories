@@ -26,8 +26,8 @@
     <div class="content">
         <div class="container">
             <div class="col-12 col-sm-6 col-md-12 d-flex align-items-stretch flex-column">
-                <div class="card bg-light d-flex flex-fill">
-                  <div class="card-header bg-purple text-white border-bottom-0">
+                <div class="card card-purple  d-flex flex-fill">
+                  <div class="card-header  text-white border-bottom-0">
                    LEAD INFO EDIT VIEW
                   </div>
                   <div class="card-body pt-3">
@@ -270,23 +270,10 @@
               </div>
         </div>
     </div>
-    </div>
-
     <!-- /.content -->
-
-
 @endsection
-
-
-
 {{-- section ajax --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"> </script>
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
+@section('js')
  <script>
     $(function() {
 
@@ -679,3 +666,4 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
     });
 </script>
+@endsection

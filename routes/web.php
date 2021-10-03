@@ -131,8 +131,6 @@ Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
     Route::get('caller/customerEntry',[CallerController::class,'entry'])->name('caller.entry');
     Route::post('caller/customerEntry',[CallerController::class,'StoreNewCustomer'])->name('caller.StoreNewCustomer');
      //Route Resource For leads assigned by admin to leader
-     //!!! important NOW ACUALLY WORKING ON THIS ROUTE !!//
-
     Route::get('leads/callerside/breakDown/{cusid}/{enqid}',[AssignToLeaderController::class,'pdfcreate'])->name('pdfcreate.caller');
     //routes that handle the My Leads of Caller
 
@@ -169,7 +167,6 @@ Route::prefix('user')->group(function()
 {
 
     Route::get('login',[UserController::class,'login'])->name('userlogin');
-    // Route::post('checkuser',[UserController::class,'checkuser'])->name('userLoginPost');
     Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
     Route::get('connect',[CustomerPagesController::class,'connect'])->name('user.connect');
     Route::get('AboutUs',[CustomerPagesController::class,'About'])->name('user.About');
@@ -191,11 +188,9 @@ Route::prefix('user')->middleware(['user'])->group(function () {
 
 
     Route::get('profile',[CustomerPagesController::class,'profile'])->name('user.profile');
-
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
     Route::get('myWallet',[CustomerPagesController::class,'myWallet'])->name('user.myWallet');
     Route::get('meter',[CustomerPagesController::class,'Meter'])->name('user.meter');
-
     Route::get('personalInfoForm',[CustomerPagesController::class,'personalInfoFill'])->name('user.personalInfoFill');
     Route::get('personalLoan/emicalculater',[CustomerPagesController::class,'personalLoanEmiCalc'])->name('user.personalLoanEmiCalc');
     Route::get('homeLoan/emicalculater',[CustomerPagesController::class,'homeLoanEmiCalc'])->name('user.homeLoanEmiCalc');
@@ -245,6 +240,8 @@ Route::post('/servicepost', function (Request $request,TestService $service) {
 //routes for test
 Route::get('/test',function()
 {
+
+
 
     $print=AdminBreakDownController::makePdf(1,1);
     return $print->download('test.pdf');

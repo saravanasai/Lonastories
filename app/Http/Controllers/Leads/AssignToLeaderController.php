@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminControlls\AdminBreakDownController;
 use App\Http\Controllers\Controller;
 use App\Models\AdminBreakDownModel\Hl_profile_additional;
 use App\Models\AdminBreakDownModel\Hl_profile_loan_comparison;
+use App\Models\AdminBreakDownModel\HomeLoanEligibility;
 use App\Models\ClEnquiery;
 use App\Models\CreditBreakDown;
 use App\Models\CustomerSignup;
@@ -17,6 +18,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use PDOException;
 
 class AssignToLeaderController extends Controller
 {
@@ -24,44 +26,59 @@ class AssignToLeaderController extends Controller
     protected $cus_id;
     protected $enq_id;
 
-    //uitility function
-    public static function makePdf($cus_id,$enqid)
+   //uitility function
+   public static function makePdf($cus_id,$enqid)
 
-    {
+   {
+       $customer_additional_details=0;
+       $ln_comparison_table=0;
+       $customer_hl_el_breakDown=0;
+       $customer_ob_breakDown=0;
+       $customer_cr_breakDown=0;
+       $customer_el_breakDown=0;
 
-            // dd($enqid);
-         $customer_basic_info=CustomerSignup::where('id',$cus_id)->first();
-         $customer_enquiery=ClEnquiery::join('products','cl_enquieries.loan_product_id','=','products.id')
-         ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
-            ->where('cl_enquieries.id',$enqid)
-            ->first();
-            // dd($customer_enquiery);
-         $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$enqid)->first();
-         $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$enqid)->first();
-         $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
-         $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
-         $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
-         $customer_fn_breakDown=FinalBreakDown::where('fn_of_cus',$cus_id)->where('fn_to_enquiery',$enqid)->first();
+        $customer_basic_info=CustomerSignup::where('id',$cus_id)->first();
+        $customer_enquiery=ClEnquiery::join('products','cl_enquieries.loan_product_id','=','products.id')
+        ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
+           ->where('cl_enquieries.id',$enqid)
+           ->first();
+        if($customer_enquiery->loan_product_id==2 || $customer_enquiery->loan_product_id==4)
+        {
+           $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
+           $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
+           $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+           $customer_additional_details=Hl_profile_additional::where('hl_of_cus',$cus_id)->where('hl_to_enquiery',$enqid)->first();
+           $ln_comparison_table=Hl_profile_loan_comparison::where('ln_com_of_cus',$cus_id)->where('ln_com_to_enquiery',$enqid)->first();
+           $customer_hl_el_breakDown=HomeLoanEligibility::where('hl_el_of_cus',$cus_id)->where('hl_el_to_enquiery',$enqid)->get();
+        }
+         else
+         {
+           $customer_ob_breakDown=ObligationBreakDown::where('ob_of_cus',$cus_id)->where('ob_to_enquiery',$enqid)->get();
+           $customer_cr_breakDown=CreditBreakDown::where('cr_of_cus',$cus_id)->where('cr_to_enquiery',$enqid)->get();
+           $customer_el_breakDown=MultiplierEligibility::where('el_of_cus',$cus_id)->where('el_to_enquiery',$enqid)->get();
+         }
+        $customer_fn_breakDown=FinalBreakDown::where('fn_of_cus',$cus_id)->where('fn_to_enquiery',$enqid)->first();
 
-         $data=[
-             "basic_info"=>$customer_basic_info,
-             "enquiery_details"=>$customer_enquiery,
-             "additional_details"=>$customer_additional_details,
-             "ln_comparison"=>$ln_comparison_table,
-             "ob_details"=>$customer_ob_breakDown,
-             "cr_details"=>$customer_cr_breakDown,
-             "el_details"=>$customer_el_breakDown,
-             "fn_details"=>$customer_fn_breakDown
-         ];
+        $data=[
+            "basic_info"=>$customer_basic_info,
+            "enquiery_details"=>$customer_enquiery,
+            "additional_details"=>$customer_additional_details,
+            "ln_comparison"=>$ln_comparison_table,
+            "ob_details"=>$customer_ob_breakDown,
+            "cr_details"=>$customer_cr_breakDown,
+            "el_details"=>$customer_el_breakDown,
+            "hl_el_details"=>$customer_hl_el_breakDown,
+            "fn_details"=>$customer_fn_breakDown
+        ];
 
-                PDF::setOptions(['dpi' => 200, 'isHtml5ParserEnabled'=>true,'defaultFont' => 'sans-serif']);
-                $pdf = PDF::loadView('customerviews.customerPdf', $data);
+               PDF::setOptions(['dpi' => 200, 'isHtml5ParserEnabled'=>true,'defaultFont' => 'sans-serif']);
+               $pdf = PDF::loadView('customerviews.customerPdf', $data);
 
 
 
-        return $pdf;
+       return $pdf;
 
-    }
+   }
 
     /**
      * Display a listing of the resource.
@@ -115,6 +132,7 @@ class AssignToLeaderController extends Controller
             $ob_break_down->ob_roi=$request->rateOfInterest;
             $ob_break_down->ob_tennure=$request->tennure;
             $ob_break_down->ob_emi=$request->emi;
+            $ob_break_down->ob_comp_emi=$request->ob_comp_emi;
             $ob_break_down->ob_pos=$request->pos;
             $ob_break_down->ob_bt=$request->bt;
             $ob_break_down->save();
@@ -182,12 +200,6 @@ class AssignToLeaderController extends Controller
              $hl_aditional_info->hl_gross_salary=$request->hl_gross_salary;
              $hl_aditional_info->hl_net_salary=$request->hl_net_salary;
              $hl_aditional_info->hl_co_joint=$request->hl_co_joint;
-             $hl_aditional_info->hl_ltv_1=$request->hl_ltv_1;
-             $hl_aditional_info->hl_ltv_2=$request->hl_ltv_2;
-             $hl_aditional_info->hl_ltv_3=$request->hl_ltv_3;
-             $hl_aditional_info->hl_fn_ltv_1=$request->hl_fn_ltv_1;
-             $hl_aditional_info->hl_fn_ltv_2=$request->hl_fn_ltv_2;
-             $hl_aditional_info->hl_fn_ltv_3=$request->hl_fn_ltv_3;
              $hl_aditional_info->save();
 
              return 1;
@@ -220,8 +232,29 @@ class AssignToLeaderController extends Controller
             $ln_comparison_table->save();
             return 1;
          }
+         elseif ($insert_to_table==6)
+         {
+             $hl_el_info=new HomeLoanEligibility();
+             $hl_el_info->hl_el_to_enquiery=$request->enqid;
+             $hl_el_info->hl_el_of_cus=$request->cusid;
+             $hl_el_info->hl_bank_name=$request->hl_bank_name;
+             $hl_el_info->hl_ltv=$request->hl_ltv;
+             $hl_el_info->hl_ltv_eligibility=$request->hl_ltv_eligibility;
+             $hl_el_info->hl_foir=$request->hl_foir;
+             $hl_el_info->hl_roi=$request->hl_roi;
+             $hl_el_info->hl_tenure=$request->hl_tenure;
+             $hl_el_info->hl_emi_per_lak=$request->hl_emi_per_lak;
+             $hl_el_info->hl_emi_foir_eligibility=$request->hl_emi_foir_eligibility;
+             $hl_el_info->save();
+             $get_back_data=HomeLoanEligibility::where("hl_el_to_enquiery",'=',$request->enqid)
+            ->where("hl_el_of_cus","=",$request->cusid)->get();
+            return json_encode($get_back_data);
+
+         }
          //insert into finalbreakDown table
          else{
+
+            try{
 
             $this->cus_id=$request->cusid;
             $this->enq_id=$request->enqid;//storing this to process pdf
@@ -235,6 +268,7 @@ class AssignToLeaderController extends Controller
             $final_break_down->final_proposed_total_emi=$request->final_proposed_total_emi;
             $final_break_down->final_current_foir=$request->final_current_foir;
             $final_break_down->final_proposed_foir=$request->final_proposed_foir;
+            $final_break_down->Final_page_remarks=$request->Final_page_remarks;
             $final_break_down->final_mon_1_salary=$request->final_sal_mon1;
             $final_break_down->final_mon_2_salary=$request->final_sal_mon2;
             $final_break_down->final_mon_3_salary=$request->final_sal_mon3;
@@ -257,7 +291,6 @@ class AssignToLeaderController extends Controller
                      $cl_enquiery->save();
                 //end changing the profile genration value to 1 after profile genrated
 
-
                 // pdf generation and saving  to the database and moving to local storage
                 $print=AdminBreakDownController::makePdf($this->cus_id,$this->enq_id);
 
@@ -273,6 +306,13 @@ class AssignToLeaderController extends Controller
                 return json_encode(["enq_id"=>$this->enq_id,"cus_id"=>$this->cus_id]);
 
              }
+
+
+            }
+            catch(PDOException $e)
+            {
+                dd($e);
+            }
 
          }
          //End insert into finalbreakDown table
@@ -363,6 +403,20 @@ class AssignToLeaderController extends Controller
 
             }
         }
+        elseif($insert_to_table==6)
+        {
+            $hl_del=HomeLoanEligibility::where('id',$id)->first();
+
+            if($hl_del->delete())
+            {
+
+                $get_back_data=HomeLoanEligibility::where("hl_el_to_enquiery",'=',$request->enqid)
+                ->where("hl_el_of_cus","=",$request->cusid)->get();
+                return json_encode($get_back_data);
+
+            }
+        }
+
 
 
     }
