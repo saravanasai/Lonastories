@@ -21,6 +21,7 @@ class FinalBreakDown extends Model
         "final_proposed_total_emi",
         "final_current_foir",
         "final_proposed_foir",
+        "Final_page_remarks",
         "final_salary_considered",
         "final_obligation_considered",
         "final_ob_pos_sum_of_bt_yes",

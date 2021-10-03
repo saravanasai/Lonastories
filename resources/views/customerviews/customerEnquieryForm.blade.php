@@ -26,13 +26,11 @@
 
 </style>
 
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 
 @section('content')
 
-    <section>
+    {{-- <section>
         <div class="container mt-md-5 pt-md-5">
             <div class="row">
                 <form action="#" method="POST" class="col-md-4">
@@ -244,8 +242,8 @@
                 </form>
             </div>
         </div>
-    </section>
-    {{-- <section>
+    </section> --}}
+    <section>
         <div class="container mt-md-5 pt-md-5">
             <div class="row">
                 <form action="{{ route('quickEnquieryForm.store') }}" method="POST" class="col-md-4">
@@ -439,12 +437,14 @@
                 </form>
             </div>
         </div>
-    </section> --}}
+    </section>
 @endsection
-
+{{-- script section for this page  --}}
+@section('js')
 <script src="{{ asset('frontend/js/jFormslider.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+
         var options = {
             width: 600, //width of slider
             height: 400, //height of slider
@@ -460,6 +460,56 @@
         };
 
         $('#slider').jFormslider(options);
+
+            //section for loadig the subproducts section by products
+            $('body').on('change','#type_of_Product',function()
+            {
+                let product_id=$(this).val();
+                if(product_id!=0)
+                {
+                                    //request to get a sub products
+                                $.ajax({
+
+                    url:'{{route("caller.getsubproductsbyproduct")}}',
+
+                    type:'POST',
+
+                    data: {
+                        _token:"{{csrf_token()}}",
+                        productid:product_id,
+
+
+                    },
+
+                    success: function(data) {
+
+                        console.log(data);
+                        let response=JSON.parse(data);
+                        var tr = '';
+                        $.each(response, function(i,subproduct) {
+                        tr += '<option value="'+subproduct.id+'">'+subproduct.subproductname+'</option>';
+                        });
+                        $('#type_of_sub_product').prop("disabled", false);
+                        $('#type_of_sub_product').html(tr);
+
+
+
+
+                        }
+                    });
+                    //end of ajax request
+
+                }else
+                {
+                    $('#type_of_sub_product').prop("disabled", true);
+                    $('#type_of_sub_product').html('<option value="0" selected>Sub product type</option>');
+                }
+
+
+
+            });
+            //end section for loadig the subproducts section by products
+
     })
 
     function last_slide() {
@@ -483,6 +533,7 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);
     })();
+
 
     // Previous Date Lock ==================================
     $(function() {
@@ -520,3 +571,5 @@
     })
     // Loan Priority ======================================
 </script>
+{{-- end script section for this page  --}}
+@endsection

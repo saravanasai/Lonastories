@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminControlls;
 use App\Http\Controllers\Controller;
 use App\Models\AdminBreakDownModel\Hl_profile_additional;
 use App\Models\AdminBreakDownModel\Hl_profile_loan_comparison;
+use App\Models\AdminBreakDownModel\HomeLoanEligibility;
 use App\Models\ClEnquiery;
 use App\Models\CreditBreakDown;
 use App\Models\CustomerSignup;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
 use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Storage;
+use PDOException;
 
 class AdminBreakDownController extends Controller
 {
@@ -129,6 +131,7 @@ class AdminBreakDownController extends Controller
             $ob_break_down->ob_roi=$request->rateOfInterest;
             $ob_break_down->ob_tennure=$request->tennure;
             $ob_break_down->ob_emi=$request->emi;
+            $ob_break_down->ob_comp_emi=$request->ob_comp_emi;
             $ob_break_down->ob_pos=$request->pos;
             $ob_break_down->ob_bt=$request->bt;
             $ob_break_down->save();
@@ -196,12 +199,6 @@ class AdminBreakDownController extends Controller
              $hl_aditional_info->hl_gross_salary=$request->hl_gross_salary;
              $hl_aditional_info->hl_net_salary=$request->hl_net_salary;
              $hl_aditional_info->hl_co_joint=$request->hl_co_joint;
-             $hl_aditional_info->hl_ltv_1=$request->hl_ltv_1;
-             $hl_aditional_info->hl_ltv_2=$request->hl_ltv_2;
-             $hl_aditional_info->hl_ltv_3=$request->hl_ltv_3;
-             $hl_aditional_info->hl_fn_ltv_1=$request->hl_fn_ltv_1;
-             $hl_aditional_info->hl_fn_ltv_2=$request->hl_fn_ltv_2;
-             $hl_aditional_info->hl_fn_ltv_3=$request->hl_fn_ltv_3;
              $hl_aditional_info->save();
 
              return 1;
@@ -234,10 +231,31 @@ class AdminBreakDownController extends Controller
             $ln_comparison_table->save();
             return 1;
          }
+         elseif ($insert_to_table==6)
+         {
+             $hl_el_info=new HomeLoanEligibility();
+             $hl_el_info->hl_el_to_enquiery=$request->enqid;
+             $hl_el_info->hl_el_of_cus=$request->cusid;
+             $hl_el_info->hl_bank_name=$request->hl_bank_name;
+             $hl_el_info->hl_ltv=$request->hl_ltv;
+             $hl_el_info->hl_ltv_eligibility=$request->hl_ltv_eligibility;
+             $hl_el_info->hl_foir=$request->hl_foir;
+             $hl_el_info->hl_roi=$request->hl_roi;
+             $hl_el_info->hl_tenure=$request->hl_tenure;
+             $hl_el_info->hl_emi_per_lak=$request->hl_emi_per_lak;
+             $hl_el_info->hl_emi_foir_eligibility=$request->hl_emi_foir_eligibility;
+             $hl_el_info->save();
+             $get_back_data=HomeLoanEligibility::where("hl_el_to_enquiery",'=',$request->enqid)
+            ->where("hl_el_of_cus","=",$request->cusid)->get();
+            return json_encode($get_back_data);
+
+         }
          //insert into finalbreakDown table
          else{
 
-            $this->cus_id=$request->cusid;
+            try{
+
+                $this->cus_id=$request->cusid;
             $this->enq_id=$request->enqid;//storing this to process pdf
             $final_break_down=new FinalBreakDown();
             $final_break_down->fn_to_enquiery=$request->enqid;
@@ -249,6 +267,7 @@ class AdminBreakDownController extends Controller
             $final_break_down->final_proposed_total_emi=$request->final_proposed_total_emi;
             $final_break_down->final_current_foir=$request->final_current_foir;
             $final_break_down->final_proposed_foir=$request->final_proposed_foir;
+            $final_break_down->Final_page_remarks=$request->Final_page_remarks;
             $final_break_down->final_mon_1_salary=$request->final_sal_mon1;
             $final_break_down->final_mon_2_salary=$request->final_sal_mon2;
             $final_break_down->final_mon_3_salary=$request->final_sal_mon3;
@@ -286,6 +305,13 @@ class AdminBreakDownController extends Controller
                 return json_encode(["enq_id"=>$this->enq_id,"cus_id"=>$this->cus_id]);
 
              }
+
+
+            }
+            catch(PDOException $e)
+            {
+                dd($e);
+            }
 
          }
          //End insert into finalbreakDown table
@@ -378,6 +404,20 @@ class AdminBreakDownController extends Controller
 
             }
         }
+        elseif($insert_to_table==6)
+        {
+            $hl_del=HomeLoanEligibility::where('id',$id)->first();
+
+            if($hl_del->delete())
+            {
+
+                $get_back_data=HomeLoanEligibility::where("hl_el_to_enquiery",'=',$request->enqid)
+                ->where("hl_el_of_cus","=",$request->cusid)->get();
+                return json_encode($get_back_data);
+
+            }
+        }
+
 
 
     }

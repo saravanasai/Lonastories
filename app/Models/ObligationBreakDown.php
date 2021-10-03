@@ -18,6 +18,7 @@ class ObligationBreakDown extends Model
     "ob_roi",
     "ob_tennure",
     "ob_emi",
+    "ob_comp_emi",
     "ob_pos",
     "ob_bt"
 

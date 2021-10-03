@@ -23,6 +23,7 @@ class CreateObligationBreakDownsTable extends Migration
             $table->string('ob_roi')->nullable();
             $table->string('ob_tennure')->nullable();
             $table->string('ob_emi')->nullable();
+            $table->string('ob_comp_emi')->nullable();
             $table->string('ob_pos')->nullable();
             $table->string('ob_bt')->comment("0 for NO & 1 for yes");
             $table->timestamps();
