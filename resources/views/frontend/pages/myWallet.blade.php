@@ -64,7 +64,7 @@
                     <div class="card border-0 bg-img">
                         <div class="card-body">
                             <h2 id="lpt" class="card-text display-3 text-dark">
-                                {{ $wallet_info->heart_coins + $wallet_info->value_coins + $wallet_info->start_coins }}
+                                {{ $points_given }}
                             </h2>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                     <br>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
-                            <h4 id="srpt" class="card-text display-3 text-dark">{{ $wallet_info->super_reward_point }}
+                            <h4 id="srpt" class="card-text display-3 text-dark">{{ $points_Redemed }}
                             </h4>
                         </div>
                     </div>

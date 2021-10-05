@@ -5,6 +5,8 @@ namespace App\Http\Controllers\customers;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
+use App\Models\Cutomer\SuperRewardPointsGiven;
+use App\Models\Cutomer\SuperRewardPointsRedeemed;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 
@@ -56,7 +58,10 @@ class CustomerPagesController extends Controller
     public function myWallet()
     {
         $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
-        return view('frontend.pages.myWallet',["wallet_info"=>$wallet_info]);
+        $points_given=SuperRewardPointsGiven::where('spr_to_user',session('customer')->id)->sum('points_given');
+        $points_Redemed=SuperRewardPointsRedeemed::where('spr_redem_of_user',session('customer')->id)->sum('points_redeemed');
+
+        return view('frontend.pages.myWallet',["wallet_info"=>$wallet_info,"points_Redemed"=>$points_Redemed,"points_given"=>$points_given]);
     }
 
     public function OneView()

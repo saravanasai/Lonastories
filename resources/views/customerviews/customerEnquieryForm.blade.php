@@ -30,6 +30,11 @@
     <section>
         <div class="container mt-md-5 pt-md-5">
             <div class="row">
+                @if($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="text-danger">{{ $error }}</div>
+                @endforeach
+                @endif
                 <div class="col-md-3 "></div>
                 <form action="{{ route('quickEnquieryForm.store') }}" method="POST" class="col-md-4">
                     @csrf
@@ -43,13 +48,13 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="text" id="txtDate" class="form-control" name="enq_time" data-toggle="tooltip"
+                                <input type="date" id="txtDate" class="form-control" name="enq_date" data-toggle="tooltip"
                                     data-placement="top" title="Enter valid email" placeholder="Select Your Day"
                                     onfocus="this.type='date'" onblur="this.type='text'" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="text" id="txttime" class="form-control" name="time"
+                                <input type="time" id="txttime" class="form-control" name="enq_time"
                                     placeholder="Select Your Time" onfocus="this.type='time'" onblur="this.type='text'"
                                     required>
                             </div>
@@ -94,11 +99,8 @@
                                             </h6>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control select" name="enq_sub_pro_type" required>
-                                                <option value="" hidden>Select Your Type</option>
-                                                <option value="1">BL - New Loan</option>
-                                                <option value="2">Transfer</option>
-                                                <option value="3">Consolidation</option>
+                                            <select class="form-control select" name="enq_sub_pro_type" id="type_of_sub_product" required>
+
                                             </select>
                                         </div>
                                     </div>
@@ -110,12 +112,12 @@
                                             </h6>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control select" namr="priority" required>
+                                            <select class="form-control select" name="priority_for_personal_loan">
                                                 <option value="" hidden>What's Your Priority ?</option>
-                                                <option value="hiel">Higher Eligibility</option>
-                                                <option value="lroi">Lowest ROI</option>
-                                                <option value="ppo">Part Payment Options</option>
-                                                <option value="foreclose">Foreclosure within a short turnaround
+                                                <option value="Higher Eligibility">Higher Eligibility</option>
+                                                <option value="Lowest ROI">Lowest ROI</option>
+                                                <option value="Part Payment Options">Part Payment Options</option>
+                                                <option value="Fore Close">Foreclosure within a short turnaround
                                                     time
                                                 </option>
                                             </select>
@@ -132,13 +134,13 @@
                                 <br>
                                 <div class="row text-center">
                                     <div class="form-group col-md-12">
-                                        <input type="text" name="compName" class="form-control wizard-required" id=""
-                                            placeholder="Company Name" required />
+                                        <input type="text" name="company_name" class="form-control wizard-required typeahead" id=""
+                                            placeholder="Company Name"  required />
                                     </div>
                                     <br>
                                     <div class="form-group col-md-12">
                                         <br>
-                                        <input type="text" name="income" class="form-control wizard-required" id=""
+                                        <input type="text" name="monthly_income" class="form-control wizard-required" id=""
                                             placeholder="Net Monthly Income / salary" required/>
                                     </div>
                                 </div>
@@ -157,7 +159,7 @@
                                         <br>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="text" name="office" class="form-control wizard-required"
+                                        <input type="text" id="company_search" name="office" class="form-control wizard-required"
                                             id="offlocation" placeholder="Office" required/>
                                         <br>
                                     </div>
@@ -168,10 +170,9 @@
                                             home ? (For
                                             Salaried) </h5>
                                         <div class="form-group">
-                                            <select class="form-control select" name="wfh" required>
-                                                <option value="" hidden>What's Up ?</option>
-                                                <option value="">Yes</option>
-                                                <option value="">No</option>
+                                            <select class="form-control select" name="working_from_home">
+                                                <option selected value="YES">Yes</option>
+                                                <option value="NO">No</option>
                                             </select>
                                         </div>
                                     </div>
@@ -185,12 +186,12 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <select class="form-control select" name="whenNeed" required>
+                                    <select class="form-control select" name="loan_expected">
                                         <option value="" hidden>When You Need ?</option>
-                                        <option value="">Immediate</option>
-                                        <option value="">Within 1 Month</option>
-                                        <option value="">2-3 Months</option>
-                                        <option value="">After 3 Months</option>
+                                        <option selected value="Immediate">Immediate</option>
+                                        <option value="Within 1 Month">Within 1 Month</option>
+                                        <option value="2-3 Months">2-3 Months</option>
+                                        <option value="After 3 Months">After 3 Months</option>
                                     </select>
                                 </div>
                                 <br>
@@ -199,21 +200,23 @@
                                 <div class="col-12 text-center">
                                     <h4 class="text-secondary font-weight-bold">My Cibil Score </h4><br>
                                     <div class="form-group">
-                                        <select class="form-control select" name="enq_cibil_score" required>
+                                        <select class="form-control select" name="enq_cibil_score">
                                             <option value="" hidden>Choose What You Got ?</option>
-                                            <option value="">
+                                            <option selected value=" < 800">
                                                 < 800</option>
-                                            <option value="">750 to 800</option>
-                                            <option value="">700 to 750</option>
-                                            <option value="">650 to 700</option>
-                                            <option value="">
+                                            <option value="750 to 800">750 to 800</option>
+                                            <option value="700 to 750">700 to 750</option>
+                                            <option value="650 to 700">650 to 700</option>
+                                            <option value="> 650">
                                                 > 650 </option>
-                                            <option value="">I don't remember</option>
+                                            <option value="I don't remember">I don't remember</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="text-center mt-lg-5">
+                                    @if ($user_info->enquiery_form_status==0)
                                     <button type="submit" name="submit" class="btn btn-secondary">Submit</button>
+                                    @endif
                                 </div>
                                 <br>
                             </li>
@@ -226,12 +229,10 @@
 @endsection
 {{-- script section for this page --}}
 @section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body').innerWidth() * 3;
-
-            console.log(w);
-
             var options = {
                 width: w, //width of slider
                 height: 500, //height of slider
@@ -249,7 +250,7 @@
             $('#slider').jFormslider(options);
 
             //section for loadig the subproducts section by products
-            $('body').on('change', '#type_of_Product', function() {
+            $('body').on('change', '#loan', function() {
                 let product_id = $(this).val();
                 if (product_id != 0) {
                     //request to get a sub products
@@ -272,7 +273,6 @@
                                 tr += '<option value="' + subproduct.id + '">' +
                                     subproduct.subproductname + '</option>';
                             });
-                            $('#type_of_sub_product').prop("disabled", false);
                             $('#type_of_sub_product').html(tr);
                         }
                     });
@@ -284,6 +284,28 @@
                 }
             });
             //end section for loadig the subproducts section by products
+
+
+            //section to auto populate the company name
+            var path = "{{ route('autocomplete') }}";
+
+                $('input.typeahead').typeahead({
+
+                    source:  function (keyword, process) {
+
+                    return $.get(path, { keyword: keyword }, function (data) {
+
+                            console.log(data);
+                            return process(data);
+
+                        });
+
+                    }
+
+                });
+
+
+            //end section to auto populate the company name
 
         })
 

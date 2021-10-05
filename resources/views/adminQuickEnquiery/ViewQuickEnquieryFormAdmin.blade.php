@@ -9,7 +9,7 @@
                 </div>
                 <div class="col mt-1">
                         <div class="float-right">
-                            <p class="breadcrumb-item"><a href="{{ route('admin.NewLeadsbyown') }}">Back</a></p>
+                            <p class="breadcrumb-item"><a class="btn btn-sm btn-primary" href="{{ route('admin.NewLeadsbyown') }}"> <i class="fas fa-backward px-2"></i>Back</a></p>
                         </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card card-purple">
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity"
+                                    <li class="nav-item"><a class="nav-link text-white active" href="#activity"
                                             data-toggle="tab">General info</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summarized View</a></li>
-                                    <li class="nav-item"><a class="nav-link " href="#settings" data-toggle="tab">Assign To
+                                    <li class="nav-item"><a class="nav-link text-white" href="#timeline" data-toggle="tab">Summarized View</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white " href="#settings" data-toggle="tab">Assign To
                                         </a></li>
                                 </ul>
                             </div><!-- /.card-header -->
@@ -40,9 +40,9 @@
                                                     <div class="col-12 col-sm-4">
                                                         <div class="info-box bg-light">
                                                             <div class="info-box-content">
-                                                                <span class="info-box-text text-center text-muted">Working form</span>
+                                                                <span class="info-box-text text-center text-muted">Working form home</span>
                                                                 <span
-                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->take_home_salary }}</span>
+                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->working_from_home }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -52,7 +52,7 @@
                                                                 <span class="info-box-text text-center text-muted">Cibil
                                                                     Score</span>
                                                                 <span
-                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->final_obligation }}</span>
+                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->cibil_score }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -62,7 +62,7 @@
                                                                 <span class="info-box-text text-center text-muted">
                                                                     Loan Expected</span>
                                                                 <span
-                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->loan_amount_required }}</span>
+                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->loan_expected }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -76,8 +76,8 @@
                                                                     class=" float-right text-md">{{ $enquiery->name }}</a>
                                                             </li>
                                                             <li class="list-group-item">
-                                                                <b>Current Location</b> <a
-                                                                    class=" float-right text-md">{{ $enquiery->current_loation }}</a>
+                                                                <b>Mode Of Contact</b> <a
+                                                                    class=" float-right text-md">{{ $enquiery->mode_of_contact }}</a>
                                                             </li>
                                                             <li class="list-group-item">
                                                                 <b>Dob</b> <a
@@ -134,76 +134,44 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                     <!-- / end of first tab.tab-pane -->
                                     <!-- start of second tab.tab-pane -->
                                     <div class="tab-pane" id="timeline">
 
-                                        <div class="row">
-                                            <div class="col col-md-6">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-book mr-1"></i>Name</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $enquiery->name }}
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                                                    <p class="text-muted">{{ $enquiery->current_loation }}</p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fab fa-product-hunt mr-1"></i>Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span class="tag tag-danger">{{ $enquiery->productname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-info-circle mr-1"></i>Additinal Info</strong>
-
-                                                    <p class="text-muted mt-1">{{ $enquiery->additional_details }}</p>
-                                                </div>
-
-                                            </div>
-                                            <div class="col">
-                                                <div class="card-body">
-                                                    <strong><i class="fas fa-phone-alt mr-1"></i>Phone Number</strong>
-
-                                                    <p class="text-muted">
-                                                        {{ $enquiery->cus_phonenumber }}
-                                                    </p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-map-marker-alt mr-1"></i>Dob</strong>
-
-                                                    <p class="text-muted">{{ $enquiery->dob }}</p>
-
-                                                    <hr>
-
-                                                    <strong><i class="fas fa-sitemap mr-1"></i>Sub Product</strong>
-
-                                                    <p class="text-muted mt-1">
-                                                        <span
-                                                            class="tag tag-danger">{{ $enquiery->subproductname }}</span>
-
-                                                    </p>
-
-                                                    <hr>
-
-
-                                                </div>
-
-                                            </div>
+                                        <div class="row mt-5">
+                                            <div class="col col-md-4"><strong>Name :</strong>{{ $enquiery->name}}</div>
+                                            <div class="col col-md-4"><strong>Phone No :</strong>{{ $enquiery->cus_phonenumber}}</div>
+                                            <div class="col col-md-4"><strong>Email:</strong>{{ $enquiery->email}}</div>
                                         </div>
+                                        <div class="row mt-5">
+                                            <div class="col col-md-4"><strong>Date To Call :</strong>{{ $enquiery->date_to_call}}</div>
+                                            <div class="col col-md-4"><strong>Time To Call :</strong>{{ $enquiery->time_to_call}}</div>
+                                            <div class="col col-md-4"><strong>Mode Of Contact :</strong>{{ $enquiery->mode_of_contact}}</div>
+                                        </div>
+                                        <div class="row mt-5">
+                                            @if ($enquiery->product_type==1)
+                                            <div class="col col-md-3"><strong>Priority</strong>{{ $enquiery->date_to_call}}</div>
+                                            <div class="col col-md-3"><strong>Product :</strong>{{ $enquiery->productname}}</div>
+                                            <div class="col col-md-3"><strong>Product Type :</strong>{{ $enquiery->time_to_call}}</div>
+                                            <div class="col col-md-3"><strong>Mode Of Contact</strong>{{ $enquiery->mode_of_contact}}</div>
+                                            @else
+                                            <div class="col col-md-4"><strong>Product :</strong>{{ $enquiery->productname}}</div>
+                                            <div class="col col-md-4"><strong>Product Type :</strong>{{ $enquiery->subproductname}}</div>
+                                            <div class="col col-md-4"><strong>Mode Of Contact</strong>{{ $enquiery->mode_of_contact}}</div>
+                                            @endif
+                                        </div>
+                                        <div class="row mt-5">
+                                            <div class="col col-md-4"><strong>Company Name :</strong>{{ $enquiery->company_name}}</div>
+                                            <div class="col col-md-4"><strong>Monthly Income :</strong>{{ $enquiery->monthly_income}}</div>
+                                            <div class="col col-md-4"><strong>Residence :</strong>{{ $enquiery->residence}}</div>
+                                        </div>
+                                        <div class="row mt-5">
+                                            <div class="col col-md-4"><strong>Working From Home :</strong>{{ $enquiery->working_from_home}}</div>
+                                            <div class="col col-md-4"><strong>Loan Expected :</strong>{{ $enquiery->loan_expected}}</div>
+                                            <div class="col col-md-4"><strong>Cibil Score :</strong>{{ $enquiery->cibil_score}}</div>
+                                        </div>
+
                                     </div>
                                     <!-- / end of second tab.tab-pane -->
                                     <div class="tab-pane" id="settings">

@@ -39,6 +39,7 @@ use App\Http\Controllers\Leads\AssignToLeaderController;
 use App\Http\Controllers\products\ProductController;
 use App\Http\Controllers\products\SubProductController;
 use App\Http\Controllers\Reports\AdminReportController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Website\UserController;
 use App\Service\TestService;
 use Illuminate\Http\Request;
@@ -177,8 +178,10 @@ Route::prefix('user')->group(function()
     Route::get('Mortages',[CustomerPagesController::class,'Mortages'])->name('user.Mortages');
     Route::get('BusinessLoan',[CustomerPagesController::class,'BusinessLoan'])->name('user.BusinessLoan');
     Route::get('EducationLoan',[CustomerPagesController::class,'EducationLoan'])->name('user.EducationLoan');
-
     //end of routes for products page
+
+    //route to auto populate
+    Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
 
 });
 
