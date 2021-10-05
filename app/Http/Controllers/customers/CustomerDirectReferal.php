@@ -45,7 +45,7 @@ class CustomerDirectReferal extends Controller
 
         //need to validate on intergation with frontend
         $get_user_referal_id=CustomerSignup::where('id','=',session('customer')->id)->first();
-        $url=env('APP_URL')."/user/signup/".$get_user_referal_id->cus_referal_code."/referal/2x";
+        $url=url('/')."/user/signup/".$get_user_referal_id->cus_referal_code."/referal/2x";
         $direct_referal= new DirectReferal();
         $direct_referal->direct_ref_of_user=$get_user_referal_id->id;
         $direct_referal->refered_cus_name=$request->refer_to_cus_name;
@@ -57,7 +57,7 @@ class CustomerDirectReferal extends Controller
         if($direct_referal->save())
         {
             Log::channel('telecallerlink')->info($url);
-            // Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
+            Mail::to($request->refer_to_cus_email)->send(new DirectReferalLink($url));
             return redirect()->route('home');
         }
 

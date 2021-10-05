@@ -1990,6 +1990,7 @@
 
             if (validation_check) {
                 $('#cr_tb_final_salary').val(Math.round(average_income(mon1, mon2, mon3)));
+                $('#Final_page_sal_con').val(Math.round(average_income(mon1, mon2, mon3)));
                 $('#el_cal_edit_btn').prop('disabled', false);
                 $('#el_cal_salary_btn').prop('disabled', true);
                 $('#el_sal_mon1').prop('disabled', true);

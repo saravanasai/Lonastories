@@ -60,7 +60,7 @@ class CustomerController extends Controller
                             //     'text' => 'Your one time password for LN- '.$otp.' valid till 5min'
                             // ]);
                              // end section to overcome otp !important shoen dont delete it
-                            //  Mail::to($request->email)->send(new sendOtp($otp));
+                             Mail::to($request->email)->send(new sendOtp($otp));
                                  if($otp_status)
                                   {
                                         $activation_status=1;
@@ -86,7 +86,7 @@ class CustomerController extends Controller
 
                                             $dob=$request->date;
                                             $user_info=CustomerSignup::where('cus_phonenumber',$request->phonenumber)->first();
-                                            Session::put("customer",$user_info);
+                                            $user_id=$user_info->id;
                                             $tele_caller=TeleCallerEnquiery::where('cus_Phone_number',$request->phonenumber)->first();
                                                //section to validate if the its a tellecaller referal
                                                if($tele_caller!=null)
@@ -172,7 +172,7 @@ class CustomerController extends Controller
                                             ]);
                                             $user_info->wallet()->save($walet_info);
 
-                                            return redirect()->route('signup.show',session('customer')->id);
+                                            return redirect()->route('signup.show',$user_id);
                                         }
 
                                 }
@@ -219,12 +219,13 @@ class CustomerController extends Controller
         ]);
         $id=$request->id;
         $user_info=CustomerSignup::where('id',$id)->first();
-         Session::put("customer",$user_info);
+
           if($user_info->otp==$request->otp)
           {
                $user_info->otp=0;
                if($user_info->save())
                {
+                  Session::put("customer",$user_info);
                   return redirect()->route('user.myWallet');
                }
           }

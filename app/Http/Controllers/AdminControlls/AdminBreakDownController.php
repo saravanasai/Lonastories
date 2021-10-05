@@ -14,10 +14,8 @@ use App\Models\MultiplierEligibility;
 use App\Models\ObligationBreakDown;
 use App\Models\OfferPdf;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade as PDF;
-use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Storage;
 use PDOException;
 
