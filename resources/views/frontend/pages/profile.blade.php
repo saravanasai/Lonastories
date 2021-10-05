@@ -44,6 +44,11 @@
                                     {{ session('customer')->cus_phonenumber }}
                                 </p>
                             </div>
+                            <div class="bio-row">
+                                <p><span class="font-weight-bold">SRP Earned </span>: {{ session('customer')->email }}</p>
+                            </div><div class="bio-row">
+                                <p><span class="font-weight-bold">SRP Red.</span>: {{ session('customer')->email }}</p>
+                            </div>
 
                             <div class="bio-row">
                                 <form action="{{ route('user.UploadUserImage') }}" enctype="multipart/form-data"
@@ -52,12 +57,10 @@
                                     <div class="row">
                                         <input type="file"
                                         class="form-control col-md-8 col-sm-12" name="profile_img" id="">
-                                        <input type="submit" class="btn btn-primary" value="Upload">
+                                        <input type="submit" class="btn btn-primary ml-2" value="Upload">
                                         @error('profile_img')
                                             <div class="text-danger small">{{ $message }}</div>
                                         @enderror
-
-
                                     </div>
                                 </form>
                             </div>
@@ -132,7 +135,5 @@
                 </div>
             @endif
         </div>
-
-
     </div>
 @endsection

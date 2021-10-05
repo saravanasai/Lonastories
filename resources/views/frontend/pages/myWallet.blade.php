@@ -59,7 +59,7 @@
             <br>
             <div class="row justify-content-center mt-lg-5">
                 <div class="col-md-5 text-center">
-                    <h3 class="font-weight-bold">Loyalty Points</h3>
+                    <h3 class="font-weight-bold">Total SRP Earned</h3>
                     <br>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-md-5 text-center">
-                    <h3 class="font-weight-bold">Super Reward Points</h3>
+                    <h3 class="font-weight-bold">Total SRP Redeemed</h3>
                     <br>
                     <div class="card border-0 bg-img">
                         <div class="card-body">

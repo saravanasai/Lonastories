@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 order-sm-12">
-                    <img src="{{ asset('frontend/img/connect/personal-loan.png') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('frontend/img/connect/personal-loan.png') }}" alt="" class="img-fluid" loading="lazy">
                 </div>
                 <div class="col-sm-7 order-sm-1 text-center" data-aos="fade-up-left" data-aos-duration="3000">
                     <h2 class="text-center" data-aos="zoom-out-right" data-aos-duration="3000">

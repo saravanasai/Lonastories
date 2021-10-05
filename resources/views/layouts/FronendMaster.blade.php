@@ -9,7 +9,7 @@
     <meta name="robots" content="all,follow" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/landy-iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/owl.carousel/assets/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/owl.carousel/assets/owl.theme.default.css') }}">
@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-
 </head>
 <style>
     .hr {
@@ -193,12 +192,17 @@
     {{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ asset('frontend/js/jFormslider.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
     <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
     <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/front.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('frontend/node_modules/html2canvas/dist/html2canvas.js') }}"></script>
     <!--================================= Scripting=================================================== -->
     <script>
         AOS.init();
