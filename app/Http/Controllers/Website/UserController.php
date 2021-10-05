@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Mail\sendOtp;
 use App\Models\CustomerSignup;
+use App\View\Components\customerdirectReftable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
 
-
+      protected $cus_id;
 
     public function index()
     {
@@ -39,10 +40,10 @@ class UserController extends Controller
                 //section handling the opt generation
                 $otp=rand(1000,9999);
                 $check_user_exist->otp=$otp;
-                // Mail::to($check_user_exist->email)->send(new sendOtp($otp));
-                Session::put('customer',$check_user_exist);
+                Mail::to($check_user_exist->email)->send(new sendOtp($otp));
+                // Session::put('customer',$check_user_exist);
                 $check_user_exist->save();
-                return redirect()->route('signup.show',session('customer')->id);
+                return redirect()->route('signup.show',$this->cus_id);
 
           }
           else
