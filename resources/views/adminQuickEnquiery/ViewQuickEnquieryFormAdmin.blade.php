@@ -91,6 +91,10 @@
                                                                 <b>Product Sub Type</b> <a
                                                                     class=" float-right text-md">{{ $enquiery->subproductname }}</a>
                                                             </li>
+                                                            <li class="list-group-item">
+                                                                <b>Company Name</b> <a
+                                                                    class=" float-right text-md">{{ $enquiery->company_name }}</a>
+                                                            </li>
                                                         </ul>
                                                     </div>
                                                 </div>

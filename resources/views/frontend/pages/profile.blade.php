@@ -45,9 +45,9 @@
                                 </p>
                             </div>
                             <div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Earned </span>: {{ session('customer')->email }}</p>
+                                <p><span class="font-weight-bold">SRP Earned </span>: {{ $points_given }}</p>
                             </div><div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Red.</span>: {{ session('customer')->email }}</p>
+                                <p><span class="font-weight-bold">SRP Red.</span>: {{ $points_Redemed }}</p>
                             </div>
 
                             <div class="bio-row">
@@ -78,7 +78,7 @@
         </div>
 
         <div class="row mt-md-5 mb-md-5 text-center">
-            @if (session('customer')->customer_one_view_status == '0')
+
 
                 <div class="col-md-2 pb-3">
                     <a href="{{ route('user.personalInfoFill') }}" class="btn btn-success btn-block text-dark"><i
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+
         </div>
     </div>
 @endsection

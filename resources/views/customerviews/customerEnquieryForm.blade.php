@@ -35,7 +35,7 @@
                     <div class="text-danger">{{ $error }}</div>
                 @endforeach
                 @endif
-                <div class="col-md-3 "></div>
+                <div class="col-md-3"></div>
                 <form action="{{ route('quickEnquieryForm.store') }}" method="POST" class="col-md-4">
                     @csrf
                     <div id="slider" class="form">
