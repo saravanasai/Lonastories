@@ -30,6 +30,8 @@
     <section>
         <div class="container mt-md-5 pt-md-5">
             <div class="row">
+
+                <div class="col-md-3 "></div>
                 @if($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="text-danger">{{ $error }}</div>
@@ -100,7 +102,6 @@
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control select" name="enq_sub_pro_type" id="type_of_sub_product" required>
-
                                             </select>
                                         </div>
                                     </div>
@@ -140,7 +141,9 @@
                                     <br>
                                     <div class="form-group col-md-12">
                                         <br>
+
                                         <input type="text" name="monthly_income" class="form-control wizard-required" id=""
+
                                             placeholder="Net Monthly Income / salary" required/>
                                     </div>
                                 </div>
@@ -186,6 +189,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
+
                                     <select class="form-control select" name="loan_expected">
                                         <option value="" hidden>When You Need ?</option>
                                         <option selected value="Immediate">Immediate</option>
@@ -200,7 +204,7 @@
                                 <div class="col-12 text-center">
                                     <h4 class="text-secondary font-weight-bold">My Cibil Score </h4><br>
                                     <div class="form-group">
-                                        <select class="form-control select" name="enq_cibil_score">
+                                        <select class="form-control select" name="enq_cibil_score" required>
                                             <option value="" hidden>Choose What You Got ?</option>
                                             <option selected value=" < 800">
                                                 < 800</option>
@@ -250,7 +254,8 @@
             $('#slider').jFormslider(options);
 
             //section for loadig the subproducts section by products
-            $('body').on('change', '#loan', function() {
+            $('body').on('change', '#type_of_Product', function() {
+            
                 let product_id = $(this).val();
                 if (product_id != 0) {
                     //request to get a sub products
@@ -277,6 +282,74 @@
                         }
                     });
                     //end of ajax request
+
+                } else {
+                    $('#type_of_sub_product').prop("disabled", true);
+                    $('#type_of_sub_product').html('<option value="0" selected>Sub product type</option>');
+                }
+            });
+            //end section for loadig the subproducts section by products
+
+        })
+
+        function last_slide() {
+            alert("you are going to reach last slide if this function retuned true");
+            return true;
+        }
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+                '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+
+        // Previous Date Lock ==================================
+        $(function() {
+            var dtToday = new Date();
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if (month < 10)
+                month = '0' + month.toString();
+            if (day < 10)
+                day = '0' + day.toString();
+
+            var minDate = year + '-' + month + '-' + day;
+
+            $('#txtDate').attr('min', minDate);
+        });
+        // Previous Date Lock =================================
+
+        // Loan Priority ======================================
+        $('#priority').hide()
+
+        $('#loan').change(function() {
+            let loanSelect = $('#loan').find(":selected").val();
+            (loanSelect === '1') ? $('#priority').show(): $('#priority').hide();
+
+            $('#loan_typ')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="whatever">text</option>')
+                .val('whatever');
+
+            // if ((loanSelect === 'pl') || (loanSelect === 'bl')) {};
+
+        });
+
 
                 } else {
                     $('#type_of_sub_product').prop("disabled", true);
@@ -366,8 +439,6 @@
             // if ((loanSelect === 'pl') || (loanSelect === 'bl')) {};
 
         });
-
-        // Loan Priority ======================================
     </script>
     {{-- end script section for this page --}}
 @endsection
