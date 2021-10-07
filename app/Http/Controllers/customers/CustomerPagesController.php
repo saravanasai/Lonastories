@@ -68,7 +68,7 @@ class CustomerPagesController extends Controller
 
     public function OneView()
     {
-        $emi_shedule=CustomerEmiShedule::where('id',session('customer')->id)->get();
+        $emi_shedule=CustomerEmiShedule::where('emi_shedule_of_user',session('customer')->id)->get();
         return view('frontend.pages.OneView',["emi_shedules"=>$emi_shedule]);
     }
 

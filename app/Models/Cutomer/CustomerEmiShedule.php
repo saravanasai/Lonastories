@@ -18,6 +18,7 @@ class CustomerEmiShedule extends Model
         "emi_sh_roi",
         "emi_sh_tenure",
         "emi_sh_emi",
-        "emi_sh_file"
+        "emi_sh_file",
+        "emi_shedule_status"
     ];
 }

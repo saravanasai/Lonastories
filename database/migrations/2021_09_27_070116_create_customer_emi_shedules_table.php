@@ -23,7 +23,8 @@ class CreateCustomerEmiShedulesTable extends Migration
             $table->string('emi_sh_roi');
             $table->string('emi_sh_tenure');
             $table->string('emi_sh_emi');
-            $table->string('emi_sh_file');
+            $table->string('emi_sh_file')->default(0);
+            $table->string('emi_shedule_status')->default(0)->comment("0 means shedule not uploaded 1 means uploaded");
             $table->timestamps();
         });
     }

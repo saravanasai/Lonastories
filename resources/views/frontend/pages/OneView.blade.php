@@ -89,7 +89,7 @@
                                                 <label class="form-control-label" for="input-country">Upload Your
                                                     Schedule
                                                 </label>
-                                                <input type="file" name="shedule_file" class="form-control" required>
+                                                <input type="file" name="shedule_file" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +144,32 @@
                                         <td>{{ $emi_shedule->emi_sh_roi }}</td>
                                         <td>{{ $emi_shedule->emi_sh_tenure }}</td>
                                         <td>{{ $emi_shedule->emi_sh_emi }}</td>
+                                        @if ($emi_shedule->emi_shedule_status==0)
+                                        <td>
+                                            <form action="{{route('user.existingEmiSheduleRestoreStore')}}" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col col-md-6">
+                                                            <div class="form-group">
+                                                                @error('shedule_file')
+                                                                    <div class="text-danger">{{$message}}</div>
+                                                                @enderror
+                                                                <input type="hidden" name="shedule_id" value="{{ $emi_shedule->id}}">
+                                                                <input type="file" name="shedule_file" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col-md-6">
+                                                            <button type="submit" id="add" class="btn btn-success">Upload
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
+                                        @else
                                         <td><a href="{{asset('SheduleDocs/'.$emi_shedule->emi_sh_file)}}" download="Shedule{{$emi_shedule->id}}" class="btn btn-sm btn-primary">Shedule</a></td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

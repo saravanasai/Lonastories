@@ -7,6 +7,7 @@ use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Cutomer\PersonalInfoFrom;
 use App\Models\Wallet;
+use App\Service\EmiSheduleReUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -90,6 +91,7 @@ class CustomerDataStoreController extends Controller
             $existing_loan_info->emi_sh_tenure =$request->tenure;
             $existing_loan_info->emi_sh_emi=$request->emi;
             $existing_loan_info->emi_sh_file=$file_name;
+            $existing_loan_info->emi_shedule_status=1;
 
             //updating the status in customer master table
 
@@ -107,6 +109,32 @@ class CustomerDataStoreController extends Controller
                 return redirect()->back();
             }
 
+        }
+        else
+        {
+            $existing_loan_info=new CustomerEmiShedule();
+            $existing_loan_info->emi_shedule_of_user=session('customer')->id;
+            $existing_loan_info->emi_sh_name_of_bank=$request->bank_name;
+            $existing_loan_info->emi_sh_type_of_loan=$request->type_of_loan;
+            $existing_loan_info->emi_sh_loan_amount=$request->loan_amount;
+            $existing_loan_info->emi_sh_roi=$request->roi;
+            $existing_loan_info->emi_sh_tenure =$request->tenure;
+            $existing_loan_info->emi_sh_emi=$request->emi;
+            $existing_loan_info->emi_shedule_status=0;
+            //updating the status in customer master table
+
+            $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
+            $customer_master->customer_one_view_status=1;
+
+
+            if($existing_loan_info->save() && $customer_master->save())
+            {
+            return redirect()->route('user.OneView');
+            }
+            else
+            {
+                return redirect()->back();
+            }
         }
 
     }
@@ -149,4 +177,15 @@ class CustomerDataStoreController extends Controller
 
 
     }
+
+    public function existingEmiSheduleRestoreStore(Request $request,EmiSheduleReUploadService $service)
+    {
+
+        $this->validate($request,[
+            "shedule_file"=>"required|mimes:pdf",
+        ]);
+
+        return  $service->existingEmiSheduleRestoreStore($request);
+    }
+
 }

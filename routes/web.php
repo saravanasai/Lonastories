@@ -202,6 +202,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::get('calculater/Homeloan/EligibilityCalculater',[CustomerPagesController::class,'homeEligibilityCalc'])->name('user.homeEligibilityCalc');
     Route::post('personalInfoForm',[CustomerDataStoreController::class,'personalInfoFillStore'])->name('user.personalInfoFillStore');
     Route::post('existingEmiShedule',[CustomerDataStoreController::class,'existingEmiSheduleStore'])->name('user.existingEmiShedule');
+    Route::post('existingEmiSheduleRestoreStore',[CustomerDataStoreController::class,'existingEmiSheduleRestoreStore'])->name('user.existingEmiSheduleRestoreStore');
     Route::post('UploadUserImage',[CustomerDataStoreController::class,'UploadUserImage'])->name('user.UploadUserImage');
     Route::post('RedeemRequest',[CustomerDataStoreController::class,'RedeemRequest'])->name('user.RedeemRequest');
     Route::resource('quickEnquieryForm',CustomerEnquieryFormController::class);

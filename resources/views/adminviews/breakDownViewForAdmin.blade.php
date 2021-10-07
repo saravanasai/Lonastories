@@ -2512,7 +2512,7 @@
                 return TotalEmi;
             }
 
-            function per_lak_emi_hl(Roi,Tennure) {
+            function    per_lak_emi_hl(Roi,Tennure) {
                 var r = Number(Roi) / 12 / 100;
                 var n = Tennure*12;
                 var p = 100000;

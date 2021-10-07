@@ -50,7 +50,11 @@
                                 <td><span class="badge bg-success">{{$ex_loan->emi_sh_roi }}%</span></td>
                                 <td>{{$ex_loan->emi_sh_tenure }}</td>
                                 <td>{{$ex_loan->emi_sh_emi }}</td>
+                                @if ($ex_loan->emi_shedule_status==1)
                                 <td><a href="{{asset('SheduleDocs/'.$ex_loan->emi_sh_file)}}" download="Shedule{{$ex_loan->id}}" class="btn btn-sm btn-primary"><i class="fas fa-download px-1"></i>Shedule</a></td>
+                                @else
+                                <td><a href="{{asset('SheduleDocs/'.$ex_loan->emi_sh_file)}}" download="Shedule{{$ex_loan->id}}" class="btn btn-sm btn-primary disabled"><i class="fas fa-download px-1"></i>Not Uploaded</a></td>
+                                @endif
                                 <td>
                                     <form action="{{route('ExistingLoans.destroy',$ex_loan->id)}}" method="post">
                                     @csrf

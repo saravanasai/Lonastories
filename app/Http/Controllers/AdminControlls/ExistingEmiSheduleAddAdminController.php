@@ -47,8 +47,7 @@ class ExistingEmiSheduleAddAdminController extends Controller
              "loan_amount"=>"required|numeric",
              "roi"=>"required|numeric",
              "Tenure"=>"required|numeric",
-             "existing_emi"=>"numeric",
-             "Emi_Shedule"=>"required|mimes:pdf"
+             "existing_emi"=>"numeric"
             ]);
 
             if($request->file('Emi_Shedule'))
@@ -65,6 +64,7 @@ class ExistingEmiSheduleAddAdminController extends Controller
                 $existing_loan_info->emi_sh_tenure =$request->Tenure;
                 $existing_loan_info->emi_sh_emi=$request->existing_emi;
                 $existing_loan_info->emi_sh_file=$file_name;
+                $existing_loan_info->emi_shedule_status=1;
 
                  //updating the status in customer master table
 
@@ -83,6 +83,33 @@ class ExistingEmiSheduleAddAdminController extends Controller
                     return redirect()->back();
                 }
 
+            }else{
+                $existing_loan_info=new CustomerEmiShedule();
+                $existing_loan_info->emi_shedule_of_user=$request->cus_id;
+                $existing_loan_info->emi_sh_name_of_bank=$request->Bank_Name;
+                $existing_loan_info->emi_sh_type_of_loan=$request->type_of_loan;
+                $existing_loan_info->emi_sh_loan_amount=$request->loan_amount;
+                $existing_loan_info->emi_sh_roi=$request->roi;
+                $existing_loan_info->emi_sh_tenure =$request->Tenure;
+                $existing_loan_info->emi_sh_emi=$request->existing_emi;
+                $existing_loan_info->emi_shedule_status=0;
+
+
+                 //updating the status in customer master table
+
+                 $customer_master=CustomerSignup::where('id',$request->cus_id)->first();
+                 $customer_master->customer_one_view_status=1;
+
+
+                if($existing_loan_info->save() && $customer_master->save())
+                {
+                  Session::flash('success','added successfully with out file');
+                  return redirect()->route('ExistingLoans.show',$request->cus_id);
+                }
+                else
+                {
+                    return redirect()->back();
+                }
             }
     }
 
