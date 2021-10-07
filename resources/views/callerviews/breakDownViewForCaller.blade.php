@@ -2122,7 +2122,7 @@
                     $('#el_emi_per_lak').val(per_lak_emi(el_roi));
                     let emi_per_lak = $("#el_emi_per_lak").val();
                     let ob_sub_income=Number(income_considered)-Number(Total_obligation);
-                    $('#el_emi_foir_eligibility').val(foir_eligibility(Number(el_foir),Number(income_considered),Number(Total_obligation),Number(emi_per_lak)));
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility(hl_foir,Number(Total_obligation),Number(Income_considered),emi_per_lak));
 
                 }
             }

@@ -2167,7 +2167,7 @@
                     $("#hl_ltv_eligibility").val(Number(property_value)*(Number(hl_ltv)/100));
                     $('#hl_emi_per_lak').val(per_lak_emi_hl(hl_roi,hl_tenure));
                     let emi_per_lak = $("#hl_emi_per_lak").val();
-                    $('#hl_emi_foir_eligibility').val(foir_eligibility(hl_foir,Number(Income_considered),Number(Total_obligation),emi_per_lak));
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility(hl_foir,Number(Total_obligation),Number(Income_considered),emi_per_lak));
 
 
                 }
