@@ -119,22 +119,20 @@
         <table width="100%" >
             <tr >
                 <td align="left" style="width: 50%;">
-                    <h3>Client Information</h3>
-                    <h3>Name : {{$basic_info->name}}</h3>
-                    <h3>Phone : {{$basic_info->cus_phonenumber}}</h3>
-                    <h3>Email : {{$basic_info->email}}</h3>
-                    {{-- <h3>Location : {{$enquiery_details->current_loation}}</h3> --}}
-                    {{-- <pre> --}}
+                <h3>CLIENT INFORMATION</h3>
+                <p> <strong>NAME :</strong> {{$basic_info->name}}</p>
+                <p> <strong>PHONE :</strong> {{$basic_info->cus_phonenumber}}</p>
+                <p> <strong>EMAIL :</strong> {{$basic_info->email}}</p>
                 </td>
                 <td align="center">
                     {{-- <img src="/path/to/logo.png" alt="Logo" width="64" class="logo" /> --}}
                 </td>
                 <td align="left" style="width: 40%;">
-                    <h3>Product Information</h3>
-                    <h3>Product :{{$enquiery_details->productname}}</h3>
-                    <h3>Type :{{$enquiery_details->subproductname}}</h3>
-                    <h3>Net Salary :{{$fn_details->final_salary_considered}}</h3>
-                    {{-- <h3>Loan Amount :{{Date('Y-m-d')}}</h3> --}}
+                    <h3>PRODUCT INFORMATION</h3>
+                    <p><strong>PRODUCT :</strong> {{$enquiery_details->productname}}</p>
+                    <p><strong>TYPE :</strong> {{$enquiery_details->subproductname}}</p>
+                    <p><strong>NET SALARY :</strong> {{$fn_details->final_salary_considered}}</p>
+                    {{-- <h3>Date :{{Date('Y-m-d')}}</h3> --}}
                 </td>
             </tr>
         </table>
@@ -209,27 +207,47 @@
         </table>
    </div>
    <br>
-   <div class="invoice" id="info_tb">
+   <div class="invoice" id="cr_tb">
         <h5>TENTATIVE OFFER</h5>
         <table width="100%" >
-            <tr >
-                <td align="left" style="width: 33.25%; text-align: justify;">
-                    <h3>Loan Amount : {{$fn_details->final_loan_amount}}</h3>
-                    <h3>Rate Of Interest : {{$fn_details->final_rate_of_interest}}%</h3>
-                    <h3>Tenure : {{$fn_details->final_tennure}}</h3>
-
-                </td>
-                <td align="left" style="width: 33.25%;">
-                    <h3>Emi : {{$fn_details->final_emi}}</h3>
-                    <h3>Proposed Emi : {{$fn_details->final_proposed_total_emi}}</h3>
-                    <h3>Current Obligation Ratio :  {{$fn_details->final_current_foir}}</h3>
+            <tr>
+                <td align="left" style="width: 33.25%; text-align: center;">
+                    <p><strong>LOAN AMOUNT :</strong> {{$fn_details->final_loan_amount}}</p>
 
 
                 </td>
-                <td align="left" style="width: 33.25%;">
-                    <h3>Proposed Obligation Ratio : {{$fn_details->final_proposed_foir}}</h3>
-                    <h3>Salary Considered : {{$fn_details->final_salary_considered}}</h3>
-                    <h3>Obligation Considered : {{$fn_details->final_obligation_considered}}</h3>
+                <td align="left" style="width: 33.25%; text-align: center;">
+                    <p><strong>RATE OF INTEREST : </strong> {{$fn_details->final_rate_of_interest}}%</p>
+
+
+                </td>
+                <td align="left" style="width: 33.25%; text-align: center;">
+                    <p><strong>TENURE :</strong>  {{$fn_details->final_tennure}}</p>
+
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>EMI :</strong>  {{$fn_details->final_emi}}</p>
+                </td>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>PROPOSED EMI :</strong>  {{$fn_details->final_proposed_total_emi}}</p>
+                </td>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>CURRENT OBLIGATION RATIO :</strong>   {{$fn_details->final_current_foir}}</p>
+                </tdp
+            </tr>
+            <tr>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>PROPOSED OBLIGATION RATIO :</strong>  {{$fn_details->final_proposed_foir}}</p>
+
+                </td>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>SALARY CONSIDERED :</strong>  {{$fn_details->final_salary_considered}}</p>
+
+                </td>
+                <td align="left" style="width: 33.25%;text-align: center;">
+                    <p><strong>OBLIGATION CONSIDERED :</strong>  {{$fn_details->final_obligation_considered}}</p>
                 </td>
             </tr>
         </table>
@@ -272,112 +290,160 @@
         </div>
     </header>
     <hr>
-    <div class="information">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <th><h3>Aditional Infromation Home Loan</h3></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tr style="padding: 1rem">
-                <td align="left" style="width: 50%;">
-                    <p> <b> Age :</b> {{$additional_details->hl_age}}</p>
-                    <p> <b> Property Type : </b>{{$additional_details->hl_property_type}}</p>
-                    <p> <b> Property Value : </b>{{$additional_details->hl_property_value}}</p>
-                    <p> <b> Builder Name :</b> {{$additional_details->hl_builder_name}}</p>
-                </td>
-                <td align="center" style="width: 50%; text-align:justify; padding-left:2rem;" >
-                    <p> <b> Property Area :</b>{{$additional_details->hl_property_area }}</p>
-                    <p> <b> Property City :</b>{{$additional_details->hl_property_city }}</p>
-                    <p> <b> G-salary :</b>{{$additional_details->hl_gross_salary}}</p>
-                    <p> <b> Co-Joint :</b>{{$additional_details->hl_co_joint}}</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="invoice">
-        <table width="100%">
-            <thead>
-                <tr align="left" style="width: 40%; padding-left:1rem">
-                    <th style="padding-left:1rem"><h3>Home Loan Comparison</h3></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tr style="padding: 1rem">
-                <td align="left" style="width: 30%; padding-left:2rem">
-                    <p> <b> Ex-Ln-Amount :</b> {{$ln_comparison->ex_ln_loan_amount}}</p>
-                    <p> <b> Ex-Roi : </b>{{$ln_comparison->ex_ln_roi}}</p>
-                    <p> <b> Ex-Ln-Tennure : </b>{{$ln_comparison->ex_ln_tennure}}</p>
-                    <p> <b> Ex-Pos :</b> {{$ln_comparison->ex_ln_pos}}</p>
-                    <p> <b> Paid Emi :</b> {{$ln_comparison->ex_ln_no_of_emi_paid}}</p>
-                    <p> <b> Balance Emi :</b> {{$ln_comparison->ex_ln_balance_emi}}</p>
-                    <p> <b>Existing OutFlow :</b> {{$ln_comparison->ex_ln_exsting_out_flow }}</p>
-                </td>
-                <td align="center" style="width: 25%; text-align:justify; padding-left:2rem;" >
-                    <p> <b> &nbsp;</p>
-                    <p> <b> New-Ln-Amount :</b>{{$ln_comparison->ln_com_new_loan_amount}}</p>
-                    <p> <b> New-Ln-Roi :</b>{{$ln_comparison->ln_com_new_roi}}</p>
-                    <p> <b> New-Ln-Tennure :</b>{{$ln_comparison->ln_com_new_tennure }}</p>
-                    <p> <b> New-Emi :</b>{{$ln_comparison->ln_com_new_emi}}</p>
-                    <p> <b> New-OutFlow :</b>{{$ln_comparison->ln_com_new_proposed_outflow}}</p>
-                    <p> <b> Gross-Savings :</b>{{$ln_comparison->ln_com_new_gross_sav}}</p>
-                </td>
-                <td align="right" style="width: 20%;padding-right:1rem;text-align:justify;">
-                    <p> <b> &nbsp;</p>
-                    <p> <b> &nbsp;</p>
-                    <p> <b> MOTD :</b> {{$ln_comparison->ln_com_motd}}</p>
-                    <p> <b> PROCESSING FEE :</b> {{$ln_comparison->ex_ln_loan_amount}}</p>
-                    <p> <b> OTHER CHARGES :</b> {{$ln_comparison->ex_ln_loan_amount}}</p>
-                    <p> <b> TOTAL COST :</b> {{$ln_comparison->ex_ln_loan_amount}}</p>
-                    <p> <b> NET SAVINGS :</b>{{$ln_comparison->ln_com_net_sav}}</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-   <br>
-</div>
-<br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-<div class="invoice" >
-    <h5 id="note_sec">NOTE:</h5>
-    <div id="note">
-        <p><small>Please note that this tentative offer is shared only based on the information shared about  income & obligations. Final offer may vary if any other obligations are observed during the verification process. The final approval shall be communicated only after the Application is processed subject to CIBIL & other verification parameters & as per the sole discretion of the respective lenders</small></p>
-    </div>
- </div>
-
-    <hr>
-    {{-- <footer>
-    </footer> --}}
-    <div class="information"  style="position: absolute; bottom: 0;"  >
-        <table width="100%" id="second_footer">
+    <div class="invoice" id="cr_tb">
+        <h5>ADITIONAL INFROMATION HOME LOAN</h5>
+        <table width="100%" >
             <tr>
-                <td align="left" style="width: 50%;" id="copy_rights">
-                    &copy; {{ date('Y') }} {{ config('app.url') }} - All rights reserved.
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>AGE :</strong> {{$additional_details->hl_age}}</p>
                 </td>
-                {{-- <td align="left" style="width: 50%;" id="copy_rights">
-                   <center>A NEW WAY OF FINANCIAL PLANNING</center>
-                </td> --}}
-                <td align="right" style="width: 50%;">
-                   A NEW WAY OF FINANCIAL PLANNING
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>PROPERTY TYPE : </strong>{{$additional_details->hl_property_type}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>PROPERTY VALUE :</strong>  {{$additional_details->hl_property_value}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>BUILDER NAME :</strong>  {{$additional_details->hl_builder_name}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>PROPERTY AREA:</strong> {{$additional_details->hl_property_area }}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> PROPERTY CITY: </strong>{{$additional_details->hl_property_city }}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> G-SALARY:</strong>  {{$additional_details->hl_gross_salary}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> CO-JOINT:</strong>  {{$additional_details->hl_co_joint}}</p>
                 </td>
             </tr>
         </table>
     </div>
+    <br>
+    <br>
+    <br>
+    <div class="invoice" id="cr_tb">
+        <h5 style="margin-left: 25px">HOME LOAN COMPARISON</h5>
+        <table width="100%" >
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>EX-LN-AMOUNT :</strong> {{$ln_comparison->ex_ln_loan_amount}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>NEW-LN-AMOUNT : </strong>{{$ln_comparison->ln_com_new_loan_amount}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>Ex-Roi :</strong> {{$ln_comparison->ex_ln_roi }}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> New-Ln-Roi : </strong>{{$ln_comparison->ln_com_new_roi }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> Ex-Ln-Tennure:</strong> {{$ln_comparison->ex_ln_tennure }}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> New-Ln-Tennure : </strong>{{$ln_comparison->ln_com_new_tennure  }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> Ex-Ln-Tennure:</strong> {{$ln_comparison->ex_ln_tennure }}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> New-Ln-Tennure : </strong>{{$ln_comparison->ln_com_new_tennure  }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> Ex-Pos:</strong> {{$ln_comparison->ex_ln_pos}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>  New-Emi  : </strong>{{$ln_comparison->ln_com_new_emi}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> Paid Emi:</strong> {{$ln_comparison->ex_ln_no_of_emi_paid}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>  New-OutFlow : </strong>{{$ln_comparison->ln_com_new_proposed_outflow}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong> Balance Emi:</strong> {{$ln_comparison->ex_ln_balance_emi}}</p>
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>  Existing OutFlow : </strong> {{$ln_comparison->ex_ln_exsting_out_flow }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td align="left" style="width: 25%; text-align: center;">
+                    {{-- <p><strong> Balance Emi:</strong> {{$ln_comparison->ex_ln_balance_emi}}</p> --}}
+                </td>
+                <td align="left" style="width: 25%; text-align: center;">
+                    <p><strong>  Gross-Savings : </strong> {{$ln_comparison->ln_com_new_gross_sav}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="invoice" id="cr_tb">
+        <h5 style="margin-left: 25px">SAVINGS</h5>
+        <table width="100%" >
+            <tr>
+                <td align="left" style="width: 20%; text-align: center;">
+                    <p><strong>MOTD :</strong>{{$ln_comparison->ln_com_motd}}</p>
+                </td>
+                <td align="left" style="width: 20%; text-align: center;">
+                    <p><strong>PROCESSING FEE : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
+                </td>
+                <td align="left" style="width: 20%; text-align: center;">
+                    <p><strong>OTHER CHARGES : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
+                </td>
+                <td align="left" style="width: 20%; text-align: center;">
+                    <p><strong>TOTAL COST : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
+                </td>
+                <td align="left" style="width: 20%; text-align: center;">
+                    <p><strong>NET SAVINGS : </strong>{{$ln_comparison->ln_com_net_sav}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+   <br>
+    <br>
+    <br>
+    <br>
+    <div class="invoice" id="">
+        <h5 id="note_sec">NOTE:</h5>
+        <div id="note">
+            <p><small>Please note that this tentative offer is shared only based on the information shared about  income & obligations. Final offer may vary if any other obligations are observed during the verification process. The final approval shall be communicated only after the Application is processed subject to CIBIL & other verification parameters & as per the sole discretion of the respective lenders</small></p>
+        </div>
+     </div>
+        <hr>
+        <div class="information"  style="position: absolute; bottom: 0;">
+            <table width="100%" id="first_footer">
+                <tr>
+                    <td align="left" style="width: 50%;" id="copy_rights">
+                        &copy; {{ date('Y') }} {{ config('app.url') }} - All rights reserved.
+                    </td>
+                    {{-- <td align="left" style="width: 50%;" id="copy_rights">
+                       <center>A NEW WAY OF FINANCIAL PLANNING</center>
+                    </td> --}}
+                    <td align="right" style="width: 50%;">
+                       A NEW WAY OF FINANCIAL PLANNING
+                    </td>
+                </tr>
+            </table>
+        </div>
 </body>
 
 

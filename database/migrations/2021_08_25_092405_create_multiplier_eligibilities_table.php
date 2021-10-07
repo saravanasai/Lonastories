@@ -21,7 +21,8 @@ class CreateMultiplierEligibilitiesTable extends Migration
             $table->string('el_employee_category');
             $table->string('el_multiplier');
             $table->string('el_foir');
-            $table->string('el_mutiplier_eligibility');
+            $table->string('el_mutiplier_eligibility_nth');
+            $table->string('el_mutiplier_eligibility_sao');
             $table->string('el_roi');
             $table->string('el_emi_per_lak');
             $table->string('el_foir_eligibility');

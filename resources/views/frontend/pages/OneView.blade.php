@@ -12,7 +12,6 @@
                 <img src="{{ asset('frontend/img/oneview.png') }}" class="rounded" alt=""
                     style="width: 80vw">
             </div>
-
             <div class="row justify-content-center pt-4">
                 <div class="col-md-10">
                     <div class="card">
@@ -124,15 +123,15 @@
                                     <th class="">S.no</th>
                                     <th class="
                                     ">Lender Name</th>
-                                                                        <th class=" ">Loan Type</th>
+                                    <th class=" ">Loan Type</th>
                                         <th class="
                                     ">Loan Amount
                                     </th>
                                     <th class="">
                                     ROI</th>
-                                    <th class="         ">Tenure</th>
+                                    <th class="">Tenure</th>
                                     <th class=" ">EMI</th>
-                                    {{-- <th class="">Schedule</th> --}}
+                                    <th class="">Schedule</th>
                                 </tr>
                             </thead>
                             <tbody id=" frontend_existing_loan_detail">
@@ -145,6 +144,7 @@
                                         <td>{{ $emi_shedule->emi_sh_roi }}</td>
                                         <td>{{ $emi_shedule->emi_sh_tenure }}</td>
                                         <td>{{ $emi_shedule->emi_sh_emi }}</td>
+                                        <td><a href="{{asset('SheduleDocs/'.$emi_shedule->emi_sh_file)}}" download="Shedule{{$emi_shedule->id}}" class="btn btn-sm btn-primary">Shedule</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>

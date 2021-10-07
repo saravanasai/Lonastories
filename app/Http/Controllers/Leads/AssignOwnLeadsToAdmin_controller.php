@@ -28,7 +28,7 @@ class AssignOwnLeadsToAdmin_controller extends Controller
         ->join('table_customer', 'customer_enqiery_forms.eqy_of_cus_enq_tb', '=', 'table_customer.id')
         ->join('statuses', 'statuses.id', '=', 'customer_enqiery_forms.cs_enq_status_enq_tb')
         ->select('table_customer.*','table_customer.id AS cus_id','customer_enqiery_forms.*','customer_enqiery_forms.id as enq_id','statuses.*')
-        ->where('customer_enqiery_forms.cs_enq_status_enq_tb','<','4')
+        ->where('customer_enqiery_forms.cs_enq_status_enq_tb','<=','6')
         ->where('customer_enqiery_forms.cs_enq_status_enq_tb','!=','7')
         ->where('customer_enqiery_forms.initial_assign_to','=','ADMIN')
         ->get();
@@ -56,7 +56,8 @@ class AssignOwnLeadsToAdmin_controller extends Controller
     public function store(Request $request)
     {
         $customer_quick_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb','=',$request->cusid)
-        ->where('cs_enq_status_enq_tb','1')->first();
+        ->where('cs_enq_status_enq_tb','!=','0')
+        ->first();
         $cl_table=new ClEnquiery();
         $cl_table->enquiery_cus_ph=$request->phonenumber;
         $cl_table->enquiery_of_ucs=$request->cusid;
@@ -110,7 +111,7 @@ class AssignOwnLeadsToAdmin_controller extends Controller
         $status_codes=Status::where('id','<',9)->where('id','>',4)->get();
         // dd($customer_enquiery);
         // dd($customer_info);
-        return view('adminviews.fillmoreInfoAdmin',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id]);
+        return view('adminviews.fillmoreInfoAdmin',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id,"customer_enquiery"=>$customer_enquiery]);
 
     }
 
@@ -141,9 +142,23 @@ class AssignOwnLeadsToAdmin_controller extends Controller
     public function update(Request $request, $id)
     {
 
-        $customer_info=CustomerEnqieryForm::where('id',$id)->first();
-        $customer_info->cs_enq_status_enq_tb=$request->status_Code;
-        //   dd($customer_info);
+        if($request->status_Code==7)
+        {
+            $customer_info=CustomerEnqieryForm::where('id',$id)->first();
+            $customer_info->cs_enq_status_enq_tb=$request->status_Code;
+            $customer_id=$customer_info->eqy_of_cus_enq_tb;
+            //   dd($customer_info);
+            $customer_master=CustomerSignup::where('id','=',$customer_id)->first();
+            $customer_master->enquiery_form_status=0;
+            $customer_master->save();
+        }
+        else
+        {
+            $customer_info=CustomerEnqieryForm::where('id',$id)->first();
+            $customer_info->cs_enq_status_enq_tb=$request->status_Code;
+            $customer_id=$customer_info->eqy_of_cus_enq_tb;
+        }
+
         if($customer_info->save())
         {
             return 1;

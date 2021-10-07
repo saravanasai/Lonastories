@@ -70,14 +70,14 @@
                             <div class="col col-md-3">
                                 <div class="form-group">
                                     <label for="company_name">Company Name</label>
-                                    <input type="text" class="form-control" name="company_name" id="company_name"
-                                        placeholder="Enter Company Name">
+                                    <input type="text" class="form-control" value="{{$customer_enquiery->company_name}}" name="company_name" id="company_name"
+                                        placeholder="Enter Company Name" disabled>
                                 </div>
                             </div>
                             <div class=" col col-md-2">
                                 <div class="form-group">
                                     <label for="total_salary">Take Home Salary</label>
-                                    <input type="number" class="form-control" id="total_salary" name="total_salary" placeholder="Total Salary">
+                                    <input type="number" class="form-control" id="total_salary" value="{{$customer_enquiery->monthly_income}}" name="total_salary" placeholder="Total Salary" disabled>
                                 </div>
                             </div>
                             <div class=" col col-md-3">

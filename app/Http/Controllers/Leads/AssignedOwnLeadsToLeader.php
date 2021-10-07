@@ -22,7 +22,7 @@ class AssignedOwnLeadsToLeader extends Controller
     public function index()
     {
         //this view show to Leader about new enquieys without more info
-        $status_codes=Status::where('id','<',9)->get();
+        $status_codes=Status::where('id','>',1)->where('id','<',8)->get();
         $new_own_leads=DB::table('customer_enqiery_forms')
         ->join('table_customer', 'customer_enqiery_forms.eqy_of_cus_enq_tb', '=', 'table_customer.id')
         ->join('statuses', 'statuses.id', '=', 'customer_enqiery_forms.cs_enq_status_enq_tb')
@@ -110,7 +110,7 @@ class AssignedOwnLeadsToLeader extends Controller
         $customer_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb',$id)->first();
         $products=Products::all();
 
-        return view('callerviews.fillmoreInfo',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id]);
+        return view('callerviews.fillmoreInfo',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id,"customer_enquiery"=>$customer_enquiery]);
     }
 
     /**
@@ -139,8 +139,23 @@ class AssignedOwnLeadsToLeader extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer_info=CustomerEnqieryForm::where('id',$id)->first();
-        $customer_info->cs_enq_status_enq_tb=$request->status_Code;
+        if($request->status_Code==7)
+        {
+            $customer_info=CustomerEnqieryForm::where('id',$id)->first();
+            $customer_info->cs_enq_status_enq_tb=$request->status_Code;
+            $customer_id=$customer_info->eqy_of_cus_enq_tb;
+            //   dd($customer_info);
+            $customer_master=CustomerSignup::where('id','=',$customer_id)->first();
+            $customer_master->enquiery_form_status=0;
+            $customer_master->save();
+        }
+        else
+        {
+            $customer_info=CustomerEnqieryForm::where('id',$id)->first();
+            $customer_info->cs_enq_status_enq_tb=$request->status_Code;
+            $customer_id=$customer_info->eqy_of_cus_enq_tb;
+        }
+
         if($customer_info->save())
         {
             return 1;

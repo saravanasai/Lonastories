@@ -478,9 +478,10 @@
                                                                         <label>PROPERTY TYPE</label>
                                                                         <select class="form-control" id="hl_property_type">
                                                                             <option selected value="0">CHOOSE THE PROPERTY TYPE</option>
-                                                                            <option value="BUILDER APARTMENT">BUILDER APARTMENT</option>
+                                                                            <option value="BUILDER APARTMENT [NEW]">BUILDER APARTMENT [NEW]</option>
+                                                                            <option value="BUILDER APARTMENT [RESALE]">BUILDER APARTMENT [RESALE]</option>
                                                                             <option value="VILLA">VILLA</option>
-                                                                            <option value="RESALE">RESALE</option>
+                                                                            <option value="STAND ALONE RESI BUILDING">STAND ALONE RESI BUILDING</option>
                                                                             <option value="RESIDENT SALE PLOT">RESIDENT SALE PLOT
                                                                             </option>
                                                                             <option value="COMMERCIAL BUILDING">COMMERCIAL BUILDING
@@ -743,7 +744,8 @@
                                                             <th>CAT</th>
                                                             <th>MULTIPLIER</th>
                                                             <th>FOIR</th>
-                                                            <th>M-ELG</th>
+                                                            <th>M-ELG [NTH]</th>
+                                                            <th>M-ELG [SAO]</th>
                                                             <th>ROI</th>
                                                             <th>EMI / LAKH</th>
                                                             <th>FOIR ELG</th>
@@ -759,6 +761,56 @@
                                     </div>
                                     <div class="container">
                                         <div class="row">
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon1">MONTH 1</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon1"
+                                                        placeholder="MONTH 1">
+                                                    <span id="el_sal_mon1_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon2">MONTH 2</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon2"
+                                                        placeholder="MONTH 2">
+                                                    <span id="el_sal_mon2_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="el_sal_mon3">MONTH 3</label>
+                                                    <input type="number" class="form-control" id="el_sal_mon3"
+                                                        placeholder="MONTH 3">
+                                                    <span id="el_sal_mon3_error" class="error invalid-feedback"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-3">
+                                                <div class="form-group">
+                                                    <label for="cr_tb_final_salary">INCOME CONSIDERED</label>
+                                                    <input type="number" class="form-control" id="cr_tb_final_salary"
+                                                        placeholder="INCOME CONSIDERED" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="el_tb_Total_obligation">TOTAL OBLIGATION</label>
+                                                    <input type="number" class="form-control" id="el_tb_Total_obligation"
+                                                        placeholder="TOTAL OBLIGATION" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col col-md-4 offset-md-8">
+                                                <div class="float-right">
+                                                    <button type="button" id="el_cal_salary_btn" class="btn btn-danger"><i
+                                                        class="fas fa-calculator px-1"></i>Income</button>
+                                                <button type="button" id="el_cal_edit_btn" class="btn btn-success"><i
+                                                        class="far fa-edit"></i>Edit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col col-md-3">
                                                 <div class="form-group">
                                                     <label for="el_bank_name">BANK NAME</label>
@@ -773,30 +825,37 @@
                                                         placeholder="EMPLOYER CATEGORY">
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
                                                     <label for="el_multiplier">MULTIPLIER</label>
                                                     <input type="number" class="form-control" id="el_multiplier"
                                                         placeholder="MULTIPLIER">
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
                                                     <label for="el_foir">FOIR</label>
                                                     <input type="number" class="form-control" id="el_foir"
-                                                        placeholder="FOIR">
+                                                        placeholder="FOIR-%">
+                                                </div>
+                                            </div>
+                                            <div class="col col-md-2">
+                                                <div class="form-group">
+                                                    <label for="el_mul_eligibility_nth">M-ELG [NTH]</label>
+                                                    <input type="number" class="form-control" id="el_mul_eligibility_nth"
+                                                        placeholder="M-ELG [NTH]" disabled>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
-                                                    <label for="el_mul_eligibility">MULTIPLIER ELIGIBILITY</label>
-                                                    <input type="number" class="form-control" id="el_mul_eligibility"
-                                                        placeholder="MULTIPLIER ELIGIBILITY">
+                                                    <label for="el_mul_eligibility_sao">M-ELG [SAO]</label>
+                                                    <input type="number" class="form-control" id="el_mul_eligibility_sao"
+                                                        placeholder="M-ELG [SAO]" disabled>
                                                 </div>
                                             </div>
-                                            <div class="col col-md-3">
+                                            <div class="col col-md-2">
                                                 <div class="form-group">
                                                     <label for="el_roi">ROI</label>
                                                     <input type="number" class="form-control" id="el_roi" placeholder="ROI">
@@ -817,54 +876,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="float-right mb-1">
-                                            {{-- <button type="button" class="btn btn-primary previous">Previous</button> --}}
-                                            <button type="button" class="btn btn-danger  el_calculate"><i
-                                                    class="fas fa-calculator px-1"></i>Calcualte</button>
-                                            <button type="button" class="btn btn-success el_add"><i
-                                                    class="fas fa-paper-plane px-1"></i>Add</button>
-                                            {{-- <button type="button" class="btn btn-primary next">Next</button> --}}
-                                        </div>
-                                        <div class="row my-5">
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon1">MONTH 1</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon1"
-                                                        placeholder="MONTH 1">
-                                                    <span id="el_sal_mon1_error" class="error invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon2">MONTH 2</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon2"
-                                                        placeholder="MONTH 2">
-                                                    <span id="el_sal_mon2_error" class="error invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="el_sal_mon3">MONTH 3</label>
-                                                    <input type="number" class="form-control" id="el_sal_mon3"
-                                                        placeholder="MONTH 3">
-                                                    <span id="el_sal_mon3_error" class="error invalid-feedback"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col col-md-3">
-                                                <div class="form-group">
-                                                    <label for="cr_tb_final_salary">INCOME CONSIDERED</label>
-                                                    <input type="number" class="form-control" id="cr_tb_final_salary"
-                                                        placeholder="INCOME CONSIDERED" disabled>
+                                        <div class="row">
+                                            <div class="col col-md-4 offset-md-8">
+                                                <div class="float-right mb-1">
+                                                    {{-- <button type="button" class="btn btn-primary previous">Previous</button> --}}
+                                                    <button type="button" class="btn btn-danger  el_calculate"><i
+                                                            class="fas fa-calculator px-1"></i>Calcualte</button>
+                                                    <button type="button" class="btn btn-success el_add"><i
+                                                            class="fas fa-paper-plane px-1"></i>Add</button>
+                                                    {{-- <button type="button" class="btn btn-primary next">Next</button> --}}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="float-right mb-1 p-2">
                                             <button type="button" class="btn btn-primary previous"> <i
                                                     class="fas fa-backward px-2"></i>Previous</button>
-                                            <button type="button" id="el_cal_salary_btn" class="btn btn-danger"><i
-                                                    class="fas fa-calculator px-1"></i>Income</button>
-                                            <button type="button" id="el_cal_edit_btn" class="btn btn-success"><i
-                                                    class="far fa-edit"></i>Edit</button>
                                             <button type="button" class="btn btn-primary next">Next<i
                                                     class="fas fa-forward px-2"></i></button>
                                         </div>
@@ -1203,7 +1229,7 @@
             $('#ln_com_final_cal').prop('disabled', true);
             $('#el_cal_edit_btn').prop('disabled', true);
             $("#loading").hide();
-            $('#additional_info_home_loan_div2').show(); //chage to hide after developement
+            $('#additional_info_home_loan_div2').hide(); //chage to hide after developement
         //end on load feild
 
         //initialization for stepper
@@ -1441,8 +1467,10 @@
                         $("#cr_emi_bt_no").val(sum_of_emi_bt_no_cr);
                         let final_cr_sum_of_emi_no = $("#cr_emi_bt_no").val();
                         let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
-                        $("#cr_tb_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
-                            Number(final_ob_sum_of_emi_no)));
+                        let Total_obligation= $("#cr_tb_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                        Number(final_ob_sum_of_emi_no)));
+                        $("#el_tb_Total_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                        Number(final_ob_sum_of_emi_no)));
                         $("#hl_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
                             Number(final_ob_sum_of_emi_no)));
                         $("#Final_page_obl_con").val(Math.round(Number(final_cr_sum_of_emi_no) +
@@ -1462,10 +1490,11 @@
             let elg_emp_cat = $("#el_em_cat").val();
             let elg_multiplier = $("#el_multiplier").val();
             let elg_foir = $("#el_foir").val();
-            let elg_mul_eligibility = $("#el_mul_eligibility").val();
+            let el_mul_eligibility_nth = $("#el_mul_eligibility_nth").val();
+            let el_mul_eligibility_sao = $("#el_mul_eligibility_sao").val();
             let elg_roi = $("#el_roi").val();
             let elg_emi_per_lak = $("#el_emi_per_lak").val();
-            let elg_emi_foir_eligibility = $("#el_emi_foir_eligibility").val();
+            let el_emi_foir_eligibility = $("#el_emi_foir_eligibility").val();
             let cus_id = $('#cus_id').val();
             let enq_id = $('#enq_id').val();
 
@@ -1481,10 +1510,11 @@
                     el_emp_cat: elg_emp_cat,
                     el_multiplier: elg_multiplier,
                     el_foir: elg_foir,
-                    el_mul_eligibility: elg_mul_eligibility,
                     el_roi: elg_roi,
                     el_emi_per_lak: elg_emi_per_lak,
-                    el_emi_foir_eligibility: elg_emi_foir_eligibility,
+                    el_mul_eligibility_nth:el_mul_eligibility_nth,
+                    el_mul_eligibility_sao:el_mul_eligibility_sao,
+                    el_emi_foir_eligibility:el_emi_foir_eligibility,
                     cusid: cus_id,
                     enqid: enq_id,
                     table: 3
@@ -1502,8 +1532,9 @@
                             $('<td>').text(item.el_Bank_name),
                             $('<td>').text(item.el_employee_category),
                             $('<td>').text(item.el_multiplier),
-                            $('<td>').text(item.el_foir),
-                            $('<td>').text(item.el_mutiplier_eligibility),
+                            $('<td>').text(item.el_foir+'%'),
+                            $('<td>').text(item.el_mutiplier_eligibility_nth),
+                            $('<td>').text(item.el_mutiplier_eligibility_sao),
                             $('<td>').text(item.el_roi),
                             $('<td>').text(item.el_emi_per_lak),
                             $('<td>').text(item.el_foir_eligibility),
@@ -1529,6 +1560,9 @@
                         $('#el_emi_per_lak').val('');
                         $('#el_emi_foir_eligibility').val('');
                         $("#el_add").prop('disabled', true);
+                        $("#el_mul_eligibility_nth").val('');
+                        $("#el_mul_eligibility_sao").val('');
+
                     });
 
                 }
@@ -2058,20 +2092,20 @@
         //PERSONAL LOAN EL_OBLIGATION CALCULATE
         $('body').on('click', '.el_calculate', function(e) {
             e.preventDefault();
+            let income_considered=$('#cr_tb_final_salary').val();
+            let Total_obligation=$('#el_tb_Total_obligation').val();
             let el_bank_name = $("#el_bank_name").val();
             let el_em_cat = $("#el_em_cat").val();
             let el_multiplier = $("#el_multiplier").val();
             let el_foir = $("#el_foir").val();
-            let el_mul_eligibility = $("#el_mul_eligibility").val();
             let el_roi = $("#el_roi").val();
 
             if (check_null(el_bank_name) || check_null(el_em_cat) || check_null(el_multiplier) ||
-                check_null(el_foir) || check_null(el_mul_eligibility) || check_null(el_roi)) {
+                check_null(el_foir) || check_null(el_roi)) {
                 $('#el_alert').show();
                 $('#el_alert').html("FILL ALL THE FEILDS");
             } else {
-                if (check_numeric(el_multiplier) || check_numeric(el_foir) || check_numeric(
-                        el_mul_eligibility) || check_numeric(el_roi)) {
+                if (check_numeric(el_multiplier) || check_numeric(el_foir) || check_numeric(el_roi)) {
                     $('#el_alert').show();
                     $('#el_alert').html("ELG-MUL & FOIR & MUL-ELG & ROI SHOULD BE NUMBERIC VALUE");
 
@@ -2084,9 +2118,11 @@
                     $("#el_mul_eligibility").prop('disabled', true);
                     $("#el_roi").prop('disabled', true);
                     $('.el_add').prop('disabled', false);
+                    $('#el_mul_eligibility_nth').val(Number(income_considered)*Number(el_multiplier));
+                    $('#el_mul_eligibility_sao').val([Number(income_considered)-Number(Total_obligation)]*Number(el_multiplier));
                     $('#el_emi_per_lak').val(per_lak_emi(el_roi));
                     let emi_per_lak = $("#el_emi_per_lak").val();
-                    $('#el_emi_foir_eligibility').val(foir_eligibility(el_foir, emi_per_lak));
+                    $('#el_emi_foir_eligibility').val(foir_eligibility(Number(el_foir),Number(income_considered),Number(Total_obligation),Number(emi_per_lak)));
 
                 }
             }
@@ -2099,11 +2135,12 @@
             e.preventDefault();
             let hl_bank_name = $("#hl_bank_name").val();
             let hl_ltv = $("#hl_ltv").val();
-
             let hl_foir = $("#hl_foir").val();
             let hl_roi = $("#hl_roi").val();
             let hl_tenure = $("select#hl_tenure").val();
             let property_value = $("#hl_el_property_value").val();
+            let Total_obligation= $("#hl_final_obligation").val();
+            let Income_considered= $("#hl_tb_income_consi").val();
 
 
             if (check_null(hl_bank_name) || check_null(hl_ltv) || check_null(hl_foir) ||
@@ -2127,10 +2164,10 @@
                     $("#hl_el_add_btn").show();
                     $("#hl_el_add_btn").prop('disabled', false);
                     $('#hl_el_edit_btn').prop('disabled', false);
-                    $("#hl_ltv_eligibility").val(Number(property_value)*Number(hl_ltv));
-                    $('#hl_emi_per_lak').val(per_lak_emi(hl_roi));
+                    $("#hl_ltv_eligibility").val(Number(property_value)*(Number(hl_ltv)/100));
+                    $('#hl_emi_per_lak').val(per_lak_emi_hl(hl_roi,hl_tenure));
                     let emi_per_lak = $("#hl_emi_per_lak").val();
-                    $('#hl_emi_foir_eligibility').val(foir_eligibility_home_loan(hl_foir, emi_per_lak));
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility(hl_foir,Number(Total_obligation),Number(Income_considered),emi_per_lak));
 
 
                 }
@@ -2457,7 +2494,7 @@
     // !========================END DELETE SECTION TO ALL LOANS ==========================!
 
     //!==============================SECTION FOR THIS PAGE UTILITY FUNCTIOND ======================!
-        function calculate_emi(Ln_amount, Roi, Tennure) {
+            function calculate_emi(Ln_amount, Roi, Tennure) {
                 var r = Number(Roi) / 12 / 100;
                 var n = Tennure;
                 var p = Ln_amount;
@@ -2469,6 +2506,15 @@
             function per_lak_emi(Roi) {
                 var r = Number(Roi) / 12 / 100;
                 var n = 60;
+                var p = 100000;
+                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                    1));
+                return TotalEmi;
+            }
+
+            function per_lak_emi_hl(Roi,Tennure) {
+                var r = Number(Roi) / 12 / 100;
+                var n = Tennure*12;
                 var p = 100000;
                 var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
                     1));
@@ -2602,6 +2648,12 @@
                             let final_ob_sum_of_emi_no = $("#ob_sum_of_emi_bt_no").val();
                             $("#cr_tb_final_obligation").val(Number(final_cr_sum_of_emi_no) + Number(
                                 final_ob_sum_of_emi_no));
+                                $("#el_tb_Total_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                           Number(final_ob_sum_of_emi_no)));
+                           $("#hl_final_obligation").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no)));
+                            $("#Final_page_obl_con").val(Math.round(Number(final_cr_sum_of_emi_no) +
+                            Number(final_ob_sum_of_emi_no)));
                         } else if (ontable == 3) {
 
 
@@ -2612,8 +2664,9 @@
                                     $('<td>').text(item.el_Bank_name),
                                     $('<td>').text(item.el_employee_category),
                                     $('<td>').text(item.el_multiplier),
-                                    $('<td>').text(item.el_foir),
-                                    $('<td>').text(item.el_mutiplier_eligibility),
+                                    $('<td>').text(item.el_foir+'%'),
+                                    $('<td>').text(item.el_mutiplier_eligibility_nth),
+                                    $('<td>').text(item.el_mutiplier_eligibility_sao),
                                     $('<td>').text(item.el_roi),
                                     $('<td>').text(item.el_emi_per_lak),
                                     $('<td>').text(item.el_foir_eligibility),
@@ -2662,17 +2715,13 @@
                 return card_emi;
             }
 
-            function foir_eligibility(foir_per, emi_per_lak) {
+            function foir_eligibility(foir_per,obligation,total_income,emi_per_lak) {
 
-                let foir = foir_per;
-                let per_lak_emi = emi_per_lak;
-                let final_salary = $('#cr_tb_final_salary').val();
-                let total_obligation = $('#cr_tb_final_obligation').val();
-                let foir_per_of_salary = (final_salary * foir / 100);
-                console.log("foir percentage of salary\t" + foir_per_of_salary);
-                let fo_per_sal_sub_obligation = foir_per_of_salary - total_obligation;
-                console.log("salary - obligation\t" + fo_per_sal_sub_obligation);
-                let total = (fo_per_sal_sub_obligation / per_lak_emi) * 100000;
+                let foir_per_salary=(total_income*(foir_per/100))-Number(obligation);
+                let total = (Number(foir_per_salary) / Number(emi_per_lak)) * 100000;
+
+                // console.log(typeof foir_per,typeof ob_sub_income ,typeof emi_per_lak);
+                // console.log(total);
                 return Math.round(total);
             }
 
@@ -2682,13 +2731,13 @@
                 let per_lak_emi = emi_per_lak;
                 let final_salary = $('#hl_tb_income_consi').val();
                 let total_obligation = $('#cr_tb_final_obligation').val();
-                let foir_per_of_salary = (final_salary * foir / 100);
+                let foir_per_of_salary = (final_salary * foir)/ 100;
                 console.log("foir percentage of salary\t" + foir_per_of_salary);
                 let fo_per_sal_sub_obligation = foir_per_of_salary - total_obligation;
                 console.log("salary - obligation\t" + fo_per_sal_sub_obligation);
                 let total = (fo_per_sal_sub_obligation / per_lak_emi) * 100000;
                 return Math.round(total);
-                }
+            }
 
             function current_foir(final_ob_con, net_take_home_salary) {
                 let current_foir = (Number(final_ob_con) / Number(net_take_home_salary)) * 100;

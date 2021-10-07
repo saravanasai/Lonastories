@@ -64,7 +64,7 @@ class EnquieryManagementDirectLeads_InitialAssign extends Controller
         ->first();
         // dd($enquiery);
         // dd($customer_info);
-        return view('AdminEnquieryViews.MoreinfoofDirectLeads',["cl_enquiery"=>$enquiery]);
+        return view('AdminEnquieryViews.MoreinfoofDirectLeads',["enquiery"=>$enquiery]);
     }
 
     /**
