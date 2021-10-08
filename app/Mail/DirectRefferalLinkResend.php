@@ -35,6 +35,6 @@ class DirectRefferalLinkResend extends Mailable
      */
     public function build()
     {
-        return $this->from('sai@test.com','sai')->subject('Loanstories')->markdown('Emails.ResendrefferalLink',["link"=>$this->reffered_link,"name"=>$this->name]);
+        return $this->from('BookMyLoan@Loanstories.com','sai')->subject('Loanstories')->markdown('Emails.ResendrefferalLink',["link"=>$this->reffered_link,"name"=>$this->name]);
     }
 }

@@ -29,7 +29,7 @@ class DirectReferalLink extends Mailable
      */
     public function build()
     {
-        return $this->from('sai@test.com','sai')->subject('Loanstories')->markdown('Emails.DirectReferalLink',["link"=>$this->url]);
+        return $this->from('BookMyLoan@Loanstories.com','Loanstories.com')->subject('Loanstories')->markdown('Emails.DirectReferalLink',["link"=>$this->url]);
 
     }
 }

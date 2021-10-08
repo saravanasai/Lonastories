@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LOANSTORIES.COM</title>
-    <meta name="description" content="" />
+    <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+    <meta property="og:description" content="Customized Loan Offers with Super Reward Points every month">
+    <meta property="og:description" content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
+    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="all,follow" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.css') }}">
@@ -199,7 +201,7 @@
     <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/front.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
+
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/node_modules/html2canvas/dist/html2canvas.js') }}"></script>
