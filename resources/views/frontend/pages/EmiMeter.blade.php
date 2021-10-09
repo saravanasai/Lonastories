@@ -79,18 +79,20 @@
         <h3 class="text-center pb-md-2 pt-md-2 font-weight-bold">EMI METER</h3>
         <div class="container">
             <div class="row align-items-center">
-                <img src="{{ asset('frontend/img/meter.png') }}" class="rounded" alt="" style="width: 100%;" loading="lazy">
+                <img src="{{ asset('frontend/img/meter.png') }}" class="rounded" alt="" style="width: 100%;"
+                    loading="lazy">
             </div>
 
             <div class="row mt-md-5 bg-light p-3">
                 <div class="col-md-4">
                     <br>
-                    <input type="number" id="income" class="form-control bi-alarm" name="fullname"
-                        placeholder="Net Monthly Income" required> <br>
-                    <input type="number" id="tot_emi" name="" class="form-control" placeholder="Total Emi Obligations"
-                        required /> <br>
-                    <input type="number" id="outstand" name="" class="form-control" placeholder="Latest Credit Outstanding"
-                        required /> <br>
+                    <input type="text" id="income" class="form-control bi-alarm" name="fullname"
+                        placeholder="Net Monthly Income" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                    <br>
+                    <input type="text" id="tot_emi" name="" class="form-control" placeholder="Total Emi Obligations"
+                        required oninput="this.value = this.value.replace(/[^0-9]/, '')" /> <br>
+                    <input type="text" id="outstand" name="" class="form-control" placeholder="Latest Credit Outstanding"
+                        required oninput="this.value = this.value.replace(/[^0-9]/, '')" /> <br>
                     <div class="text-center">
                         <button type="button" class="btn btn-darkblue ribbon"
                             onclick="meterCalc()"><b>Calculate</b></button>
@@ -121,50 +123,54 @@
 <script type="text/javascript">
     //Eligible Calculator================================
     function meterCalc() {
-        let salary = parseInt($('#income').val());
-        let obligate = parseInt($('#tot_emi').val());
-        let card_outstanding = parseInt($('#outstand').val());
 
-        let Total_obligate = (0.05 * card_outstanding) + obligate;
+        let salary = isNaN(parseInt($('#income').val())) ? 0 : parseInt($('#income').val());
+        let obligate = isNaN(parseInt($('#tot_emi').val())) ? 0 : parseInt($('#tot_emi').val());
+        let card_outstanding = isNaN(parseInt($('#outstand').val())) ? 0 : parseInt($('#outstand').val());
 
-        // Personal Loan Eligibility
-        let value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) -
-            Total_obligate);
-        let result = (parseInt((value / 2175) * 1e5));
-        result = isNaN(result) ? 0 : result;
-        $('#personalEligible').text(result <= 0 ? 'not Eligible' : ': ₹ ' + result.toFixed(0));
-        // Personal Loan Eligibility
+        if ((salary == 0) || (obligate == 0))) {
+            alert('Please Fill All The Values')
+        } else {
+            let Total_obligate = (0.05 * card_outstanding) + obligate;
+            // Personal Loan Eligibility
+            let value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) -
+                Total_obligate);
+            let result = (parseInt((value / 2175) * 1e5));
+            result = isNaN(result) ? 0 : result;
+            $('#personalEligible').text(result <= 0 ? 'not Eligible' : ': ₹ ' + result.toFixed(0));
+            // Personal Loan Eligibility
 
-        // Home Loan Eligiblity
-        let h_salary = parseInt($('#income').val()) * 0.7;
-        let h_value = h_salary - Total_obligate;
-        let h_result = (parseInt((h_value / 2175) * 1e5));
-        h_result = isNaN(result) ? 0 : h_result;
-        $('#homeEligible').text(result <= 0 ? 'not Eligible' : ': ₹ ' + h_result.toFixed(0));
-        // Home Loan Eligiblity
+            // Home Loan Eligiblity
+            let h_value = (salary <= 5e4) ? ((salary * 0.5) - Total_obligate) : ((salary * 0.7) - Total_obligate);
+            let h_result = (parseInt((h_value / 899) * 1e5));
+            h_result = isNaN(h_result) ? 0 : h_result;
 
-        // ========Emi Meter========
-        if (result > 0) {
-            let percent = ((((0.05 * card_outstanding) + obligate) / salary) * 100);
-            let val = isNaN(percent) ? 0 : percent.toFixed(0);
+            $('#homeEligible').text(h_result <= 0 ? 'not Eligible' : ': ₹ ' + h_result.toFixed(0));
+            // Home Loan Eligiblity
 
-            $({
-                Counter: 0
-            }).animate({
-                Counter: val,
-            }, {
-                duration: 1000,
-                easing: 'swing',
-                step: function() {
-                    $('#el').attr("data-value", Math.round(this.Counter) + ' %');
-                    $('#ratio').text(Math.round(this.Counter) + ' %');
-                }
-            });
+            // ========Emi Meter========
+            if (result > 0) {
+                let percent = ((((0.05 * card_outstanding) + obligate) / salary) * 100);
+                let val = isNaN(percent) ? 0 : percent.toFixed(0);
 
-            $("#el span").css({
-                "transform": "rotate(0deg)",
-                "transform": "rotate(" + val * 1.8 + "deg)"
-            });
+                $({
+                    Counter: 0
+                }).animate({
+                    Counter: val,
+                }, {
+                    duration: 1000,
+                    easing: 'swing',
+                    step: function() {
+                        $('#el').attr("data-value", Math.round(this.Counter) + ' %');
+                        $('#ratio').text(Math.round(this.Counter) + ' %');
+                    }
+                });
+
+                $("#el span").css({
+                    "transform": "rotate(0deg)",
+                    "transform": "rotate(" + val * 1.8 + "deg)"
+                });
+            }
         }
         // ========Emi Meter========
     };

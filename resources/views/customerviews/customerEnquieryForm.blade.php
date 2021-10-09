@@ -30,19 +30,17 @@
     <section>
         <div class="container mt-md-5 pt-md-5">
             <div class="row">
-
-                <div class="col-md-3 "></div>
-                @if($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="text-danger">{{ $error }}</div>
-                @endforeach
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="text-danger">{{ $error }}</div>
+                    @endforeach
                 @endif
                 <div class="col-md-3"></div>
                 <form action="{{ route('quickEnquieryForm.store') }}" method="POST" class="col-md-4">
                     @csrf
                     <div id="slider" class="form">
                         <ul class="">
-                        <li class="" data-id="slider_start">
+                        <li class="" data-id=" slider_start">
                             <div class="text-center">
                                 <h4 class="text-secondary font-weight-bold
                                     ">Best Time &
@@ -84,7 +82,8 @@
                                             Looking For</h4>
                                         <br>
                                         <div class="form-group">
-                                            <select id="loan" class="form-control select" name="enq_pro_type" required>
+                                            <select id="type_of_Product" class="form-control select" name="enq_pro_type"
+                                                required>
                                                 <option value="" hidden>Select Your Desired Loan !
                                                 </option>
                                                 @foreach ($products as $product)
@@ -101,7 +100,8 @@
                                             </h6>
                                         </div>
                                         <div class="form-group">
-                                            <select class="form-control select" name="enq_sub_pro_type" id="type_of_sub_product" required>
+                                            <select class="form-control select" name="enq_sub_pro_type"
+                                                id="type_of_sub_product" required>
                                             </select>
                                         </div>
                                     </div>
@@ -135,16 +135,17 @@
                                 <br>
                                 <div class="row text-center">
                                     <div class="form-group col-md-12">
-                                        <input type="text" name="company_name" class="form-control wizard-required typeahead" id=""
-                                            placeholder="Company Name"  required />
+                                        <input type="text" name="company_name"
+                                            class="form-control wizard-required typeahead" id="" placeholder="Company Name"
+                                            required />
                                     </div>
                                     <br>
                                     <div class="form-group col-md-12">
                                         <br>
 
                                         <input type="text" name="monthly_income" class="form-control wizard-required" id=""
-
-                                            placeholder="Net Monthly Income / salary" required/>
+                                            placeholder="Net Monthly Income / salary" required
+                                            oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                     </div>
                                 </div>
                                 <br>
@@ -158,12 +159,13 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <input type="text" name="residence" class="form-control wizard-required"
-                                            id="reslocation" placeholder="Residence" required/>
+                                            id="reslocation" placeholder="Residence" required />
                                         <br>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <input type="text" id="company_search" name="office" class="form-control wizard-required"
-                                            id="offlocation" placeholder="Office" required/>
+                                        <input type="text" id="company_search" name="office"
+                                            class="form-control wizard-required" id="offlocation" placeholder="Office"
+                                            required />
                                         <br>
                                     </div>
 
@@ -184,8 +186,18 @@
                             </li>
                             <li>
                                 <div class="col-12 text-center">
-                                    <h4 class="text-secondary font-weight-bold">How soon the loan is
-                                        expected ? </h4>
+                                    <h4 class="text-secondary font-weight-bold">Loan Amount Required</h4>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" name="loan_required" class="form-control"
+                                        placeholder="How Much You Need?" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                </div>
+                                <br>
+                                <div class="col-12 text-center">
+                                    <h5 class="text-secondary font-weight-bold">How soon the loan is
+                                        expected ? </h5>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -218,8 +230,8 @@
                                     </div>
                                 </div>
                                 <div class="text-center mt-lg-5">
-                                    @if ($user_info->enquiery_form_status==0)
-                                    <button type="submit" name="submit" class="btn btn-secondary">Submit</button>
+                                    @if ($user_info->enquiery_form_status == 0)
+                                        <button type="submit" name="submit" class="btn btn-secondary">Submit</button>
                                     @endif
                                 </div>
                                 <br>
@@ -233,10 +245,13 @@
 @endsection
 {{-- script section for this page --}}
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body').innerWidth() * 3;
+            // Hide the  another submit button from DOM
+
+            let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body').innerWidth() *
+                3;
             var options = {
                 width: w, //width of slider
                 height: 500, //height of slider
@@ -253,9 +268,12 @@
 
             $('#slider').jFormslider(options);
 
+            let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
+            submit.style.display = "none";
+
             //section for loadig the subproducts section by products
             $('body').on('change', '#type_of_Product', function() {
-            
+
                 let product_id = $(this).val();
                 if (product_id != 0) {
                     //request to get a sub products
@@ -346,41 +364,29 @@
                 .append('<option value="whatever">text</option>')
                 .val('whatever');
 
-            // if ((loanSelect === 'pl') || (loanSelect === 'bl')) {};
-
         });
 
+        //section to auto populate the company name
+        var path = "{{ route('autocomplete') }}";
 
-                } else {
-                    $('#type_of_sub_product').prop("disabled", true);
-                    $('#type_of_sub_product').html('<option value="0" selected>Sub product type</option>');
-                }
-            });
-            //end section for loadig the subproducts section by products
+        $('input.typeahead').typeahead({
 
+            source: function(keyword, process) {
 
-            //section to auto populate the company name
-            var path = "{{ route('autocomplete') }}";
+                return $.get(path, {
+                    keyword: keyword
+                }, function(data) {
 
-                $('input.typeahead').typeahead({
-
-                    source:  function (keyword, process) {
-
-                    return $.get(path, { keyword: keyword }, function (data) {
-
-                            console.log(data);
-                            return process(data);
-
-                        });
-
-                    }
+                    console.log(data);
+                    return process(data);
 
                 });
 
+            }
 
-            //end section to auto populate the company name
+        });
+        //end section to auto populate the company name
 
-        })
 
         function last_slide() {
             alert("you are going to reach last slide if this function retuned true");

@@ -1,11 +1,12 @@
 @extends('layouts.FronendMaster')
-<style>
-    th {
-        text-align: center;
-    }
 
-</style>
 @section('content')
+    <style>
+        th {
+            text-align: center;
+        }
+
+    </style>
     <section>
         <div class="container">
             <div class="text-center">
@@ -26,28 +27,33 @@
                             <div class="col col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="outstandLoan"
-                                        placeholder="Enter Outstanding Loan Amount" required>
+                                        placeholder="Enter Outstanding Loan Amount" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')"
+                                        onkeyup="this.value = numberWithCommas(this.value)">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="ongoingRoi"
-                                        placeholder="Enter Ongoing Rate Of Interest" required>
+                                        placeholder="Enter Ongoing Rate Of Interest" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="outstandTenure"
-                                        placeholder="Tenure In Months" required>
+                                        placeholder="Tenure In Months" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="partPayAmt"
-                                        placeholder="Enter Part Payment Amount">
+                                        placeholder="Enter Part Payment Amount"
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')"
+                                        onkeyup="this.value = numberWithCommas(this.value)">
                                 </div>
                             </div>
-
 
                             <div class="col-md-4">
                                 <div class="form-group">
@@ -64,7 +70,7 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <button type="submit" onclick="partPayCalc()"
+                                    <button type="submit" id="partPayCalc" onclick="partPayCalc()"
                                         class="btn btn-darkblue"><strong>Calculate</strong></button>
                                     <button class="btn btn-info" id="getPdf" onclick="get_Pdf()" disabled>Get
                                         PDF</button>
@@ -109,7 +115,7 @@
                 <!-- ===========Amortization Table================= -->
                 <thead>
                     <tr class="bg-gray h6 text-light">
-                        <th scope="col">Months</th>
+                        <th scope="col" style="text-align: center">Months</th>
                         <th scope="col">Outstanding Principal</th>
                         <th scope="col">EMI</th>
                         <th scope="col">Interest</th>
@@ -129,16 +135,20 @@
     function partPayCalc() {
 
         $('#partPayCalc').prop('disabled', true);
+
         $("#getPdf").removeAttr('disabled');
         $('#partPayTbl').removeClass('d-none');
 
-        let TotLoanAmt = parseInt($('#outstandLoan').val());
+        let TotLoanAmt = parseInt($('#outstandLoan').val().replace(/,/g, ''));
         let roi = parseInt($('#ongoingRoi').val());
         let tenure = parseInt($('#outstandTenure').val());
-        let partPrePayAmt = parseInt($('#partPayAmt').val());
+        let partPrePayAmt = parseInt($('#partPayAmt').val().replace(/,/g, ''));
         var frequency = parseInt($('#frequency').val());
         let valid = true;
 
+        console.log(TotLoanAmt, partPrePayAmt);
+
+        // Validaion
         $('#outstandLoan, #ongoingRoi, #outstandTenure, #partPayAmt, #frequency').each(function() {
             if ($(this).val() == '') {
                 $(this).parent().effect('shake', {
@@ -151,15 +161,21 @@
                 $(this).parent().css('border', 'none');
             }
         });
+        // Validaion
 
+
+        // Calculation
         if (valid) {
+
+            // EMI Calculation
             let r = roi / (12 * 100);
             let prate = (TotLoanAmt * r * Math.pow((1 + r), tenure)) / (Math.pow((1 + r), tenure) - 1);
             let emi = (Math.ceil(prate * 100) / 100).toFixed(0);
             let totalMnth = tenure;
-            let clBal;
-            let modulus;
             var nofpay = 0;
+
+            // Total Declaration
+            let clBal, modulus, outstand, interest, principle, prepay;
 
             // Amortization Table ========================================
             for (let i = 1; i <= totalMnth; i++) {
@@ -170,37 +186,45 @@
                 } else {
                     modulus = i % frequency;
                 }
-                // let modulus = frequency % i;
 
-                let outstand = (i == 1) ? TotLoanAmt : Math.ceil(clBal);
+                outstand = (i == 1) ? TotLoanAmt : clBal; // Outstanding Principle
 
-                let interest = Math.round((outstand * (roi / 100)) / 12);
+                interest = ((outstand * (roi / 100)) / 12); // Interest
 
-                let principle = emi - interest;
+                principle = Math.round(emi - interest); // Principle
+
 
                 let prePayAmt = (modulus == 0) ? partPrePayAmt : 0;
 
-                clBal = outstand - (principle + prePayAmt);
 
-                clBal = (Math.sign(clBal) === 1) ? clBal : 0;
+                clBal = outstand - (principle + prePayAmt); // Closing Balance
 
-                amort_emi = (frequency == null) ? emi : ((outstand < emi) ? (outstand + interest) : emi);
+                clBal = (Math.sign(clBal) === 1) ? ((clBal)) : 0; // Closing Balance
+
+
+                amort_emi = (frequency == null) ? emi : ((outstand < emi) ? (outstand + interest) : emi); // EMI
 
                 amort_prePay = (outstand < emi) ? 0 : prePayAmt;
 
+
+                prepay = (clBal == 0) ? (outstand - principle) : amort_prePay; //  Pre Payements
+
+                prepay = (Math.sign(prepay) === 1) ? prepay : 0;
+
+                // Append into Amortization Table
                 if (outstand !== 0) {
-                    $("#amortization_tbl").append("<tr class='text'>" +
+                    $("#amortization_tbl").append("<tr class='text font-weight-bold'>" +
                         "<td>" + i + "</td>" +
                         "<td>" + outstand + "</td>" +
-                        "<td>" + amort_emi + "</td>" +
-                        "<td>" + interest + "</td>" +
+                        "<td>" + (Math.round(amort_emi)) + "</td>" +
+                        "<td>" + (Math.round(interest)) + "</td>" +
                         "<td>" + principle + "</td>" +
-                        "<td>" + amort_prePay + "</td>" +
+                        "<td>" + prepay + "</td>" +
                         "<td>" + clBal + "</td>" +
                         "</tr>");
                     var loanCls = i;
 
-                    var nofpay = (amort_prePay == 0) ? nofpay + 0 : nofpay + 1;
+                    var nofpay = (prepay == partPrePayAmt) ? nofpay + 1 : nofpay + 0;
 
                 } else {
 
@@ -212,12 +236,12 @@
             };
 
             var totSavMnth = isNaN(tenure - loanCls) ? 0 : (tenure - loanCls);
-            // Amortization Table ========================================
+            // Amortization Table ===================================
+
+            // ======================================================
 
             // Savings Table ========================================
-            $("#savings_tbl").append("<tr class='text'>"
-                // + "<td>" + totalMnth + "</td>"
-                +
+            $("#savings_tbl").append("<tr class='text font-weight-bold'>" +
                 "<td>" + loanCls + " months </td>" +
                 "<td>" + (totSavMnth * emi) + "</td>" +
                 "<td>" + totSavMnth + " months </td>" +
@@ -243,9 +267,13 @@
                 doc.save("Part Payment Calculations.pdf");
             },
             x: 30,
-            y: 10
+            y: 5
         });
     };
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     // =================Get Pdf==========================
     // =================Part Payment calculator===============
 </script>

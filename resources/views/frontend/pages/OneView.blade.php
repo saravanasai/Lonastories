@@ -34,7 +34,7 @@
                                                     the Bank
                                                 </label>
                                                 <input class="form-control" id="bnkNme" name="bank_name" type="text"
-                                                    required>
+                                                    required oninput="this.value = this.value.replace(/[^a-z]/, '')">
                                                 <small class="bnkNme text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -54,7 +54,7 @@
                                                     Amount
                                                 </label>
                                                 <input type="text" id="amnt" class="form-control" name="loan_amount"
-                                                    placeholder="" value="" required>
+                                                    placeholder="" value="" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">ROI</label>
                                                 <input type="text" id="roi" name="roi" class="form-control"
-                                                    placeholder="In %" required>
+                                                    placeholder="In %" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -72,7 +72,7 @@
                                                 <label class="form-control-label" for="input-city">Tenure
                                                 </label>
                                                 <input type="text" id="tenure" class="form-control" name="tenure"
-                                                    placeholder="In Months" required>
+                                                    placeholder="In Months" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">

@@ -17,40 +17,53 @@
             <h2 class="text-center font-weight-bold">My Wallet</h2>
             <br>
             <div class="row justify-content-between mt-lg-3">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
-                            <img src="{{ asset('frontend/img/star.png') }}" class="img-fluid" width="50%" alt="">
+                            <img src="{{ asset('frontend/img/star.png') }}" class="img-fluid" width="40%" alt="">
                         </div>
 
                         <div class="card-body">
                             <h2 id="stars" class="card-title font-weight-bold text-light">{{ $wallet_info->start_coins }}
                             </h2>
-                            <h4 class="card-text font-weight-bold text-secondary">STARS</h4>
+                            <h5 class="card-text font-weight-bold text-secondary">STARS</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
-                            <img src="{{ asset('frontend/img/coin.png') }}" class="img-fluid" width="50%" alt="">
+                            <img src="{{ asset('frontend/img/coin.png') }}" class="img-fluid" width="40%" alt="">
                         </div>
                         <div class="card-body">
                             <h2 id="chips" class="card-title font-weight-bold text-light">{{ $wallet_info->value_coins }}
                             </h2>
-                            <h4 class="card-text font-weight-bold text-secondary">CHIPS</h4>
+                            <h5 class="card-text font-weight-bold text-secondary">CHIPS</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
-                            <img src="{{ asset('frontend/img/heart.png') }}" class="img-fluid" width="50%" alt="">
+                            <img src="{{ asset('frontend/img/heart.png') }}" class="img-fluid" width="40%" alt="">
                         </div>
                         <div class="card-body">
                             <h2 id="hearts" class="card-title font-weight-bold text-light">{{ $wallet_info->heart_coins }}
                             </h2>
-                            <h4 class="card-text font-weight-bold text-secondary">HEARTS</h4>
+                            <h5 class="card-text font-weight-bold text-secondary">HEARTS</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card text-center border-0 bg-nav has-shadow">
+                        <div class="justify-content-center pt-3">
+                            <img src="{{ asset('frontend/img/loyalty.png') }}" class="img-fluid" width="40%" alt="">
+                        </div>
+                        <div class="card-body">
+                            <h2 id="hearts" class="card-title font-weight-bold text-light">{{ $wallet_info->heart_coins }}
+                            </h2>
+                            <h5 class="card-text font-weight-bold text-secondary">LOYALTY POINTS</h5>
                         </div>
                     </div>
                 </div>

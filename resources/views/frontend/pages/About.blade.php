@@ -165,12 +165,12 @@
                             <input type="number" class="form-control" name="refer_to_cus_phonenumber"
                                 placeholder="Enter Your Number" required>
                         </div>
-                        <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                        {{-- <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Email</label>
                             <input type="text" class="form-control" name="refer_to_cus_email"
                                 placeholder="Enter Email Address" onfocus="this.type='email'" onblur="this.type='text'"
                                 required>
-                        </div>
+                        </div> --}}
                         <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="relation" id="" class="form-control">
@@ -223,7 +223,7 @@
                     </h3>
                     @if (session('customer'))
                         <h5 class="pt-5 pb-lg-3"><a
-                                href="{{ route('quickEnquieryForm.edit', session('customer')->id) }}"
+                            data-toggle="modal" data-target="#shareNow"
                                 class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
