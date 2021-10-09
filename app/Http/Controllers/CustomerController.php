@@ -35,6 +35,7 @@ class CustomerController extends Controller
         $ref_id=session('refer_id');
         $direct_ref=session('direct_ref');
 
+        // dd($request->all());
 
          $this->validate($request,[
              "phonenumber"=>"required|min:10|max:10",

@@ -186,6 +186,32 @@
             </div>
         </div>
     </footer>
+
+
+    {{-- SHARE NOW MODAL --}}
+        <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="shareNow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+        </div>
+    </div>
+    {{-- SHARE NOW MODAL --}}
+
+    
     <!--================================= Scripting=================================================== -->
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     {{-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> --}}
@@ -199,7 +225,7 @@
     <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('frontend/js/front.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    
+
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('frontend/node_modules/html2canvas/dist/html2canvas.js') }}"></script>

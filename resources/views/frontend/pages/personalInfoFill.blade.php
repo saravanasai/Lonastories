@@ -356,6 +356,16 @@
                                                 type="text" required/>
                                         </div>
                                     </div>
+                                    <div class="col col-md-4">
+                                        <div class="form-group ">
+                                            <label class="control-label " for="Salary_account_bank_ac_no">
+                                                IFSC Code
+                                            </label>
+                                            <input class="form-control" id="ifsc_code"
+                                                name="ifsc_code" placeholder="IFSC Code"
+                                                type="text" required/>
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr>
 

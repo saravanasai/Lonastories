@@ -214,25 +214,25 @@
                 <div class="col-md-6 mt-5" data-aos="fade-down-right" data-aos-duration="1500">
                     <img src="{{ asset('frontend/img/refer.png') }}" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-6 mt-5 pl-5">
+                <div class="col-md-6 mt-5 pl-lg-5">
                     <form action="{{ route('directReferal.store') }}" method="POST">
                         @csrf
                         <div class="form-group" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name="refer_to_cus_name"
-                                placeholder="Enter Your Name">
+                                placeholder="Enter Your Name" oninput="this.value = this.value.replace(/[^a-z]/, '')">
                         </div>
                         <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
-                            <input type="number" class="form-control" name="refer_to_cus_phonenumber"
-                                placeholder="Enter Your Number" required>
+                            <input type="text" class="form-control" name="refer_to_cus_phonenumber" maxlength="10"
+                                placeholder="Enter Your Number" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
                         </div>
-                        <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                        {{-- <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Email</label>
                             <input type="text" class="form-control" name="refer_to_cus_email"
                                 placeholder="Enter Email Address" onfocus="this.type='email'" onblur="this.type='text'"
                                 required>
-                        </div>
+                        </div> --}}
                         <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="relation" id="" class="form-control">
@@ -262,7 +262,7 @@
     <section style="background-color: #fff4d286;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-12 pt-5 pl-5 text-center pt-5" data-aos="fade-down" data-aos-duration="1500">
+                <div class="col-md-6 col-sm-12 pt-5 pl-lg-5 text-center pt-5" data-aos="fade-down" data-aos-duration="1500">
                     <h4 class="" data-aos=" fade-down" data-aos-duration="1000">Sharing is Good, It's easy too. <i
                             class="em em-smiley" aria-role="presentation" aria-label="SMILING FACE WITH OPEN MOUTH"></i>
                     </h4>
@@ -283,18 +283,18 @@
                             !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                     </h3>
                     @if (!session('customer'))
-                        <h5 class="pt-5 pb-lg-3"><a href="{{ route('signup.index') }}"
-                                class="btn btn-outline-dark mt-1"><strong>Share
+                        <h5 class="pt-5 pb-lg-3"><a
+                                class="btn btn-outline-dark mt-1" data-toggle="modal" data-target="#shareNow"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else
-                        <h5 class="pt-5 pb-lg-3"><a href="{{ route('user.OneView') }}"
+                        <h5 class="pt-5 pb-lg-3"><a data-toggle="modal" data-target="#shareNow"
                                 class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @endif
 
-                    <h3><a href="#" target="_blank" title="Facebook" class="p-lg-4"><i
+                    <h3><a href="https://www.facebook.com/sharer/sharer.php" target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
                                 class="fa fa-facebook"></i></a>
                         <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
                                 class="fa fa-instagram"></i></a>

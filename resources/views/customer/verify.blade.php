@@ -39,7 +39,7 @@
                             @csrf
                             <div class="form-group mb-md-4">
                                 <div class="input-group input-group-merge input-group-alternative">
-                                    <input class="form-control" placeholder="Enter Your OTP" name="otp" type="text">
+                                    <input class="form-control" placeholder="Enter Your OTP" name="otp" type="text" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/, '')" required>
                                     <input type="hidden" value="{{$user_info->id}}" name="id">
                                 </div>
                             </div>
