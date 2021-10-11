@@ -190,7 +190,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <input type="text" name="loan_required" class="form-control"
+                                    <input type="text" name="loan_amount" class="form-control"
                                         placeholder="How Much You Need?" required
                                         oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                 </div>

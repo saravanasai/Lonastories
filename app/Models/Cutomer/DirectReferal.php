@@ -14,7 +14,6 @@ class DirectReferal extends Model
         "direct_ref_of_user",
         "refered_cus_name",
         "refered_cus_phonenumber",
-        "refered_cus_email",
         "refered_cus_relationship",
         "refered_url",
         "refered_verification",

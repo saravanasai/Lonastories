@@ -50,6 +50,7 @@ class  CustomerEnquieryFormController extends Controller
                "enq_sub_pro_type"=>"required",
                "company_name"=>"required",
                "monthly_income"=>"required|numeric",
+               "loan_amount"=>"required|numeric",
                "residence"=>"required",
                "office"=>"required",
                "working_from_home"=>"required",
@@ -67,6 +68,7 @@ class  CustomerEnquieryFormController extends Controller
            $quick_enquiery_form->priority_for_personal_loan=$request->priority_for_personal_loan;
            $quick_enquiery_form->company_name=$request->company_name;
            $quick_enquiery_form->monthly_income=$request->monthly_income;
+           $quick_enquiery_form->loan_amount=$request->loan_amount;
            $quick_enquiery_form->residence=$request->residence;
            $quick_enquiery_form->office=$request->office;
            $quick_enquiery_form->working_from_home=$request->working_from_home;

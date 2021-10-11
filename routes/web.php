@@ -91,6 +91,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('admindashboard/leads/byTelCal/assignToAdmin',AssignTcLeadToAdmin::class);
      //route resource for viewing the direct referal
     Route::resource('admindashboard/leads/Directrefferal',DirectReferalAdminController::class);
+    Route::post('admindashboard/leads/Directrefferal/adduser/byadmin',[DirectReferalAdminController::class,'createAccountFormAdmin'])->name('createAccountFormAdmin');
+    Route::get('admindashboard/leads/Directrefferal/adduser/byadmin/NewEnquiery/{id}',[DirectReferalAdminController::class,'EnquierycreateAccountFormAdmin'])->name('EnquierycreateAccountFormAdmin');
     Route::resource('leads/adminside/breakDown',AdminBreakDownController::class);
     Route::get('leads/adminside/breakDown/{cusid}/{enqid}',[AdminBreakDownController::class,'pdfcreate'])->name('pdfcreate');
     Route::resource('leads/acceptOrDeny/offerAcOeDe',OfferAcceptOrDenyController::class);
@@ -179,7 +181,6 @@ Route::prefix('user')->group(function()
     Route::get('BusinessLoan',[CustomerPagesController::class,'BusinessLoan'])->name('user.BusinessLoan');
     Route::get('EducationLoan',[CustomerPagesController::class,'EducationLoan'])->name('user.EducationLoan');
     //end of routes for products page
-
     //route to auto populate
     Route::get('autocomplete', [SearchController::class, 'autocomplete'])->name('autocomplete');
 

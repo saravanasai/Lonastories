@@ -17,7 +17,11 @@
                 <div class="panel">
                     <div class="user-heading round rounded">
                         <a href="#" class="mb-3">
+                            @if ($user_info->user_profile_img_status=0)
                             <img src="{{ asset('frontend/img/avatar.png') }}" class="img-fluid" alt="">
+                            @else
+                            <img src="{{ asset('profileimg/'.$user_info->user_profile_img)}}" class="img-fluid" alt="">
+                            @endif
                         </a>
                         <h1 class="text-light">{{ session('customer')->name }}</h1>
                         <h6 class="text-secondary">{{ session('customer')->cus_phonenumber }}</h5>
@@ -47,9 +51,9 @@
                             <div class="bio-row">
                                 <p><span class="font-weight-bold">SRP Earned </span>: {{ $points_given }}</p>
                             </div><div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Red.</span>: {{ $points_Redemed }}</p>
+                                <p><span class="font-weight-bold">SRP Redeemed</span>: {{ $points_Redemed }}</p>
                             </div>
-
+                            @if ($user_info->user_profile_img_status=0)
                             <div class="bio-row">
                                 <form action="{{ route('user.UploadUserImage') }}" enctype="multipart/form-data"
                                     method="post">
@@ -64,7 +68,7 @@
                                     </div>
                                 </form>
                             </div>
-
+                            @endif
                             @if (Session::has('profileimage'))
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>

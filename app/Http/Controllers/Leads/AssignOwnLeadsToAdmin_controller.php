@@ -58,43 +58,68 @@ class AssignOwnLeadsToAdmin_controller extends Controller
         $customer_quick_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb','=',$request->cusid)
         ->where('cs_enq_status_enq_tb','!=','0')
         ->first();
-        $cl_table=new ClEnquiery();
-        $cl_table->enquiery_cus_ph=$request->phonenumber;
-        $cl_table->enquiery_of_ucs=$request->cusid;
-        $cl_table->initial_assign_to=$customer_quick_enquiery->initial_assign_to;
-        $cl_table->companyname=$request->companyname;
-        $cl_table->take_home_salary=$request->takehomesalary;
-        $cl_table->total_obligation=$request->totalobligation;
-        $cl_table->no_of_credit_card=$request->no_of_credit_card;
-        $cl_table->no_of_credit_card_outstanding=$request->no_of_credit_card_outstanding;
-        $cl_table->credit_card_obligation=$request->credit_card_obigation;
-        $cl_table->sa_ac_bank_id=$request->sa_bank_account;
-        $cl_table->loan_product_id=$request->type_of_loan;
-        $cl_table->loan_product_sub_id=$request->loan_sub_product;
-        $cl_table->final_obligation =$request->final_obligation;
-        $cl_table->existing_foir =$request->existing_foir;
-        $cl_table->loan_amount_required =$request->loan_amount_required;
-        $cl_table->current_loation=$request->current_location;
-        $cl_table->additional_details =$request->additional_detail;
-        $cl_table->overall_status_of_customer=$request->cus_over_all_status;
 
            if($customer_quick_enquiery!=null)
            {
-            $customer_master=CustomerSignup::where('id','=',$request->cusid)->first();
-            $customer_master->enquiery_form_status=0;
-            $customer_quick_enquiery->cs_enq_status_enq_tb=0;
-            $customer_quick_enquiery->save();
-            $customer_master->save();
+                $customer_master=CustomerSignup::where('id','=',$request->cusid)->first();
+                $customer_master->enquiery_form_status=0;
+                $customer_quick_enquiery->cs_enq_status_enq_tb=0;
+                $customer_quick_enquiery->save();
+                $customer_master->save();
+                $cl_table=new ClEnquiery();
+                $cl_table->enquiery_cus_ph=$request->phonenumber;
+                $cl_table->enquiery_of_ucs=$request->cusid;
+                $cl_table->initial_assign_to=$customer_quick_enquiery->initial_assign_to;
+                $cl_table->companyname=$request->companyname;
+                $cl_table->take_home_salary=$request->takehomesalary;
+                $cl_table->total_obligation=$request->totalobligation;
+                $cl_table->no_of_credit_card=$request->no_of_credit_card;
+                $cl_table->no_of_credit_card_outstanding=$request->no_of_credit_card_outstanding;
+                $cl_table->credit_card_obligation=$request->credit_card_obigation;
+                $cl_table->sa_ac_bank_id=$request->sa_bank_account;
+                $cl_table->loan_product_id=$request->type_of_loan;
+                $cl_table->loan_product_sub_id=$request->loan_sub_product;
+                $cl_table->final_obligation =$request->final_obligation;
+                $cl_table->existing_foir =$request->existing_foir;
+                $cl_table->loan_amount_required =$request->loan_amount_required;
+                $cl_table->current_loation=$request->current_location;
+                $cl_table->additional_details =$request->additional_detail;
+                $cl_table->overall_status_of_customer=$request->cus_over_all_status;
+           }
+           else
+           {
+                $customer_master=CustomerSignup::where('id','=',$request->cusid)->first();
+                $customer_master->enquiery_form_status=0;
+                $customer_master->save();
+                $cl_table=new ClEnquiery();
+                $cl_table->enquiery_cus_ph=$request->phonenumber;
+                $cl_table->enquiery_of_ucs=$request->cusid;
+                $cl_table->initial_assign_to="ADMIN";
+                $cl_table->companyname=$request->companyname;
+                $cl_table->take_home_salary=$request->takehomesalary;
+                $cl_table->total_obligation=$request->totalobligation;
+                $cl_table->no_of_credit_card=$request->no_of_credit_card;
+                $cl_table->no_of_credit_card_outstanding=$request->no_of_credit_card_outstanding;
+                $cl_table->credit_card_obligation=$request->credit_card_obigation;
+                $cl_table->sa_ac_bank_id=$request->sa_bank_account;
+                $cl_table->loan_product_id=$request->type_of_loan;
+                $cl_table->loan_product_sub_id=$request->loan_sub_product;
+                $cl_table->final_obligation =$request->final_obligation;
+                $cl_table->existing_foir =$request->existing_foir;
+                $cl_table->loan_amount_required =$request->loan_amount_required;
+                $cl_table->current_loation=$request->current_location;
+                $cl_table->additional_details =$request->additional_detail;
+                $cl_table->overall_status_of_customer=$request->cus_over_all_status;
            }
 
-        if($cl_table->save())
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+            if($cl_table->save())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
     }
 
     /**
