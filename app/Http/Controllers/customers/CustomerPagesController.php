@@ -52,9 +52,10 @@ class CustomerPagesController extends Controller
     public function profile() //This to be rename Profile
     {
         $profile_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
+        $user_info=CustomerSignup::where('id',session('customer')->id)->first();
         $points_given=SuperRewardPointsGiven::where('spr_to_user',session('customer')->id)->sum('points_given');
         $points_Redemed=SuperRewardPointsRedeemed::where('spr_redem_of_user',session('customer')->id)->sum('points_redeemed');
-        return view('frontend.pages.profile',["wallet_info"=>$profile_info,"points_Redemed"=>$points_Redemed,"points_given"=>$points_given]);
+        return view('frontend.pages.profile',["wallet_info"=>$profile_info,"points_Redemed"=>$points_Redemed,"points_given"=>$points_given,"user_info"=>$user_info]);
     }
 
     public function myWallet()

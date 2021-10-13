@@ -28,6 +28,7 @@ class CreateCustomerEnqieryFormsTable extends Migration
             $table->string('priority_for_personal_loan')->nullable();
             $table->string('company_name')->nullable();
             $table->string('monthly_income')->nullable();
+            $table->string('loan_amount')->nullable();
             $table->string('residence')->nullable();
             $table->string('office')->nullable();
             $table->string('working_from_home')->nullable();

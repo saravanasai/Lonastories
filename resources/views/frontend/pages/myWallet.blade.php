@@ -61,7 +61,8 @@
                             <img src="{{ asset('frontend/img/loyalty.png') }}" class="img-fluid" width="40%" alt="">
                         </div>
                         <div class="card-body">
-                            <h2 id="hearts" class="card-title font-weight-bold text-light">{{ $wallet_info->heart_coins }}
+                            <h2 id="hearts" class="card-title font-weight-bold text-light">{{ $wallet_info->heart_coins+$wallet_info->start_coins+
+                                $wallet_info->value_coins }}
                             </h2>
                             <h5 class="card-text font-weight-bold text-secondary">LOYALTY POINTS</h5>
                         </div>
@@ -74,6 +75,9 @@
                 <div class="col-md-5 text-center">
                     <h3 class="font-weight-bold">Total SRP Earned</h3>
                     <br>
+                    <strong class="font-weight-bold">1 SRP = 0.5 INR</strong>
+                    <br>
+                    <strong class="font-weight-bold">{{$wallet_info->super_reward_point}} SRP = {{$wallet_info->super_reward_point*0.5}} - INR</strong>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
                             <h2 id="lpt" class="card-text display-3 text-dark">

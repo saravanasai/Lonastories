@@ -1,4 +1,4 @@
-@extends('layouts.callermaster')
+@extends('layouts.master')
 @section('content')
 
     <!-- Content Header (Page header) -->
@@ -6,12 +6,15 @@
         <div class="container-fluid">
             <div class="row mb-1">
                 <div class="col-sm-6">
-                    <h4 class="m-0">ADD MORE INFO TELECALLER VIEW</h4>
+                    <h5 class="m-0">ADD MORE INFO BY ADMIN</h5>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
+                        @if(session('admin'))
+                        <li class="breadcrumb-item"><a href="{{route('OwnLeadAssigntoadmin.index') }}">Back</a></li>
+                        @endif
                         @if(session('caller'))
-                        <li class="breadcrumb-item"><a href="{{route('assignedNewLeads.index') }}">Back</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('assignedownLeads.index') }}">Back</a></li>
                         @endif
                     </ol>
                 </div><!-- /.col -->
@@ -19,6 +22,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
     <!-- Main content -->
     <div class="content">
 
@@ -37,7 +41,6 @@
                                     <label for="firstName">First Name *</label>
                                     <input type="text" class="form-control" id="firstName" value="{{$customer_info->name}}" name="firstname" placeholder="Enter First Name" disabled>
                                     <input type="hidden" class="form-control" id="cus_id" value="{{$customer_info->id}}"  disabled>
-                                    <input type="hidden" class="form-control" id="enq_id" value="{{$enq_id}}"  disabled>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -66,14 +69,14 @@
                             <div class="col col-md-3">
                                 <div class="form-group">
                                     <label for="company_name">Company Name</label>
-                                    <input type="text" class="form-control" value="{{$customer_enquiery->company_name}}" name="company_name" id="company_name"
-                                        placeholder="Enter Company Name" disabled>
+                                    <input type="text" class="form-control"  name="company_name" id="company_name"
+                                        placeholder="Enter Company Name">
                                 </div>
                             </div>
                             <div class=" col col-md-2">
                                 <div class="form-group">
                                     <label for="total_salary">Take Home Salary</label>
-                                    <input type="number" class="form-control" id="total_salary" value="{{$customer_enquiery->monthly_income}}" name="total_salary" placeholder="Total Salary">
+                                    <input type="number" class="form-control" id="total_salary"  name="total_salary" placeholder="Total Salary" >
                                 </div>
                             </div>
                             <div class=" col col-md-3">
@@ -131,8 +134,9 @@
                                 <div class="form-group">
                                     <label for="type_of_Product">Type of Product</label>
                                     <select class="form-control" id="type_of_Product" name="type_of_existing_loan" >
-                                        @foreach ($products as $product )
-                                        <option value="{{$product->id}} {{$customer_enquiery->product_type==$product->id ? 'selected' : ''}}">{{$product->productname}}</option>
+                                        <option value="0" selected>Exitsing loan type</option>
+                                       @foreach ($products as $product )
+                                        <option value="{{$product->id}}">{{$product->productname}}</option>
                                        @endforeach
                                     </select>
                                 </div>
@@ -141,7 +145,7 @@
                                 <div class="form-group">
                                     <label for="type_of_sub_product">Sub Product</label>
                                     <select class="form-control" id="type_of_sub_product" name="loan_sub_product" disabled>
-                                        <option value="{{$customer_enquiery->sub_product_type_eq_tb}}" selected>{{$customer_enquiery->subproductname}}</option>
+                                        <option value="0" selected>Exitsing loan type</option>
                                     </select>
                                 </div>
 
@@ -150,7 +154,7 @@
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="required_loan_amount">Loan amount require</label>
-                                    <input type="number" class="form-control" id="required_loan_amount" value="{{$customer_enquiery->loan_amount}}" name="required_loan_amount" placeholder="Loan amount required">
+                                    <input type="number" class="form-control" id="required_loan_amount" name="required_loan_amount" placeholder="Loan amount required">
                                 </div>
                             </div>
                             <div class=" col col-md-3">
@@ -193,7 +197,7 @@
                                 <div class="col col-md-2">
 
                                     <button type="submit" class="btn btn-success btnleadgen"><i class="fas fa-paper-plane px-1"></i>Submit</button>
-
+                                    <input type="hidden" value="{{session('admin')->id}}" id="id">
                                 </div>
                             </div>
 
@@ -206,6 +210,7 @@
             </form>
         </div>
     </div>
+
 
     <!-- /.content -->
 
@@ -255,7 +260,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                         validation_status=false;
                         $("#total_salary").val('');
                     }
-                    if(salary_bank_name==0)
+                    if(salary_bank_name=="")
                     {
                         $("#sa_bank_name").addClass('is-invalid');
                         validation_status=false;
@@ -418,9 +423,10 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
             var additional_details = $("#additional_detail").val();
             var id=$("#id").val();
             var cus_id=$('#cus_id').val();
+            var enq_id=$('#enq_id').val();
             var cus_over_all_status=$("select#lead_status").val();
 
-                     var url = '{{ route('assignedNewLeads.store') }}';
+                     var url = '{{ route('OwnLeadAssigntoadmin.store') }}';
                      url = url.replace(':id', id);
                     //validation
                     if(current_location=="")
@@ -463,6 +469,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                      }
 
 
+                    //    console.log(cus_over_all_status);
                     //   console.log(validation_status_to_submit);
 
                      //section if all then field arr ok
@@ -497,7 +504,6 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                     additional_detail:additional_details,
                                     cus_over_all_status:cus_over_all_status
 
-
                                 },
 
                                 success: function(data) {
@@ -505,14 +511,14 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                                       if(data==1)
                                       {
                                         Swal.fire({
-                                            title: 'Successfully Generated New Lead',
+                                            title: 'Successfully Submited',
                                             showDenyButton: false,
                                             showCancelButton: false,
                                             confirmButtonText: `Ok`,
                                             }).then((result) => {
                                             /* Read more about isConfirmed, isDenied below */
                                                 if (result.isConfirmed) {
-                                                    var url = '{{ route('caller.dashboard', ':id') }}';
+                                                    var url = '{{ route('OwnLeadAssigntoadmin.index') }}';
                                                       url = url.replace(':id', id);
                                                       window.location.href=url;
                                                 } else if (result.isDenied) {

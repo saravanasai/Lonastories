@@ -152,34 +152,45 @@
                 <div class="col-md-6 mt-5" data-aos="fade-down-right" data-aos-duration="1500">
                     <img src="{{ asset('frontend/img/refer.png') }}" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-6 mt-5 pl-5">
+                <div class="col-md-6 mt-5 pl-lg-5">
+                    @if (session()->has('directReferalSubmited'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <h4 class="alert-heading">Well done!</h4>
+                            <p><b>Thank you for sharing a Direct Referral with us.</b>
+                                Hearts would be loaded to your profile after the successful sign up of your Referral.</p>
+                            </p>
+                        </div>
+                    @endif
+                    @if (session()->has('customerExist'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h4 class="alert-heading">Oops!</h4>
+                            <p><b>Thank you for sharing a Direct Referral with us.</b>
+                                but This Referral is already refered</p>
+                            </p>
+                        </div>
+                    @endif
+
                     <form action="{{ route('directReferal.store') }}" method="POST">
                         @csrf
-                        <div class="form-group" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+                        <div class="form-group">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name="refer_to_cus_name"
-                                placeholder="Enter Your Name">
+                                placeholder="Enter Your Name" oninput="this.value = this.value.replace(/[^a-z]/, '')">
                         </div>
-                        <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                        <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
-                            <input type="number" class="form-control" name="refer_to_cus_phonenumber"
-                                placeholder="Enter Your Number" required>
+                            <input type="text" class="form-control" name="refer_to_cus_phonenumber" maxlength="10"
+                                placeholder="Enter Your Number" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
                         </div>
-                        {{-- <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
-                            <label class="text-dark font-weight-bold" for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" name="refer_to_cus_email"
-                                placeholder="Enter Email Address" onfocus="this.type='email'" onblur="this.type='text'"
-                                required>
-                        </div> --}}
-                        <div class="form-group pt-3" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500">
+                        <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
-                            <select name="relation" id="" class="form-control">
+                            <select name="refer_to_relationship" id="" class="form-control">
                                 <option value="" hidden>Relation</option>
-                                <option value="">Friend</option>
-                                <option value="">Relation</option>
-                                <option value="">Coleague</option>
-                                <option value="">Neighbour</option>
-                                <option value="">Others</option>
+                                <option value="Friend">Friend</option>
+                                <option value="Relation">Relation</option>
+                                <option value="Coleague">Coleague</option>
+                                <option value="Neighbour">Neighbour</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                         <div class="text-center pt-3">
@@ -249,4 +260,18 @@
         </div>
     </section>
 
+@endsection
+@section('js')
+@if (session()->has('directReferalSubmited'))
+ <script>
+      window.location.hash ="directRefsection";
+      $(document).ready(function () {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                $(this).remove();
+            });
+        }, 5000);
+    });
+ </script>
+ @endif
 @endsection

@@ -21,7 +21,7 @@ class CustomerEnqieryForm extends Model
         "working_from_home",
         "current_office_location",
         "current_residance_location",
-        "current_residance_location",
+        "loan_amount",
         "loan_expected",
         "cibil_score",
         "cs_enq_status_enq_tb",

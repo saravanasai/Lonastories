@@ -19,7 +19,6 @@ class CreateDirectReferalsTable extends Migration
             $table->foreign('direct_ref_of_user')->references('id')->on('table_customer');
             $table->string('refered_cus_name')->nullable();
             $table->string('refered_cus_phonenumber')->nullable();
-            $table->string('refered_cus_email')->nullable();
             $table->string('refered_cus_relationship')->nullable();
             $table->string('refered_url')->nullable();
             $table->string('refered_verification')->default(0)->comment('0 means not verified 1 means verified');

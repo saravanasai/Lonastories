@@ -56,11 +56,11 @@
                             <th>By Customer</th>
                             <th>Name</th>
                             <th>Phonenumber</th>
-                            <th>Email</th>
                             <th>Relationship</th>
                             <th>Status</th>
                             <th>Action</th>
                             <th>Send</th>
+                            <th>GEN_AC</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +70,6 @@
                                 <td>{{ $reffered_user->name }}</td>
                                 <td>{{ $reffered_user->refered_cus_name }}</td>
                                 <td>{{ $reffered_user->refered_cus_phonenumber }}</td>
-                                <td>{{ $reffered_user->refered_cus_email }}</td>
                                 <td>{{ $reffered_user->refered_cus_relationship }}</td>
                                 @if($reffered_user->refered_verification==1)
                                 <td><span class="badge bg-success">Verified</span></td>
@@ -88,7 +87,13 @@
                                         <button type="button" id="{{ $reffered_user->id }}"
                                             class="btn btn-sm btn-flat btn-success resend"><i class="fas fa-paper-plane px-1"></i>Resend Link</button>
                                         @endif
-
+                                </td>
+                                <td>
+                                    @if ($reffered_user->refered_verification!=1)
+                                        <a class="btn btn-sm btn-success" href="{{route('Directrefferal.edit',$reffered_user->id)}}"><i class="fas fa-people-arrows px-1"></i>GEN_AC</a>
+                                    @else
+                                    <a class="btn btn-sm btn-success disabled" href="{{route('Directrefferal.edit',$reffered_user->id)}}"><i class="fas fa-people-arrows px-1" disabled></i>GEN_AC</a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

@@ -17,7 +17,11 @@
                 <div class="panel">
                     <div class="user-heading round rounded">
                         <a href="#" class="mb-3">
+                            @if ($user_info->user_profile_img_status=0)
                             <img src="{{ asset('frontend/img/avatar.png') }}" class="img-fluid" alt="">
+                            @else
+                            <img src="{{ asset('profileimg/'.$user_info->user_profile_img)}}" class="img-fluid" alt="">
+                            @endif
                         </a>
                         <h1 class="text-light">{{ session('customer')->name }}</h1>
                         <h6 class="text-secondary">{{ session('customer')->cus_phonenumber }}</h5>
@@ -45,11 +49,12 @@
                                 </p>
                             </div>
                             <div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Earned </span>: {{ $points_given }}</p>
-                            </div><div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Red.</span>: {{ $points_Redemed }}</p>
+                                <p><span class="font-weight-bold">SRP Earned</span>:{{ $points_given }}</p>
                             </div>
-
+                            <div class="bio-row">
+                                <p><span class="font-weight-bold">SRP Redeem</span>:{{ $points_Redemed }}</p>
+                            </div>
+                            @if ($user_info->user_profile_img_status=0)
                             <div class="bio-row">
                                 <form action="{{ route('user.UploadUserImage') }}" enctype="multipart/form-data"
                                     method="post">
@@ -64,6 +69,7 @@
                                     </div>
                                 </form>
                             </div>
+                            @endif
 
                             @if (Session::has('profileimage'))
                                 <div class="alert alert-success alert-dismissible">
@@ -105,7 +111,8 @@
                     <div class="dropdown d-inline">
                         <button class="btn btn-secondary btn-block dropdown-toggle text-dark" type="button"
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark-check display-4 pb-2"></i><br>Check Loan
+                            <i class="bi bi-bookmark-check display-4 pb-2"></i><br>
+                            Calculators
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{ route('user.personalLoanEmiCalc') }}" class="dropdown-item">Personal Loan
@@ -122,7 +129,7 @@
                     <div class="dropdown d-inline">
                         <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-ui-checks display-4 pb-2"></i><br>Eligibility
+                            <i class="bi bi-ui-checks display-4 pb-2"></i><br>Check Eligibility
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{ route('user.personalEligibilityCalc') }}" class="dropdown-item">Personal

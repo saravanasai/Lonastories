@@ -57,9 +57,14 @@ class CustomerDataStoreController extends Controller
          $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
          $customer_master->pr_form_status=1;
 
-          if($personal_info->save() && $customer_master->save())
+          if($personal_info->save()  )
           {
-              return redirect()->route('user.profile');
+               if($customer_master->save())
+               {
+
+                return redirect()->route('user.profile');
+               }
+
           }
     }
 
@@ -148,15 +153,16 @@ class CustomerDataStoreController extends Controller
         if($request->file('profile_img'))
         {
             $file=$request->file('profile_img');
-            $file_name="PR_IMG".session('customer')->id.$file->getClientOriginalExtension();
+            $file_name="PR_IMG".session('customer')->id.".".$file->getClientOriginalExtension();
 
             $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
             $customer_master->user_profile_img=$file_name;
+            $customer_master->user_profile_img_status=1;
             if($customer_master->save())
             {
                 Storage::put('userprofile/'.$file_name,file_get_contents($file));
                 Session::flash('profileimage','Profile Image Uploaded');
-                return back();
+                return redirect()->route('user.profile');
 
             }
         }

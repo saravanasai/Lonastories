@@ -107,9 +107,9 @@ class AssignedOwnLeadsToLeader extends Controller
 
         $status_codes=Status::where('id','<',9)->where('id','>',3)->get();
         $customer_info=CustomerSignup::where('id',$id)->first();
-        $customer_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb',$id)->first();
+        $customer_enquiery=CustomerEnqieryForm::join('subproducts','customer_enqiery_forms.sub_product_type_eq_tb','=','subproducts.id')
+        ->where('eqy_of_cus_enq_tb',$id)->first();
         $products=Products::all();
-
         return view('callerviews.fillmoreInfo',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id,"customer_enquiery"=>$customer_enquiery]);
     }
 

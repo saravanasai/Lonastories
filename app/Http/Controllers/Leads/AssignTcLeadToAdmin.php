@@ -25,6 +25,7 @@ class AssignTcLeadToAdmin extends Controller
         ->where('cl_enquieries.ready_to_break_down','=','0')
         ->where('cl_enquieries.overall_status_of_customer','!=','7')
         ->where('cl_enquieries.Final_assign_after_more_info_cl_tb','=','0')
+        ->where('cl_enquieries.enquiery_of_ucs','!=','0')
         ->get();
         // dd($customer_info);
         return view('adminviews.LeadByTelCalAssignedToAdmin',compact('customer_info'));

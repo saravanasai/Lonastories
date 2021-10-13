@@ -4,7 +4,11 @@ namespace App\Http\Controllers\AdminControlls;
 
 use App\Http\Controllers\Controller;
 use App\Mail\DirectRefferalLinkResend;
+use App\Models\CustomerSignup;
 use App\Models\Cutomer\DirectReferal;
+use App\Models\Products;
+use App\Models\Status\Status;
+use App\Service\DirectReferalService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -54,8 +58,9 @@ class DirectReferalAdminController extends Controller
     {
          // this methode trigges the resend the url to user
          $refered_customer=DirectReferal::where('id',$id)->first();
-         $email=$refered_customer->refered_cus_email;
+         $phoneNumber=$refered_customer->refered_cus_phonenumber;
         //  Mail::to($email)->send(new DirectRefferalLinkResend($id));
+        //section for resend link via sms gateway
          return 1;
 
     }
@@ -68,7 +73,8 @@ class DirectReferalAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+         $direct_ref_info=DirectReferal::where('id',$id)->first();
+         return view('adminviews.CreateUserFromAdminSide',["direct_ref_info"=>$direct_ref_info]);
     }
 
     /**
@@ -98,5 +104,37 @@ class DirectReferalAdminController extends Controller
     public function destroy($id)
     {
 
+    }
+
+
+    public function createAccountFormAdmin(Request $request,DirectReferalService $service)
+    {
+
+        $this->validate($request,[
+            "username"=>"required",
+            "phonenumber"=>"required|max:10",
+            "email"=>"required|email",
+            "dob"=>"required",
+        ]);
+
+        if($service->points_to_refered_cus($request->ref_by_cus,$request))
+        {
+            if($service->update_to_direct_ref($request->phonenumber))
+            {
+                $cus_info=$service->register_customer($request);
+                return redirect()->route('EnquierycreateAccountFormAdmin',$cus_info->id);
+
+            }
+        }
+
+
+
+    }
+    public function EnquierycreateAccountFormAdmin($id)
+    {
+        $customer_info=CustomerSignup::where('id',$id)->first();
+        $products=Products::all();
+        $status_codes=Status::where('id','<',9)->where('id','>',4)->get();
+        return view('adminviews.FillMoreInfoAdminAccountCreate',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes]);
     }
 }

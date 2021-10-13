@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LOANSTORIES.COM</title>
-    <meta name="description" content="" />
+    <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+    <meta property="og:description" content="Customized Loan Offers with Super Reward Points every month">
+    <meta property="og:description" content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
+    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="all,follow" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.css') }}">
@@ -195,23 +197,25 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalCenterTitle">Share Us And Earn</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-            ...
+                @if (session('customer'))
+                <div>{{url('/')."/user/signup/".session('customer')->cus_referal_code."/referal"}}</div>
+                @endif
+
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Copy</button>
 
         </div>
         </div>
     </div>
     {{-- SHARE NOW MODAL --}}
 
-    
     <!--================================= Scripting=================================================== -->
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     {{-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> --}}
