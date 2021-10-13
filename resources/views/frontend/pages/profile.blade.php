@@ -49,9 +49,10 @@
                                 </p>
                             </div>
                             <div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Earned </span>: {{ $points_given }}</p>
-                            </div><div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Redeemed</span>: {{ $points_Redemed }}</p>
+                                <p><span class="font-weight-bold">SRP Earned</span>:{{ $points_given }}</p>
+                            </div>
+                            <div class="bio-row">
+                                <p><span class="font-weight-bold">SRP Redeem</span>:{{ $points_Redemed }}</p>
                             </div>
                             @if ($user_info->user_profile_img_status=0)
                             <div class="bio-row">
@@ -69,6 +70,7 @@
                                 </form>
                             </div>
                             @endif
+
                             @if (Session::has('profileimage'))
                                 <div class="alert alert-success alert-dismissible">
                                     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -109,7 +111,8 @@
                     <div class="dropdown d-inline">
                         <button class="btn btn-secondary btn-block dropdown-toggle text-dark" type="button"
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-bookmark-check display-4 pb-2"></i><br>Check Loan
+                            <i class="bi bi-bookmark-check display-4 pb-2"></i><br>
+                            Calculators
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{ route('user.personalLoanEmiCalc') }}" class="dropdown-item">Personal Loan
@@ -126,7 +129,7 @@
                     <div class="dropdown d-inline">
                         <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bi bi-ui-checks display-4 pb-2"></i><br>Eligibility
+                            <i class="bi bi-ui-checks display-4 pb-2"></i><br>Check Eligibility
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a href="{{ route('user.personalEligibilityCalc') }}" class="dropdown-item">Personal

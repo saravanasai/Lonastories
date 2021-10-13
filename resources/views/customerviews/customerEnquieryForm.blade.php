@@ -248,7 +248,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // Hide the  another submit button from DOM
+            //hideing priority select feild
+            $('#priority').hide();
 
             let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body').innerWidth() *
                 3;
@@ -267,14 +268,15 @@
             };
 
             $('#slider').jFormslider(options);
-
-            let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
-            submit.style.display = "none";
+             // Hide the  another submit button from DOM
+                let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
+                submit.style.display = "none";
 
             //section for loadig the subproducts section by products
             $('body').on('change', '#type_of_Product', function() {
 
                 let product_id = $(this).val();
+                (product_id == '1') ? $('#priority').show(): $('#priority').hide();
                 if (product_id != 0) {
                     //request to get a sub products
                     $.ajax({
@@ -350,21 +352,6 @@
         });
         // Previous Date Lock =================================
 
-        // Loan Priority ======================================
-        $('#priority').hide()
-
-        $('#loan').change(function() {
-            let loanSelect = $('#loan').find(":selected").val();
-            (loanSelect === '1') ? $('#priority').show(): $('#priority').hide();
-
-            $('#loan_typ')
-                .find('option')
-                .remove()
-                .end()
-                .append('<option value="whatever">text</option>')
-                .val('whatever');
-
-        });
 
         //section to auto populate the company name
         var path = "{{ route('autocomplete') }}";

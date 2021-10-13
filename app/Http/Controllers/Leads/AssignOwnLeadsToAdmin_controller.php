@@ -131,7 +131,8 @@ class AssignOwnLeadsToAdmin_controller extends Controller
     public function show($id)
     {
         $customer_info=CustomerSignup::where('id',$id)->first();
-        $customer_enquiery=CustomerEnqieryForm::where('eqy_of_cus_enq_tb',$id)->first();
+        $customer_enquiery=CustomerEnqieryForm::join('subproducts','customer_enqiery_forms.sub_product_type_eq_tb','=','subproducts.id')
+        ->where('eqy_of_cus_enq_tb',$id)->first();
         $products=Products::all();
         $status_codes=Status::where('id','<',9)->where('id','>',4)->get();
         // dd($customer_enquiery);

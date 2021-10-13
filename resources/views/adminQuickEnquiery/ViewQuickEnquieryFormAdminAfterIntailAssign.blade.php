@@ -35,7 +35,7 @@
                                         <div class="row">
                                             <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
                                                 <div class="row">
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="info-box bg-light">
                                                             <div class="info-box-content">
                                                                 <span class="info-box-text text-center text-muted">Working form home</span>
@@ -44,7 +44,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="info-box bg-light">
                                                             <div class="info-box-content">
                                                                 <span class="info-box-text text-center text-muted">Cibil
@@ -54,13 +54,23 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12 col-sm-4">
+                                                    <div class="col-12 col-sm-3">
                                                         <div class="info-box bg-light">
                                                             <div class="info-box-content">
                                                                 <span class="info-box-text text-center text-muted">
                                                                     Loan Expected</span>
                                                                 <span
                                                                     class="info-box-number text-center text-muted mb-0">{{ $enquiery->loan_expected }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-3">
+                                                        <div class="info-box bg-light">
+                                                            <div class="info-box-content">
+                                                                <span class="info-box-text text-center text-muted">
+                                                                    Loan Required</span>
+                                                                <span
+                                                                    class="info-box-number text-center text-muted mb-0">{{ $enquiery->loan_amount }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -88,6 +98,10 @@
                                                             <li class="list-group-item">
                                                                 <b>Product Sub Type</b> <a
                                                                     class=" float-right text-md">{{ $enquiery->subproductname }}</a>
+                                                            </li>
+                                                            <li class="list-group-item">
+                                                                <b>Company Name</b> <a
+                                                                    class=" float-right text-md">{{ $enquiery->company_name }}</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -120,7 +134,6 @@
                                     <!-- / end of first tab.tab-pane -->
                                     <!-- start of second tab.tab-pane -->
                                     <div class="tab-pane" id="timeline">
-
                                         <div class="row mt-5">
                                             <div class="col col-md-4"><strong>Name :</strong>{{ $enquiery->name}}</div>
                                             <div class="col col-md-4"><strong>Phone No :</strong>{{ $enquiery->cus_phonenumber}}</div>
@@ -132,16 +145,9 @@
                                             <div class="col col-md-4"><strong>Mode Of Contact :</strong>{{ $enquiery->mode_of_contact}}</div>
                                         </div>
                                         <div class="row mt-5">
-                                            @if ($enquiery->product_type==1)
-                                            <div class="col col-md-3"><strong>Priority</strong>{{ $enquiery->date_to_call}}</div>
-                                            <div class="col col-md-3"><strong>Product :</strong>{{ $enquiery->productname}}</div>
-                                            <div class="col col-md-3"><strong>Product Type :</strong>{{ $enquiery->time_to_call}}</div>
-                                            <div class="col col-md-3"><strong>Mode Of Contact</strong>{{ $enquiery->mode_of_contact}}</div>
-                                            @else
-                                            <div class="col col-md-4"><strong>Product :</strong>{{ $enquiery->productname}}</div>
+                                            <div class="col col-md-4"><strong>Product : </strong>{{ $enquiery->productname}}</div>
                                             <div class="col col-md-4"><strong>Product Type :</strong>{{ $enquiery->subproductname}}</div>
-                                            <div class="col col-md-4"><strong>Mode Of Contact</strong>{{ $enquiery->mode_of_contact}}</div>
-                                            @endif
+                                            <div class="col col-md-4"><strong>Loan Required :</strong>{{ $enquiery->loan_amount}}</div>
                                         </div>
                                         <div class="row mt-5">
                                             <div class="col col-md-4"><strong>Company Name :</strong>{{ $enquiery->company_name}}</div>
@@ -153,7 +159,11 @@
                                             <div class="col col-md-4"><strong>Loan Expected :</strong>{{ $enquiery->loan_expected}}</div>
                                             <div class="col col-md-4"><strong>Cibil Score :</strong>{{ $enquiery->cibil_score}}</div>
                                         </div>
-
+                                        <div class="row mt-5">
+                                            @if ($enquiery->product_type==1)
+                                            <div class="col col-md-3"><strong>Priority : </strong>{{ $enquiery->priority_for_personal_loan}}</div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /.tab-content -->

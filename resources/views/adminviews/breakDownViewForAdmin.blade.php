@@ -2122,7 +2122,7 @@
                     $('#el_mul_eligibility_sao').val([Number(income_considered)-Number(Total_obligation)]*Number(el_multiplier));
                     $('#el_emi_per_lak').val(per_lak_emi(el_roi));
                     let emi_per_lak = $("#el_emi_per_lak").val();
-                    $('#el_emi_foir_eligibility').val(foir_eligibility(Number(el_foir),Number(income_considered),Number(Total_obligation),Number(emi_per_lak)));
+                    $('#el_emi_foir_eligibility').val(foir_eligibility(Number(el_foir),Number(Total_obligation),Number(income_considered),Number(emi_per_lak)));
 
                 }
             }
@@ -2167,7 +2167,7 @@
                     $("#hl_ltv_eligibility").val(Number(property_value)*(Number(hl_ltv)/100));
                     $('#hl_emi_per_lak').val(per_lak_emi_hl(hl_roi,hl_tenure));
                     let emi_per_lak = $("#hl_emi_per_lak").val();
-                    $('#hl_emi_foir_eligibility').val(foir_eligibility(hl_foir,Number(Total_obligation),Number(Income_considered),emi_per_lak));
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility(Number(hl_foir),Number(Total_obligation),Number(Income_considered),Number(emi_per_lak)));
 
 
                 }
@@ -2301,10 +2301,11 @@
                         let f_obligation = $('#Final_page_obl_con').val();
                         $('#final_proposed_total_emi').val(Math.round(Number(f_emi) + Number(
                         f_obligation)));
-                        let f_ob_con = $('#final_proposed_total_emi').val();
+                        let f_ob_con = $('#Final_page_obl_con').val();
                         let f_salary_con = $('#Final_page_sal_con').val();
-                        $('#final_current_foir').val(current_foir(f_ob_con, f_salary_con) + "%");
-                        $('#final_proposed_foir').val(proposed_foir(f_ob_con, f_salary_con, f_emi) + "%");
+                        let p_total_emi = $('#final_proposed_total_emi').val();
+                        $('#final_current_foir').val(current_foir(Number(f_ob_con),Number(f_salary_con)) + "%");
+                        $('#final_proposed_foir').val(proposed_foir(f_ob_con,f_salary_con,p_total_emi) + "%");
                         $('#final_submit').prop('disabled', false);
                     }
                 }
@@ -2440,11 +2441,9 @@
             $('#final_tenure').prop('disabled', false);
             $('#final_tenure').val('');
             $('#final_emi').val('');
-            $('#final_proposed_total_emi').val('');
             $('#final_current_foir').val('');
             $('#final_proposed_foir').val('');
-            $('#Final_page_sal_con').val('');
-            $('#Final_page_obl_con').val('');
+
 
         })
         //END FINAL EDIT BUTTON
@@ -2512,7 +2511,7 @@
                 return TotalEmi;
             }
 
-            function    per_lak_emi_hl(Roi,Tennure) {
+            function per_lak_emi_hl(Roi,Tennure) {
                 var r = Number(Roi) / 12 / 100;
                 var n = Tennure*12;
                 var p = 100000;

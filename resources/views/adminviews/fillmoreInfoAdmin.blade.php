@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -12,9 +11,6 @@
                     <ol class="breadcrumb float-sm-right">
                         @if(session('admin'))
                         <li class="breadcrumb-item"><a href="{{route('OwnLeadAssigntoadmin.index') }}">Back</a></li>
-                        @endif
-                        @if(session('caller'))
-                        <li class="breadcrumb-item"><a href="{{route('assignedownLeads.index') }}">Back</a></li>
                         @endif
                     </ol>
                 </div><!-- /.col -->
@@ -77,7 +73,7 @@
                             <div class=" col col-md-2">
                                 <div class="form-group">
                                     <label for="total_salary">Take Home Salary</label>
-                                    <input type="number" class="form-control" id="total_salary" value="{{$customer_enquiery->monthly_income}}" name="total_salary" placeholder="Total Salary" disabled>
+                                    <input type="number" class="form-control" id="total_salary" value="{{$customer_enquiery->monthly_income}}" name="total_salary" placeholder="Total Salary">
                                 </div>
                             </div>
                             <div class=" col col-md-3">
@@ -135,9 +131,8 @@
                                 <div class="form-group">
                                     <label for="type_of_Product">Type of Product</label>
                                     <select class="form-control" id="type_of_Product" name="type_of_existing_loan" >
-                                        <option value="0" selected>Exitsing loan type</option>
                                        @foreach ($products as $product )
-                                        <option value="{{$product->id}}">{{$product->productname}}</option>
+                                        <option value="{{$product->id}} {{$customer_enquiery->product_type==$product->id ? 'selected' : ''}}">{{$product->productname}}</option>
                                        @endforeach
                                     </select>
                                 </div>
@@ -146,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="type_of_sub_product">Sub Product</label>
                                     <select class="form-control" id="type_of_sub_product" name="loan_sub_product" disabled>
-                                        <option value="0" selected>Exitsing loan type</option>
+                                        <option value="{{$customer_enquiery->sub_product_type_eq_tb}}" selected>{{$customer_enquiery->subproductname}}</option>
                                     </select>
                                 </div>
 
@@ -155,7 +150,7 @@
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="required_loan_amount">Loan amount require</label>
-                                    <input type="number" class="form-control" id="required_loan_amount" name="required_loan_amount" placeholder="Loan amount required">
+                                    <input type="number" class="form-control" id="required_loan_amount" value="{{$customer_enquiery->loan_amount}}" name="required_loan_amount" placeholder="Loan amount required">
                                 </div>
                             </div>
                             <div class=" col col-md-3">
@@ -299,7 +294,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
                              let credit_card_obligation=(Number(credit_card_outstanding)*5)/100;
                              let final_obligation=Number(total_obligation)+Number(credit_card_obligation);
-                             let Exiting_foir=(final_obligation/total_salary)*100;
+                             let Exiting_foir=Math.round((final_obligation/total_salary)*100);
                              $('#credit_card_obligation').val(credit_card_obligation);
                              $('#final_obligation').val(final_obligation);
                              $('#existing_foir').val(Exiting_foir+'%');

@@ -80,8 +80,7 @@ class  CustomerEnquieryFormController extends Controller
            $customer_master->enquiery_form_status=1;
            $customer_master->save();
            //end updating the master customer table cus_enquiery_form status to 1
-
-           return redirect()->route('home');
+           return redirect()->route('home')->with('enquierySubmited','Form submited');
 
     }
 

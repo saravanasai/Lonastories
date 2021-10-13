@@ -77,7 +77,7 @@
                     <br>
                     <strong class="font-weight-bold">1 SRP = 0.5 INR</strong>
                     <br>
-                    <strong class="font-weight-bold">{{$wallet_info->super_reward_point}} SRP = {{$wallet_info->super_reward_point/0.5}} - INR</strong>
+                    <strong class="font-weight-bold">{{$wallet_info->super_reward_point}} SRP = {{$wallet_info->super_reward_point*0.5}} - INR</strong>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
                             <h2 id="lpt" class="card-text display-3 text-dark">

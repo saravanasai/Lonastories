@@ -22,6 +22,20 @@
                     </h4>
                     <br>
                     <div class="pt-md-5 pt-sm-5" data-aos="zoom-in" data-aos-duration="3000">
+                        @if (session()->has('enquierySubmited'))
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col col-md-12">
+                                        @if (session()->has('enquierySubmited'))
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <h4 class="alert-heading">Thank you for applying with us.</h4>
+                                            <p><b>You Loan Assistant from Loanstories.com shall contact you shortly</p></p>
+                                        </div>
+                                    @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         @if (!session('customer'))
                             <a href="{{ route('signup.index') }}"
                                 class="col-md-6 col-sm-6 btn btn-primary text-dark btn-light indbtn1"><strong>Become A
@@ -346,5 +360,15 @@
     });
  </script>
  @endif
-
+ @if(session()->has('enquierySubmited'))
+ <script>
+      $(document).ready(function () {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+                $(this).remove();
+            });
+        }, 5000);
+    });
+ </script>
+ @endif
 @endsection
