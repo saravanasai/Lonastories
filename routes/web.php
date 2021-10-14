@@ -245,10 +245,7 @@ Route::post('/servicepost', function (Request $request,TestService $service) {
 //routes for test
 Route::get('/test',function()
 {
-
-
-
-    $print=AdminBreakDownController::makePdf(1,1);
+    $print=AdminBreakDownController::makePdf(1,3);
     return $print->download('test.pdf');
 
 });

@@ -106,6 +106,9 @@
         small{
             font-size: 10px;
         }
+        .hl_ln_com tr td{
+            padding-left:10px ;
+        }
     </style>
 </head>
 <body>
@@ -328,93 +331,83 @@
     <br>
     <div class="invoice" id="cr_tb">
         <h5 style="margin-left: 25px">HOME LOAN COMPARISON</h5>
-        <table width="100%" >
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>EX-LN-AMOUNT :</strong> {{$ln_comparison->ex_ln_loan_amount}}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>NEW-LN-AMOUNT : </strong>{{$ln_comparison->ln_com_new_loan_amount}}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>Ex-Roi :</strong> {{$ln_comparison->ex_ln_roi }}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> New-Ln-Roi : </strong>{{$ln_comparison->ln_com_new_roi }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> Ex-Ln-Tennure:</strong> {{$ln_comparison->ex_ln_tennure }}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> New-Ln-Tennure : </strong>{{$ln_comparison->ln_com_new_tennure  }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> Ex-Ln-Tennure:</strong> {{$ln_comparison->ex_ln_tennure }}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> New-Ln-Tennure : </strong>{{$ln_comparison->ln_com_new_tennure  }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> Ex-Pos:</strong> {{$ln_comparison->ex_ln_pos}}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>  New-Emi  : </strong>{{$ln_comparison->ln_com_new_emi}}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> Paid Emi:</strong> {{$ln_comparison->ex_ln_no_of_emi_paid}}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>  New-OutFlow : </strong>{{$ln_comparison->ln_com_new_proposed_outflow}}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong> Balance Emi:</strong> {{$ln_comparison->ex_ln_balance_emi}}</p>
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>  Existing OutFlow : </strong> {{$ln_comparison->ex_ln_exsting_out_flow }}</p>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" style="width: 25%; text-align: center;">
-                    {{-- <p><strong> Balance Emi:</strong> {{$ln_comparison->ex_ln_balance_emi}}</p> --}}
-                </td>
-                <td align="left" style="width: 25%; text-align: center;">
-                    <p><strong>  Gross-Savings : </strong> {{$ln_comparison->ln_com_new_gross_sav}}</p>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="invoice" id="cr_tb">
-        <h5 style="margin-left: 25px">SAVINGS</h5>
-        <table width="100%" >
-            <tr>
-                <td align="left" style="width: 20%; text-align: center;">
-                    <p><strong>MOTD :</strong>{{$ln_comparison->ln_com_motd}}</p>
-                </td>
-                <td align="left" style="width: 20%; text-align: center;">
-                    <p><strong>PROCESSING FEE : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
-                </td>
-                <td align="left" style="width: 20%; text-align: center;">
-                    <p><strong>OTHER CHARGES : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
-                </td>
-                <td align="left" style="width: 20%; text-align: center;">
-                    <p><strong>TOTAL COST : </strong>{{$ln_comparison->ex_ln_loan_amount}}</p>
-                </td>
-                <td align="left" style="width: 20%; text-align: center;">
-                    <p><strong>NET SAVINGS : </strong>{{$ln_comparison->ln_com_net_sav}}</p>
-                </td>
-            </tr>
+        <table width="100%"  >
+            <thead>
+                <tr>
+                    <th>EXISTING LOAN</th>
+                    <th>VALUE</th>
+                    <th>NEW LOAN</th>
+                    <th>VALUE</th>
+                    <th>YOU SAVE</th>
+                    <th>VALUE</th>
+                </tr>
+            </thead>
+            <tbody class="hl_ln_com">
+                <tr>
+                    <td>LOAN AMOUNT </td>
+                    <td><span>{{$ln_comparison->ex_ln_loan_amount}}</td>
+                    <td>LOAN AMOUNT </td>
+                    <td><span>{{$ln_comparison->ln_com_new_loan_amount}}</td>
+                    <td>GROSS SAVINGS </td>
+                    <td><span>{{$ln_comparison->ln_com_new_gross_sav}}</td>
+                </tr>
+                <tr>
+                    <td>ROI</td>
+                    <td>{{$ln_comparison->ex_ln_roi}}</td>
+                    <td>NEW RATE</td>
+                    <td>{{$ln_comparison->ln_com_new_roi}}</td>
+                    <td>CHARGES</td>
+                    <td>{{$ln_comparison->ln_com_ot_charges}}</td>
+                </tr>
+                <tr>
+                    <td>TENURE</td>
+                    <td>{{$ln_comparison->ex_ln_tennure}}</td>
+                    <td>NEW TENURE</td>
+                    <td>{{$ln_comparison->ln_com_new_tennure }}</td>
+                    <td>MODT</td>
+                    <td>{{$ln_comparison->ln_com_motd}}</td>
+                </tr>
+                <tr>
+                    <td>CURRENT EMI</td>
+                    <td>{{$ln_comparison->ex_ln_emi}}</td>
+                    <td>NEW EMI</td>
+                    <td>{{$ln_comparison->ln_com_new_emi}}</td>
+                    <td>PF</td>
+                    <td>{{$ln_comparison->ln_com_pro_fee}}</td>
+                </tr>
+                <tr>
+                    <td>NO OF EMI'S PAID</td>
+                    <td>{{$ln_comparison->ex_ln_no_of_emi_paid}}</td>
+                    <td>PROPOSED OUTFLOW</td>
+                    <td>{{$ln_comparison->ln_com_new_proposed_outflow}}</td>
+                    <td>TOTAL COST</td>
+                    <td>{{$ln_comparison->ln_com_total_cost}}</td>
+                </tr>
+                <tr>
+                    <td>CURRENT OUTSTANDING</td>
+                    <td>{{$ln_comparison->ln_com_new_loan_amount}}</td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td>NET SAVINGS</td>
+                    <td>{{$ln_comparison->ln_com_net_sav}}</td>
+                </tr>
+                <tr>
+                    <td>BALANCE NO OF MONTHS TO BE PAID</td>
+                    <td>{{$ln_comparison->ex_ln_loan_amount}}</td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td> <span></span></td>
+                    <td> <span></span></td>
+                </tr>
+                <tr>
+                    <td>EXISTING OUTFLOW </td>
+                    <td>{{$ln_comparison->ex_ln_exsting_out_flow}}</td>
+                    <td><span></span></td>
+                    <td><span></span></td>
+                    <td> <span></span></td>
+                    <td> <span></span></td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
