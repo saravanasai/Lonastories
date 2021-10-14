@@ -1,90 +1,89 @@
 @extends('layouts.FronendMaster')
 
 @section('content')
-    <style>
-        th {
-            text-align: center;
-        }
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<section>
+    <div class="container">
+        <div class="text-center">
+            <h3>Part Payment calculator</h3>
+        </div>
+        <div class="row">
+            <div class="card has-shadow rounded">
+                <div class="card-header text-center bg-gray">
+                    <h4 class="text-white">Checkout &amp; get instant eligibilty + benefits</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-justify">Getting a home loan from Bank is easy and quick. In our endeavor to
+                        make
+                        the process
+                        convenient, we try to keep the paperwork and other formalities to a minimum.</p>
 
-    </style>
-    <section>
-        <div class="container">
-            <div class="text-center">
-                <h3>Part Payment calculator</h3>
-            </div>
-            <div class="row">
-                <div class="card has-shadow rounded">
-                    <div class="card-header text-center bg-gray">
-                        <h4 class="text-white">Checkout &amp; get instant eligibilty + benefits</h4>
-                    </div>
-                    <div class="card-body">
-                        <p class="text-justify">Getting a home loan from Bank is easy and quick. In our endeavor to
-                            make
-                            the process
-                            convenient, we try to keep the paperwork and other formalities to a minimum.</p>
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="outstandLoan"
+                                    placeholder="Enter Outstanding Loan Amount" required
+                                    oninput="this.value = this.value.replace(/[^0-9]/, '')"
+                                    onkeyup="this.value = numberWithCommas(this.value)">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="ongoingRoi"
+                                    placeholder="Enter Ongoing Rate Of Interest" required
+                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="outstandTenure"
+                                    placeholder="Tenure In Months" required
+                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="partPayAmt"
+                                    placeholder="Enter Part Payment Amount"
+                                    oninput="this.value = this.value.replace(/[^0-9]/, '')"
+                                    onkeyup="this.value = numberWithCommas(this.value)">
+                            </div>
+                        </div>
 
-                        <div class="row">
-                            <div class="col col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="outstandLoan"
-                                        placeholder="Enter Outstanding Loan Amount" required
-                                        oninput="this.value = this.value.replace(/[^0-9]/, '')"
-                                        onkeyup="this.value = numberWithCommas(this.value)">
-                                </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <select class="form-control" id="frequency">
+                                    <option value="0" hidden>Repayment Frequency</option>
+                                    <option value="0">Once</option>
+                                    <option value="1">Monthly</option>
+                                    <option value="3">Quartrely</option>
+                                    <option value="6">Halfyearly</option>
+                                    <option value="12">Annually</option>
+                                </select>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="ongoingRoi"
-                                        placeholder="Enter Ongoing Rate Of Interest" required
-                                        oninput="this.value = this.value.replace(/[^0-9]/, '')">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="outstandTenure"
-                                        placeholder="Tenure In Months" required
-                                        oninput="this.value = this.value.replace(/[^0-9]/, '')">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="partPayAmt"
-                                        placeholder="Enter Part Payment Amount"
-                                        oninput="this.value = this.value.replace(/[^0-9]/, '')"
-                                        onkeyup="this.value = numberWithCommas(this.value)">
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <select class="form-control" id="frequency">
-                                        <option value="0" hidden>Repayment Frequency</option>
-                                        <option value="0">Once</option>
-                                        <option value="1">Monthly</option>
-                                        <option value="3">Quartrely</option>
-                                        <option value="6">Halfyearly</option>
-                                        <option value="12">Annually</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <button type="submit" id="partPayCalc" onclick="partPayCalc()"
-                                        class="btn btn-darkblue"><strong>Calculate</strong></button>
-                                    <button class="btn btn-info" id="getPdf" onclick="get_Pdf()" disabled>Get
-                                        PDF</button>
-                                </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" id="partPayCalc" onclick="partPayCalc()"
+                                    class="btn btn-darkblue"><strong>Calculate</strong></button>
+                                <button class="btn btn-info" id="getPdf" disabled>Get
+                                    PDF</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ===========Part Payment Table================= -->
-    <div class="container border d-none" id="partPayTbl">
-        <div class="">
+    </div>
+</section>
+<!-- ===========Part Payment Table================= -->
+<div class="container border d-none" id="partPayTbl">
+    <div class="">
         <div class=" text-center">
             <br>
             <img src="{{ asset('frontend/img/pdfLogo.png') }}" class="img-fluid" alt="" width="20%"><br>
@@ -127,8 +126,8 @@
             </table>
         </div>
     </div>
-    </div>
-    <!-- ===========Part Payment Table================= -->
+</div>
+<!-- ===========Part Payment Table================= -->
 @endsection
 <script type="text/javascript">
     // =================Part Payment calculator===============
@@ -254,21 +253,22 @@
     };
 
     // =================Get Pdf==========================
-    function get_Pdf() {
-        const {
-            jsPDF
-        } = window.jspdf;
+    window.onload = function(){
+        document.getElementById("getPdf").addEventListener("click",() => {
+            const doc = this.document.getElementById('partPayTbl');
+            console.log(doc);
+            console.log(window);
 
-        var doc = new jsPDF('l', 'mm', [1200, 1200]);
-        var pdfjs = document.querySelector('#partPayTbl');
+            var opt = {
+                margin:       0.2,
+                filename:     'myfile.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 1 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
 
-        doc.html(pdfjs, {
-            callback: function(doc) {
-                doc.save("Part Payment Calculations.pdf");
-            },
-            x: 30,
-            y: 5
-        });
+            html2pdf().from(doc).set(opt).save("Part Payment Calc.pdf");
+        })
     };
 
     function numberWithCommas(x) {
@@ -276,5 +276,8 @@
     }
     // =================Get Pdf==========================
     // =================Part Payment calculator===============
+
+
+
 </script>
 <!--================================= Scripting=================================================== -->

@@ -272,6 +272,9 @@
                 let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
                 submit.style.display = "none";
 
+            let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
+            submit.style.display = "none";
+
             //section for loadig the subproducts section by products
             $('body').on('change', '#type_of_Product', function() {
 
