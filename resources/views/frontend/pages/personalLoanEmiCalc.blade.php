@@ -45,7 +45,7 @@
                     <div class="pull-right">
                         <input type="button" id="calculate" class="btn btn-dark" value="Calculate"
                             onclick="getValues()" />
-                        <input type="button" id="getPdf" class="btn btn-info" disabled onclick="get_Pdf()"
+                        <input type="button" id="getPdf" class="btn btn-info" disabled
                             value="Get Pdf" />
                     </div>
                 </fieldset>
@@ -143,7 +143,7 @@
             var monthlyPrincipal = 0;
 
             //start a new table row on each loop iteration
-            result += "<tr align=center class='text'>";
+            result += "<tr align=center class='text font-weight-bold'>";
 
             //display the month number in col 1 using the loop count variable
             result += "<td>" + (count + 1) + "</td>";
@@ -179,21 +179,22 @@
     }
 
     // =================Get Pdf==========================
-    function get_Pdf() {
-        const {
-            jsPDF
-        } = window.jspdf;
+    window.onload = function(){
+        document.getElementById("getPdf").addEventListener("click",() => {
+            const doc = this.document.getElementById('personalTbl');
+            console.log(doc);
+            console.log(window);
 
-        var doc = new jsPDF('l', 'mm', [1200, 1200]);
-        var pdfjs = document.querySelector('#personalTbl');
+            var opt = {
+                margin:       0.2,
+                filename:     'myfile.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 1 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
 
-        doc.html(pdfjs, {
-            callback: function(doc) {
-                doc.save("Personal Loan Calculations.pdf");
-            },
-            x: 30,
-            y: 10
-        });
+            html2pdf().from(doc).set(opt).save("Personal Loan Calculations.pdf");
+        })
     };
     // =================Get Pdf==========================
 

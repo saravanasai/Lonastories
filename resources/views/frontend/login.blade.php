@@ -111,9 +111,55 @@
             opacity: 1
         }
     }
-    </style>
+
+</style>
 @section('content')
-<div class="container-login100">
+
+    <div class="container-fluid pt-lg-5">
+        <div class="row">
+            <div class="col-md-7 p-0 d-none d-md-block">
+                <img src="{{ asset('frontend/img/login.png') }}" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-5 d-flex align-content-center justify-content-center">
+                <div class="mt-5 pt-5">
+                    {{-- <a href="{{ route('home') }}">
+                        <img src="{{ asset('frontend/img/logo.png') }}" alt="" class="img-fluid" width="15%">
+                    </a> --}}
+                    <h3 class="pt-5 ">Login To Continue</h3>
+                    <form action="{{ route('userLoginPost') }}" method="POST">
+                        @csrf
+                        <div class="form-group pt-lg-5">
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <input class="form-control" name="userphonenumber" placeholder="Enter Your Mobile Number"
+                                    type="text">
+                            </div>
+                        </div>
+                        <div class="form-group text-center pt-lg-3">
+                            <input class="form-check-inline" id="customCheckLogin" type="checkbox">
+                            <span class="text-muted">Remember me</span>
+                        </div>
+                        <div class="text-center pt-lg-3">
+                            <button type="submit" class="btn btn-darkblue">Get OTP</button>
+                        </div>
+                    </form>
+                    <br>
+                    <div class="row pt-lg-5 pb-sm-3">
+                        <div class="col-2 text-right">
+                            <a href="{{ route('home') }}" class="text-dark h4"><i class="fa fa-home"
+                                    aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-10 text-right">
+                            <a href="{{ route('signup.index') }}" class="font-weight-bold text-dark">Create new account</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- <div class="container-login100">
     <div class="wrap-login100">
             <div class="text-center">
                 <h3 class="text-center pb-3">Login To Continue</h3>
@@ -152,5 +198,5 @@
         <div class="login100-more" style="background-image: url('{{asset('frontend/img/login.png')}}');">
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

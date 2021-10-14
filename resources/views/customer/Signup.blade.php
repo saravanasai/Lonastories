@@ -1,30 +1,20 @@
 @extends('layouts.FronendMaster')
 @section('content')
-    <div class="main-content">
-        <!-- Header -->
-        <div class="headerpy-4 py-lg-8 pt-lg-4">
-            <div class="container">
-                <div class="header-body text-center mb-md-1">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-5 col-lg-6 col-md-8">
-                            <h3 class="text-white">Create an account</h3>
-                        </div>
-                    </div>
-                </div>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-7 p-0 d-none d-md-block">
+                <img src="{{ asset('frontend/img/signup.png') }}" class="img-fluid" alt="">
             </div>
-        </div>
-        <!-- Page content -->
-        <div class="container mt--8 pb-3">
-            <div class="row justify-content-center">
-                <!-- <img src="../img/signup.png" class="img-fluid col-md-5 p-0" alt=""> -->
-                <div class="card mb-0 col-md-5">
-                    <div class="card-header text-center">
+
+            <div class="col-md-5 pt-lg-5 p-0">
+                <div class="mb-0">
+                    <div class="text-center">
                         <div class="text-center mt-2 mb-4">Sign Up with</div>
                         <a href="{{ route('home') }}"><img src="{{ asset('frontend/img/logo.png') }}" alt=""
                                 class="img-fluid text-center pb-lg-3" width="15%"></a>
                         <h5><strong>LOANSTORIES.COM</strong></h5>
                     </div>
-                    <div class="card-body px-lg-4 py-lg-4 rounded-left" style="border-radius:1px;">
+                    <div class="card-body" style="">
                         <form action="{{ route('signup.store') }}" method="post">
                             @csrf
                             <div class="form-group mb-md-4">
@@ -40,8 +30,9 @@
                             </div>
                             <div class="form-group mb-md-4">
                                 <div class="input-group input-group-merge input-group-alternative">
-                                    <input class="form-control" name="phonenumber" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/, '')" placeholder="Mobile Number" type="text"
-                                        required>
+                                    <input class="form-control" name="phonenumber" maxlength="10"
+                                        oninput="this.value = this.value.replace(/[^0-9]/, '')" placeholder="Mobile Number"
+                                        type="text" required>
                                 </div>
                             </div>
                             <div class="form-group mb-md-4">
@@ -63,32 +54,32 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-4 text-right">
-                    <a href="{{ route('home') }}" class="h4"><i class="fa fa-home"
-                            aria-hidden="true"></i></a>
+
+                <div class="row col-12 mt-2 justify-content-between">
+                    <div class="pl-5">
+                        <a href="{{ route('home') }}" class="h4"><i class="fa fa-home"
+                                aria-hidden="true"></i></a>
+                    </div>
+                    <div class="text-right">
+                        <a href="{{ route('userLogin') }}" class="font-weight-bold">Already Have An Account
+                                !</a>
+                    </div>
                 </div>
-                <div class="col-5 text-right">
-                    {{-- <a href="{{route('userLoginform.index')}}" class=""><small>Already Have An Account !</small></a> --}}
-                    <a href="{{ route('userLogin') }}" class=""><small>Already Have An Account !</small></a>
-                </div>
+                <br>
             </div>
         </div>
     </div>
 @endsection
 
 <script type="text/javascript">
+    function agree() {
+        let agree = document.getElementById('customCheckLogin');
+        let submit = document.getElementById('submit');
 
-function agree(){
-    let agree = document.getElementById('customCheckLogin');
-    let submit = document.getElementById('submit');
-
-    if(agree.checked){
-        submit.disabled = false;;
-    }else{
-        submit.disabled =true;
+        if (agree.checked) {
+            submit.disabled = false;;
+        } else {
+            submit.disabled = true;
+        }
     }
-}
-
 </script>

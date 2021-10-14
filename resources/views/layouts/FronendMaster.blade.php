@@ -6,7 +6,8 @@
     <title>LOANSTORIES.COM</title>
     <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
     <meta property="og:description" content="Customized Loan Offers with Super Reward Points every month">
-    <meta property="og:description" content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
+    <meta property="og:description"
+        content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
     <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
@@ -191,52 +192,77 @@
 
 
     {{-- SHARE NOW MODAL --}}
-        <!-- Button trigger modal -->
+    <!-- Button trigger modal -->
     <!-- Modal -->
-    <div class="modal fade" id="shareNow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="shareNow" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Share Us And Earn</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Share Us And Earn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (session('customer'))
+                        <div><input type="text" id="copyText"
+                                value="{{ url('/') . '/user/signup/' . session('customer')->cus_referal_code . '/referal' }}"
+                                class="form-control">
+                                <label id="copied" for="" class="text-success"></label>
+                        </div>
+                    @endif
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="copyFunc()"
+                        data-dismiss="modal">Copy</button>
+
+                </div>
             </div>
-            <div class="modal-body">
-                @if (session('customer'))
-                <div>{{url('/')."/user/signup/".session('customer')->cus_referal_code."/referal"}}</div>
-                @endif
-
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Copy</button>
-
         </div>
-        </div>
-    </div>
-    {{-- SHARE NOW MODAL --}}
+        {{-- SHARE NOW MODAL --}}
 
-    <!--================================= Scripting=================================================== -->
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-    {{-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> --}}
-    {{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="{{ asset('frontend/js/jFormslider.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/front.js') }}"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <!--================================= Scripting=================================================== -->
+        <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+        {{-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> --}}
+        {{-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> --}}
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="{{ asset('frontend/js/jFormslider.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('frontend/vendor/jquery.cookie/jquery.cookie.js') }}"></script>
+        <script src="{{ asset('frontend/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/front.js') }}"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/node_modules/html2canvas/dist/html2canvas.js') }}"></script>
-    <!--================================= Scripting=================================================== -->
-    <script>
-        AOS.init();
-    </script>
-    @yield('js')
-    <!--================================= Scripting=================================================== -->
+        {{-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+        {{-- <script src="{{ asset('frontend/node_modules/jspdf/dist/jspdf.umd.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('frontend/node_modules/html2canvas/dist/html2canvas.js') }}"></script> --}}
+        <!--================================= Scripting=================================================== -->
+        <script>
+            AOS.init();
+
+            function copyFunc() {
+                /* Get the text field */
+                var copyText = document.getElementById("copyText");
+
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+                /* Copy the text inside the text field */
+                navigator.clipboard.writeText(copyText.value);
+
+                /* Alert the copied text */
+                document.getElementById('copied').innerText = "Copied";
+
+                // alert("Copied the text: " + copyText.value);
+            }
+        </script>
+        @yield('js')
+        <!--================================= Scripting=================================================== -->
 </body>

@@ -17,7 +17,7 @@
                 <div class="panel">
                     <div class="user-heading round rounded">
                         <a href="#" class="mb-3">
-                            @if ($user_info->user_profile_img_status=0)
+                            @if ($user_info->user_profile_img_status==0)
                             <img src="{{ asset('frontend/img/avatar.png') }}" class="img-fluid" alt="">
                             @else
                             <img src="{{ asset('profileimg/'.$user_info->user_profile_img)}}" class="img-fluid" alt="">
@@ -49,10 +49,10 @@
                                 </p>
                             </div>
                             <div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Earned</span>:{{ $points_given }}</p>
+                                <p><span class="font-weight-bold">SRP Earned</span> : {{ $points_given }}</p>
                             </div>
                             <div class="bio-row">
-                                <p><span class="font-weight-bold">SRP Redeem</span>:{{ $points_Redemed }}</p>
+                                <p><span class="font-weight-bold d-inline">SRP Redeem</span> : {{ $points_Redemed }}</p>
                             </div>
                             @if ($user_info->user_profile_img_status=0)
                             <div class="bio-row">
@@ -86,28 +86,28 @@
         <div class="row mt-md-5 mb-md-5 text-center">
 
 
-                <div class="col-md-2 pb-3">
+                <div class="col-md-4 pb-3">
                     <a href="{{ route('user.personalInfoFill') }}" class="btn btn-success btn-block text-dark"><i
                             class="bi bi-person-plus display-4 pb-2"></i><br>Add Info</a>
                 </div>
 
-                <div class="col-md-2 pb-3">
+                <div class="col-md-4 pb-3">
                     <a href="{{ route('user.OneView') }}" class="btn btn-secondary btn-block text-dark"><i
                             class="bi bi-bullseye display-4 pb-2"></i><br>One View</a>
                 </div>
 
-                <div class="col-md-2 pb-3">
+                <div class="col-md-4 pb-3">
                     <a href="{{ route('user.myWallet') }}" class="btn btn-dark btn-block"><i
                             class="bi bi-wallet2 display-4 pb-2"></i><br>My Wallet</a>
                 </div>
 
-                <div class="col-md-2 pb-3">
+                <div class="col-md-4 pb-3">
                     <a href="{{ route('user.meter') }}" class="btn btn-light btn-block"><i
                             class="bi bi-speedometer2 display-4 pb-2"></i><br>EMI
                         Meter</a>
                 </div>
 
-                <div class="col-md-2 pb-3">
+                <div class="col-md-4 pb-3">
                     <div class="dropdown d-inline">
                         <button class="btn btn-secondary btn-block dropdown-toggle text-dark" type="button"
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2 pb-5">
+                <div class="col-md-4 pb-5">
                     <div class="dropdown d-inline">
                         <button class="btn btn-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
