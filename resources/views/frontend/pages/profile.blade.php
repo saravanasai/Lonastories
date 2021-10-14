@@ -54,7 +54,7 @@
                             <div class="bio-row">
                                 <p><span class="font-weight-bold d-inline">SRP Redeem</span> : {{ $points_Redemed }}</p>
                             </div>
-                            @if ($user_info->user_profile_img_status=0)
+                            @if ($user_info->user_profile_img_status==0)
                             <div class="bio-row">
                                 <form action="{{ route('user.UploadUserImage') }}" enctype="multipart/form-data"
                                     method="post">
