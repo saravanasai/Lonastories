@@ -44,6 +44,10 @@ class CustomerPagesController extends Controller
     {
         return view('frontend.pages.EducationLoan');
     }
+    public function FAQ()
+    {
+        return view('frontend.pages.FAQ');
+    }
     public function Documents()
     {
         return view('frontend.pages.Documents');

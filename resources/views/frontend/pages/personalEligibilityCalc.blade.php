@@ -66,24 +66,27 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <h5 class=""><label for=" fullname">Monthly Net Take Home
-                                                Salary</label>
+                                                    Salary</label>
                                             </h5>
                                             <input type="number" id="salary" class="form-control bi-alarm" name="fullname"
-                                                placeholder="e.g.,10000" required>
+                                                placeholder="e.g.,10000" required
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                         </div>
                                         <div class="form-group pt-2">
                                             <h5 class=""><label for=" username">Total EMI Obligations per
-                                                month</label>
+                                                    month</label>
                                             </h5>
                                             <input type="number" id="obligate" name="" class="form-control"
-                                                placeholder="e.g.,10000" required />
+                                                placeholder="e.g.,10000" required
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                         </div>
                                         <div class="form-group pt-2">
                                             <h5 class=""><label for=" username">Credit Card outstanding as
-                                                per latest
-                                                statement if any</label></h5>
+                                                    per latest
+                                                    statement if any</label></h5>
                                             <input type="number" id="card_outstanding" name="" class="form-control"
-                                                placeholder="e.g.,100000" required />
+                                                placeholder="e.g.,100000" required
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                         </div>
                                     </div>
                                 </div>
@@ -105,6 +108,13 @@
                     </div>
                 </div>
             </div>
+            <div class="pt-5">
+                <span class="text-dark text-justify"><b>Note :</b> These calculators are provided only as general self-help
+                    planning tools with the information of income and obligations provided. Results depend on many factors
+                    like cibil reports, verification reports, internal scoring etc. you may also get a higher eligibility if
+                    planned for a loan transfer or loan consolidation when your existing obligations are high. Talk to our
+                    Loan Assistant to get your exact eligibility in a Video / Audio Call.</span>
+            </div>
         </div>
     </section>
 
@@ -114,78 +124,80 @@
                 <div class="col-md-12">
                     <h3 class="pb-md-3 text-center"> EMI Calculator</h3>
                     <p class=""><b>Our Personal Loan EMI calculator helps you find out the equated monthly
-                        installment (EMI). It is one of the quickest, accurate and hassle-free ways of
-                        finding
-                        out the amount that you need to repay each month, over a fixed period of time.
-                        Calculate, download & save a copy for your reference.</b></p>
+                            installment (EMI). It is one of the quickest, accurate and hassle-free ways of
+                            finding
+                            out the amount that you need to repay each month, over a fixed period of time.
+                            Calculate, download & save a copy for your reference.</b></p>
 
-                <div class="
+                    <div class="
                         card">
-                    <div class="card-header text-center bg-gray">
-                        <h4 class="text-light">EMI Calculator</h4>
-                    </div>
-                    <div class="card-body">
-                        <form name="formval">
-                            <div class="row">
-                                <div class="col col-md-4">
-                                    <div class="form-group">
-                                        <h4><label for="name" class="control-label">I Want To Borrow</label>
-                                        </h4>
-                                        <input type="text" class="form-control" id="idLoanAmount" name="pr_amt"
-                                            placeholder="Enter Loan Amount">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h4><label for="name" class="control-label">Tenure</label></h4>
-                                        <input type="text" class="form-control" id="idLoanTenure" placeholder="in years"
-                                            name="period">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <h4><label for="name" class="control-label">Interest Rate %
-                                                p.a</label>
-                                        </h4>
-                                        <input type="text" class="form-control" id="idROI" name="int_rate"
-                                            placeholder="Enter Your ROI">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <h5 class="text-center pt-3">Here’s how your repayments might look:</h5>
-                        <div class="row pt-3">
-                            <div class="col-md-4 m-0 p-0 text-center">
-                                <div class="card-header text-center bg-gray text-light">Monthly Repayment</div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><i class="fa fa-rupee"></i> <span
-                                            id="repayment">0.00</span></h4>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-0 m-0 text-center">
-                                <div class="card-header bg-gray text-light">Interest Component</div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><i class="fa fa-rupee"></i> <span
-                                            id="int_comp">0.00</span></h4>
-                                </div>
-                            </div>
-                            <div class="col-md-4 p-0 m-0 text-center">
-                                <div class="card-header bg-gray text-light">Total Outflow</div>
-                                <div class="card-body">
-                                    <h4 class="card-title"><i class="fa fa-rupee"></i> <span id="outflow">0.00</span>
-                                    </h4>
-                                </div>
-                            </div>
+                        <div class="card-header text-center bg-gray">
+                            <h4 class="text-light">EMI Calculator</h4>
                         </div>
-                        <div class="text-center"><button type="button"
-                                class="btn btn-darkblue" onclick="calc()"><b>CALCULATE</b></button>
-                            &nbsp;&nbsp;<button type="button" class="btn btn-success"><b>APPLY</b></button>
+                        <div class="card-body">
+                            <form name="formval">
+                                <div class="row">
+                                    <div class="col col-md-4">
+                                        <div class="form-group">
+                                            <h4><label for="name" class="control-label">I Want To Borrow</label>
+                                            </h4>
+                                            <input type="text" class="form-control" id="idLoanAmount" name="pr_amt"
+                                                placeholder="Enter Loan Amount"
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h4><label for="name" class="control-label">Tenure</label></h4>
+                                            <input type="text" class="form-control" id="idLoanTenure"
+                                                placeholder="in years" name="period"
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h4><label for="name" class="control-label">Interest Rate %
+                                                    p.a</label>
+                                            </h4>
+                                            <input type="text" class="form-control" id="idROI" name="int_rate"
+                                                placeholder="Enter Your ROI" oninput="validateNumber(this);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <h5 class="text-center pt-3">Here’s how your repayments might look:</h5>
+                            <div class="row pt-3">
+                                <div class="col-md-4 m-0 p-0 text-center">
+                                    <div class="card-header text-center bg-gray text-light">Monthly Repayment</div>
+                                    <div class="card-body">
+                                        <h4 class="card-title"><i class="fa fa-rupee"></i> <span
+                                                id="repayment">0.00</span></h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 p-0 m-0 text-center">
+                                    <div class="card-header bg-gray text-light">Interest Component</div>
+                                    <div class="card-body">
+                                        <h4 class="card-title"><i class="fa fa-rupee"></i> <span
+                                                id="int_comp">0.00</span></h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 p-0 m-0 text-center">
+                                    <div class="card-header bg-gray text-light">Total Outflow</div>
+                                    <div class="card-body">
+                                        <h4 class="card-title"><i class="fa fa-rupee"></i> <span
+                                                id="outflow">0.00</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center"><button type="button" class="btn btn-darkblue"
+                                    onclick="calc()"><b>CALCULATE</b></button>
+                                &nbsp;&nbsp;<button type="button" class="btn btn-success"><b>APPLY</b></button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
         </div>
     </section>
 

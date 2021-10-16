@@ -327,4 +327,15 @@ function h_loan() {
 };
 // ================================Homeloan Eligibility Calculator===========================
 
+
+var validNumber = new RegExp(/^\d*\.?\d*$/);
+
+function validateNumber(elem) {
+    if (validNumber.test(elem.value)) {
+        lastValid = elem.value;
+    } else {
+        elem.value = '';
+    }
+}
+
 // ------------------------------------------------------------------------------------------

@@ -1,11 +1,12 @@
 @extends('layouts.FronendMaster')
-<style>
-    th {
-        text-align: center;
-    }
 
-</style>
 @section('content')
+    <style>
+        th {
+            text-align: center;
+        }
+
+    </style>
     <section>
         <div class="container">
             <h3 class="text-center">Personal Loan Emi Calculator</h3>
@@ -21,7 +22,7 @@
                                 <h5><label for="name" class="control-label">I Want To Borrow</label>
                                 </h5>
                                 <input type="text" class="form-control" id="principal" name="pr_amt"
-                                    placeholder="Enter Loan Amount">
+                                    placeholder="Enter Loan Amount" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                         </div>
 
@@ -31,22 +32,22 @@
                                         p.a</label>
                                 </h5>
                                 <input type="text" class="form-control" id="interest" name="int_rate"
-                                    placeholder="Enter Your ROI">
+                                    placeholder="Enter Your ROI" oninput="validateNumber(this);">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <h5><label for="name" class="control-label">Tenure</label></h5>
-                                <input type="text" class="form-control" id="terms" placeholder="in months" name="period">
+                                <input type="text" class="form-control" id="terms" placeholder="in months" name="period"
+                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                         </div>
                     </div>
                     <div class="pull-right">
                         <input type="button" id="calculate" class="btn btn-dark" value="Calculate"
                             onclick="getValues()" />
-                        <input type="button" id="getPdf" class="btn btn-info" disabled
-                            value="Get Pdf" />
+                        <input type="button" id="getPdf" class="btn btn-info" disabled value="Get Pdf" />
                     </div>
                 </fieldset>
             </form>
@@ -110,7 +111,7 @@
         var result = "<hr>" +
             "<div class='card text-center'>" +
             "<div class='card-body'>" +
-            "<strong>PRINCIPAL</strong> : ₹ " + balance.toFixed(0) + "   |   " +
+            "<strong>PRINCIPAL</strong> : ₹ " + balance.toFixed(2) + "   |   " +
             "<strong>ROI</strong> : " + (interestRate * 100).toFixed(0) + "%   |   " +
             "<strong>TENURE</strong> : " + terms + "   |   " +
             "<strong>EMI</strong> : ₹ " + payment.toFixed(0) + "   |   " +
@@ -120,8 +121,8 @@
 
         //add header row for table to return string
         result += "<div class='border text-center' id='personalTbl'>" +
-            "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='20%'>" +
-            "<h4 class='font-weight-bold'>Persoanal Loan Emi Calculations</h4>" +
+            "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='100%'>" +
+            "<h4 class='font-weight-bold pt-3'>Personal Loan Emi Calculations</h4>" +
             "<hr>" +
             "<table class='table table-bordered justify-content-center'>" +
             "<tr class='bg-gray text-light'>" +
@@ -150,7 +151,7 @@
 
 
             //code for displaying in loop balance
-            result += "<td>" + Math.ceil(balance) + "</td>";
+            result += "<td>" + balance.toFixed(2) + "</td>";
 
             //calc the in-loop interest amount and display
             interest = balance * monthlyRate;
@@ -179,18 +180,27 @@
     }
 
     // =================Get Pdf==========================
-    window.onload = function(){
-        document.getElementById("getPdf").addEventListener("click",() => {
+    window.onload = function() {
+        document.getElementById("getPdf").addEventListener("click", () => {
             const doc = this.document.getElementById('personalTbl');
             console.log(doc);
             console.log(window);
 
             var opt = {
-                margin:       0.2,
-                filename:     'myfile.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 1 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                margin: 0.2,
+                filename: 'myfile.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 1
+                },
+                html2canvas: {
+                    scale: 1.5
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait'
+                }
             };
 
             html2pdf().from(doc).set(opt).save("Personal Loan Calculations.pdf");

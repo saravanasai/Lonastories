@@ -98,88 +98,86 @@
                         <div class="form align-content-center rounded">
                             <div class="text-justify">
                                 <p class="">Your dream home is now within your reach with Loanstories.com We
-                                assist higher loan amount on your income and the loan eligibility can be
-                                further enhanced by including income of the co-applicant(s).</p>
-                            <p class="">Home Loan eligibility of the salaried customer is calculated
-                                                    based on the current age, type of company employed in, age of retirement.
-                                                    The eligibility depends on various factors, such as monthly income, current
-                                                    age, profile of the customer, monthly obligations, credit history,
-                                                    retirement age, etc.</p>
+                                    assist higher loan amount on your income and the loan eligibility can be
+                                    further enhanced by including income of the co-applicant(s).</p>
+                                <p class="">Home Loan eligibility of the salaried customer is calculated
+                                    based on the current age, type of company employed in, age of retirement.
+                                    The eligibility depends on various factors, such as monthly income, current
+                                    age, profile of the customer, monthly obligations, credit history,
+                                    retirement age, etc.</p>
+                            </div>
+                            <hr>
+                            <h3 class="     text-center"><b>EMI Eligibility Calculator for Homeloans</b>
+                            </h3>
+                            <form class="lead">
+                                <div class="row justify-content-center pt-md-3">
+                                    <div class="col-md-7 card">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <h5><label for="fullname">Monthly Income:</label>
+                                                </h5>
+                                                <input type="number" id="salary" class="form-control"
+                                                    placeholder="How much amount ?" required>
                                             </div>
-                                            <hr>
-                                            <h3 class="     text-center"><b>EMI Eligibility Calculator for Homeloans</b>
-                                    </h3>
-                                <form class="lead">
-                                    <div class="row justify-content-center pt-md-3">
-                                        <div class="col-md-7 card">
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    <h5><label for="fullname">Monthly Income:</label>
-                                                    </h5>
-                                                    <input type="number" id="salary" class="form-control"
-                                                        placeholder="How much amount ?" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <h5><label for="username">Other EMI’s (Existing) </label>
-                                                    </h5>
-                                                    <input type="number" name="apr" id="other_emi" class="form-control"
-                                                        placeholder="" required>
-                                                </div>
+                                            <div class="form-group">
+                                                <h5><label for="username">Other EMI’s (Existing) </label>
+                                                </h5>
+                                                <input type="number" name="apr" id="other_emi" class="form-control"
+                                                    placeholder="" required>
+                                            </div>
 
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <h5><label for="username">Preferred Tenure: </label></h5>
-                                                            <select name="" id="tenure" class="form-control">
-                                                                <option value="" hidden>Select Years</option>
-                                                                <option value="5">5 years</option>
-                                                                <option value="10">10 years</option>
-                                                                <option value="15">15 years</option>
-                                                                <option value="20">20 years</option>
-                                                                <option value="25">25 years</option>
-                                                                <option value="30">30 years</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <h5><label for="">Property Value :</label></h5>
-                                                            <input type="number" id="propVal" name="apr"
-                                                                placeholder="Property Amount" required
-                                                                class="form-control">
-                                                        </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h5><label for="username">Preferred Tenure: </label></h5>
+                                                        <select name="" id="tenure" class="form-control">
+                                                            <option value="" hidden>Select Years</option>
+                                                            <option value="5">5 years</option>
+                                                            <option value="10">10 years</option>
+                                                            <option value="15">15 years</option>
+                                                            <option value="20">20 years</option>
+                                                            <option value="25">25 years</option>
+                                                            <option value="30">30 years</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h5><label for="">Property Value :</label></h5>
+                                                        <input type="number" id="propVal" name="apr"
+                                                            placeholder="Property Amount" required class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 pt-md-5 card ml-3">
-                                            <div class="form-group text-center pt-md-5">
-                                                <div class="form-group text-center">
-                                                    <h3><label for="">EMI Eligibility</label></h3>
-                                                    <h4>Income eligibility : ₹ <span id="income"> 0.00</span></h4>
+                                    </div>
+                                    <div class="col-md-4 pt-md-5 card ml-3">
+                                        <div class="form-group text-center pt-md-5">
+                                            <div class="form-group text-center">
+                                                <h3><label for="">EMI Eligibility</label></h3>
+                                                <h4>Income eligibility : ₹ <span id="income"> 0.00</span></h4>
 
-                                                    <h4>Property eligibility : ₹ <span id="property"> 0.00</span>
-                                                    </h4>
-                                                </div>
-                                                <button type="button" onclick="h_loan()"
-                                                    class="btn btn-success">Calculate</button>
+                                                <h4>Property eligibility : ₹ <span id="property"> 0.00</span>
+                                                </h4>
                                             </div>
+                                            <button type="button" onclick="h_loan()"
+                                                class="btn btn-success">Calculate</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
+                        </div>
 
-                            <div class="pt-5">
-                                <span class="text-dark"><b>Note : </b> These calculators are provided only as general
-                                    self-help Planning Tools.
-                                    Results depend on many factors, you may get a higher eligibility if planned for
-                                    a
-                                    loan transfer or loan consolidation. Talk to our Loan Assistant to get your
-                                    exact
-                                    eligibility in a Video / Audio Call.</span>
-                            </div>
+                        <div class="pt-5">
+                            <span class="text-dark text-justify"><b>Note :</b> These calculators are provided only as general
+                                self-help planning tools with the information of income and obligations provided. Results
+                                depend on many factors like cibil reports, verification reports, internal scoring etc. you
+                                may also get a higher eligibility if planned for a loan transfer or loan consolidation when
+                                your existing obligations are high. Talk to our Loan Assistant to get your exact eligibility
+                                in a Video / Audio Call.</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <section>
@@ -203,14 +201,16 @@
                                             <h4><label for="name" class="control-label">I Want To Borrow</label>
                                             </h4>
                                             <input type="text" class="form-control" id="idLoanAmount" name="pr_amt"
-                                                placeholder="Enter Loan Amount">
+                                                placeholder="Enter Loan Amount"
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <h4><label for="name" class="control-label">Tenure</label></h4>
                                             <input type="text" class="form-control" id="idLoanTenure"
-                                                placeholder="(in years)" name="period">
+                                                placeholder="(in years)" name="period"
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -219,7 +219,7 @@
                                                     p.a</label>
                                             </h4>
                                             <input type="text" class="form-control" id="idROI" name="int_rate"
-                                                placeholder="Enter Your ROI">
+                                                placeholder="Enter Your ROI" oninput="validateNumber(this);">
                                         </div>
                                     </div>
                                 </div>
