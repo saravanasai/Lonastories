@@ -309,7 +309,7 @@
                     </h3>
                     @if (!session('customer'))
                         <h5 class="pt-5 pb-lg-3"><a
-                                class="btn btn-warning mt-1"><strong>Share
+                            href="{{ route('signup.index') }}"  class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else

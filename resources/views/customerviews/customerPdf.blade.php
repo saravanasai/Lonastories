@@ -109,12 +109,16 @@
         .hl_ln_com tr td{
             padding-left:10px ;
         }
+        #new_logo{
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <center><img src="{{ public_path('img/logo.jpg') }}" width="17%" alt=""></center>
+        <div class="container" id="new_logo">
+            <center><img src="{{ public_path('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center>
         </div>
     </header>
     <hr>
@@ -140,7 +144,6 @@
             </tr>
         </table>
     </div>
-    <br />
     <div class="invoice" id="emi_tb">
         <h5>EMI OBLIGATIONS</h5>
         <table width="100%" >
@@ -174,8 +177,6 @@
             </tbody>
         </table>
     </div>
-   <br>
-   <br>
    <br>
    <div class="invoice" id="cr_tb">
         <h5>CREDIT CARD OBLIGATIONS</h5>
@@ -212,56 +213,54 @@
    <br>
    <div class="invoice" id="cr_tb">
         <h5>TENTATIVE OFFER</h5>
-        <table width="100%" >
+        <table width="100%" id="offer_table">
             <tr>
                 <td align="left" style="width: 33.25%; text-align: center;">
-                    <p><strong>LOAN AMOUNT :</strong> {{$fn_details->final_loan_amount}}</p>
-
-
+                <strong>LOAN AMOUNT :</strong> {{$fn_details->final_loan_amount}}
                 </td>
                 <td align="left" style="width: 33.25%; text-align: center;">
-                    <p><strong>RATE OF INTEREST : </strong> {{$fn_details->final_rate_of_interest}}%</p>
-
-
-                </td>
+                <strong>RATE OF INTEREST : </strong> {{$fn_details->final_rate_of_interest}}  </td>
                 <td align="left" style="width: 33.25%; text-align: center;">
-                    <p><strong>TENURE :</strong>  {{$fn_details->final_tennure}}</p>
-
+                <strong>TENURE :</strong>  {{$fn_details->final_tennure}}
                 </td>
             </tr>
+            <br>
             <tr>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>EMI :</strong>  {{$fn_details->final_emi}}</p>
+                <strong>EMI :</strong>  {{$fn_details->final_emi}}
                 </td>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>PROPOSED EMI :</strong>  {{$fn_details->final_proposed_total_emi}}</p>
+                <strong>PROPOSED EMI :</strong>  {{$fn_details->final_proposed_total_emi}}
                 </td>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>CURRENT OBLIGATION RATIO :</strong>   {{$fn_details->final_current_foir}}</p>
-                </tdp
+                <strong>CURRENT OBLIGATION RATIO :</strong>   {{$fn_details->final_current_foir}}
+                </td>
             </tr>
+            <br>
             <tr>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>PROPOSED OBLIGATION RATIO :</strong>  {{$fn_details->final_proposed_foir}}</p>
+                <strong>PROPOSED OBLIGATION RATIO :</strong>  {{$fn_details->final_proposed_foir}}
 
                 </td>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>SALARY CONSIDERED :</strong>  {{$fn_details->final_salary_considered}}</p>
+                <strong>SALARY CONSIDERED :</strong>  {{$fn_details->final_salary_considered}}
 
                 </td>
                 <td align="left" style="width: 33.25%;text-align: center;">
-                    <p><strong>OBLIGATION CONSIDERED :</strong>  {{$fn_details->final_obligation_considered}}</p>
+                <strong>OBLIGATION CONSIDERED :</strong>  {{$fn_details->final_obligation_considered}}
                 </td>
             </tr>
+            <br>
         </table>
   </div>
-  <br>
   <br>
   <div class="invoice">
     <h5>REMARKS</h5>
         <p style="margin-left: 45px">{{$fn_details->Final_page_remarks}}</p>
         <br>
     </div>
+    <br>
+    <br>
   <div class="invoice" >
     <h5 id="note_sec">NOTE:</h5>
     <div id="note">
@@ -288,8 +287,8 @@
 @if($enquiery_details->loan_product_id==2 ||$enquiery_details->loan_product_id==4)
 <body>
     <header>
-        <div class="container">
-            <center><img src="{{ public_path('img/logo.jpg') }}" width="17%" alt=""></center>
+        <div class="container" id="new_logo">
+            <center><img src="{{ public_path('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center>
         </div>
     </header>
     <hr>
@@ -412,6 +411,21 @@
     </div>
 </div>
    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <br>
     <br>
