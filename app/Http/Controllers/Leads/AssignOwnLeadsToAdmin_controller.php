@@ -135,8 +135,6 @@ class AssignOwnLeadsToAdmin_controller extends Controller
         ->where('eqy_of_cus_enq_tb',$id)->first();
         $products=Products::all();
         $status_codes=Status::where('id','<',9)->where('id','>',4)->get();
-        // dd($customer_enquiery);
-        // dd($customer_info);
         return view('adminviews.fillmoreInfoAdmin',["products"=>$products,"customer_info"=>$customer_info,"status_code"=>$status_codes,"enq_id"=>$customer_enquiery->id,"customer_enquiery"=>$customer_enquiery]);
 
     }

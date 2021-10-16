@@ -156,7 +156,7 @@
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="current_loaction">Current Location</label>
-                                    <input type="text" class="form-control" id="current_loaction" name="current_loaction" placeholder="Enter Current location">
+                                    <input type="text" class="form-control" id="current_loaction" name="current_loaction" value="{{$customer_enquiery->residence}}" placeholder="Enter Current location">
                                 </div>
                             </div>
                         </div>
@@ -293,7 +293,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
                              let credit_card_obligation=(Number(credit_card_outstanding)*5)/100;
                              let final_obligation=Number(total_obligation)+Number(credit_card_obligation);
-                             let Exiting_foir=(final_obligation/total_salary)*100;
+                             let Exiting_foir=Math.round((final_obligation/total_salary)*100);
                              $('#credit_card_obligation').val(credit_card_obligation);
                              $('#final_obligation').val(final_obligation);
                              $('#existing_foir').val(Exiting_foir+'%');

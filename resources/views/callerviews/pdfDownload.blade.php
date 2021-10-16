@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-
+@extends('layouts.callermaster')
 @section('content')
     <!-- Main content -->
     <div class="content ">
@@ -9,8 +7,8 @@
                 <div class="card-header ">
                     <h3 class="card-title m-0">DOWNLOAD PDF</h3>
                     <div class="card-tools">
-                        @if (session('admin'))
-                            <a href="{{ route('admindashboard') }}" class="btn btn-sm btn-success px-2"><i
+                        @if (session('caller'))
+                            <a href="{{ route('assignedleads.index') }}" class="btn btn-sm btn-success px-2"><i
                                     class="fas fa-backward px-2"></i>HOME</a>
                             <a href="{{ asset('storage/pdf/' . $pdf . '.pdf') }}" download="LoanStoriesFinalOffer"
                                 class="btn btn-sm btn-success px-2"><i class="fas fa-download px-1"></i>Download</a>

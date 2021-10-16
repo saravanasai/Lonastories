@@ -12,9 +12,6 @@
     <div class="content ">
         <div class="container mt-1">
             {{-- <h2 class="mb-4">OFFERED VIEW OF PDF</h2> --}}
-            @if(session('admin'))
-            <div class="float-right"><p class="breadcrumb-item"><a href="{{route('offerAcOeDe.index') }}">BACK</a></p></div>
-            @endif
             @if(session('caller'))
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('offerAcOeDeLeader.index') }}">Back</a></p></div>
             @endif

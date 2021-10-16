@@ -194,7 +194,7 @@
                     </div>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-one-el" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-                    @if ($data['enquiery_details']->loan_product_id==2 || $enquiery_details->loan_product_id==4)
+                    @if ($data['enquiery_details']->loan_product_id==2 || $data['enquiery_details']->loan_product_id==4)
                     <div class="container">
                         <table class="table table-bordered">
                             <thead>

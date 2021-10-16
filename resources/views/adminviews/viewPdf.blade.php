@@ -10,13 +10,9 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
     <!-- Main content -->
     <div class="content ">
-        <div class="container mt-1">
-            {{-- <h2 class="mb-4">OFFERED VIEW OF PDF</h2> --}}
+        <div class="container mt-3">
             @if(session('admin'))
-            <div class="float-right"><p class="breadcrumb-item"><a href="{{route('offerAcOeDe.index') }}">BACK</a></p></div>
-            @endif
-            @if(session('caller'))
-            <div class="float-right"><p class="breadcrumb-item"><a href="{{route('caller.dashboard',session('caller')->id) }}">Back</a></p></div>
+            <div class="float-right"><p><a class="btn btn-sm btn-success" href="{{route('offerAcOeDe.index') }}"><i class="fas fa-backward px-2"></i>BACK</a></p></div>
             @endif
     </div>
     <div class="container">
@@ -28,7 +24,6 @@
                 <iframe class="responsive-iframe" src="{{asset('storage/pdf/'.$pdf.'.pdf')}}" width="100%" height="650px"></iframe>
 
               </div>
-
               {{-- <p class="card-text">PDF HAS BEEN GENERATED</p> --}}
 
     </div>

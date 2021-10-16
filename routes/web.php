@@ -98,7 +98,6 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('leads/acceptOrDeny/offerAcOeDe',OfferAcceptOrDenyController::class);
     Route::resource('leads/accepted/offerAcceptedFileUpload',offerAcceptedUploadFile::class);
     Route::resource('leads/DocumentCollected/feildForConCase',feildForConCase_Controller::class);
-
     //resouece controller for admin enquiery Management
     Route::resource('EnquieryManagement/TodayCallerLeads',EnquieryManagement_Tl_Leads::class);//this views the customer spoked by a tele caller
     Route::resource('EnquieryManagement/DirectLeadsInitialAssign',EnquieryManagementDirectLeads_InitialAssign::class);//this views initial assigned status
@@ -109,8 +108,6 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/User/PersonalInfoAdmin',PerosnalInfoAdminController::class);//this route is for view and update personal info of user in admin side
     Route::resource('EnquieryManagement/User/ExistingEmiInfoAdmin',ExistingEmiSheduleADminController::class);//this route is for view  ExistingEmiShedule of user in admin side
     Route::resource('EnquieryManagement/User/ExistingEmiInfoAddAdmin',ExistingEmiSheduleAddAdminController::class);//this route is for Add and update ExistingEmiShedule of user in admin side
-
-
     //route resouece for adding telecaller
     Route::resource('Usermanagement/caller', CallerController::class);
     //route seperation for genrating reports for admin
@@ -143,6 +140,7 @@ Route::prefix('own')->middleware(['Authcaller'])->group(function () {
     Route::resource('Leader/assignedNewLeads',AssignedOwnLeadsToLeader::class);
     Route::resource('Leader/assignedleads',AssignToLeaderController::class);//this controller is to handle request after moreinfo filled assigned by Admin controller
     //cmomment for upper route its handles all breakdown view adding forms for every obligation
+
     Route::resource('leads/acceptOrDeny/offerAcOeDeLeader',OfferAcceptedOrDeney_LeaderController::class);
     Route::resource('leads/accepted/offerAcceptedFileUploadLeader',offerAcceptedFileUploadLeader_LeaderController::class);
     Route::resource('leads/DocumentCollected/feildForConCaseLeader',feildForConCaseLeader_LeaderController::class);

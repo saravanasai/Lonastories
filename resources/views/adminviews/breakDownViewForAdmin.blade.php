@@ -15,6 +15,7 @@
                     <h5 class="m-0">BREAK DOWN VIEW FOR ADMIN</h6>
                         <input type="hidden" name="" id="cus_id" value="{{ $cus_info->cus_id }}">
                         <input type="hidden" name="" id="enq_id" value="{{ $cus_info->enq_id }}">
+                        <input type="hidden" name="" id="pr_type_id" value="{{ $cus_info->loan_product_id }}">
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -1817,6 +1818,7 @@
         //FINAL SUBMIT FOR ALL TO DATABASE SECTION
         $('body').on('click', '#final_submit', function(e) {
             e.preventDefault();
+            let pr_type_id=$('#pr_type_id').val();
             let final_loan_amount = $('#Final_Loan_amount').val();
             let final_rate_of_interest = $('#final_roi').val();
             let final_tennure = $('#final_tenure').val();
@@ -1831,9 +1833,25 @@
             let hl_sal_mon1 = $('#hl_sal_mon1').val();
             let hl_sal_mon2 = $('#hl_sal_mon2').val();
             let hl_sal_mon3 = $('#hl_sal_mon3').val();
-            let final_sal_mon1 = Number(el_sal_mon1)+Number(hl_sal_mon1);
-            let final_sal_mon2 = Number(el_sal_mon2)+Number(hl_sal_mon2);
-            let final_sal_mon3 = Number(el_sal_mon3)+Number(hl_sal_mon3);
+            let final_sal_mon1=0;
+            let final_sal_mon2=0;
+            let final_sal_mon3=0;
+            if(pr_type_id=='2' || pr_type_id=='4')
+            {
+                console.log("homeloan");
+                final_sal_mon1 =Number(hl_sal_mon1);
+                final_sal_mon2 =Number(hl_sal_mon2);
+                final_sal_mon3 =Number(hl_sal_mon3);
+
+            }
+            else{
+                console.log("pr loan");
+                final_sal_mon1 = Number(el_sal_mon1);
+                final_sal_mon2 = Number(el_sal_mon2);
+                final_sal_mon3 = Number(el_sal_mon3);
+            }
+
+
             let final_salary_considered = $('#Final_page_sal_con').val();
             let final_obligation_considered = $('#Final_page_obl_con').val();
             let final_ob_pos_sum_of_bt_yes = $('#ob_sum_of_pos_bt_yes').val();
@@ -2303,7 +2321,7 @@
                         f_obligation)));
                         let f_ob_con = $('#Final_page_obl_con').val();
                         let f_salary_con = $('#Final_page_sal_con').val();
-                        let p_total_emi = $('#final_proposed_total_emi').val();
+                        let p_total_emi = $('#final_emi').val();
                         $('#final_current_foir').val(current_foir(Number(f_ob_con),Number(f_salary_con)) + "%");
                         $('#final_proposed_foir').val(proposed_foir(f_ob_con,f_salary_con,p_total_emi) + "%");
                         $('#final_submit').prop('disabled', false);
@@ -2506,16 +2524,18 @@
                 var r = Number(Roi) / 12 / 100;
                 var n = 60;
                 var p = 100000;
-                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                var TotalEmi = Math.ceil(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
                     1));
                 return TotalEmi;
             }
 
             function per_lak_emi_hl(Roi,Tennure) {
+
+                console.log(Roi,Tennure);
                 var r = Number(Roi) / 12 / 100;
                 var n = Tennure*12;
                 var p = 100000;
-                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                var TotalEmi = Math.ceil(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
                     1));
                 return TotalEmi;
             }
@@ -2557,7 +2577,6 @@
                     success: function(data) {
 
                         let response = JSON.parse(data);
-                        // console.log(response.data);
                         if (ontable == 1) {
 
                             let sum_of_pos_bt_yes = 0;
@@ -2718,9 +2737,6 @@
 
                 let foir_per_salary=(total_income*(foir_per/100))-Number(obligation);
                 let total = (Number(foir_per_salary) / Number(emi_per_lak)) * 100000;
-
-                // console.log(typeof foir_per,typeof ob_sub_income ,typeof emi_per_lak);
-                // console.log(total);
                 return Math.round(total);
             }
 

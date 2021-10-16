@@ -66,7 +66,6 @@ class EnquieryManagementDirectLeads_AfterAssign extends Controller
         ->select('cl_enquieries.*','products.*','subproducts.*','table_customer.*','table_customer.id as cus_id','cl_enquieries.id AS enq_id')
         ->where('cl_enquieries.id','=',$id)
         ->first();
-
         return view('AdminEnquieryViews.Enquierymoredetailview',["more_info"=>$more_infomation]);
     }
 

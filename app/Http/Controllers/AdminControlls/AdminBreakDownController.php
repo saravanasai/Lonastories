@@ -253,8 +253,6 @@ class AdminBreakDownController extends Controller
 
     public function pdfcreate($cusid,$enqid)
     {
-
-        // dd($enqid."\t".$cusid);
         $pdf=OfferPdf::where('pdf_of_enq',$enqid)
         ->where('pdf_of_cus',$cusid)->first();
         return view('adminviews.pdfDownload',["pdf"=>$pdf->pdf_name]);

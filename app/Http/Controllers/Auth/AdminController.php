@@ -151,6 +151,7 @@ class AdminController extends Controller
             ->where('initial_assign_to','=',null)
             ->where('table_customer.refered_by','like','LN%')
             ->paginate(6);
+            // dd($new_user);
             return view('adminviews.NewLeadsbyCustomerReferal',compact('new_user'));
         }
 

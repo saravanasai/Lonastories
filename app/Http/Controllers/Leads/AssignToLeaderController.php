@@ -242,6 +242,6 @@ class AssignToLeaderController extends Controller
 
         $pdf=OfferPdf::where('pdf_of_enq',$enqid)
         ->where('pdf_of_cus',$cusid)->first();
-        return view('adminviews.pdfDownload',["pdf"=>$pdf->pdf_name]);
+        return view('callerviews.pdfDownload',["pdf"=>$pdf->pdf_name]);
     }
 }

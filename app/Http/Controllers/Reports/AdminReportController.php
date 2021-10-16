@@ -137,6 +137,7 @@ class AdminReportController extends Controller
                 ->join('products','cl_enquieries.loan_product_id','=','products.id')
                 ->join('subproducts','cl_enquieries.loan_product_sub_id','=','subproducts.id')
                 ->select('table_customer.*','cl_enquieries.*','cl_enquieries.id as enq_id','cl_enquieries.created_at as crt','cl_enquieries.updated_at as upd','products.*','subproducts.*','statuses.*')
+                ->where('cl_enquieries.overall_status_of_customer','<=',10)
                 ->whereBetween(DB::raw("(DATE(cl_enquieries.created_at))"), [$from_date, $to_date])
                 ->get();
                 // dd($user_enquiery);

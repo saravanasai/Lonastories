@@ -156,7 +156,7 @@
                             <div class=" col col-md-3">
                                 <div class="form-group">
                                     <label for="current_loaction">Current Location</label>
-                                    <input type="text" class="form-control" id="current_loaction" name="current_loaction" placeholder="Enter Current location">
+                                    <input type="text" class="form-control" id="current_loaction" value="{{$customer_enquiery->residence}}" name="current_loaction" placeholder="Enter Current location">
                                 </div>
                             </div>
                         </div>

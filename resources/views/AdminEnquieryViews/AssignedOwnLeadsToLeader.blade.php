@@ -7,9 +7,6 @@
             @if(session('admin'))
             <div class="float-right"><p class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></p></div>
             @endif
-            @if(session('caller'))
-            <div class="float-right"><p class="breadcrumb-item"><a href="{{route('caller.dashboard') }}">Back</a></p></div>
-            @endif
         </div>
         <div class="container">
             <table class="table table-bordered table table-head-fixed text-nowrap  table-striped yajra-datatable">

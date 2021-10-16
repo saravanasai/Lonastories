@@ -14,11 +14,12 @@
                     <h5 class="m-0">BREAK DOWN VIEW FOR ADMIN</h6>
                         <input type="hidden" name="" id="cus_id" value="{{ $cus_info->cus_id }}">
                         <input type="hidden" name="" id="enq_id" value="{{ $cus_info->enq_id }}">
+                        <input type="hidden" name="" id="pr_type_id" value="{{ $cus_info->loan_product_id }}">
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @if (session('admin'))
-                            <li class="breadcrumb-item"><a href="{{ route('breakDown.index') }}">Back</a></li>
+                        @if (session('caller'))
+                            <li class="breadcrumb-item"><a href="{{ route('assignedleads.index') }}">Back</a></li>
                         @endif
                     </ol>
                 </div><!-- /.col -->
@@ -1816,6 +1817,7 @@
         //FINAL SUBMIT FOR ALL TO DATABASE SECTION
         $('body').on('click', '#final_submit', function(e) {
             e.preventDefault();
+            let pr_type_id=$('#pr_type_id').val();
             let final_loan_amount = $('#Final_Loan_amount').val();
             let final_rate_of_interest = $('#final_roi').val();
             let final_tennure = $('#final_tenure').val();
@@ -1830,9 +1832,23 @@
             let hl_sal_mon1 = $('#hl_sal_mon1').val();
             let hl_sal_mon2 = $('#hl_sal_mon2').val();
             let hl_sal_mon3 = $('#hl_sal_mon3').val();
-            let final_sal_mon1 = Number(el_sal_mon1)+Number(hl_sal_mon1);
-            let final_sal_mon2 = Number(el_sal_mon2)+Number(hl_sal_mon2);
-            let final_sal_mon3 = Number(el_sal_mon3)+Number(hl_sal_mon3);
+            let final_sal_mon1=0;
+            let final_sal_mon2=0;
+            let final_sal_mon3=0;
+            if(pr_type_id=='2' || pr_type_id=='4')
+            {
+                console.log("homeloan");
+                final_sal_mon1 =Number(hl_sal_mon1);
+                final_sal_mon2 =Number(hl_sal_mon2);
+                final_sal_mon3 =Number(hl_sal_mon3);
+
+            }
+            else{
+                console.log("pr loan");
+                final_sal_mon1 = Number(el_sal_mon1);
+                final_sal_mon2 = Number(el_sal_mon2);
+                final_sal_mon3 = Number(el_sal_mon3);
+            }
             let final_salary_considered = $('#Final_page_sal_con').val();
             let final_obligation_considered = $('#Final_page_obl_con').val();
             let final_ob_pos_sum_of_bt_yes = $('#ob_sum_of_pos_bt_yes').val();
@@ -2167,7 +2183,7 @@
                     $("#hl_ltv_eligibility").val(Number(property_value)*(Number(hl_ltv)/100));
                     $('#hl_emi_per_lak').val(per_lak_emi_hl(hl_roi,hl_tenure));
                     let emi_per_lak = $("#hl_emi_per_lak").val();
-                    $('#hl_emi_foir_eligibility').val(foir_eligibility(Number(hl_foir),Number(Income_considered),Number(Total_obligation),Number(emi_per_lak)));
+                    $('#hl_emi_foir_eligibility').val(foir_eligibility(Number(hl_foir),Number(Total_obligation),Number(Income_considered),Number(emi_per_lak)));
 
 
                 }
@@ -2303,7 +2319,7 @@
                         f_obligation)));
                         let f_ob_con = $('#Final_page_obl_con').val();
                         let f_salary_con = $('#Final_page_sal_con').val();
-                        let p_total_emi = $('#final_proposed_total_emi').val();
+                        let p_total_emi = $('#final_emi').val();
                         $('#final_current_foir').val(current_foir(Number(f_ob_con),Number(f_salary_con)) + "%");
                         $('#final_proposed_foir').val(proposed_foir(f_ob_con,f_salary_con,p_total_emi) + "%");
                         $('#final_submit').prop('disabled', false);
@@ -2505,7 +2521,7 @@
                 var r = Number(Roi) / 12 / 100;
                 var n = 60;
                 var p = 100000;
-                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                var TotalEmi = Math.ceil(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
                     1));
                 return TotalEmi;
             }
@@ -2514,7 +2530,7 @@
                 var r = Number(Roi) / 12 / 100;
                 var n = Tennure*12;
                 var p = 100000;
-                var TotalEmi = Math.floor(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
+                var TotalEmi = Math.ceil(p * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) -
                     1));
                 return TotalEmi;
             }
@@ -2718,10 +2734,9 @@
                 let foir_per_salary=(total_income*(foir_per/100))-Number(obligation);
                 let total = (Number(foir_per_salary) / Number(emi_per_lak)) * 100000;
                 return Math.round(total);
-
             }
 
-            function foir_eligibility_home_loan(foir_per, emi_per_lak) {
+            function foir_eligibility_home_loan(foir_per,emi_per_lak) {
 
                 let foir = foir_per;
                 let per_lak_emi = emi_per_lak;
