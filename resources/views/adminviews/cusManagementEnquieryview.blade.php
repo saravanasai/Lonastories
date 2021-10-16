@@ -69,8 +69,8 @@
                                 @endif
                             </td>
                             <td>
-                                @if($user_enq->con_lead_before_info==1)
-                                <a href="{{route('CustomerEnquierydetailview.show',$user_enq->id)}}" class="btn btn-sm btn-primary">
+                                @if($user_enq->con_lead_before_info==1 && $user_enq->overall_status_of_customer==18)
+                                <a href="{{route('CustomerEnquierydetailview.show',$user_enq->enq_id)}}" class="btn btn-sm btn-primary">
                                     <i class="far fa-eye px-1"></i>View
                                   </a>
                                  @else

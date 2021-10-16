@@ -46,7 +46,6 @@ class EnquieryOfCusDetailView extends Controller
      */
     public function show($id)
     {
-        $con_lead_info=ConvertedFeilds::where('con_lead_of_enquiery',$id)->first();
         $user_enquiery=ClEnquiery::join('table_customer','cl_enquieries.enquiery_of_ucs','=','table_customer.id')
          ->join('statuses','cl_enquieries.overall_status_of_customer','=','statuses.id')
          ->join('products','cl_enquieries.loan_product_id','=','products.id')
@@ -54,6 +53,9 @@ class EnquieryOfCusDetailView extends Controller
          ->join('offer_pdfs','cl_enquieries.id','=','offer_pdfs.pdf_of_enq')
          ->select('table_customer.*','cl_enquieries.*','cl_enquieries.id as enq_id','products.*','subproducts.*','statuses.*','offer_pdfs.*')
          ->where('cl_enquieries.id',$id)->first();
+        $con_lead_info=ConvertedFeilds::where('con_lead_of_enquiery',$id)->first();
+        // dd($con_lead_info);
+
         return view('adminviews.detailOfCusSingleEnquieryview',["con_lead_info"=>$con_lead_info,"user_enquiery"=>$user_enquiery]);
     }
 
