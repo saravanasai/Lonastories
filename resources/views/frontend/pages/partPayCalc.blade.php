@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <input type="text" class="form-control" id="ongoingRoi"
                                     placeholder="Enter Ongoing Rate Of Interest" required
-                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                    oninput="validateNumber(this);">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -86,8 +86,8 @@
     <div class="">
         <div class=" text-center">
             <br>
-            <img src="{{ asset('frontend/img/pdfLogo.png') }}" class="img-fluid" alt="" width="20%"><br>
-            <h3 class="font-weight-bold">Part Payment Calculations</h3>
+            <img src="{{ asset('frontend/img/pdfLogo.png') }}" class="img-fluid" alt="" width="100%"><br>
+            <h3 class="font-weight-bold pt-3">Part Payment Calculations</h3>
             <hr>
         </div>
 
@@ -262,8 +262,8 @@
             var opt = {
                 margin:       0.2,
                 filename:     'myfile.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 1 },
+                image:        { type: 'jpeg', quality: 1 },
+                html2canvas:  { scale: 1.5 },
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 

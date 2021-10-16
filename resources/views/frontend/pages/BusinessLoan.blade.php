@@ -131,7 +131,7 @@
             </div>
         </div>
     </section>
-    <section class="bg-light">
+    <section class="">
         <div class="container">
             <h3 class="text-center pb-lg-4">
                 Business Loan Eligibility For Self - Employed
@@ -245,7 +245,7 @@
                                         <label for="name" class="control-label">I Want To Borrow</label>
                                     </h4>
                                     <input type="text" class="form-control" id="idLoanAmount" name="pr_amt"
-                                        placeholder="Enter Loan Amount" />
+                                        placeholder="Enter Loan Amount" oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -254,7 +254,7 @@
                                         <label for="name" class="control-label">Tenure</label>
                                     </h4>
                                     <input type="text" class="form-control" id="idLoanTenure" placeholder="(in years)"
-                                        name="period" />
+                                        name="period" oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -263,7 +263,7 @@
                                         <label for="name" class="control-label">Interest Rate % p.a</label>
                                     </h4>
                                     <input type="text" class="form-control" id="idROI" name="int_rate"
-                                        placeholder="Enter Your ROI" />
+                                        placeholder="Enter Your ROI" oninput="validateNumber(this);" />
                                 </div>
                             </div>
                         </div>

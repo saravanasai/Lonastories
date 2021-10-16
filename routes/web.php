@@ -173,6 +173,7 @@ Route::prefix('user')->group(function()
     Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
     Route::get('connect',[CustomerPagesController::class,'connect'])->name('user.connect');
     Route::get('AboutUs',[CustomerPagesController::class,'About'])->name('user.About');
+    Route::get('FAQ',[CustomerPagesController::class,'FAQ'])->name('user.FAQ');
     Route::get('Documents',[CustomerPagesController::class,'Documents'])->name('user.Docs');
     //routes for products page
     Route::get('PersonalLoan',[CustomerPagesController::class,'PersonalLoan'])->name('user.PersonalLoan');

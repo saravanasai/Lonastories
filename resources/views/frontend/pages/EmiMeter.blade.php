@@ -128,7 +128,7 @@
         let obligate = isNaN(parseInt($('#tot_emi').val())) ? 0 : parseInt($('#tot_emi').val());
         let card_outstanding = isNaN(parseInt($('#outstand').val())) ? 0 : parseInt($('#outstand').val());
 
-        if ((salary == 0) || (obligate == 0))) {
+        if ((salary == 0) || (obligate == 0)) {
             alert('Please Fill All The Values')
         } else {
             let Total_obligate = (0.05 * card_outstanding) + obligate;

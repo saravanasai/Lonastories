@@ -9,8 +9,7 @@
     <section class="bg-transparent m-0 p-0">
         <div class="container-fluid pt-3">
             <div class="row justify-content-center">
-                <img src="{{ asset('frontend/img/oneview.png') }}" class="rounded" alt=""
-                    style="width: 80vw">
+                <img src="{{ asset('frontend/img/oneview.png') }}" class="rounded" alt="" style="width: 80vw">
             </div>
             <div class="row justify-content-center pt-4">
                 <div class="col-md-10">
@@ -34,7 +33,7 @@
                                                     the Bank
                                                 </label>
                                                 <input class="form-control" id="bnkNme" name="bank_name" type="text"
-                                                    required oninput="this.value = this.value.replace(/[^a-z]/, '')">
+                                                    required oninput="this.value = this.value.replace(/[^A-Za-z]/, '')">
                                                 <small class="bnkNme text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -44,7 +43,7 @@
                                                     Loan
                                                 </label>
                                                 <input class="form-control" id="loanTyp" type="text" name="type_of_loan"
-                                                    required>
+                                                    required oninput="this.value = this.value.replace(/[^A-Za-z]/, '')">
                                                 <small class="loanTyp text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -54,7 +53,8 @@
                                                     Amount
                                                 </label>
                                                 <input type="text" id="amnt" class="form-control" name="loan_amount"
-                                                    placeholder="" value="" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                                    placeholder="" value="" required
+                                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-country">ROI</label>
                                                 <input type="text" id="roi" name="roi" class="form-control"
-                                                    placeholder="In %" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                                    placeholder="In %" required oninput="validateNumber(this);">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -72,7 +72,8 @@
                                                 <label class="form-control-label" for="input-city">Tenure
                                                 </label>
                                                 <input type="text" id="tenure" class="form-control" name="tenure"
-                                                    placeholder="In Months" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                                    placeholder="In Months" required
+                                                    oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
@@ -124,11 +125,11 @@
                                     <th class="
                                     ">Lender Name</th>
                                     <th class=" ">Loan Type</th>
-                                        <th class="
+                                    <th class="
                                     ">Loan Amount
                                     </th>
                                     <th class="">
-                                    ROI</th>
+                                        ROI</th>
                                     <th class="">Tenure</th>
                                     <th class=" ">EMI</th>
                                     <th class="">Schedule</th>
@@ -144,31 +145,37 @@
                                         <td>{{ $emi_shedule->emi_sh_roi }}</td>
                                         <td>{{ $emi_shedule->emi_sh_tenure }}</td>
                                         <td>{{ $emi_shedule->emi_sh_emi }}</td>
-                                        @if ($emi_shedule->emi_shedule_status==0)
-                                        <td>
-                                            <form action="{{route('user.existingEmiSheduleRestoreStore')}}" method="post" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col col-md-6">
-                                                            <div class="form-group">
-                                                                @error('shedule_file')
-                                                                    <div class="text-danger">{{$message}}</div>
-                                                                @enderror
-                                                                <input type="hidden" name="shedule_id" value="{{ $emi_shedule->id}}">
-                                                                <input type="file" name="shedule_file" class="form-control">
+                                        @if ($emi_shedule->emi_shedule_status == 0)
+                                            <td>
+                                                <form action="{{ route('user.existingEmiSheduleRestoreStore') }}"
+                                                    method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col col-md-6">
+                                                                <div class="form-group">
+                                                                    @error('shedule_file')
+                                                                        <div class="text-danger">{{ $message }}</div>
+                                                                    @enderror
+                                                                    <input type="hidden" name="shedule_id"
+                                                                        value="{{ $emi_shedule->id }}">
+                                                                    <input type="file" name="shedule_file"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col col-md-6">
+                                                                <button type="submit" id="add"
+                                                                    class="btn btn-success">Upload
+                                                                </button>
                                                             </div>
                                                         </div>
-                                                        <div class="col col-md-6">
-                                                            <button type="submit" id="add" class="btn btn-success">Upload
-                                                            </button>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </form>
-                                        </td>
+                                                </form>
+                                            </td>
                                         @else
-                                        <td><a href="{{asset('SheduleDocs/'.$emi_shedule->emi_sh_file)}}" download="Shedule{{$emi_shedule->id}}" class="btn btn-sm btn-primary">Shedule</a></td>
+                                            <td><a href="{{ asset('SheduleDocs/' . $emi_shedule->emi_sh_file) }}"
+                                                    download="Shedule{{ $emi_shedule->id }}"
+                                                    class="btn btn-sm btn-primary">Shedule</a></td>
                                         @endif
                                     </tr>
                                 @endforeach
@@ -213,6 +220,7 @@
         $('#emi').val(emi);
     };
     //Add Your Existing Loan Detials============================
+
 </script>
 
 <!--================================= Scripting=================================================== -->

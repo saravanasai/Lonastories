@@ -53,46 +53,46 @@
                                 <div class="row">
                                     <div class="col col-md-4 col-sm-12">
                                         <div class="form-group ">
-                                            <label class="control-label requiredField" for="Marital_Status">
+                                            <label class="control-label" for="Marital_Status">
                                                 Marital Status
                                                 <span class="asteriskField">
-                                                    *
+
                                                 </span>
                                             </label>
                                             <select class="select form-control" id="Marital_Status" name="Marital_Status"
-                                                required>
-                                                <option value="Married">
-                                                    Married
-                                                </option>
+                                                >
                                                 <option value="unmarried">
                                                     unmarried
+                                                </option>
+                                                <option value="Married">
+                                                    Married
                                                 </option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col col-md-4 col-sm-12">
                                         <div class="form-group ">
-                                            <label class="control-label requiredField" for="Spouse_name">
+                                            <label class="control-label" for="Spouse_name">
                                                 Spouse name
                                                 <span class="asteriskField">
-                                                    *
+
                                                 </span>
                                             </label>
                                             <input class="form-control" id="Spouse_name" name="Spouse_name"
-                                                placeholder="Enter Your Spouse Name" type="text" required />
+                                                placeholder="Enter Your Spouse Name" type="text" />
                                         </div>
                                     </div>
                                     <div class="col col-md-4 col-sm-12">
                                         <div class="form-group ">
-                                            <label class="control-label requiredField" for="Spouse_DOB">
+                                            <label class="control-label" for="Spouse_DOB">
                                                 Spouse DOB
                                                 <span class="asteriskField">
-                                                    *
+
                                                 </span>
                                             </label>
                                             <input class="form-control" id="Spouse_DOB" name="Spouse_DOB"
                                                 placeholder="MM/DD/YYYY" type="text" onclick="type='date'"
-                                                onblur="type='text'" required />
+                                                onblur="type='text'"  />
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                                 </span>
                                             </label>
                                             <input class="form-control" id="Current_Address" name="Current_Address"
-                                                placeholder="Address With Pincode" type="text" maxlength="6" required />
+                                                placeholder="Address With Pincode" type="text" required />
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +206,7 @@
                                                 </span>
                                             </label>
                                             <input class="form-control" id="Pr_Address" name="Pr_Address"
-                                                placeholder="Address With Pincode" type="text" maxlength="6" required />
+                                                placeholder="Address With Pincode" type="text" required />
                                         </div>
                                     </div>
 
@@ -400,8 +400,7 @@
                                             </label>
                                             <input class="form-control" id="Reference_1_complete_address"
                                                 name="Reference_1_complete_address" placeholder="Reference 1 Address"
-                                                type="text" required maxlength="10"
-                                                oninput="this.value = this.value.replace(/[^0-9]/, '')" />
+                                                type="text" required />
                                         </div>
                                     </div>
                                     <div class="col col-md-3">
@@ -422,7 +421,7 @@
                                                 Ref. Name
                                             </label>
                                             <input class="form-control" id="Reference_2_name" name="Reference_2_name"
-                                                placeholder="Reference 2" type="text" required />
+                                                placeholder="Reference 2" type="text"  required />
                                         </div>
                                     </div>
                                     <div class="col col-md-3">
@@ -432,7 +431,8 @@
                                             </label>
                                             <input class="form-control" id="Reference_2_contact_no"
                                                 name="Reference_2_contact_no" placeholder="Reference 2 contact no."
-                                                type="text" required />
+                                                type="text" maxlength="10"
+                                                oninput="this.value = this.value.replace(/[^0-9]/, '')" required />
                                         </div>
                                     </div>
                                     <div class="col col-md-3">

@@ -154,94 +154,102 @@
                             <h5><b>Higher Tenure</b></h5>
                         </div>
                         <p class="">We can help you in taking higher tenures up to 20 years for salaried & 18
-                        years for
-                        self-employed
-                        members.</p>
-                    <hr>
-                    <div class="
+                            years for
+                            self-employed
+                            members.</p>
+                        <hr>
+                        <div class="
                             card-title">
-                        <h5><b>Dropline OD Benefits</b></h5>
+                            <h5><b>Dropline OD Benefits</b></h5>
+                        </div>
+                        <p class="text-justify">Manage your outflow effectively with an option of paying only
+                            interest
+                            on the amount
+                            utilised.
+                        </p>
+                        <hr>
+                        <div class="card-title">
+                            <h5><b>Balance Transfer</b></h5>
+                        </div>
+                        <p class="text-justify">Apply online for all Balance Transfer proposals, We assure you a
+                            quick
+                            processing
+                            along with
+                            a
+                            high value Top-Up loans.</p>
                     </div>
-                    <p class="text-justify">Manage your outflow effectively with an option of paying only
-                        interest
-                        on the amount
-                        utilised.
-                    </p>
-                    <hr>
-                    <div class="card-title">
-                        <h5><b>Balance Transfer</b></h5>
-                    </div>
-                    <p class="text-justify">Apply online for all Balance Transfer proposals, We assure you a
-                        quick
-                        processing
-                        along with
-                        a
-                        high value Top-Up loans.</p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
     <section class="">
-    <h3 class=" text-center">Check Eligibility</h3>
+        <h3 class=" text-center">Check Eligibility</h3>
         <div class="container pt-4">
             <form class="">
-            <div class=" row justify-content-center pt-md-3">
-                <div class="col-md-7 card">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <h5><label for="fullname">Monthly Income:</label>
-                            </h5>
-                            <input type="number" id="salary" class="form-control" placeholder="How much amount ?"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <h5><label for="username">Other EMI’s (Existing) </label>
-                            </h5>
-                            <input type="number" name="apr" id="other_emi" class="form-control" placeholder="" required>
-                        </div>
+                <div class=" row justify-content-center pt-md-3">
+                    <div class="col-md-7 card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <h5><label for="fullname">Monthly Income:</label>
+                                </h5>
+                                <input type="number" id="salary" class="form-control" placeholder="How much amount ?"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <h5><label for="username">Other EMI’s (Existing) </label>
+                                </h5>
+                                <input type="number" name="apr" id="other_emi" class="form-control" placeholder=""
+                                    required>
+                            </div>
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{-- <h5><label for="">Property Type :</label></h5>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{-- <h5><label for="">Property Type :</label></h5>
                                     <input type="radio" id="resident" name="apr" placeholder="" required>
                                     <label for="">Residential </label>
                                     &nbsp;&nbsp;<input type="radio" id="commer" name="apr" placeholder="" required>
                                     <label for="">Commercial</label> --}}
-                                    <h5><label for="username">Preferred Tenure: </label></h5>
-                                    <select name="" id="tenure" class="form-control">
-                                        <option value="" hidden>Select Years</option>
-                                        <option value="5">5 years</option>
-                                        <option value="10">10 years</option>
-                                        <option value="15">15 years</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <h5><label for="">Property Value :</label></h5>
-                                    <input type="number" id="propVal" name="apr" placeholder="Property Amount" required
-                                        class="form-control">
+                                        <h5><label for="username">Preferred Tenure: </label></h5>
+                                        <select name="" id="tenure" class="form-control">
+                                            <option value="" hidden>Select Years</option>
+                                            <option value="5">5 years</option>
+                                            <option value="10">10 years</option>
+                                            <option value="15">15 years</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5><label for="">Property Value :</label></h5>
+                                        <input type="number" id="propVal" name="apr" placeholder="Property Amount" required
+                                            class="form-control">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 pt-md-5 card ml-3">
-                    <div class="form-group text-center pt-md-5">
-                        <div class="form-group text-center">
-                            <h3><label for="">EMI Eligibility</label></h3>
-                            <h4>Income eligibility : ₹ <span id="income"> 0.00</span></h4>
+                    <div class="col-md-4 pt-md-5 card ml-3">
+                        <div class="form-group text-center pt-md-5">
+                            <div class="form-group text-center">
+                                <h3><label for="">EMI Eligibility</label></h3>
+                                <h4>Income eligibility : ₹ <span id="income"> 0.00</span></h4>
 
-                            <h4>Property eligibility : ₹ <span id="property"> 0.00</span>
-                            </h4>
+                                <h4>Property eligibility : ₹ <span id="property"> 0.00</span>
+                                </h4>
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="mortage()">Calculate</button>
                         </div>
-                        <button type="button" class="btn btn-success" onclick="mortage()">Calculate</button>
                     </div>
                 </div>
-        </div>
-        </form>
-
+            </form>
+            <div class="pt-5">
+                <span class="text-dark text-justify"><b>Note :</b> These calculators are provided only as general
+                    self-help planning tools with the information of income and obligations provided. Results
+                    depend on many factors like cibil reports, verification reports, internal scoring etc. you
+                    may also get a higher eligibility if planned for a loan transfer or loan consolidation when
+                    your existing obligations are high. Talk to our Loan Assistant to get your exact eligibility
+                    in a Video / Audio Call.</span>
+            </div>
         </div>
     </section>
 
