@@ -13,9 +13,6 @@
                         @if(session('admin'))
                         <li class="breadcrumb-item"><a href="{{route('OwnLeadAssigntoadmin.index') }}">Back</a></li>
                         @endif
-                        @if(session('caller'))
-                        <li class="breadcrumb-item"><a href="{{route('assignedownLeads.index') }}">Back</a></li>
-                        @endif
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -295,12 +292,11 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                           {
                               //showuing the generatre leand button
                               $('.btnleadgen').show();
-
                              let credit_card_obligation=(Number(credit_card_outstanding)*5)/100;
                              let final_obligation=Number(total_obligation)+Number(credit_card_obligation);
-                             let Exiting_foir=(final_obligation/total_salary)*100;
+                             let Exiting_foir=Math.round((final_obligation/total_salary)*100);
                              $('#credit_card_obligation').val(credit_card_obligation);
-                             $('#final_obligation').val(final_obligation);
+                             $('#final_obligation').val(Math.round(final_obligation));
                              $('#existing_foir').val(Exiting_foir+'%');
 
                           }
