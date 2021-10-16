@@ -4,8 +4,8 @@
 
     <div id="hero abt" class="hero hero-head hero-home d-sm-none d-md-block">
         <img src="{{ asset('frontend/img/about/banner.png') }}" class="ab_img" alt="" srcset="" style="height: 650px;
-            background-size: cover;
-            width: 100%;">
+                background-size: cover;
+                width: 100%;">
     </div>
     <div class="col-md-12 mobban">
         <img src="{{ asset('frontend/img/about/banner 0.png') }}" alt="" class="img-fluid" data-aos="zoom-in"
@@ -102,9 +102,9 @@
     </section>
 
     <section class="">
-<h2 class=" display-4 text-center" data-aos="fade-down" data-aos-duration="3000">We Are the
-        Happiest, As We
-        Do More For Others!</h2>
+        <h2 class=" display-4 text-center" data-aos="fade-down" data-aos-duration="3000">We Are the
+            Happiest, As We
+            Do More For Others!</h2>
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-6">
@@ -133,17 +133,17 @@
 
     <section class="pb-5" style="background-color: #c6cbce ;">
         <div class="container pb-5">
-            <div class="text-center col-sm-12">
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-right"
+            <div class="text-lg-center col-sm-12">
+                <h2 class="d-lg-inline ml-lg-0 ml-5"><span class="display-4 grnLte" data-aos="fade-down-right"
                         data-aos-duration="2000"><b>R</b></span><small>ewards</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-right"
-                        data-aos-duration="2000"><b>&nbsp;E</b></span><small>earned</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-right"
-                        data-aos-duration="2000"><b>&nbsp;F</b></span><small>or</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-left"
-                        data-aos-duration="2000"><b>&nbsp;E</b></span><small>very</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-left"
-                        data-aos-duration="2000"><b>&nbsp;R</b></span><small>eferral</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-right"
+                        data-aos-duration="2000"><b>E</b></span><small>arned</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-right"
+                        data-aos-duration="2000"><b>F</b></span><small>or</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-left"
+                        data-aos-duration="2000"><b>E</b></span><small>very</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-left"
+                        data-aos-duration="2000"><b>R</b></span><small>eferral</small></h2>
             </div>
             <h3 class="text-center pt-3" data-aos="fade-up-left" data-aos-duration="3000">
                 Get 2X <i class="bi bi-suit-heart text-danger"></i> Hearts for Direct Refferals
@@ -174,21 +174,22 @@
                         @csrf
                         <div class="form-group">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" name="refer_to_cus_name"
-                                placeholder="Enter Your Name" oninput="this.value = this.value.replace(/[^a-z]/, '')">
+                            <input type="text" class="form-control" name="refer_to_cus_name" placeholder="Enter Your Name"
+                                oninput="this.value = this.value.replace(/[^a-z]/, '')">
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
                             <input type="text" class="form-control" name="refer_to_cus_phonenumber" maxlength="10"
-                                placeholder="Enter Your Number" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                placeholder="Enter Your Number" required
+                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="refer_to_relationship" id="" class="form-control">
                                 <option value="" hidden>Relation</option>
                                 <option value="Friend">Friend</option>
-                                <option value="Relation">Relation</option>
-                                <option value="Coleague">Coleague</option>
+                                <option value="Relative">Relative</option>
+                                <option value="Colleague">Colleague </option>
                                 <option value="Neighbour">Neighbour</option>
                                 <option value="Others">Others</option>
                             </select>
@@ -212,8 +213,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-12 pt-5 pl-5 text-center pt-5" data-aos="fade-down" data-aos-duration="1500">
-                    <h4 class="" data-aos=" fade-down" data-aos-duration="1000">Sharing is Good, It's easy too.<i
-                            class="em em-smiley" aria-role="presentation" aria-label="SMILING FACE WITH OPEN MOUTH"></i>
+                    <h4 class="" data-aos=" fade-down" data-aos-duration="1000">Sharing is Good, It's easy
+                        too.<i class="em em-smiley" aria-role="presentation"
+                            aria-label="SMILING FACE WITH OPEN MOUTH"></i>
                     </h4>
 
                     <h4 class="text-capitalize pt-3">Let your contacts know about <strong>Loanstories.com</strong> &
@@ -233,24 +235,23 @@
                             !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                     </h3>
                     @if (session('customer'))
-                        <h5 class="pt-5 pb-lg-3"><a
-                            data-toggle="modal" data-target="#shareNow"
+                        <h5 class="pt-5 pb-lg-3"><a data-toggle="modal" data-target="#shareNow"
                                 class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else
                         <h5 class="pt-5 pb-lg-3"><a href="{{ route('signup.index') }}"
-                                class="btn btn-outline-dark mt-1"><strong>Share
+                                class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @endif
-                    <h3><a href="#" target="_blank" title="Facebook" class="p-lg-4"><i
+                    {{-- <h3><a href="#" target="_blank" title="Facebook" class="p-lg-4"><i
                                 class="fa fa-facebook"></i></a>
                         <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
                                 class="fa fa-instagram"></i></a>
                         <a href="#" target="_blank" title="whatsapp" class="p-lg-4"><i
                                 class="fa fa-whatsapp"></i></a>
-                    </h3>
+                    </h3> --}}
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12 pl-5 pt-5" data-aos="fade-down-left" data-aos-duration="1500">
@@ -262,16 +263,16 @@
 
 @endsection
 @section('js')
-@if (session()->has('directReferalSubmited'))
- <script>
-      window.location.hash ="directRefsection";
-      $(document).ready(function () {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
-                $(this).remove();
+    @if (session()->has('directReferalSubmited'))
+        <script>
+            window.location.hash = "directRefsection";
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                        $(this).remove();
+                    });
+                }, 5000);
             });
-        }, 5000);
-    });
- </script>
- @endif
+        </script>
+    @endif
 @endsection

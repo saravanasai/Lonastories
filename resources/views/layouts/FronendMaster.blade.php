@@ -36,7 +36,8 @@
     {{-- header section --}}
     @include('layouts.partials.main_nav')
     @yield('content')
-    <!-- <div id="footer" data-aos="fade-up" data-aos-duration="3000"></div> -->
+
+
     <!-- <footer class="main-footer bg-light pt-5" data-aos="fade-up" data-aos-duration="2000"> -->
     <footer class="main-footer bg-gray pt-lg-5 text-gray">
         <div class="container">
@@ -48,7 +49,10 @@
                 <div class="col-md-3">
                     <ul class="list-unstyled">
                         <li>
-                            <p><a href="#">FAQ</a></p>
+                            <p><a href="{{ route('user.FAQ') }}">FAQ</a></p>
+                        </li>
+                        <li>
+                            <p><a href="https://www.facebook.com/loanstories2021" target="_blank">Connect With Facebook</a></p>
                         </li>
                         <li>
                             <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>
@@ -90,10 +94,10 @@
                                     </span>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item"
-                                            href="{{ route('user.personalEligibilityCalc') }}">Personal
+                                            href="{{ route('user.personalEligibilityCalc') }}">Personal Loan
                                             Eligibility
                                             Calculator</a>
-                                        <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home
+                                        <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home Loan
                                             Eligibility
                                             Calculator</a>
 
@@ -110,24 +114,28 @@
                             <h5 class="text-gray"><strong>Our Contact Points</strong></h5>
                         </li>
                         <li>
-                            <p><i class="bi bi-telephone-outbound-fill"></i><a href="#">&nbsp;&nbsp;+0431 -
-                                    3366622</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="bi bi-whatsapp"></i><a
-                                    href="#">&nbsp;&nbsp;+91 - 0123456789</a></p>
+                            <p>
+                                <i class="bi bi-telephone-outbound-fill"></i><a href="tel:9513961300" target="_blank">&nbsp;&nbsp;+91 - 9513 9613 00</a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                                <a href="https://api.whatsapp.com/send?phone=+919513961300" target="_blank"><i class="bi bi-whatsapp"></i>&nbsp;&nbsp;+91 - 9513 9613 00</a></p>
                         </li>
                         <!-- <li>
                         <p><i class="bi bi-whatsapp"></i><a href="#"></a>&nbsp;&nbsp;+91 - 0123456789</p>
                     </li> -->
                         <li>
+                            <p><span class="text-gray"><strong>For Enquiries : </strong></span><a
+                                    href="mailto:hello@loanstories.com" target="_blank">&nbsp;hello@loanstories.com</a></p>
+                        </li>
+                        <li>
                             <p><span class="text-gray"><strong>For Applications :</strong></span><a
-                                    href="#">&nbsp;bookmyloans@loanstories.com</a></p>
+                                href="mailto:bookmyloans@loanstories.com" target="_blank">&nbsp;bookmyloans@loanstories.com</a></p>
                         </li>
                         <li>
                             <p><span class="text-gray"><strong>For Queries :</strong></span><a
-                                    href="#">&nbsp;support@loanstories.com</a></p>
+                                href="mailto:support@loanstories.com" target="_blank">&nbsp;support@loanstories.com</a></p>
                         </li>
                         <li>
                             <p><span class="text-gray"><strong>For Complaints :</strong></span><a
-                                    href="#">&nbsp;escalate@loanstories.com</a></p>
+                                href="mailto:escalate@loanstories.com" target="_blank">&nbsp;escalate@loanstories.com</a></p>
                         </li>
                     </ul>
                 </div>
@@ -138,14 +146,14 @@
                             <h5 class="text-gray"><strong>Our Locations</strong></h5>
                         </li>
                         <li>
-                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
+                            <a href="#"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
                                 1st
                                 Cross, Indiranagar
                                 Bangalore, Karnataka - 560008.</a>
                         </li>
                         <hr class="hr">
                         <li>
-                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
+                            <a href="#"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
                                 Cross,
                                 Thillai Nagar (East)
                                 Tiruchirappalli, Tamilnadu – 620018.</a>
@@ -158,7 +166,9 @@
                             Madurai, Tamilnadu – 625020.</a>
                     </li> -->
                     </ul>
-                    <ul class="social-icons list-inline text-center">
+
+                    {{-- Footer Social Icons --}}
+                    {{-- <ul class="social-icons list-inline text-center">
                         <li class="list-inline-item">
                             <a href="https://www.facebook.com/loanstories2021" target="_blank" title="Facebook"><i
                                     class="fa fa-facebook"></i></a>
@@ -172,7 +182,7 @@
                         <li class="list-inline-item">
                             <a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
                 <div class="col-md-12 text-center">
                     <hr class="hr">

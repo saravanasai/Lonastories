@@ -2,6 +2,10 @@
 
 @section('content')
     <style>
+        html {
+            visibility: hidden;
+        }
+
         section {
             background-color: #041e43;
             background-position: center;
@@ -40,25 +44,27 @@
                     @csrf
                     <div id="slider" class="form">
                         <ul class="">
-                        <li class="" data-id=" slider_start">
-                            <div class="text-center">
-                                <h4 class="text-secondary font-weight-bold
-                                    ">Best Time &
-                                    Date To Call Me </h4>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <input type="date" id="txtDate" class="form-control" name="enq_date" data-toggle="tooltip"
-                                    data-placement="top" title="Enter valid email" placeholder="Select Your Day"
-                                    onfocus="this.type='date'" onblur="this.type='text'" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <input type="time" id="txttime" class="form-control" name="enq_time"
-                                    placeholder="Select Your Time" onfocus="this.type='time'" onblur="this.type='text'"
-                                    required>
-                            </div>
-                            <br>
+                            <li class="" data-id=" slider_start">
+                                <div class="text-center">
+                                    <h4 class="text-secondary font-weight-bold
+                                    ">Best
+                                        Time &
+                                        Date To Call Me </h4>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="date" id="txtDate" class="form-control" name="enq_date"
+                                        data-toggle="tooltip" data-placement="top" title="Enter valid email"
+                                        placeholder="Select Your Day" onfocus="this.type='date'" onblur="this.type='text'"
+                                        required>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="time" id="txttime" class="form-control" name="enq_time"
+                                        placeholder="Select Your Time" onfocus="this.type='time'" onblur="this.type='text'"
+                                        required>
+                                </div>
+                                <br>
                             </li>
                             <li>
                                 <div class="col-12 text-center">
@@ -118,7 +124,8 @@
                                                 <option value="Higher Eligibility">Higher Eligibility</option>
                                                 <option value="Lowest ROI">Lowest ROI</option>
                                                 <option value="Part Payment Options">Part Payment Options</option>
-                                                <option value="Fore Close">Foreclosure within a short turnaround
+                                                <option value="Foreclosure within a short turnaround
+                                                                time">Foreclosure within a short turnaround
                                                     time
                                                 </option>
                                             </select>
@@ -159,13 +166,13 @@
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <input type="text" name="residence" class="form-control wizard-required"
-                                            id="reslocation" placeholder="Residence" required />
+                                            id="reslocation" placeholder="City name you live now" required />
                                         <br>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <input type="text" id="company_search" name="office"
-                                            class="form-control wizard-required" id="offlocation" placeholder="Office"
-                                            required />
+                                            class="form-control wizard-required" id="offlocation"
+                                            placeholder="City name as per your HR records" required />
                                         <br>
                                     </div>
 
@@ -219,12 +226,12 @@
                                         <select class="form-control select" name="enq_cibil_score" required>
                                             <option value="" hidden>Choose What You Got ?</option>
                                             <option selected value=" < 800">
-                                                < 800</option>
+                                                > 800</option>
                                             <option value="750 to 800">750 to 800</option>
                                             <option value="700 to 750">700 to 750</option>
                                             <option value="650 to 700">650 to 700</option>
                                             <option value="> 650">
-                                                > 650 </option>
+                                                < 650 </option>
                                             <option value="I don't remember">I don't remember</option>
                                         </select>
                                     </div>
@@ -248,10 +255,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            // document.getElementsByTagName("html")[0].style.visibility = "hidden";
             //hideing priority select feild
             $('#priority').hide();
 
-            let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body').innerWidth() *
+            let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body')
+                .innerWidth() *
                 3;
             var options = {
                 width: w, //width of slider
@@ -268,8 +277,9 @@
             };
 
             $('#slider').jFormslider(options);
-             // Hide the  another submit button from DOM
-            let submit = document.querySelector('#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
+            // Hide the  another submit button from DOM
+            let submit = document.querySelector(
+                '#slider > ul > li:nth-child(7) > div:nth-child(4) > button');
             submit.style.display = "none";
 
             //section for loadig the subproducts section by products
@@ -295,7 +305,8 @@
                             let response = JSON.parse(data);
                             var tr = '';
                             $.each(response, function(i, subproduct) {
-                                tr += '<option value="' + subproduct.id + '">' +
+                                tr += '<option value="' + subproduct.id +
+                                    '">' +
                                     subproduct.subproductname + '</option>';
                             });
                             $('#type_of_sub_product').html(tr);
@@ -305,7 +316,8 @@
 
                 } else {
                     $('#type_of_sub_product').prop("disabled", true);
-                    $('#type_of_sub_product').html('<option value="0" selected>Sub product type</option>');
+                    $('#type_of_sub_product').html(
+                        '<option value="0" selected>Sub product type</option>');
                 }
             });
             //end section for loadig the subproducts section by products
@@ -432,6 +444,7 @@
             // if ((loanSelect === 'pl') || (loanSelect === 'bl')) {};
 
         });
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
     </script>
     {{-- end script section for this page --}}
 @endsection

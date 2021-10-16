@@ -12,12 +12,12 @@
 </style>
 @section('content')
 
-    <section>
+    <section class="pt-5">
         <div class="container">
             <h2 class="text-center font-weight-bold">My Wallet</h2>
             <br>
             <div class="row justify-content-between mt-lg-3">
-                <div class="col-md-3">
+                <div class="col-md-3 mb-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
                             <img src="{{ asset('frontend/img/star.png') }}" class="img-fluid" width="40%" alt="">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 mb-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
                             <img src="{{ asset('frontend/img/coin.png') }}" class="img-fluid" width="40%" alt="">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 mb-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
                             <img src="{{ asset('frontend/img/heart.png') }}" class="img-fluid" width="40%" alt="">
@@ -55,14 +55,14 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 mb-3">
                     <div class="card text-center border-0 bg-nav has-shadow">
                         <div class="justify-content-center pt-3">
                             <img src="{{ asset('frontend/img/loyalty.png') }}" class="img-fluid" width="40%" alt="">
                         </div>
                         <div class="card-body">
-                            <h2 id="hearts" class="card-title font-weight-bold text-light">{{ $wallet_info->heart_coins+$wallet_info->start_coins+
-                                $wallet_info->value_coins }}
+                            <h2 id="hearts" class="card-title font-weight-bold text-light">
+                                {{ $wallet_info->heart_coins + $wallet_info->start_coins + $wallet_info->value_coins }}
                             </h2>
                             <h5 class="card-text font-weight-bold text-secondary">LOYALTY POINTS</h5>
                         </div>
@@ -72,12 +72,13 @@
 
             <br>
             <div class="row justify-content-center mt-lg-5">
-                <div class="col-md-5 text-center">
-                    <h3 class="font-weight-bold">Total SRP Earned</h3>
+                <div class="col-md-5 text-center mb-5">
+                    <h4 class="font-weight-bold">Total Super Reward Points Earned</h4>
                     <br>
-                    <strong class="font-weight-bold">1 SRP = 0.5 INR</strong>
-                    <br>
-                    <strong class="font-weight-bold">{{$wallet_info->super_reward_point}} SRP = {{$wallet_info->super_reward_point*0.5}} - INR</strong>
+                    {{-- <strong class="font-weight-bold">1 SRP = 0.5 INR</strong>
+                    <br> --}}
+                    <strong class="font-weight-bold">{{ $wallet_info->super_reward_point }} SRP =
+                        {{ $wallet_info->super_reward_point * 0.5 }} - INR</strong>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
                             <h2 id="lpt" class="card-text display-3 text-dark">
@@ -88,7 +89,7 @@
                 </div>
 
                 <div class="col-md-5 text-center">
-                    <h3 class="font-weight-bold">Total SRP Redeemed</h3>
+                    <h4 class="font-weight-bold">Total Super Reward Points Redeemed</h4>
                     <br>
                     <div class="card border-0 bg-img">
                         <div class="card-body">
@@ -98,6 +99,13 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <p class="text text-justify"><strong>NOTE :</strong>  <b>₹. 1</b> is equal to <b>2</b> Super Reward Points. A maximum of
+                <b>20000</b> Super Reward Points can be allocated for
+                a transaction, subject to the availability of Loyalty Points. Being an active member of Loanstories.com, a
+                member can earn up to <b>₹. 10000</b> every month. Please check for Redeem Option alerts in SMS & Email to complete
+                the process of Cashback / Redemption. </p>
+
             @if (Session::has('redeemRequest'))
                 <div class="alert alert-success alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">&times;</button>

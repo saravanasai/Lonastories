@@ -209,17 +209,17 @@
 
     <section class="mt-5 pb-5" id="directRefsection" style="background-color: #c6cbce ;">
         <div class="container pb-5">
-            <div class="text-center col-sm-12">
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-right"
+            <div class="text-lg-center col-sm-12">
+                <h2 class="d-lg-inline ml-lg-0 ml-5"><span class="display-4 grnLte" data-aos="fade-down-right"
                         data-aos-duration="2000"><b>R</b></span><small>ewards</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-right"
-                        data-aos-duration="2000"><b>&nbsp;E</b></span><small>earned</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-right"
-                        data-aos-duration="2000"><b>&nbsp;F</b></span><small>or</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-left"
-                        data-aos-duration="2000"><b>&nbsp;E</b></span><small>very</small></h2>
-                <h2 class="d-inline"><span class="display-4 grnLte" data-aos="fade-down-left"
-                        data-aos-duration="2000"><b>&nbsp;R</b></span><small>eferral</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-right"
+                        data-aos-duration="2000"><b>E</b></span><small>arned</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-right"
+                        data-aos-duration="2000"><b>F</b></span><small>or</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-left"
+                        data-aos-duration="2000"><b>E</b></span><small>very</small></h2>
+                <h2 class="d-lg-inline ml-lg-0 ml-5 pl-lg-2"><span class="display-4 grnLte" data-aos="fade-down-left"
+                        data-aos-duration="2000"><b>R</b></span><small>eferral</small></h2>
             </div>
             <h3 class="text-center pt-3" data-aos="fade-up-left" data-aos-duration="3000">
                 Get 2X <i class="bi bi-suit-heart text-danger"></i> Hearts For Direct Refferals
@@ -263,8 +263,8 @@
                             <select name="refer_to_relationship" id="" class="form-control">
                                 <option value="" hidden>Relation</option>
                                 <option value="Friend">Friend</option>
-                                <option value="Relation">Relation</option>
-                                <option value="Coleague">Coleague</option>
+                                <option value="Relative">Relative</option>
+                                <option value="Colleague">Colleague</option>
                                 <option value="Neighbour">Neighbour</option>
                                 <option value="Others">Others</option>
                             </select>
@@ -309,7 +309,7 @@
                     </h3>
                     @if (!session('customer'))
                         <h5 class="pt-5 pb-lg-3"><a
-                                class="btn btn-outline-dark mt-1" data-toggle="modal" data-target="#shareNow"><strong>Share
+                                class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else
@@ -319,13 +319,13 @@
                         </h5>
                     @endif
 
-                    <h3><a href="https://www.facebook.com/sharer/sharer.php" target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
+                    {{-- <h3><a href="https://www.facebook.com/sharer/sharer.php" target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
                                 class="fa fa-facebook"></i></a>
                         <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
                                 class="fa fa-instagram"></i></a>
                         <a href="#" target="_blank" title="whatsapp" class="p-lg-4"><i
                                 class="fa fa-whatsapp"></i></a>
-                    </h3>
+                    </h3> --}}
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12 pl-5 pt-5" data-aos="fade-down-left" data-aos-duration="1500">

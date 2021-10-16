@@ -1,11 +1,11 @@
 @extends('layouts.FronendMaster')
 @section('content')
-<style>
-    th {
-        text-align: center;
-    }
+    <style>
+        th {
+            text-align: center;
+        }
 
-</style>
+    </style>
     <section>
         <div class="container">
             <h3 class="text-center">Home Loan Emi Calculator</h3>
@@ -21,7 +21,7 @@
                                 <h5><label for="name" class="control-label">I Want To Borrow</label>
                                 </h5>
                                 <input type="text" class="form-control" id="principal" name="pr_amt"
-                                    placeholder="Enter Loan Amount">
+                                    placeholder="Enter Loan Amount" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                         </div>
 
@@ -31,14 +31,14 @@
                                         p.a</label>
                                 </h5>
                                 <input type="text" class="form-control" id="interest" name="int_rate"
-                                    placeholder="Enter Your ROI">
+                                    placeholder="Enter Your ROI" oninput="validateNumber(this);">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
                                 <h5><label for="name" class="control-label">Tenure</label></h5>
-                                <input type="text" class="form-control" id="terms" placeholder="in months" name="period">
+                                <input type="text" class="form-control" id="terms" placeholder="in months" name="period" oninput="this.value = this.value.replace(/[^0-9]/, '')">
                             </div>
                         </div>
                     </div>
@@ -46,8 +46,7 @@
                     <div class="pull-right">
                         <input type="button" id="calculate" class="btn btn-darkblue" value="Calculate"
                             onclick="getValues()" />
-                        <input type="button" id="getPdf" class="btn btn-info" disabled
-                            value="Get Pdf" />
+                        <input type="button" id="getPdf" class="btn btn-info" disabled value="Get Pdf" />
                     </div>
                 </fieldset>
             </form>
@@ -121,8 +120,8 @@
 
         //add header row for table to return string
         result += "<div class='border text-center' id='homeTbl'>" +
-            "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='20%'>" +
-            "<h4 class='font-weight-bold'>Home Loan Emi Calculations</h4>" +
+            "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='100%'>" +
+            "<h4 class='font-weight-bold pt-3'>Home Loan Emi Calculations</h4>" +
             "<hr>" +
             "<table class='table table-bordered justify-content-center'>" +
             "<tr class='bg-gray text-light'>" +
@@ -151,7 +150,7 @@
 
 
             //code for displaying in loop balance
-            result += "<td>" + Math.ceil(balance) + "</td>";
+            result += "<td>" + balance.toFixed(2) + "</td>";
 
             //calc the in-loop interest amount and display
             interest = balance * monthlyRate;
@@ -180,18 +179,27 @@
     };
 
     // =================Get Pdf==========================
-    window.onload = function(){
-        document.getElementById("getPdf").addEventListener("click",() => {
+    window.onload = function() {
+        document.getElementById("getPdf").addEventListener("click", () => {
             const doc = this.document.getElementById('homeTbl');
             console.log(doc);
             console.log(window);
 
             var opt = {
-                margin:       0.2,
-                filename:     'myfile.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 1 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                margin: 0.2,
+                filename: 'myfile.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 1
+                },
+                html2canvas: {
+                    scale: 1.5
+                },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'letter',
+                    orientation: 'portrait'
+                }
             };
 
             html2pdf().from(doc).set(opt).save("Home Loan Calculations.pdf");

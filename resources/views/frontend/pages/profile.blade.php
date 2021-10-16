@@ -84,8 +84,6 @@
         </div>
 
         <div class="row mt-md-5 mb-md-5 text-center">
-
-
                 <div class="col-md-4 pb-3">
                     <a href="{{ route('user.personalInfoFill') }}" class="btn btn-success btn-block text-dark"><i
                             class="bi bi-person-plus display-4 pb-2"></i><br>Add Info</a>
@@ -132,10 +130,10 @@
                             <i class="bi bi-ui-checks display-4 pb-2"></i><br>Check Eligibility
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a href="{{ route('user.personalEligibilityCalc') }}" class="dropdown-item">Personal
+                            <a href="{{ route('user.personalEligibilityCalc') }}" class="dropdown-item">Personal Loan
                                 Eligibility
                                 Calculator</a>
-                            <a href="{{ route('user.homeEligibilityCalc') }}" class="dropdown-item">Home Eligibility
+                            <a href="{{ route('user.homeEligibilityCalc') }}" class="dropdown-item">Home Loan Eligibility
                                 Calculator</a>
                         </div>
                     </div>
