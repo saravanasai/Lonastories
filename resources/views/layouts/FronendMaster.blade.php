@@ -4,11 +4,28 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LOANSTORIES.COM</title>
+    @if ( Request::url()== url('/user/signup/'.Request::segment(3).'/referal'))
+    <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+    <meta property="og:description" content="Explore A New Way Of Financial Planning & get cashback up to Rs.10000 every month">
+    <meta property="og:description"
+        content="SignUp Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
+        <link rel="icon" href="{{ asset('frontend/img/Logo_Latest.png') }}" />
+    @endif
+    @if ( Request::url()== url('/user/signup/'.Request::segment(3).'/referal/2x'))
+    <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+    <meta property="og:description" content="Explore A New Way Of Financial Planning & get cashback up to Rs.10000 every month">
+    <meta property="og:description"
+        content="SignUp Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
+        <link rel="icon" href="{{ asset('frontend/img/Logo_Latest.png') }}" />
+    @endif
+    @if ( Request::url()==url('/') || true )
     <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
     <meta property="og:description" content="Customized Loan Offers with Super Reward Points every month">
     <meta property="og:description"
         content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
-    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
+        <link rel="icon" href="{{ asset('frontend/img/Logo_Latest.png') }}" />
+    @endif
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -32,7 +49,6 @@
 </style>
 
 <body>
-
     {{-- header section --}}
     @include('layouts.partials.main_nav')
 
@@ -48,6 +64,7 @@
             <a href="./index.php">
                 <h3><img src="{{ asset('frontend/img/logo.png') }}" alt="" width="50vw" />&nbsp;<span
                         class="text-light"><strong>LOANSTORIES.COM</strong></span></h3>
+
             </a>
             <div class="row pt-5">
                 <div class="col-md-3">
