@@ -86,13 +86,15 @@
             <div class="row">
                 <div class="col-md-6 pt-lg-5 text-center">
                     <h2 class="text-light">Our Approval Rates Are At 95%.</h2>
-                    <h4 class="pt-3 text-justify text-secondary font-weight-bold">We do all the math right and
+                    <h4 class="pt-3 text-justify text-secondary font-weight-bold">
+                        <p class=""> We do all the math right and
                         understand
-                        your exact eligibility. <br> We do a
-                        transparent discussion with both our Clients & Bankers. <br> We take an opportunity only based on
+                        your exact eligibility.</p> <p class="mt-4">We do a
+                        transparent discussion with both our Clients & Bankers.</p>
+                        <p class="mt-4"> We take an opportunity only based on
                         the
                         scope of
-                        funding and so we maintain the best approval rate in the industry.</h4>
+                        funding and so we maintain the best approval rate in the industry.</p></h4>
                 </div>
                 <div class="col-md-6 text-center"><img class="img-fluid"
                         src="{{ asset('frontend/img/about/b2.png') }}" alt="" data-aos="zoom-in-right"
@@ -126,9 +128,24 @@
                         data-aos="fade-up-left" data-aos-duration="2000">
                     <h3 class="text-center">Together we can do
                         so much!</h3>
+                        <div class="">
+                                <div class="">
+                                    @if (!session('customer'))
+                                    <a href="{{ route('signup.index') }}"
+                                        class="btn btn-primary text-dark btn-light"><strong>Become A
+                                            Member</strong></a>
+                                @else
+                                    <a href="{{ route('quickEnquieryForm.index') }}"
+                                        class="btn btn-primary text-dark btn-light"><strong>Become A
+                                            Member</strong></a>
+                                @endif
+                                </div>
+                        </div>
                 </div>
             </div>
+
         </div>
+
     </section>
 
     <section class="pb-5" style="background-color: #c6cbce ;">
@@ -186,7 +203,7 @@
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="refer_to_relationship" id="" class="form-control">
-                                <option value="" hidden>Relation</option>
+                                <option value="" hidden>Relationship</option>
                                 <option value="Friend">Friend</option>
                                 <option value="Relative">Relative</option>
                                 <option value="Colleague">Colleague </option>
@@ -244,14 +261,15 @@
                                 class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
+                        <h3><a href="https://www.facebook.com/sharer/sharer.php"  target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
+                            class="fa fa-facebook"></i></a>
+                            {{-- <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
+                                    class="fa fa-instagram"></i></a> --}}
+                                    <a href="whatsapp://send?text={{ url('/') . '/user/signup/' . session('customer')->cus_referal_code . '/referal' }}" target="_blank" title="whatsapp" data-action="share/whatsapp/share" class="p-lg-4"><i
+                                        class="fa fa-whatsapp"></i></a>
+                        </h3>
                     @endif
-                    {{-- <h3><a href="#" target="_blank" title="Facebook" class="p-lg-4"><i
-                                class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
-                                class="fa fa-instagram"></i></a>
-                        <a href="#" target="_blank" title="whatsapp" class="p-lg-4"><i
-                                class="fa fa-whatsapp"></i></a>
-                    </h3> --}}
+
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12 pl-5 pt-5" data-aos="fade-down-left" data-aos-duration="1500">

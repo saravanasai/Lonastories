@@ -73,10 +73,10 @@
                                 <br>
                                 <div class="form-group">
                                     <select class="form-control select" name="enq_pre_mode" required>
-                                        <option value="" hidden>Call For</option>
+                                        <option value="" hidden>Mode of contact</option>
                                         <option value="video">Video Call</option>
                                         <option value="audio">Audio Call</option>
-                                        <option value="whatsapp">Whatsapp Chat</option>
+                                        <option value="whatsapp">WhatsApp Chat</option>
                                     </select>
                                 </div>
                                 <br>
@@ -115,7 +115,7 @@
                                     <div class="col-md-12" id="priority">
                                         <div class="text-center">
                                             <h6 class="text-secondary font-weight-bold">
-                                                For Personal Loans My Priority Is
+                                             My Priority
                                             </h6>
                                         </div>
                                         <div class="form-group">
@@ -198,7 +198,7 @@
                                 <br>
                                 <div class="form-group">
                                     <input type="text" name="loan_amount" class="form-control"
-                                        placeholder="How Much You Need?" required
+                                        placeholder="Please specify the Loan Amount" required
                                         oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                 </div>
                                 <br>
@@ -210,7 +210,7 @@
                                 <div class="form-group">
 
                                     <select class="form-control select" name="loan_expected">
-                                        <option value="" hidden>When You Need ?</option>
+                                        <option value="" hidden>Please specify</option>
                                         <option selected value="Immediate">Immediate</option>
                                         <option value="Within 1 Month">Within 1 Month</option>
                                         <option value="2-3 Months">2-3 Months</option>
@@ -224,7 +224,7 @@
                                     <h4 class="text-secondary font-weight-bold">My Cibil Score </h4><br>
                                     <div class="form-group">
                                         <select class="form-control select" name="enq_cibil_score" required>
-                                            <option value="" hidden>Choose What You Got ?</option>
+                                            <option value="" hidden>Please specify</option>
                                             <option selected value=" < 800">
                                                 > 800</option>
                                             <option value="750 to 800">750 to 800</option>

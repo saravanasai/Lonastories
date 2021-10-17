@@ -35,6 +35,9 @@
         overflow: hidden;
         position: absolute;
         width: 400px;
+        /* max-width: 400px; */
+        margin: -50px;
+        margin-top: 25px
 
     }
 
@@ -82,40 +85,70 @@
                 <img src="{{ asset('frontend/img/meter.png') }}" class="rounded" alt="" style="width: 100%;"
                     loading="lazy">
             </div>
-
             <div class="row mt-md-5 bg-light p-3">
-                <div class="col-md-4">
-                    <br>
-                    <input type="text" id="income" class="form-control bi-alarm" name="fullname"
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <div class="row mt-5">
+                        <div class="col col-md-11">
+                            <input type="text" id="income" class="form-control bi-alarm" name="fullname"
                         placeholder="Net Monthly Income" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
-                    <br>
-                    <input type="text" id="tot_emi" name="" class="form-control" placeholder="Total Emi Obligations"
-                        required oninput="this.value = this.value.replace(/[^0-9]/, '')" /> <br>
-                    <input type="text" id="outstand" name="" class="form-control" placeholder="Latest Credit Outstanding"
-                        required oninput="this.value = this.value.replace(/[^0-9]/, '')" /> <br>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-darkblue ribbon"
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col col-md-11">
+                            <input type="text" id="tot_emi" name="" class="form-control" placeholder="Total Emi Obligations"
+                            required oninput="this.value = this.value.replace(/[^0-9]/, '')" />
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col col-md-11">
+                            <input type="text" id="outstand" name="" class="form-control" placeholder="Latest Credit Outstanding"
+                        required oninput="this.value = this.value.replace(/[^0-9]/, '')" />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <p>Your Current Obligation Ratio is : <span class="font-weight-bold" id="ratio">0</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p>Personal Loan Eligibility : <span class="font-weight-bold" id="personalEligible">0.00</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p>Home Loan Eligibility : <span class="font-weight-bold" id="homeEligible">0.00</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col col-xs-12 col-sm-12 col-md-6">
+                            <button type="button" class="btn btn-darkblue ribbon"
                             onclick="meterCalc()"><b>Calculate</b></button>
+                        </div>
+                        <div class="col col-xs-12 col-sm-12 col-md-6">
+                            <a  href="{{route('quickEnquieryForm.index')}}" class="btn btn-success ribbon"
+                            ><b>Apply</b></a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div id="el" class="" data-value=" 0%">
-                        <span id="needle"></span>
-                    </div>
-                </div>
-                <div class="col-md-4"><br>
-                    <div class="card-body text-center">
-                        <p>Your Current Obligation Ratio is : <span class="font-weight-bold" id="ratio">0</span>
-                        </p>
-                        <hr>
-                        <p>Personal Loan Eligibility : <span class="font-weight-bold" id="personalEligible">0.00</span>
-                        </p>
-                        <hr>
-                        <p>Home Loan Eligibility : <span class="font-weight-bold" id="homeEligible">0.00</span>
-                        </p>
+                <div class="col-xs-12 col-sm-12 col-md-6 mt-5 md-px-5">
+                    <div class="container md-px-5">
+                        <div id="el" class="" data-value=" 0%">
+                            <span id="needle"></span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
     </section>
 @endsection

@@ -29,7 +29,7 @@
                                         @if (session()->has('enquierySubmited'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             <h4 class="alert-heading">Thank you for applying with us.</h4>
-                                            <p><b>You Loan Assistant from Loanstories.com shall contact you shortly</p></p>
+                                            <p><b>Your Loan Assistant from Loanstories.com shall contact you shortly</p></p>
                                         </div>
                                     @endif
                                     </div>
@@ -73,11 +73,11 @@
 
                 <div class="col-md-6 pl-lg-5" data-aos="fade-up-right" data-aos-duration="3000">
                     <h1 class="cust" data-aos="fade-up" data-aos-duration="1000">Get It Customized !</h1>
-                    <h2 class="pt-lg-1" data-aos="fade-up" data-aos-duration="3000">Meet Loan Assistant Online</h2>
+                    <h2 class="pt-lg-1" data-aos="fade-up" data-aos-duration="3000">Meet Your Loan Assistant Online</h2>
                     <h5 class="pt-lg-2" data-aos="fade-up" data-aos-duration="2000">Video Call | Audio Call | Chat
                     </h5>
                     <h4 class="pt-lg-2 trn" data-aos="fade-down" data-aos-duration="2000"><a
-                            href="{{ route('user.connect') }}" class="btn btn-secondary"><strong>Try Now !</strong></a></h4>
+                            href="{{ route('user.connect') }}" class="btn btn-secondary mt-3"><strong>Try Now !</strong></a></h4>
                     <h5 class="pt-lg-5" data-aos="fade-up-left" data-aos-duration="3000">
                         <strong>Digital Offer | Value Addition | Client Specific</strong>
                     </h5>
@@ -151,7 +151,6 @@
             </div>
         </div>
     </section>
-
     <section class="mt-5 pt-5 bg-gray">
         <div class="container text-center pt-5">
             <i class="bi bi-stars display-3 text-light pb-3" data-aos="fade-down-left" data-aos-duration="1500"></i>
@@ -174,10 +173,22 @@
                             Cashback!
                         </h4>
                     </div>
-
                     <div class="col-md-5">
                         <img src="{{ asset('frontend/img/award.gif') }}" alt="" class="img-fluid"
                             data-aos="fade-up-right" data-aos-duration="3000">
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-7">
+                        @if (!session('customer'))
+                        <a href="{{ route('signup.index') }}"
+                            class="btn btn-primary text-dark btn-light"><strong>Become A
+                                Member</strong></a>
+                    @else
+                        <a href="{{ route('quickEnquieryForm.index') }}"
+                            class="btn btn-primary text-dark btn-light"><strong>Become A
+                                Member</strong></a>
+                    @endif
                     </div>
                 </div>
             </header>
@@ -261,7 +272,7 @@
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="refer_to_relationship" id="" class="form-control">
-                                <option value="" hidden>Relation</option>
+                                <option value="" hidden>Relationship</option>
                                 <option value="Friend">Friend</option>
                                 <option value="Relative">Relative</option>
                                 <option value="Colleague">Colleague</option>
@@ -317,15 +328,16 @@
                                 class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
+                        <h3><a href="https://www.facebook.com/sharer/sharer.php"  target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
+                            class="fa fa-facebook"></i></a>
+                    {{-- <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
+                            class="fa fa-instagram"></i></a> --}}
+                    <a href="whatsapp://send?text={{ url('/') . '/user/signup/' . session('customer')->cus_referal_code . '/referal' }}" target="_blank" title="whatsapp" data-action="share/whatsapp/share" class="p-lg-4"><i
+                            class="fa fa-whatsapp"></i></a>
+                </h3>
                     @endif
 
-                    {{-- <h3><a href="https://www.facebook.com/sharer/sharer.php" target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
-                                class="fa fa-facebook"></i></a>
-                        <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
-                                class="fa fa-instagram"></i></a>
-                        <a href="#" target="_blank" title="whatsapp" class="p-lg-4"><i
-                                class="fa fa-whatsapp"></i></a>
-                    </h3> --}}
+
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12 pl-5 pt-5" data-aos="fade-down-left" data-aos-duration="1500">

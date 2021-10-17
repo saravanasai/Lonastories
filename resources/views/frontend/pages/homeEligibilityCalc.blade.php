@@ -75,10 +75,18 @@
                                                             oninput="this.value = this.value.replace(/[^0-9]/, '')">
                                                     </div>
                                                 </div>
+                                                <div class="row mt-5">
+                                                    <div class="col">
+                                                        <div class="float-right">
+                                                            <button type="button" onclick="h_loan()"
+                                                class="btn btn-success">Calculate</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 pt-md-5 card ml-3">
+                                    <div class="col-md-4 pt-md-5 card md-ml-3">
                                         <div class="form-group text-center pt-md-5">
                                             <div class="form-group text-center">
                                                 <h3><label for="">EMI Eligibility</label></h3>
@@ -87,8 +95,8 @@
                                                 <h4>Property eligibility : ₹ <span id="property"> 0.00</span>
                                                 </h4>
                                             </div>
-                                            <button type="button" onclick="h_loan()"
-                                                class="btn btn-success">Calculate</button>
+                                            <a href="{{route('quickEnquieryForm.index')}}"
+                                                class="btn btn-darkblue mt-3">Apply</a>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +187,9 @@
                             </div>
                             <div class="text-center">
                                 <button type="button" class="btn btn-darkblue" onclick="calc()"><b>CALCULATE</b></button>
-                                <button type="button" class="btn btn-success"><b>APPLY</b></button>
+                                <a href="{{route('quickEnquieryForm.index')}}"
+                                class="btn btn-success">Apply</a>
+
                             </div>
                         </div>
                     </div>
