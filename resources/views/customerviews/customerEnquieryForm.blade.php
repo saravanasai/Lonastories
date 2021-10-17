@@ -125,7 +125,7 @@
                                                 <option value="Lowest ROI">Lowest ROI</option>
                                                 <option value="Part Payment Options">Part Payment Options</option>
                                                 <option value="Foreclosure within a short turnaround
-                                                                time">Foreclosure within a short turnaround
+                                                                                time">Foreclosure within a short turnaround
                                                     time
                                                 </option>
                                             </select>
@@ -225,12 +225,12 @@
                                     <div class="form-group">
                                         <select class="form-control select" name="enq_cibil_score" required>
                                             <option value="" hidden>Please specify</option>
-                                            <option selected value=" < 800">
+                                            <option selected value=" > 800">
                                                 > 800</option>
                                             <option value="750 to 800">750 to 800</option>
                                             <option value="700 to 750">700 to 750</option>
                                             <option value="650 to 700">650 to 700</option>
-                                            <option value="> 650">
+                                            <option value="< 650">
                                                 < 650 </option>
                                             <option value="I don't remember">I don't remember</option>
                                         </select>
@@ -253,15 +253,17 @@
 {{-- script section for this page --}}
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
+    <script type="module" async>
+        let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body')
+            .innerWidth() *
+            3;
+
+        // $(document).ready(function() {
+        $(function() {
+            console.log(w);
             // document.getElementsByTagName("html")[0].style.visibility = "hidden";
             //hideing priority select feild
             $('#priority').hide();
-
-            let w = ($('body').innerWidth() >= 1000) ? ($('body').innerWidth() / 2.371) : $('body')
-                .innerWidth() *
-                3;
             var options = {
                 width: w, //width of slider
                 height: 500, //height of slider

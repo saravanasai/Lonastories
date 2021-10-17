@@ -7,7 +7,7 @@
         }
 
     </style>
-    <section>
+    <section class="p-0 pt-5">
         <div class="container">
             <h3 class="text-center">Personal Loan Emi Calculator</h3>
             <br>
@@ -111,11 +111,11 @@
         var result = "<hr>" +
             "<div class='card text-center'>" +
             "<div class='card-body'>" +
-            "<strong>PRINCIPAL</strong> : ₹ " + balance.toFixed(2) + "   |   " +
-            "<strong>ROI</strong> : " + (interestRate * 100).toFixed(0) + "%   |   " +
+            "<strong>Principle Outstanding</strong> : ₹ " + balance.toFixed(2) + "   |   " +
+            "<strong>Interest</strong> : " + (interestRate * 100).toFixed(2) + "%   |   " +
             "<strong>TENURE</strong> : " + terms + "   |   " +
-            "<strong>EMI</strong> : ₹ " + payment.toFixed(0) + "   |   " +
-            "<strong>TOTAL PAID</strong> : ₹ " + (payment * terms).toFixed(0) + "<br />" +
+            "<strong>EMI</strong> : ₹ " + payment.toFixed(2) + "   |   " +
+            "<strong>TOTAL PAID</strong> : ₹ " + (payment * terms).toFixed(2) + "<br />" +
             "</div>" +
             "</div><br>";
 
@@ -124,13 +124,13 @@
             "<img src='{{ asset('frontend/img/pdfLogo.png') }}' class='img-fluid' width='100%'>" +
             "<h4 class='font-weight-bold pt-3'>Personal Loan Emi Calculations</h4>" +
             "<hr>" +
-            "<table class='table table-bordered justify-content-center'>" +
+            "<table class='table table-bordered justify-content-center table-responsive'>" +
             "<tr class='bg-gray text-light'>" +
             "<th>Month</th>" +
-            "<th>Balance</th>" +
+            "<th>Principle Outstanding</th>" +
             "<th>Interest</th>" +
             "<th>Principal</th>" +
-            "<th>Total Payment</th>";
+            "<th>EMI</th>";
 
         /**
          * Loop that calculates the monthly Loan amortization amounts then adds
@@ -155,15 +155,15 @@
 
             //calc the in-loop interest amount and display
             interest = balance * monthlyRate;
-            result += "<td>" + Math.ceil(interest) + "</td>";
+            result += "<td>" + interest.toFixed(2) + "</td>";
 
             //calc the in-loop monthly principal and display
             monthlyPrincipal = payment - interest;
-            result += "<td>" + Math.ceil(monthlyPrincipal) + "</td>";
+            result += "<td>" + monthlyPrincipal.toFixed(2) + "</td>";
 
             //----------------------------------
             totalPayment = monthlyPrincipal + interest;
-            result += "<td>" + Math.ceil(totalPayment) + "</td>";
+            result += "<td>" + totalPayment.toFixed(0) + "</td>";
 
             //end the table row on each iteration of the loop
             result += "</tr>";

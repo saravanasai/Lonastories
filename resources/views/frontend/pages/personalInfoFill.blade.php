@@ -1,7 +1,7 @@
 @extends('layouts.FronendMaster')
 @section('content')
-    <section>
-        <div class="container">
+    {{-- <section> --}}
+        <div class="container pt-5">
             <div class="row">
                 <div class="col-md-12 col-sm-6 col-xs-12">
                     <form action="{{ route('user.personalInfoFillStore') }}" method="post">
@@ -14,7 +14,7 @@
                                 <h3 class="font-weight-bold text-center">Personal Information</h3>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label" for="Original_Name">
                                                 Name
@@ -23,7 +23,7 @@
                                                 placeholder="Full Name" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Per_mail">
                                                 Personal Mail ID
@@ -35,7 +35,7 @@
                                                 placeholder="etc@gmail.com" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Education_Qualification">
                                                 Education Qualification
@@ -51,7 +51,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label" for="Marital_Status">
                                                 Marital Status
@@ -70,7 +70,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label" for="Spouse_name">
                                                 Spouse name
@@ -82,7 +82,7 @@
                                                 placeholder="Enter Your Spouse Name" type="text" />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label" for="Spouse_DOB">
                                                 Spouse DOB
@@ -98,7 +98,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Father_Name">
                                                 Father Name
@@ -110,7 +110,7 @@
                                                 placeholder="Your Father Name" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Mother_Name">
                                                 Mother Name
@@ -122,7 +122,7 @@
                                                 placeholder="Your Mother Name" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Resi_type">
                                                 Residence Type
@@ -152,7 +152,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Residence_Mobile_No">
                                                 Residence Telephone/Mobile No
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Pr_Address_mobile_no">
                                                 Permanent Address Mobile No
@@ -182,7 +182,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Current_Address">
                                                 Current Address with Pin code
@@ -197,7 +197,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Pr_Address">
                                                 Permanent Address & Pin code
@@ -210,7 +210,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Current_Address_Landmark">
                                                 Current Address Landmark
@@ -221,7 +221,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Pr_Address_Landmark">
                                                 Permanent Address Landmark
@@ -233,7 +233,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="No_of_years_cur_resi">
                                                 No of years in current Residence
@@ -245,7 +245,7 @@
                                                 name="No_of_years_cur_resi" placeholder="etc., 12 " type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4 col-sm-12">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="No_of_years_cur_city">
                                                 No-years in current City
@@ -263,7 +263,7 @@
                                 <h4 class="font-weight-bold text-center">Work Information</h4>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Total_work_expirence">
                                                 Total work expirence
@@ -274,7 +274,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="DOJ_of_current_company">
                                                 DOJ of current company
@@ -288,7 +288,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Of_Address_contact_no">
                                                 Office Address contact No.
@@ -301,7 +301,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label requiredField" for="Of_mail">
                                                 Official Mail ID
@@ -314,7 +314,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Of_Address">
                                                 Office Address with Pin code
@@ -324,7 +324,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Of_Address_Landmark">
                                                 Office Address Landmark
@@ -336,7 +336,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Salary_account_bank_name">
                                                 Salary account Bank Name
@@ -346,7 +346,7 @@
                                                 placeholder="Bank Name Of Your Salary Account" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Salary_account_bank_ac_no">
                                                 Salary account Bank Account Number
@@ -356,7 +356,7 @@
                                                 type="text" required/>
                                         </div>
                                     </div>
-                                    <div class="col col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group ">
                                             <label class="control-label " for="Salary_account_bank_ac_no">
                                                 IFSC Code
@@ -373,7 +373,7 @@
                                 <br>
 
                                 <div class="row">
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_1_name">
                                                 Ref. Name
@@ -382,7 +382,7 @@
                                                 placeholder="Reference 1" type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_1_contact_no">
                                                 Ref. Contact Number
@@ -393,7 +393,7 @@
                                                 oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_1_complete_address">
                                                 Ref. Address with pincode
@@ -403,7 +403,7 @@
                                                 type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Relation_1_type">
                                                 Relation Type
@@ -415,7 +415,7 @@
                                 </div>
                                 <br>
                                 <div class="row">
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_2_name">
                                                 Ref. Name
@@ -424,7 +424,7 @@
                                                 placeholder="Reference 2" type="text"  required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_2_contact_no">
                                                 Ref. Contact Number
@@ -435,7 +435,7 @@
                                                 oninput="this.value = this.value.replace(/[^0-9]/, '')" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Reference_1_complete_address">
                                                 Ref. Address with pincode
@@ -445,7 +445,7 @@
                                                 type="text" required />
                                         </div>
                                     </div>
-                                    <div class="col col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group ">
                                             <label class="control-label " for="Relation_2_type">
                                                 Relation Type
@@ -464,5 +464,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    {{-- </section> --}}
 @endsection

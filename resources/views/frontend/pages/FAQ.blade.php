@@ -6,7 +6,8 @@
         }
 
     </style>
-    <section>
+    <img src="{{ asset('frontend/img/FAQ.png') }}" alt="" style="width: 100%;">
+    <section class="p-0 p-4">
         <div class="container">
             <div class="text-center">
                 <h2 class="font-weight-bold">Frequently Asked Questions</h2>

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text pl-md-3 pr-md-5 pt-md-5 pt-sm-2 mt-lg-2 mt-sm-2 pb-5">
-                    <h1 class="text-light display-4 text-lg-left text-md-center pb-md-0 pb-sm-3" id="typed-text"
+                    <h1 class="text-light display-4 text-lg-left text-md-center pb-md-0 pb-sm-3 pt-3" id="typed-text"
                         data-aos="zoom-out-right" data-aos-duration="1000">
                         A
                         New
@@ -20,22 +20,22 @@
                             Loan &
                             Unsecured loan.</b>
                     </h4>
-                    <br>
-                    <div class="pt-md-5 pt-sm-5" data-aos="zoom-in" data-aos-duration="3000">
-                        @if (session()->has('enquierySubmited'))
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col col-md-12">
-                                        @if (session()->has('enquierySubmited'))
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <h4 class="alert-heading">Thank you for applying with us.</h4>
-                                            <p><b>Your Loan Assistant from Loanstories.com shall contact you shortly</p></p>
-                                        </div>
-                                    @endif
+                    @if (session()->has('enquierySubmited'))
+                        <div class="row">
+                            <div class="col col-md-12">
+                                @if (session()->has('enquierySubmited'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <h4 class="alert-heading">Thank you for applying with us.</h4>
+                                        <p><b>You Loan Assistant from Loanstories.com shall contact you shortly</b></p>
+                                        </p>
+
                                     </div>
-                                </div>
+                                @endif
                             </div>
-                        @endif
+                        </div>
+                    @endif
+
+                    <div class="pt-md-5 pt-sm-5" data-aos="zoom-in" data-aos-duration="3000">
                         @if (!session('customer'))
                             <a href="{{ route('signup.index') }}"
                                 class="col-md-6 col-sm-6 btn btn-primary text-dark btn-light indbtn1"><strong>Become A
@@ -55,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 pull-right pr-0" data-aos="fade-down-left" data-aos-duration="1500">
+                <div class="col-md-6 pr-0" data-aos="fade-down-left" data-aos-duration="1500">
                     <video class="embed-responsive h-75" loop="true" autoplay="autoplay" muted>
                         <source src="{{ asset('frontend/img/tab.mp4') }}" type="video/mp4">
                     </video>
@@ -210,7 +210,7 @@
                     </h3>
                 </div>
                 <div class="col-md-12 pt-5">
-                    <h4><a href="{{route('user.About')}}" class="btn btn-dark btn-shadow" data-aos="zoom-in-down"
+                    <h4><a href="{{ route('user.About') }}" class="btn btn-dark btn-shadow" data-aos="zoom-in-down"
                             data-aos-duration="1500"><strong>READ MORE</strong></a></h4>
                 </div>
             </div>
@@ -261,13 +261,14 @@
                         @csrf
                         <div class="form-group">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" name="refer_to_cus_name"
-                                placeholder="Enter Your Name" oninput="this.value = this.value.replace(/[^a-z]/, '')">
+                            <input type="text" class="form-control" name="refer_to_cus_name" placeholder="Enter Your Name"
+                                oninput="this.value = this.value.replace(/[^a-z]/, '')">
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
                             <input type="text" class="form-control" name="refer_to_cus_phonenumber" maxlength="10"
-                                placeholder="Enter Your Number" required oninput="this.value = this.value.replace(/[^0-9]/, '')">
+                                placeholder="Enter Your Number" required
+                                oninput="this.value = this.value.replace(/[^0-9]/, '')">
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
@@ -298,9 +299,11 @@
     <section style="background-color: #fff4d286;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-12 pt-5 pl-lg-5 text-center pt-5" data-aos="fade-down" data-aos-duration="1500">
-                    <h4 class="" data-aos=" fade-down" data-aos-duration="1000">Sharing is Good, It's easy too. <i
-                            class="em em-smiley" aria-role="presentation" aria-label="SMILING FACE WITH OPEN MOUTH"></i>
+                <div class="col-md-6 col-sm-12 pt-5 pl-lg-5 text-center pt-5" data-aos="fade-down"
+                    data-aos-duration="1500">
+                    <h4 class="" data-aos=" fade-down" data-aos-duration="1000">Sharing is Good, It's easy
+                        too. <i class="em em-smiley" aria-role="presentation"
+                            aria-label="SMILING FACE WITH OPEN MOUTH"></i>
                     </h4>
 
                     <h4 class="text-capitalize pt-3">Let your contacts know about <strong>Loanstories.com</strong> &
@@ -319,8 +322,8 @@
                             !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                     </h3>
                     @if (!session('customer'))
-                        <h5 class="pt-5 pb-lg-3"><a
-                            href="{{ route('signup.index') }}"  class="btn btn-warning mt-1"><strong>Share
+                        <h5 class="pt-5 pb-lg-3"><a href="{{ route('signup.index') }}"
+                                class="btn btn-warning mt-1"><strong>Share
                                     Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
                         </h5>
                     @else
@@ -348,39 +351,39 @@
     </section>
 @endsection
 @section('js')
-@if (session()->has('directReferalSubmited'))
- <script>
-      window.location.hash ="directRefsection";
-      $(document).ready(function () {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
-                $(this).remove();
+    @if (session()->has('directReferalSubmited'))
+        <script>
+            window.location.hash = "directRefsection";
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                        $(this).remove();
+                    });
+                }, 5000);
             });
-        }, 5000);
-    });
- </script>
- @endif
- @if(session()->has('customerExist'))
- <script>
-      window.location.hash ="directRefsection";
-      $(document).ready(function () {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
-                $(this).remove();
+        </script>
+    @endif
+    @if (session()->has('customerExist'))
+        <script>
+            window.location.hash = "directRefsection";
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                        $(this).remove();
+                    });
+                }, 5000);
             });
-        }, 5000);
-    });
- </script>
- @endif
- @if(session()->has('enquierySubmited'))
- <script>
-      $(document).ready(function () {
-        window.setTimeout(function() {
-            $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
-                $(this).remove();
+        </script>
+    @endif
+    @if (session()->has('enquierySubmited'))
+        <script>
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                        $(this).remove();
+                    });
+                }, 5000);
             });
-        }, 5000);
-    });
- </script>
- @endif
+        </script>
+    @endif
 @endsection
