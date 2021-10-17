@@ -38,8 +38,10 @@
                                 class="btn btn-success btn-sm"><strong>APPLY</strong></a>
                             <a href="{{ route('home') }}"
                                 class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
-                            <a href="{{ route('quickEnquieryForm.store', session('customer')->id) }}"
-                                class="btn btn-darkblue btn-sm"><strong>SHARE</strong></a>
+                                <a  data-toggle="modal" data-target="#shareNow"
+                                class="btn btn-secondary btn-sm">
+                                <strong>SHARE</strong>
+                            </a>
                         @endif
 
                     </div>
