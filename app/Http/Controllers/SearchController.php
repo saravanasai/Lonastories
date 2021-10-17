@@ -13,7 +13,6 @@ class SearchController extends Controller
     {
         $company = CompanyList::select("company_name")
         ->where("company_name","LIKE","%".$request->keyword."%")
-        ->limit(100)
         ->get();
         $data=[];
        foreach($company as $comp)
