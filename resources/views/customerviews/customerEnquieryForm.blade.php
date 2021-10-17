@@ -210,8 +210,8 @@
                                 <div class="form-group">
 
                                     <select class="form-control select" name="loan_expected">
-                                        <option value="" hidden>Please specify</option>
-                                        <option selected value="Immediate">Immediate</option>
+                                        <option value="" selected hidden>Please specify</option>
+                                        <option  value="Immediate">Immediate</option>
                                         <option value="Within 1 Month">Within 1 Month</option>
                                         <option value="2-3 Months">2-3 Months</option>
                                         <option value="After 3 Months">After 3 Months</option>
@@ -224,8 +224,8 @@
                                     <h4 class="text-secondary font-weight-bold">My Cibil Score </h4><br>
                                     <div class="form-group">
                                         <select class="form-control select" name="enq_cibil_score" required>
-                                            <option value="" hidden>Please specify</option>
-                                            <option selected value=" > 800">
+                                            <option value="" selected>Please specify</option>
+                                            <option value=" > 800">
                                                 > 800</option>
                                             <option value="750 to 800">750 to 800</option>
                                             <option value="700 to 750">700 to 750</option>

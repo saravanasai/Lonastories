@@ -192,7 +192,7 @@
                         <div class="form-group">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name="refer_to_cus_name" placeholder="Enter Your Name"
-                                oninput="this.value = this.value.replace(/[^a-z]/, '')">
+                                required>
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
@@ -251,25 +251,24 @@
                             Unlimited
                             !! <i class="em em-wink" aria-role="presentation" aria-label="WINKING FACE"></i></strong>
                     </h3>
-                    @if (session('customer'))
-                        <h5 class="pt-5 pb-lg-3"><a data-toggle="modal" data-target="#shareNow"
-                                class="btn btn-warning mt-1"><strong>Share
-                                    Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
-                        </h5>
-                    @else
-                        <h5 class="pt-5 pb-lg-3"><a href="{{ route('signup.index') }}"
-                                class="btn btn-warning mt-1"><strong>Share
-                                    Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
-                        </h5>
-                        <h3><a href="https://www.facebook.com/sharer/sharer.php"  target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
-                            class="fa fa-facebook"></i></a>
-                            {{-- <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
-                                    class="fa fa-instagram"></i></a> --}}
-                                    <a href="whatsapp://send?text={{ url('/') . '/user/signup/' . session('customer')->cus_referal_code . '/referal' }}" target="_blank" title="whatsapp" data-action="share/whatsapp/share" class="p-lg-4"><i
-                                        class="fa fa-whatsapp"></i></a>
-                        </h3>
-                    @endif
-
+                    @if (!session('customer'))
+                    <h5 class="pt-5 pb-lg-3"><a href="{{ route('signup.index') }}"
+                            class="btn btn-warning mt-1"><strong>Share
+                                Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
+                    </h5>
+                @else
+                    <h5 class="pt-5 pb-lg-3"><a data-toggle="modal" data-target="#shareNow"
+                            class="btn btn-warning mt-1"><strong>Share
+                                Now&nbsp;&nbsp;<i class="bi bi-share"></i></strong></a>
+                    </h5>
+                    <h3><a href="https://www.facebook.com/sharer/sharer.php"  target="_blank" title="Facebook" class="p-lg-4 fb-share"><i
+                        class="fa fa-facebook"></i></a>
+                {{-- <a href="#" target="_blank" title="instagram" class="p-lg-4"><i
+                        class="fa fa-instagram"></i></a> --}}
+                <a href="whatsapp://send?text={{ url('/') . '/user/signup/' . session('customer')->cus_referal_code . '/referal' }}" target="_blank" title="whatsapp" data-action="share/whatsapp/share" class="p-lg-4"><i
+                        class="fa fa-whatsapp"></i></a>
+            </h3>
+                @endif
                     <br>
                 </div>
                 <div class="col-md-6 col-sm-12 pl-5 pt-5" data-aos="fade-down-left" data-aos-duration="1500">

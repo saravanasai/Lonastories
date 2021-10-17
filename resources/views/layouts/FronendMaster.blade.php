@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LOANSTORIES.COM</title>
-    <meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
-    <meta property="og:description" content="Customized Loan Offers with Super Reward Points every month">
-    <meta property="og:description"
-        content="Get Access to One View and other loan calculator for free and Meet your Loan Assistant online as i did">
-    <meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
-
+    <meta property="og:title"  content="Loanstories.com - A New Way Of Financial Planning " />
+    <meta property="og:description"  content="Get all your loan customized, Meet Loan Assistant online & get Super Reward Points every month" />
+    <meta property="og:image"  content="{{ asset('frontend/img/logo.png') }}"  />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -260,10 +256,21 @@
                 copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
                 /* Copy the text inside the text field */
-                navigator.clipboard.writeText(copyText.value);
+                if (typeof (navigator.clipboard) == 'undefined')
+                {
 
-                /* Alert the copied text */
-                document.getElementById('copied').innerText = "Copied";
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+
+                    /* Alert the copied text */
+                    document.getElementById('copied').innerText = "Copied";
+                }
+                else
+                {
+                    navigator.clipboard.writeText(copyText.value);
+                }
+
+
 
                 // alert("Copied the text: " + copyText.value);
             }

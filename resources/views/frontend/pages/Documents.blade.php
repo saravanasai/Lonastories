@@ -650,17 +650,19 @@
         <div class="container pt-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <ul style="margin-left: 33.3%">
-                        <li>KYC documents for Individual & Company / Firm</li>
-                        <li>Bank statement of the previous 1 Year</li>
-                        <li>Latest ITR along with computation of income, Balance Sheet and Profit & Loss account for the
-                            previous 2 years, after being CA Certified/Audited.</li>
-                        <li>Proof of continuation (ITR/Trade license/Establishment/Sales Tax Certificate).</li>
-                        <li>Other Mandatory Documents [Sole Prop. Declaration Or Certified Copy of Partnership Deed,
-                            Certified true copy of Memorandum & Articles of Association (certified by Director) & Board
-                            resolution (Original).</li>
-                        <li>Sanction Letters / Repayment schedules & SOA of all existing loans.</li>
-                    </ul>
+                    <div class="d-flex justify-content-center"></div>
+                        <ul>
+                            <li>KYC documents for Individual & Company / Firm</li>
+                            <li>Bank statement of the previous 1 Year</li>
+                            <li>Latest ITR along with computation of income, Balance Sheet and Profit & Loss account for the
+                                previous 2 years, after being CA Certified/Audited.</li>
+                            <li>Proof of continuation (ITR/Trade license/Establishment/Sales Tax Certificate).</li>
+                            <li>Other Mandatory Documents [Sole Prop. Declaration Or Certified Copy of Partnership Deed,
+                                Certified true copy of Memorandum & Articles of Association (certified by Director) & Board
+                                resolution (Original).</li>
+                            <li>Sanction Letters / Repayment schedules & SOA of all existing loans.</li>
+                        </ul>
+                </div>
                 </div>
             </div>
         </div>
@@ -672,14 +674,16 @@
         <div class="container pt-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <ul style="margin-left: 33.3%">
-                        <li>KYC documents of Student & Parent</li>
-                        <li>Latest Mark sheets / qualification certificate</li>
-                        <li>Course Admission letter from the respective College / Institute</li>
-                        <li>Income documents of Parent (Co-Applicant)</li>
-                        <li>Bank Statement of last 6 months of Parent (Co-Applicant)</li>
-                        <li>For Unsecured Loans, A complete set of Property documents </li>
-                    </ul>
+                    <div class="d-flex justify-content-center">
+                        <ul>
+                            <li>KYC documents of Student & Parent</li>
+                            <li>Latest Mark sheets / qualification certificate</li>
+                            <li>Course Admission letter from the respective College / Institute</li>
+                            <li>Income documents of Parent (Co-Applicant)</li>
+                            <li>Bank Statement of last 6 months of Parent (Co-Applicant)</li>
+                            <li>For Unsecured Loans, A complete set of Property documents </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

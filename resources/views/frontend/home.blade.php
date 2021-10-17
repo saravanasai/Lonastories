@@ -26,7 +26,7 @@
                                 @if (session()->has('enquierySubmited'))
                                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <h4 class="alert-heading">Thank you for applying with us.</h4>
-                                        <p><b>You Loan Assistant from Loanstories.com shall contact you shortly</b></p>
+                                        <p><b>Your Loan Assistant from Loanstories.com shall contact you shortly</b></p>
                                         </p>
 
                                     </div>
@@ -262,7 +262,7 @@
                         <div class="form-group">
                             <label class="text-dark font-weight-bold" for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name="refer_to_cus_name" placeholder="Enter Your Name"
-                                oninput="this.value = this.value.replace(/[^a-z]/, '')">
+                               required>
                         </div>
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Mobile Number</label>
