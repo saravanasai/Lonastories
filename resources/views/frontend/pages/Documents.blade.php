@@ -41,124 +41,109 @@
     <div class="bg-light pb-lg-5">
         <h2 class="text-center bg-black p-lg-3 text-light">PERSONAL LOAN</h2>
         <div class="container">
-            <h3 class="text-center pt-lg-4">Normal</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Normal</h3>
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane active" id="a" role="tabpanel">
-                                <ul class="" style="margin-left: 33.3%">
-                                    <li>Passport Size Photo</li>
-                                    <li>Pan Card</li>
-                                    <li>Aadhaar Card</li>
-                                    <li>Current Residence Address Proof</li>
-                                    <li>Latest 3 Payslips</li>
-                                    <li>Latest 6 months Bank Statement</li>
-                                </ul>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="">
+                                        <li>Passport Size Photo</li>
+                                        <li>Pan Card</li>
+                                        <li>Aadhaar Card</li>
+                                        <li>Current Residence Address Proof</li>
+                                        <li>Latest 3 Payslips</li>
+                                        <li>Latest 6 months Bank Statement</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
-                        at the time of Loan Disbursement. Further documents may be requested
-                        during the process basis the credit, legal & technical reports</p>
-                </div>
             </div>
-            <hr>
-
-            <h3 class="text-center">Balance Transfer</h3>
+            <br>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Balance Transfer</h3>
                 <div class="card">
                     <div class="card-body" Multiple Loan Consolidation>
                         <div class="tab-content">
                             <div class="tab-pane active" id="aa" role="tabpanel">
-                                <ul class="" class="" style="margin-left: 33.3%">
-                                    <li>Passport Size Photo</li>
-                                    <li>Pan Card</li>
-                                    <li>Aadhaar Card</li>
-                                    <li>Current Residence Address Proof</li>
-                                    <li>Latest 3 Payslips</li>
-                                    <li>Latest 6 months Bank Statement</li>
-                                    <li>Repayment Schedule of all loan / loans to be transferred</li>
-                                </ul>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="">
+                                        <li>Passport Size Photo</li>
+                                        <li>Pan Card</li>
+                                        <li>Aadhaar Card</li>
+                                        <li>Current Residence Address Proof</li>
+                                        <li>Latest 3 Payslips</li>
+                                        <li>Latest 6 months Bank Statement</li>
+                                        <li>Repayment Schedule of all loan /<br>loans to be transferred</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
-                        at the time of Loan Disbursement. Further documents may be requested
-                        during the process basis the credit, legal & technical reports</p>
-                </div>
             </div>
-            <hr>
-
-            <h3 class="text-center">Credit Card Transfer</h3>
+            <br>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Credit Card Transfer</h3>
                 <div class="card">
                     <div class="card-body" Multiple Loan Consolidation>
                         <div class="tab-content">
                             <div class="tab-pane active" id="aa" role="tabpanel">
-                                <ul class="" class="" style="margin-left: 33.3%">
-                                    <li>Passport Size Photo</li>
-                                    <li>Pan Card</li>
-                                    <li>Aadhaar Card</li>
-                                    <li>Current Residence Address Proof</li>
-                                    <li>Latest 3 Payslips</li>
-                                    <li>Latest 6 months Bank Statement</li>
-                                    <li>Latest Credit Card Statements of all cards to be transferred</li>
-                                    <li>Repayment Schedule of all loan / loans to be transferred</li>
-                                </ul>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="">
+                                        <li>Passport Size Photo</li>
+                                        <li>Pan Card</li>
+                                        <li>Aadhaar Card</li>
+                                        <li>Current Residence Address Proof</li>
+                                        <li>Latest 3 Payslips</li>
+                                        <li>Latest 6 months Bank Statement</li>
+                                        <li>Latest Credit Card Statements of <br> all cards to be transferred</li>
+                                        <li>Repayment Schedule of all loan /<br>loans to be transferred</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
-                        at the time of Loan Disbursement. Further documents may be requested
-                        during the process basis the credit, legal & technical reports</p>
-                </div>
             </div>
-            <hr>
-
-            <h3 class="text-center">Multiple Loan Consolidation</h3>
+            <br>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Multiple Loan Consolidation</h3>
                 <div class="card">
                     <div class="card-body" Multiple Loan Consolidation>
                         <div class="tab-content">
                             <div class="tab-pane active" id="aa" role="tabpanel">
-                                <ul class="" class="" style="margin-left: 33.3%">
-                                    <li>Passport Size Photo</li>
-                                    <li>Pan Card</li>
-                                    <li>Aadhaar Card</li>
-                                    <li>Current Residence Address Proof</li>
-                                    <li>Latest 3 Payslips</li>
-                                    <li>Latest 6 months Bank Statement</li>
-                                    <li>Latest Credit Card Statements of all cards to be transferred</li>
-                                </ul>
+                                <div class="d-flex justify-content-center">
+                                    <ul class="">
+                                        <li>Passport Size Photo</li>
+                                        <li>Pan Card</li>
+                                        <li>Aadhaar Card</li>
+                                        <li>Current Residence Address Proof</li>
+                                        <li>Latest 3 Payslips</li>
+                                        <li>Latest 6 months Bank Statement</li>
+                                        <li>Latest Credit Card Statements of <br>all cards to be transferred</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
-                        at the time of Loan Disbursement. Further documents may be requested
-                        during the process basis the credit, legal & technical reports</p>
                 </div>
             </div>
         </div>
     </div>
-
+    <br>
     {{-- ==================HOME LOAN=========================== --}}
     <div class="pb-lg-5">
         <h2 class="text-center bg-black p-lg-3 text-light">HOME LOAN</h2>
         <div class="container">
-            <h3 class="text-center">Home Loan - Balance Transfer (Salaried)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Home Loan - Balance Transfer (Salaried)</h3>
                 <div class="card">
                     <div class="card-body">
-                        <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
+                        <ul class="nav nav-tabs text-center col-sm-6 mb-2" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#aa" role="tab"
                                     aria-controls="home"><b>KYC
@@ -180,7 +165,6 @@
                                         DOCUMENTS</b></a>
                             </li>
                         </ul>
-
                         <div class="tab-content">
                             <div class="tab-pane active" id="aa" role="tabpanel">
                                 <ul class="">
@@ -217,16 +201,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
+                <div class="pt-3 text-justify">
                     <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
                         at the time of Loan Disbursement. Further documents may be requested
                         during the process basis the credit, legal & technical reports</p>
                 </div>
+                <hr>
             </div>
-            <hr>
 
-            <h3 class="text-center pt-lg-4">Home Loan - Purchase (Salaried)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Home Loan - Purchase (Salaried)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -264,7 +248,7 @@
                                 </ul>
                             </div>
                             <div class="tab-pane" id="c3" role="tabpanel">
-                                <ul class="">
+                                <ul class="text-truncate">
                                     <li>Agreement for Sale / Agreement for Construction</li>
                                     <li>Sale Deed & Title deed if its a Resale property</li>
                                     <li>Copy of Allotment & Cost Break Up Letter</li>
@@ -278,18 +262,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submittedat the time
-                        of Loan
-                        Disbursement. Further documents may be requestedduring the process basis the credit,
-                        legal &
-                        technical reports</p>
-                </div>
             </div>
-            <hr>
 
-            <h3 class="text-center pt-lg-4">Home Loan - Balance Transfer (Self-Employed)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Home Loan - Balance Transfer (Self-Employed)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -334,8 +310,6 @@
                             <div class="tab-pane" id="c" role="tabpanel">
                                 <ul class="">
                                     <li>Sanction Letter</li>
-                                    <li>Sanction Letter</li>
-                                    <li>Sanction Letter</li>
                                     <li>List Of Documents Letter</li>
                                 </ul>
                             </div>
@@ -351,18 +325,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
+                <div class="pt-3 text-justify">
                     <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
                         at the time of Loan Disbursement. Further documents may be requested
                         during the process basis the credit, legal & technical reports</p>
                 </div>
+                <hr>
             </div>
 
-            <hr>
-
-
-            <h3 class="text-center pt-lg-4">Home Loan - Purchase (Self-Emp)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Home Loan - Purchase (Self-Emp)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -400,7 +372,7 @@
                                 </ul>
                             </div>
                             <div class="tab-pane" id="c2" role="tabpanel">
-                                <ul class="">
+                                <ul class="text-truncate">
                                     <li>Agreement for Sale / Agreement for Construction</li>
                                     <li>Sale Deed / Title Deed</li>
                                     <li>Margin Money paid receipt if any</li>
@@ -413,24 +385,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submittedat the time
-                        of Loan
-                        Disbursement. Further documents may be requestedduring the process basis the credit,
-                        legal &
-                        technical reports</p>
-                </div>
             </div>
-
         </div>
     </div>
-
+    <br>
     {{-- ============================MORTAGES================================ --}}
     <div class="pb-lg-5">
         <h2 class="text-center bg-black text-light p-lg-3">MORTAGES</h2>
         <div class="container">
-            <h3 class="text-center">Mortgage Loan - Balance Transfer (Salaried)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Mortgage Loan - Balance Transfer (Salaried)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -492,18 +456,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted at the time
-                        of Loan
-                        Disbursement. Further documents may be requestedduring the process basis the credit,
-                        legal &
-                        technical reports</p>
+                <div class="pt-3 text-justify">
+                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
+                        at the time of Loan Disbursement. Further documents may be requested
+                        during the process basis the credit, legal & technical reports</p>
                 </div>
+                <hr>
             </div>
-            <hr>
 
-            <h3 class="text-center pt-lg-4">Mortgage Loan - New Loan (Salaried)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Mortgage Loan - New Loan (Salaried)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -554,18 +516,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submittedat the time
-                        of Loan
-                        Disbursement. Further documents may be requestedduring the process basis the credit,
-                        legal &
-                        technical reports</p>
-                </div>
             </div>
-            <hr>
 
-            <h3 class="text-center pt-lg-4">Mortgage Loan - New Loan (Self-Emp)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center pt-lg-4">Mortgage Loan - New Loan (Self-Emp)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -603,7 +557,7 @@
                                 </ul>
                             </div>
                             <div class="tab-pane" id="c1" role="tabpanel">
-                                <ul class="">
+                                <ul class="text-truncate">
                                     <li>Agreement for Sale / Agreement for Construction</li>
                                     <li>Sale Deed / Title Deed</li>
                                     <li>Margin Money paid receipt if any</li>
@@ -616,16 +570,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
-                        at the time of Loan Disbursement. Further documents may be requested
-                        during the process basis the credit, legal & technical reports</p>
-                </div>
             </div>
-            <hr>
 
-            <h3 class="text-center">Mortgage Loan - Balance Transfer (Self-Emp)</h3>
             <div class="container pt-lg-4">
+                <h3 class="text-center">Mortgage Loan - Balance Transfer (Self-Emp)</h3>
                 <div class="card">
                     <div class="card-body">
                         <ul class="nav nav-tabs text-center col-sm-6" id="myTab" role="tablist">
@@ -687,19 +635,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="pt-3">
-                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted at the time
-                        of Loan
-                        Disbursement. Further documents may be requestedduring the process basis the credit,
-                        legal &
-                        technical reports</p>
+                <div class="pt-3 text-justify">
+                    <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted
+                        at the time of Loan Disbursement. Further documents may be requested
+                        during the process basis the credit, legal & technical reports</p>
                 </div>
             </div>
         </div>
     </div>
 
-
-
+    <br>
     <div class="pb-lg-5">
         <h2 class="text-center bg-black text-light p-lg-3">BUSINESS LOAN</h2>
         <div class="container pt-lg-4">
@@ -718,15 +663,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="pt-3">
-                <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted at the time
-                    of Loan
-                    Disbursement. Further documents may be requestedduring the process basis the credit,
-                    legal &
-                    technical reports</p>
-            </div>
         </div>
     </div>
+    <br>
 
     <div class="pb-lg-5">
         <h2 class="text-center bg-black text-light p-lg-3">EDUCATION LOAN</h2>
@@ -743,13 +682,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="pt-3">
-                <p><b>Note :</b> Foreclosure Letter & List Of Documents Letter can be submitted at the time
-                    of Loan
-                    Disbursement. Further documents may be requestedduring the process basis the credit,
-                    legal &
-                    technical reports</p>
-            </div>
         </div>
     </div>
+    <br>
 @endsection

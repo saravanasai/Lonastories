@@ -52,7 +52,7 @@
                             <p><a href="{{ route('user.FAQ') }}">FAQ</a></p>
                         </li>
                         <li>
-                            <p><a href="https://www.facebook.com/loanstories2021" target="_blank">Connect With Facebook</a></p>
+                            <p><a href="https://www.facebook.com/loanstories2021" target="_blank">Follow Us On Facebook</a></p>
                         </li>
                         <li>
                             <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>

@@ -186,7 +186,7 @@
                         <div class="form-group pt-3">
                             <label class="text-dark font-weight-bold" for="exampleInputPassword1">Relationship</label>
                             <select name="refer_to_relationship" id="" class="form-control">
-                                <option value="" hidden>Relation</option>
+                                <option value="" hidden>Relationship</option>
                                 <option value="Friend">Friend</option>
                                 <option value="Relative">Relative</option>
                                 <option value="Colleague">Colleague </option>

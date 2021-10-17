@@ -16,7 +16,7 @@
                         Personal Loans
                     </p>
                     <h6 class="pt-3 pb-4 text-center" data-aos="zoom-out-right" data-aos-duration="1000">
-                        <b>Loan Amount up to 50 Lakhs | ROI starting from 9.9% | Repayment up to 72 months</b>
+                        <b>Loan Amount up to 50 Lakhs | ROI starting from 10.25% | Repayment up to 84 months</b>
                     </h6>
                     @if (!session('customer'))
                         <a href="{{ route('signup.index') }}" class="btn btn-info" data-aos="fade-up"
@@ -48,7 +48,7 @@
                         requirement.
                     </p>
                     <h6 class="pt-3 pb-3 text-center" data-aos="zoom-out-left" data-aos-duration="1000">
-                        <b>Quick Sanction | ROI from 6.65% | Repayment up to 30 Years.</b>
+                        <b>Quick Sanction | ROI from 6.5% | Repayment up to 30 Years.</b>
                     </h6>
                     @if (!session('customer'))
                         <a href="{{ route('signup.index') }}" class="btn btn-info" data-aos="fade-up"
