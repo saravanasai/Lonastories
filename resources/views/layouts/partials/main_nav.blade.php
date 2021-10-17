@@ -11,7 +11,7 @@
                 class="navbar-toggler m-sm-auto"><i class="bi bi-list text-light"></i>
             </button>
             <div id="navbarSupportedContent" class="collapse navbar-collapse ml-lg-5 pl-lg-5 text-nowrap">
-                <ul class="navbar-nav align-items-sm-end align-items-md-end text-center">
+                <ul class="navbar-nav align-items-xs-start align-items-sm-start align-items-md-end">
                     <li class="nav-item ">
                         <a href="{{route('user.About')}}" class="text-gray nav-link link-scroll"><strong>ABOUT
                                 US</strong></a>
@@ -37,7 +37,7 @@
                                     Loan</strong></a>
                         </div>
                     </li>
-                    <li class="nav-item text-center ml-lg-4">
+                    <li class="nav-item  ml-lg-4">
                         @if(!session('customer'))
                         <a href="{{route('userLogin')}}" class="btn btn-light text-dark pull-right mysts"><strong>
                                 LOGIN</strong></a>
@@ -47,10 +47,10 @@
                         @endif
                     </li>
                     @if(session('customer'))
-                    <li class="nav-item text-center ml-lg-4">
+                    <li class="nav-item  ml-lg-4">
                         <form action="{{route('userlogout')}}" method="post">
                         @csrf
-                        <button type="submit" class="btn btn-light text-dark pull-right"><strong>
+                        <button type="submit" class="btn btn-light text-dark"><strong>
                                 Logout</strong></button>
                         </form>
                     </li>

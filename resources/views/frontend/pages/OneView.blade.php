@@ -33,7 +33,7 @@
                                                     the Bank
                                                 </label>
                                                 <input class="form-control" id="bnkNme" name="bank_name" type="text"
-                                                    required oninput="this.value = this.value.replace(/[^A-Za-z]/, '')">
+                                                    required >
                                                 <small class="bnkNme text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                                     Loan
                                                 </label>
                                                 <input class="form-control" id="loanTyp" type="text" name="type_of_loan"
-                                                    required oninput="this.value = this.value.replace(/[^A-Za-z]/, '')">
+                                                    required >
                                                 <small class="loanTyp text-danger" hidden>Required*</small>
                                             </div>
                                         </div>

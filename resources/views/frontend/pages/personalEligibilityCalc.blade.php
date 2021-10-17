@@ -88,19 +88,30 @@
                                                 placeholder="e.g.,100000" required
                                                 oninput="this.value = this.value.replace(/[^0-9]/, '')" />
                                         </div>
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <div class="float-right">
+                                                    <button type="button" class="btn btn-success"
+                                                    onclick="eligibleCalc()"><b>Check</b></button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-md-4 card ml-3 has-shadow">
+                                <div class="col-md-4 card md-ml-3 has-shadow">
                                     <div class="form-group text-center pt-md-5">
                                         <div class="form-group text-center pt-md-5">
                                             <h3 class="text-secondary"><label for="">Personal Loan
                                                     Eligibility</label></h3>
                                             <h3 class=""><span id="result">₹ 0.00</span></h3>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-xs-12 col-sm-12 mt-2 xs-mt-2">
+                                                <a href="{{route('quickEnquieryForm.index')}}" class="btn btn-darkblue"
+                                            ><b>Apply</b></a>
+                                            </div>
+                                        </div>
 
-                                        <button type="button" class="btn btn-success"
-                                            onclick="eligibleCalc()"><b>Check</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +203,7 @@
                             </div>
                             <div class="text-center"><button type="button" class="btn btn-darkblue"
                                     onclick="calc()"><b>CALCULATE</b></button>
-                                &nbsp;&nbsp;<button type="button" class="btn btn-success"><b>APPLY</b></button>
+                                &nbsp;&nbsp;<a href="{{route('quickEnquieryForm.index')}}" class="btn btn-success"><b>APPLY</b></a>
                             </div>
                         </div>
                     </div>
