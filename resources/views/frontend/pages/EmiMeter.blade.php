@@ -182,7 +182,7 @@
             // Home Loan Eligiblity
 
             // ========Emi Meter========
-            if (result > 0) {
+            // if (result > 0) {
                 let percent = ((((0.05 * card_outstanding) + obligate) / salary) * 100);
                 let val = isNaN(percent) ? 0 : percent.toFixed(0);
 
@@ -203,7 +203,7 @@
                     "transform": "rotate(0deg)",
                     "transform": "rotate(" + val * 1.8 + "deg)"
                 });
-            }
+            // }
         }
         // ========Emi Meter========
     };

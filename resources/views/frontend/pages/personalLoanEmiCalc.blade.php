@@ -72,7 +72,7 @@
 
     function getValues() {
 
-        $('#calculate').prop('disabled', true);
+        // $('#calculate').prop('disabled', true);
         $('#getPdf').removeAttr('disabled');
         //button click gets values from inputs
         var balance = parseFloat(document.getElementById("principal").value);
@@ -95,7 +95,7 @@
             div.innerHTML += amort(balance, interestRate, terms);
         } else {
             //returns error if inputs are invalid
-            div.innerHTML += "Please Check your inputs and retry - invalid values.";
+            div.innerHTML += "<p class='alert alert-danger font-weight-bold'>Please Check your inputs and retry - invalid values.</p>";
         }
     }
 

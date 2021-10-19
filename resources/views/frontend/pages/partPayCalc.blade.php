@@ -81,9 +81,13 @@
                     </div>
                 </div>
             </div>
+            <br>
+            <p id="error" class="alert alert-danger font-weight-bold d-none" role="alert">Please Check your inputs and retry - invalid values.</p>
         </div>
+
     </section>
     <br>
+
     <!-- ===========Part Payment Table================= -->
     <div class="container border d-none" id="partPayTbl">
         <div class="text-center">
@@ -132,11 +136,12 @@
 <script type="text/javascript">
     // =================Part Payment calculator===============
     function partPayCalc() {
+        // $('#partPayCalc').prop('disabled', true);
+        // $('#amortization_tbl tbody').detach();
+        // $('#savings_tbl tbody').detach('');
 
-        $('#partPayCalc').prop('disabled', true);
-
-        $("#getPdf").removeAttr('disabled');
-        $('#partPayTbl').removeClass('d-none');
+        // $("#getPdf").removeAttr('disabled');
+        // $('#partPayTbl').removeClass('d-none');
 
         let TotLoanAmt = parseInt($('#outstandLoan').val().replace(/,/g, ''));
         let roi = parseInt($('#ongoingRoi').val());
@@ -162,9 +167,14 @@
         });
         // Validaion
 
-
         // Calculation
         if (valid) {
+            $("#error").addClass('d-none');
+            $('#amortization_tbl tbody').detach();
+            $('#savings_tbl tbody').detach('');
+
+            $("#getPdf").removeAttr('disabled');
+            $('#partPayTbl').removeClass('d-none');
 
             // EMI Calculation
             let r = roi / (12 * 100);
@@ -191,7 +201,6 @@
                 interest = ((outstand * (roi / 100)) / 12); // Interest
 
                 principle = Math.round(emi - interest); // Principle
-
 
                 let prePayAmt = (modulus == 0) ? partPrePayAmt : 0;
 
@@ -249,6 +258,9 @@
                 "<td>" + (nofpay * partPrePayAmt) + "</td>" +
                 "</tr>");
             // Savings Table ========================================
+        } else {
+            //returns error if inputs are invalid
+            $("#error").removeClass('d-none');
         }
     };
 
