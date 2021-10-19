@@ -33,7 +33,7 @@
                                                     the Bank
                                                 </label>
                                                 <input class="form-control" id="bnkNme" name="bank_name" type="text"
-                                                    required >
+                                                    required>
                                                 <small class="bnkNme text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                                     Loan
                                                 </label>
                                                 <input class="form-control" id="loanTyp" type="text" name="type_of_loan"
-                                                    required >
+                                                    required>
                                                 <small class="loanTyp text-danger" hidden>Required*</small>
                                             </div>
                                         </div>
@@ -197,9 +197,9 @@
         let bnkNme = $('#loanTyp').val();
         let loanTke = $('#loanTke').val();
 
-        let P = parseInt($('#amnt').val());
-        let rate = parseInt($('#roi').val());
-        let n = parseInt($('#tenure').val());
+        let P = Number($('#amnt').val());
+        let rate = Number($('#roi').val());
+        let n = Number($('#tenure').val());
 
         // let n = tkeMnth + tenure;
 
@@ -207,6 +207,8 @@
         let prate = (P * r * Math.pow((1 + r), n)) / (Math.pow((1 + r), n) - 1);
         let emi = (Math.ceil(prate * 100) / 100).toFixed(0);
 
+
+        console.log(P,rate,n);
 
         if (isNaN(emi)) {
             emi = 'Enter The Valid Amount';
@@ -220,7 +222,6 @@
         $('#emi').val(emi);
     };
     //Add Your Existing Loan Detials============================
-
 </script>
 
 <!--================================= Scripting=================================================== -->
