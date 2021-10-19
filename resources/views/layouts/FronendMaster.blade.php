@@ -102,6 +102,7 @@
                             </li>
                         @endif
                     </ul>
+                    <hr class="hr d-lg-none d-sm-block">
                 </div>
 
                 <div class="col-md-5">
@@ -134,6 +135,7 @@
                                 href="mailto:escalate@loanstories.com" target="_blank">&nbsp;escalate@loanstories.com</a></p>
                         </li>
                     </ul>
+                    <hr class="hr d-lg-none d-sm-block">
                 </div>
 
                 <div class="col-md-4">

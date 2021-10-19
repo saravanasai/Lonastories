@@ -333,6 +333,7 @@ var validNumber = new RegExp(/^\d*\.?\d*$/);
 function validateNumber(elem) {
     if (validNumber.test(elem.value)) {
         lastValid = elem.value;
+        console.log(lastValid);
     } else {
         elem.value = '';
     }
