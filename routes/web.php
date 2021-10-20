@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminControlls\AdminBreakDownController;
 use App\Http\Controllers\AdminControlls\AdminLeadsByCaller_Controller;
 use App\Http\Controllers\AdminControlls\AdminOwnLeadToLeader_Controller;
 use App\Http\Controllers\AdminControlls\AdminSettingController;
+use App\Http\Controllers\AdminControlls\AdminUserProfileController;
 use App\Http\Controllers\AdminControlls\CustomerExistingEmiSheduleController;
 use App\Http\Controllers\AdminControlls\CustomerQuickEnquiery_AssignController;
 use App\Http\Controllers\AdminControlls\DirectReferalAdminController;
@@ -69,9 +70,11 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('/admindashboard/CustomerToday',[AdminController::class,'NewLeadsbycaller'])->name('admin.LeadsbyCaller');
     Route::get('/admindashboard/newLeads',[AdminController::class,'NewLeadsbyown'])->name('admin.NewLeadsbyown');
     Route::resource('/admindasboard/EnquieryAssign',CustomerQuickEnquiery_AssignController::class);
+    Route::resource('master/User/AdminUserProfile',AdminUserProfileController::class);//this views After more info assign
     Route::get('/admindashboard/newLeads/customerReferal',[AdminController::class,'NewLeadsbyCustomerReferal'])->name('admin.NewLeadsbyCustomerReferal');
     Route::get('master/admindashboard/customermaster/all',[CustomerController::class,'MasterCustomerList'])->name('customer.master');
     Route::post('/admindashboard/customermaster/disable',[CustomerController::class,'CustomerDiable'])->name('customer.disable');
+
     //route section for admin settings controller
     Route::get('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'RedeemSettingIndex'])->name('redeemsetting.master');
     Route::post('CrmManagenment/admin/Redemetion/setting',[AdminSettingController::class,'enableRedeem']);
@@ -104,6 +107,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/DirectLeadsAfterAssignMoreinfo',EnquieryManagementDirectLeads_AfterAssign::class);//this views After more info assign
     Route::resource('EnquieryManagement/AssignedToLeaderBreakDown',EnquieryManagementBreakDown::class);//this views After more info assign
     Route::resource('EnquieryManagement/User/ExistingLoans',CustomerExistingEmiSheduleController::class);//this views After more info assign
+
     Route::resource('EnquieryManagement/User/PersonalInfoAdd',PerosnalAddInfoAdminController::class);//this route is for add personal info of user in admin side
     Route::resource('EnquieryManagement/User/PersonalInfoAdmin',PerosnalInfoAdminController::class);//this route is for view and update personal info of user in admin side
     Route::resource('EnquieryManagement/User/ExistingEmiInfoAdmin',ExistingEmiSheduleADminController::class);//this route is for view  ExistingEmiShedule of user in admin side

@@ -34,9 +34,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body  p-0">
-                @include('components.all-customer-table',$customer)
+              @include('components.all-customer-table',$customer)
              {{-- <x-all-customer-table :customer="$customer">
-
              </x-all-customer-table> --}}
             </div>
             <!-- /.card-body -->

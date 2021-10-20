@@ -1,17 +1,29 @@
 @extends('layouts.master')
-  {{-- error section --}}
-    @if(session('error'))
-        <script>
-            alert('NO DOCUMENTS AVAILABLE');
-        </script>
-    @endif
+{{-- error section --}}
+@if (session('error'))
+    <script>
+        alert('NO DOCUMENTS AVAILABLE');
+    </script>
+@endif
+@if (session()->has('customer.master'))
+  <script>
+      Swal.fire(
+  'Good job!',
+  'You Deleted User!',
+  'success'
+)
+  </script>
+@endif
 @section('content')
     <!-- Main content -->
     <div class="content mt-5">
-            <div class="container">
-                @if(session('admin'))
-                <div class="float-right"><p class="breadcrumb-item"><a href="{{route('admindashboard') }}">Back</a></p></div>
-                @endif
+        <div class="container">
+            @if (session('admin'))
+                <div class="float-right">
+                    <p class="breadcrumb-item"><a href="{{ route('admindashboard') }}">Back</a></p>
+                </div>
+            @endif
+            <div class="card-body table-responsive p-0">
                 <table class="table  table-bordered table-hover table-head-fixed text-nowrap  table-striped yajra-datatable">
                     <thead>
                         <tr>
@@ -24,6 +36,7 @@
                             <th>ACTION</th>
                             <th>PR_FORM</th>
                             <th>EX-EMI</th>
+                            <th>PROFILE</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +44,7 @@
                             <tr>
                                 <td>{{ ++$sno }}</td>
                                 {{-- <td>
-                                    @if ($single_user->user_profile_img==null)
+                                    @if ($single_user->user_profile_img == null)
                                     <a href="#"><img alt="User Profile Image" height="10" class="profile-user-img img-fluid img-circle" src="https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_960_720.png">
                                     @else
                                     <a href="{{asset('profileimg/'.$single_user->user_profile_img)}}"><img alt="User Profile Image" height="10" width="10" class="profile-user-img img-fluid img-circle" src="{{asset('profileimg/'.$single_user->user_profile_img)}}">
@@ -43,26 +56,32 @@
                                 <td>{{ $single_user->dob }}</td>
                                 <td>
                                     <div class="btn-group">
-                                    <a href="{{ route('wallteByAdmin.show',$single_user->id)}}" class="btn btn-sm btn-success"
-                                        ><i class="fas fa-wallet px-1"></i>Wallet</a>
-                                        <a href="{{ route('OverAllCusEnquiery.show',$single_user->id)}}" class="btn btn-sm btn-info"
-                                            ><i class="fas fa-book px-1"></i>View</a>
-                                        <a href="{{ route('OverAllCusEnquiery.edit',$single_user->id)}}" class="btn btn-sm btn-warning"
-                                            ><i class="fas fa-file-pdf px-1"></i>Docs</a>
-                                            @if ($single_user->user_profile_img==null)
-                                            <a href="#" class="btn btn-sm btn-danger disabled"><i class="fas fa-history p-1"></i></a>
-                                            @else
-                                            <a href="{{asset('profileimg/'.$single_user->user_profile_img)}}" class="btn btn-sm btn-success"><i class="far fa-id-badge p-1"></i></a>
-                                            @endif
+                                        <a href="{{ route('wallteByAdmin.show', $single_user->id) }}"
+                                            class="btn btn-sm btn-success"><i class="fas fa-wallet px-1"></i>Wallet</a>
+                                        <a href="{{ route('OverAllCusEnquiery.show', $single_user->id) }}"
+                                            class="btn btn-sm btn-info"><i class="fas fa-book px-1"></i>View</a>
+                                        <a href="{{ route('OverAllCusEnquiery.edit', $single_user->id) }}"
+                                            class="btn btn-sm btn-warning"><i class="fas fa-file-pdf px-1"></i>Docs</a>
+                                        @if ($single_user->user_profile_img == null)
+                                            <a href="#" class="btn btn-sm btn-danger disabled"><i
+                                                    class="fas fa-history p-1"></i></a>
+                                        @else
+                                            <a href="{{ asset('profileimg/' . $single_user->user_profile_img) }}"
+                                                class="btn btn-sm btn-success"><i class="far fa-id-badge p-1"></i></a>
+                                        @endif
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('PersonalInfoAdmin.show',$single_user->id)}}" class="btn btn-sm btn-success"
-                                        ><i class="fas fa-align-right px-1"></i>PR-FORM</a>
+                                    <a href="{{ route('PersonalInfoAdmin.show', $single_user->id) }}"
+                                        class="btn btn-sm btn-success"><i class="fas fa-align-right px-1"></i>PR-FORM</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('ExistingLoans.show',$single_user->id)}}" class="btn btn-sm btn-success"
-                                        ><i class="fas fa-history px-1"></i>Exist</a>
+                                    <a href="{{ route('ExistingLoans.show', $single_user->id) }}"
+                                        class="btn btn-sm btn-success"><i class="fas fa-history px-1"></i>Exist</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('AdminUserProfile.show', $single_user->id) }}"
+                                        class="btn btn-sm btn-danger"><i class="fas fa-id-card px-1"></i>PROFILE</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -72,8 +91,9 @@
                     {{-- {{ $new_user->links()}} --}}
                 </div>
             </div>
+        </div>
 
-</div>
+    </div>
 
 
 
@@ -95,11 +115,11 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
         $('.yajra-datatable').DataTable({
             dom: 'Bfrtip',
             buttons: [
-            'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5'
-                ],
-                // pageLength : 8,
-                // lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'List']]
-            } );
+                'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5'
+            ],
+            // pageLength : 8,
+            // lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'List']]
+        });
 
 
         //SECTION FOR HANDLING THE DELETE REQUEST
@@ -228,17 +248,17 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
 
         //section to handle the edit button
         $('body').on('click', '.edit', function(event) {
-               $('.modal').modal('show');
+            $('.modal').modal('show');
 
             event.preventDefault();
 
             var id = $(this).attr('id');
             var url = '{{ route('caller.edit', ':id') }}';
-            url = url.replace(':id',id);
+            url = url.replace(':id', id);
 
             $.ajax({
 
-                url:url,
+                url: url,
                 type: "GET",
                 data: {
                     _token: "{{ csrf_token() }}",
@@ -258,7 +278,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
                 }
 
             });
-         })
+        })
 
         //end section to handle the edit button
 
