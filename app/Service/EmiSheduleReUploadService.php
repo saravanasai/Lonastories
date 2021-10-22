@@ -34,6 +34,12 @@ class EmiSheduleReUploadService{
         }
     }
 
+    public function existingEmiSheduleDelete($request)
+    {
+        $shedule=CustomerEmiShedule::find($request->delete_shedule_id);
+        return  ($shedule->delete())?true:false;
+    }
+
 }
 
 

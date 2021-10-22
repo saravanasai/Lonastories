@@ -113,6 +113,19 @@
     </section>
 
     <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if (session()->has('SheduleDeleted'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <h4 class="alert-heading">Success!</h4>
+                                <p><b>Shedule Deleted</p>
+                                </p>
+                            </div>
+                        @endif
+                </div>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -133,6 +146,7 @@
                                     <th class="">Tenure</th>
                                     <th class=" ">EMI</th>
                                     <th class="">Schedule</th>
+                                    <th class="">Delete</th>
                                 </tr>
                             </thead>
                             <tbody id=" frontend_existing_loan_detail">
@@ -177,6 +191,15 @@
                                                     download="Shedule{{ $emi_shedule->id }}"
                                                     class="btn btn-sm btn-primary">Shedule</a></td>
                                         @endif
+                                        <td>
+                                            <form action="{{route('user.existingEmiSheduleDelete')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="delete_shedule_id" value="{{$emi_shedule->id}}">
+                                                <button type="submit"
+                                                                    class="btn btn-danger">DELETE
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -188,7 +211,7 @@
     </section>
 @endsection
 <!--================================= Scripting=================================================== -->
-
+@section('js')
 <script type="text/javascript">
     //Add Your Existing Loan Detials============================
     function Emi() {
@@ -223,5 +246,19 @@
     };
     //Add Your Existing Loan Detials============================
 </script>
+@if (session()->has('SheduleDeleted'))
+<script>
+    window.location.hash = "directRefsection";
+    $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                $(this).remove();
+            });
+        }, 5000);
+    });
+</script>
+@endif
+@endsection
+
 
 <!--================================= Scripting=================================================== -->

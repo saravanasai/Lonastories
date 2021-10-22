@@ -194,4 +194,12 @@ class CustomerDataStoreController extends Controller
         return  $service->existingEmiSheduleRestoreStore($request);
     }
 
+    public function existingEmiSheduleDelete(Request $request,EmiSheduleReUploadService $service)
+    {
+        if($service->existingEmiSheduleDelete($request))
+        {
+
+            return redirect()->route('user.OneView')->with('SheduleDeleted','deleted Successfully');
+        }
+    }
 }

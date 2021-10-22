@@ -5,7 +5,7 @@
         alert('NO DOCUMENTS AVAILABLE');
     </script>
 @endif
-@if (session()->has('customer.master'))
+@if (session()->has('DeletedSuccesFully'))
   <script>
       Swal.fire(
   'Good job!',
