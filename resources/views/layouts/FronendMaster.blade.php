@@ -1,13 +1,29 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>LOANSTORIES.COM</title>
+   {{-- <meta property="og:title"  content="Loanstories.com - A New Way Of Financial Planning " />
+    <meta property="og:description"  content="Get all your loan customized, Meet Loan Assistant online & get Super Reward Points every month" />
+    <meta property="og:image"  content="{{ asset('frontend/img/logo.png') }}"  /> --}}
+    @if ( Request::url()== url('/user/signup/'.Request::segment(3).'/referal'))
+		<meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+		<meta property="og:description" content="Explore A New Way Of Financial Planning & get cashback up to Rs.10000 every month">
+			<link rel="icon" href="{{ asset('frontend/img/Logo_Latest.png') }}" />
+    @endif
+    @if ( Request::url()== url('/user/signup/'.Request::segment(3).'/referal/2x'))
+		<meta property="og:title" content="Loanstories.com - A New Way Of Financial Planning ">
+		<meta property="og:description" content="Explore A New Way Of Financial Planning & get cashback up to Rs.10000 every month">
+			<link rel="icon" href="{{ asset('frontend/img/Logo_Latest.png') }}" />
+    @else
     <meta property="og:title"  content="Loanstories.com - A New Way Of Financial Planning " />
     <meta property="og:description"  content="Get all your loan customized, Meet Loan Assistant online & get Super Reward Points every month" />
     <meta property="og:image"  content="{{ asset('frontend/img/logo.png') }}"  />
+    @endif
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="{{ asset('frontend/img/logo.png') }}" />
+
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/font-awesome/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/landy-iconfont.css') }}">
@@ -32,8 +48,7 @@
     {{-- header section --}}
     @include('layouts.partials.main_nav')
     @yield('content')
-
-
+    <!-- <div id="footer" data-aos="fade-up" data-aos-duration="3000"></div> -->
     <!-- <footer class="main-footer bg-light pt-5" data-aos="fade-up" data-aos-duration="2000"> -->
     <footer class="main-footer bg-gray pt-lg-5 text-gray">
         <div class="container">
@@ -45,10 +60,7 @@
                 <div class="col-md-3">
                     <ul class="list-unstyled">
                         <li>
-                            <p><a href="{{ route('user.FAQ') }}">FAQ</a></p>
-                        </li>
-                        <li>
-                            <p><a href="https://www.facebook.com/loanstories2021" target="_blank">Follow Us On Facebook</a></p>
+                            <p><a href="#">FAQ</a></p>
                         </li>
                         <li>
                             <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>
@@ -90,10 +102,10 @@
                                     </span>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item"
-                                            href="{{ route('user.personalEligibilityCalc') }}">Personal Loan
+                                            href="{{ route('user.personalEligibilityCalc') }}">Personal
                                             Eligibility
                                             Calculator</a>
-                                        <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home Loan
+                                        <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home
                                             Eligibility
                                             Calculator</a>
 
@@ -102,7 +114,6 @@
                             </li>
                         @endif
                     </ul>
-                    <hr class="hr d-lg-none d-sm-block">
                 </div>
 
                 <div class="col-md-5">
@@ -111,31 +122,26 @@
                             <h5 class="text-gray"><strong>Our Contact Points</strong></h5>
                         </li>
                         <li>
-                            <p>
-                                <i class="bi bi-telephone-outbound-fill"></i><a href="tel:9513961300" target="_blank">&nbsp;&nbsp;+91 - 9513 9613 00</a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
-                                <a href="https://api.whatsapp.com/send?phone=+919513961300" target="_blank"><i class="bi bi-whatsapp"></i>&nbsp;&nbsp;+91 - 9513 9613 00</a></p>
+                            <p><i class="bi bi-telephone-outbound-fill"></i><a href="#">&nbsp;&nbsp;+0431 -
+                                    3366622</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="bi bi-whatsapp"></i><a
+                                    href="#">&nbsp;&nbsp;+91 - 0123456789</a></p>
                         </li>
                         <!-- <li>
                         <p><i class="bi bi-whatsapp"></i><a href="#"></a>&nbsp;&nbsp;+91 - 0123456789</p>
                     </li> -->
                         <li>
-                            <p><span class="text-gray"><strong>For Enquiries : </strong></span><a
-                                    href="mailto:hello@loanstories.com" target="_blank">&nbsp;hello@loanstories.com</a></p>
-                        </li>
-                        <li>
                             <p><span class="text-gray"><strong>For Applications :</strong></span><a
-                                href="mailto:bookmyloans@loanstories.com" target="_blank">&nbsp;bookmyloans@loanstories.com</a></p>
+                                    href="#">&nbsp;bookmyloans@loanstories.com</a></p>
                         </li>
                         <li>
                             <p><span class="text-gray"><strong>For Queries :</strong></span><a
-                                href="mailto:support@loanstories.com" target="_blank">&nbsp;support@loanstories.com</a></p>
+                                    href="#">&nbsp;support@loanstories.com</a></p>
                         </li>
                         <li>
                             <p><span class="text-gray"><strong>For Complaints :</strong></span><a
-                                href="mailto:escalate@loanstories.com" target="_blank">&nbsp;escalate@loanstories.com</a></p>
+                                    href="#">&nbsp;escalate@loanstories.com</a></p>
                         </li>
                     </ul>
-                    <hr class="hr d-lg-none d-sm-block">
                 </div>
 
                 <div class="col-md-4">
@@ -144,14 +150,14 @@
                             <h5 class="text-gray"><strong>Our Locations</strong></h5>
                         </li>
                         <li>
-                            <a href="#"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
+                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
                                 1st
                                 Cross, Indiranagar
                                 Bangalore, Karnataka - 560008.</a>
                         </li>
                         <hr class="hr">
                         <li>
-                            <a href="#"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
+                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
                                 Cross,
                                 Thillai Nagar (East)
                                 Tiruchirappalli, Tamilnadu – 620018.</a>
@@ -164,9 +170,7 @@
                             Madurai, Tamilnadu – 625020.</a>
                     </li> -->
                     </ul>
-
-                    {{-- Footer Social Icons --}}
-                    {{-- <ul class="social-icons list-inline text-center">
+                    <ul class="social-icons list-inline text-center">
                         <li class="list-inline-item">
                             <a href="https://www.facebook.com/loanstories2021" target="_blank" title="Facebook"><i
                                     class="fa fa-facebook"></i></a>
@@ -180,7 +184,7 @@
                         <li class="list-inline-item">
                             <a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
                         </li>
-                    </ul> --}}
+                    </ul>
                 </div>
                 <div class="col-md-12 text-center">
                     <hr class="hr">
@@ -258,21 +262,10 @@
                 copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
                 /* Copy the text inside the text field */
-                if (typeof (navigator.clipboard) == 'undefined')
-                {
+                navigator.clipboard.writeText(copyText.value);
 
-                    var successful = document.execCommand('copy');
-                    var msg = successful ? 'successful' : 'unsuccessful';
-
-                    /* Alert the copied text */
-                    document.getElementById('copied').innerText = "Copied";
-                }
-                else
-                {
-                    navigator.clipboard.writeText(copyText.value);
-                }
-
-
+                /* Alert the copied text */
+                document.getElementById('copied').innerText = "Copied";
 
                 // alert("Copied the text: " + copyText.value);
             }
