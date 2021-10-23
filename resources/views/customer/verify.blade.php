@@ -14,7 +14,7 @@
     <!-- Header -->
     <div class="headerpy-4 py-lg-9 pt-lg-5 mt-md-5">
         <div class="container">
-            <div class="header-body text-center mb-3">
+            <div class="header-body text-center ">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8">
                         <h3 class="text-white">Enter Your OTP here !</h3>
@@ -27,12 +27,13 @@
     <div class="container mt--8 pb-md-3">
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
-                <div class="card border-0 mb-0">
+                <div class="card border-0 mb-0 mt-5">
                     <div class="card-header text-center">
                         {{-- <div class="text-center mt-2 mb-4">Sign In with</div> --}}
                         <a href="{{route('home')}}"><img src="{{asset('frontend/img/logo.png')}}" alt="" class="img-fluid text-center pb-lg-3"
                                 width="15%"></a>
                         <h5><strong>LOANSTORIES.COM</strong></h5>
+
                     </div>
                     <div class="card-body py-lg-4">
                         <form action="{{route('user.checkOtp')}}" method="post">
@@ -43,9 +44,9 @@
                                     <input type="hidden" value="{{$user_info->id}}" name="id">
                                 </div>
                             </div>
-                            {{-- <div class="form-group text-center mb-md-3">
-                                <a href="">Resend OTP</a>
-                            </div> --}}
+                            <div class="form-group text-center mb-md-1">
+                            <strong>Check Your Mail For OTP</strong>
+                            </div>
                             <div class="text-center pb-md-2">
                                 <button type="submit" class="btn btn-darkblue"><strong>Verify</strong></button>
                             </div>
