@@ -119,6 +119,8 @@
     <header>
         <div class="container" id="new_logo">
             <center><img src="{{ public_path('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center>
+            {{-- enable this and comment the tag in up --}}
+            {{-- <center><img src="{{ asset('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center> --}}
         </div>
     </header>
     <hr>
@@ -289,6 +291,8 @@
     <header>
         <div class="container" id="new_logo">
             <center><img src="{{ public_path('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center>
+             {{-- enable this and comment the tag in up --}}
+            {{-- <center><img src="{{ asset('img/Logo_Latest.png') }}" width="95%" height="80"  alt=""></center> --}}
         </div>
     </header>
     <hr>
