@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Cutomer\CustomerEnqieryForm;
+use App\Models\Reviews\Reviews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,4 +51,8 @@ class CustomerSignup extends Model
         return $this->hasMany(FinalBreakDown::class,'fn_of_cus','id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class,'review_of_cus','id');
+    }
 }

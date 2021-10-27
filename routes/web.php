@@ -19,6 +19,7 @@ use App\Http\Controllers\AdminControlls\OfferAcceptOrDenyController;
 use App\Http\Controllers\AdminControlls\PerosnalAddInfoAdminController;
 use App\Http\Controllers\AdminControlls\PerosnalInfoAdminController;
 use App\Http\Controllers\AdminControlls\WalletControllerForAdmin;
+use App\Http\Controllers\AdminReview\ReviewAdminController;
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\CallerController;
 use App\Http\Controllers\CustomerController;
@@ -107,11 +108,18 @@ Route::middleware(['is_admin'])->group(function () {
     Route::resource('EnquieryManagement/DirectLeadsAfterAssignMoreinfo',EnquieryManagementDirectLeads_AfterAssign::class);//this views After more info assign
     Route::resource('EnquieryManagement/AssignedToLeaderBreakDown',EnquieryManagementBreakDown::class);//this views After more info assign
     Route::resource('EnquieryManagement/User/ExistingLoans',CustomerExistingEmiSheduleController::class);//this views After more info assign
-
     Route::resource('EnquieryManagement/User/PersonalInfoAdd',PerosnalAddInfoAdminController::class);//this route is for add personal info of user in admin side
     Route::resource('EnquieryManagement/User/PersonalInfoAdmin',PerosnalInfoAdminController::class);//this route is for view and update personal info of user in admin side
     Route::resource('EnquieryManagement/User/ExistingEmiInfoAdmin',ExistingEmiSheduleADminController::class);//this route is for view  ExistingEmiShedule of user in admin side
     Route::resource('EnquieryManagement/User/ExistingEmiInfoAddAdmin',ExistingEmiSheduleAddAdminController::class);//this route is for Add and update ExistingEmiShedule of user in admin side
+    ///routes for hadling the review managenment by admin
+    Route::get('ReviewManagement/newReviews',[ReviewAdminController::class,'index'])->name('admin.newReview');
+    Route::post('ReviewManagement/newReviews/accept',[ReviewAdminController::class,'AcceptReview'])->name('admin.AcceptReview');
+    Route::post('ReviewManagement/newReviews/deny',[ReviewAdminController::class,'DenyReview'])->name('admin.DenyReview');
+    Route::post('ReviewManagement/newReviews/Reply',[ReviewAdminController::class,'ReplyReview'])->name('admin.ReplyReview');
+    Route::get('ReviewManagement/Reviews/ViewContolls',[ReviewAdminController::class,'ReviewView'])->name('admin.ReviewView');
+    Route::post('ReviewManagement/Reviews/ViewContolls/delete',[ReviewAdminController::class,'deleteReviewView'])->name('admin.deleteReviewView');
+
     //route resouece for adding telecaller
     Route::resource('Usermanagement/caller', CallerController::class);
     //route seperation for genrating reports for admin

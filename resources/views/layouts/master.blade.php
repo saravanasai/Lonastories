@@ -249,6 +249,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </ul>
                         </li>
                         <!--End Third Nav section  -->
+                         <!-- Third Nav section  -->
+                         <li class="nav-item {{ (request()->segment(1)=='ReviewManagement') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ (request()->segment(1)=='ReviewManagement') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-business-time"></i>
+                                <p>
+                                    Review Management
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.newReview')}}" class="nav-link {{ (request()->is('ReviewManagement/newReviews')) ? 'active' : '' }}">
+                                        <i class="fas fa-comment-dots nav-icon"></i>
+                                        <p>New Reviews</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('admin.ReviewView')}}" class="nav-link {{ (request()->is('ReviewManagement/Reviews/ViewContolls')) ? 'active' : '' }}">
+                                        <i class="fas fa-desktop nav-icon"></i>
+                                        <p>Frontend Controlls</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link {{ (request()->is('EnquieryManagement/DirectLeadsAfterAssignMoreinfo')) ? 'active' : '' }}">
+                                        <i class="fas fa-comment-medical nav-icon"></i>
+                                        <p>dummy</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--End Third Nav section  -->
                         <!-- Third part-1 Nav section  -->
                         <li class="nav-item {{ (request()->segment(1)=='wallets') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link {{ (request()->segment(1)=='wallets') ? 'active' : '' }}">
