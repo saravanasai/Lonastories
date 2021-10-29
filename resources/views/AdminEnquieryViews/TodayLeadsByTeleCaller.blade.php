@@ -23,6 +23,7 @@
                         <th>TL NAME</th>
                         <th>VIEW</th>
                         <th>DELETE</th>
+                        {{-- <th>VERIFY</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +52,17 @@
                                 <button type="submit"  class="btn btn-sm btn-danger"><i class="fas fa-trash px-1"></i>Delete</button>
                                 </form>
                             </td>
+                            {{-- <td>
+                                <form action="{{route('TodayCallerLeads.update',$telecaller_lead->cus_Phone_number)}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    @if ( $telecaller_lead->cus_id==0)
+                                <button type="submit"  class="btn btn-sm btn-info"><i class="fas fa-mask px-1"></i>Verify</button>
+                                @else
+                                <button type="button"  class="btn btn-sm btn-info disabled" disabled><i class="fas fa-mask px-1"></i>Verify</button>
+                                @endif
+                                </form>
+                            </td> --}}
                         </tr>
                     @endforeach
                 </tbody>
