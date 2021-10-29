@@ -16,6 +16,10 @@ class CustomerPagesController extends Controller
     {
         return view('frontend.pages.privacy_policy');
     }
+    public function reviews()
+    {
+        return view('frontend.pages.reviews');
+    }
     public function connect()
     {
         return view('frontend.pages.connect');

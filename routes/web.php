@@ -136,6 +136,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('reportsManagement/admin/all/customer/ConvertedEnquieryReports',[AdminReportController::class,'ConvertedEnquieryReports_export'])->name('ConvertedEnquieryReports.export');
     Route::post('reportsManagement/admin/all/customer/NonConvertedEnquieryReports',[AdminReportController::class,'NonConvertedEnquieryReports_export'])->name('NonConvertedEnquieryReports.export');
 });
+
 //route that controllers fro callers
 Route::prefix('telecaller')->middleware(['Authcaller'])->group(function () {
     Route::get('dashboard',[CallerController::class,'callerdashboard'])->name('caller.dashboard');
@@ -174,6 +175,7 @@ Route::post('/user/checkotp',[CustomerController::class,'checkOtp'] )->name('use
 Route::post('/login/checkotp',[UserController::class,'checkuserotp'])->name('checkuserotp');
 Route::post('/login/logout',[UserController::class,'logout'])->name('userlogout');
 Route::get('/user/signup/{id?}/referal/{directref?}',[CustomerController::class,'userSingup'] );
+Route::post('/review',[UserController::class,'review'] )->name('review');
 
 
 Route::prefix('user')->group(function()
@@ -181,6 +183,7 @@ Route::prefix('user')->group(function()
 
     Route::get('login',[UserController::class,'login'])->name('userlogin');
     Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
+    Route::get('reviews',[CustomerPagesController::class,'reviews'])->name('user.reviews');
     Route::get('connect',[CustomerPagesController::class,'connect'])->name('user.connect');
     Route::get('AboutUs',[CustomerPagesController::class,'About'])->name('user.About');
     Route::get('FAQ',[CustomerPagesController::class,'FAQ'])->name('user.FAQ');
@@ -199,9 +202,6 @@ Route::prefix('user')->group(function()
 
 //routes for user after sign up
 Route::prefix('user')->middleware(['user'])->group(function () {
-
-
-
     Route::get('profile',[CustomerPagesController::class,'profile'])->name('user.profile');
     Route::get('OneView',[CustomerPagesController::class,'OneView'])->name('user.OneView');
     Route::get('myWallet',[CustomerPagesController::class,'myWallet'])->name('user.myWallet');
