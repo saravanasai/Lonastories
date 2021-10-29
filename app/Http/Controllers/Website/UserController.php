@@ -82,12 +82,18 @@ class UserController extends Controller
 
      public function review(Request $request){
 
-        $id =  session('customer')->id;
-
         $reviews = new Reviews();
-        $reviews->review_of_cus = $id;
+        $reviews->review_of_cus = session('customer')->id;
+        $reviews->review_for_product = $request->product;
         $reviews->comment = $request->comment;
         $reviews->rating = $request->ratings;
-        $reviews->save();
+        if($reviews->save())
+        {
+            return redirect()->back()->with('review_posted',"ADDED");
+        }
+
+
+
+
      }
 }

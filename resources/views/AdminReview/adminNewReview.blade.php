@@ -41,8 +41,9 @@
                                                     src="{{ asset('profileimg/' . $user_review->reviewOfCustomer->user_profile_img) }}"
                                                     alt="user image">
                                             @endif
-                                            <span class="username">
-                                                <a href="#">{{ $user_review->reviewOfCustomer->name }}</a>
+                                            <span class="username py-2">
+                                                <a >{{ $user_review->reviewOfCustomer->name }}</a>
+                                                <a  class="px-3 text-dark"><strong>TO PRODUCT : </strong>{{ $user_review->to_product->productname  }}</a>
                                                 {{-- <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a> --}}
                                             </span>
                                             <span class="description">Posted On -

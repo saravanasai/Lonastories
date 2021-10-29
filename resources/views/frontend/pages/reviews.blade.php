@@ -89,6 +89,12 @@
 
     </style>
     <div class="container-fluid pt-4 pb-4">
+        @if (session()->has('review_posted'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h4 class="alert-heading">Thank You!</h4>
+                <p><b>Thank you for sharing Your Experience with us.</b></p>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-10 col-sm-12 text-md-left text-center pl-md-5">
                 <span class="display-4">Reviews</span>
@@ -102,31 +108,41 @@
         </div>
         <hr>
         <div class="row">
+
+            @foreach ($reviews as $review )
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header bg-gray">
+                        <span class="float-left mr-3 text-white mt-3"><i class="bi bi-person"></i></span>
                         <span class="font-weight-bold text-light">
-                            Title
+                            {{$review->reviewOfCustomer->name}}
                         </span>
+                        <span class="small text-white px-2"><br>{{$review->created_at->diffForHumans()}}</span>
                     </div>
                     <div class="card-body list-unstyled">
-                        <h6 class="card-title font-weight-bold">Home Loan</h6>
+                        <h6 class="card-title font-weight-bold"> {{$review->to_product->productname}}</h6>
+                        @for ($i=0;$i<$review->rating;$i++)
                         <a href="javascript:void(0)" class="my_rating fa fa-star"></a>
+                        @endfor
                         <div class="" style="height: 150px; overflow-y: scroll;">
-                            <p class="small">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet qui
-                                iusto quia pariatur provident animi aspernatur odio laborum tempora nihil veniam et aliquid
-                                nisi, ex necessitatibus? Qui nisi fugit saepe aut eveniet inventore ut maxime nobis vel
-                                earum
-                                mollitia praesentium, quam ea quo accusantium hic rem ducimus! Possimus, voluptate
-                                exercitationem?</p>
+                            <p class="small">
+                                {{$review->comment}}
+                            </p>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <span class="float-left mr-3"><i class="bi bi-person"></i></span>
-                        <span class="small"><strong>Rupanjali Mishra</strong><br>Posted on: Sep 3, 2021</span>
+                        @if ($review->reply==null)
+                        <span class="small"><strong>Thank You</strong><br></span>
+                        @else
+                        <span class="float-left mr-3 small">Reply</span>
+                        <span class="small"><strong>{{$review->reply->reply_message}}</strong><br>Reply on: {{$review->reply->created_at->diffForHumans()}}</span>
+                        @endif
+
                     </div>
                 </div>
             </div>
+            @endforeach
+
         </div>
     </div>
 
@@ -142,21 +158,22 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="" class="font-weight-bold">Product : </label>
-                            <select class="form-control" name="" id="">
-                                <option></option>
-                                <option></option>
-                                <option></option>
+                            <select class="form-control" name="product" id="" required>
+                                <option value="">Choose The Product</option>
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}">{{ $product->productname }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label font-weight-bold">Comment :</label>
-                            <textarea name="comment" class="form-control" id="message-text"></textarea>
+                            <textarea name="comment" class="form-control" id="message-text" required></textarea>
                             <input type="text" class="form-control" value="" name="ratings" id="ratings" hidden>
                         </div>
                         <label for="message-text" class="col-form-label font-weight-bold">Give us to stars : </label>
                         <div class="star-rating embed-responsive">
                             <div id="stars">
-                                <input type="radio" name="rating" id="rating-5" value="1">
+                                <input type="radio" name="rating" id="rating-5" value="1" required>
                                 <label for="rating-5" class="fa fa-star"></label>
                                 <input type="radio" name="rating" id="rating-4" value="2">
                                 <label for="rating-4" class="fa fa-star"></label>
@@ -216,4 +233,18 @@
         // Model=============================================
     </script>
 
+@endsection
+
+@section('js')
+    @if (session()->has('review_posted'))
+        <script>
+            $(document).ready(function() {
+                window.setTimeout(function() {
+                    $(".alert").fadeTo(1000, 0).slideUp(1000, function() {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+        </script>
+    @endif
 @endsection

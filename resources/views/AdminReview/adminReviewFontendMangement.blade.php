@@ -53,6 +53,8 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col md-12">
+                                                    <h6>{{$user_review->to_product->productname }}</h6>
+                                                    <hr>
                                                     <h6> <i class="far fa-clipboard px-1"></i>FeedBack</h6>
                                                     {{$user_review->comment}}
                                                 </div>

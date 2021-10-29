@@ -4,9 +4,7 @@ namespace App\Http\Controllers\AdminControlls;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClEnquiery;
-use App\Models\Cutomer\PersonalInfoFrom;
 use App\Models\TeleCallerEnquiery;
-use App\Service\VerifyTeleLeadsByAdminService;
 use Illuminate\Http\Request;
 
 class EnquieryManagement_Tl_Leads extends Controller
@@ -81,13 +79,9 @@ class EnquieryManagement_Tl_Leads extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,VerifyTeleLeadsByAdminService $service)
+    public function update(Request $request, $id)
     {
-        //
-        if($service->verify_by_admin($id))
-        {
-            
-        }
+
     }
 
     /**

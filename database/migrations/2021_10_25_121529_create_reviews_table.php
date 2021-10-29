@@ -17,6 +17,8 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->bigInteger('review_of_cus')->unsigned();
             $table->foreign('review_of_cus')->references('id')->on('table_customer');
+            $table->bigInteger('review_for_product')->unsigned();
+            $table->foreign('review_for_product')->references('id')->on('products');
             $table->string('comment');
             $table->integer('rating');
             $table->tinyInteger('aproval_status')->default(0)->comment('0 means waiting for aproval 1 means aproved 2 means not aporoved');

@@ -7,6 +7,8 @@ use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Cutomer\SuperRewardPointsGiven;
 use App\Models\Cutomer\SuperRewardPointsRedeemed;
+use App\Models\Products;
+use App\Models\Reviews\Reviews;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,9 @@ class CustomerPagesController extends Controller
     }
     public function reviews()
     {
-        return view('frontend.pages.reviews');
+        $reviews=Reviews::where('aproval_status',1)->where('delete_status',0)->get();
+        // dd($reviews);
+        return view('frontend.pages.reviews',["products"=>Products::all(),"reviews"=>$reviews]);
     }
     public function connect()
     {

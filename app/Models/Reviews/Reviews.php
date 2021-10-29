@@ -3,6 +3,7 @@
 namespace App\Models\Reviews;
 
 use App\Models\CustomerSignup;
+use App\Models\Products;
 use App\Models\Reviews\Reply;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,10 @@ class Reviews extends Model
     public function reply()
     {
         return $this->hasOne(Reply::class,'reply_to_review','id');
+    }
+
+    public function to_product()
+    {
+        return $this->belongsTo(Products::class,'review_for_product','id');
     }
 }

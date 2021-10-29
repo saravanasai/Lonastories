@@ -271,12 +271,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Frontend Controlls</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{route('DirectLeadsAfterAssignMoreinfo.index')}}" class="nav-link {{ (request()->is('EnquieryManagement/DirectLeadsAfterAssignMoreinfo')) ? 'active' : '' }}">
                                         <i class="fas fa-comment-medical nav-icon"></i>
                                         <p>dummy</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
                         <!--End Third Nav section  -->
