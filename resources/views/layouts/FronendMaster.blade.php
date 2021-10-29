@@ -69,6 +69,9 @@
                         <li>
                             <p><a href="{{ route('user.privacypolicy') }}">Privacy Policy</a></p>
                         </li>
+                        <li>
+                            <p><a href="{{ route('user.reviews') }}">Our Reviews</a></p>
+                        </li>
 
                         @if (session('customer'))
                             <li>

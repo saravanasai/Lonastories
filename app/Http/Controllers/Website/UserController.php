@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use App\Mail\sendOtp;
 use App\Models\CustomerSignup;
+use App\Models\Reviews\Reviews;
 use App\View\Components\customerdirectReftable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -77,5 +78,16 @@ class UserController extends Controller
      {
             session()->pull('customer');
             return redirect()->route('home');
+     }
+
+     public function review(Request $request){
+
+        $id =  session('customer')->id;
+
+        $reviews = new Reviews();
+        $reviews->review_of_cus = $id;
+        $reviews->comment = $request->comment;
+        $reviews->rating = $request->ratings;
+        $reviews->save();
      }
 }
