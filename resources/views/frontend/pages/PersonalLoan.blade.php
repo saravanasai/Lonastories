@@ -56,9 +56,9 @@
                         @else
                             <a href="{{ route('quickEnquieryForm.index') }}"
                                 class="btn btn-success btn-sm"><strong>APPLY</strong></a>
-                            <a href="{{ route('home') }}"
-                                class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm"><strong>REFER</strong></a>
-                                <a  data-toggle="modal" data-target="#shareNow"
+                            <a href="{{ route('home') }}#directRefsection"
+                                class="btn btn-darkblue ml-lg-3 mr-lg-3 btn-sm refersection"><strong>REFER</strong></a>
+                                <a  data-toggle="modal" data-target="#shareNowPersonalLoan"
                                 class="btn btn-secondary btn-sm">
                                 <strong>SHARE</strong>
                             </a>
@@ -357,6 +357,38 @@
             <i class="fa fa-long-arrow-up"></i>To Top
         </div>
     </div>
+
+   {{-- share model for only this page  --}}
+   <div class="modal fade" id="shareNowPersonalLoan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Share</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (session('customer'))
+                        <div><input type="text" id="copyText"
+                                value="{{ Request::url()  }}"
+                                class="form-control">
+                                <label id="copied" for="" class="text-success"></label>
+                        </div>
+                    @endif
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="copyFunc()"
+                        data-dismiss="modal">Copy</button>
+
+                </div>
+            </div>
+        </div>
+   </div>
+   {{--End share model for only this page  --}}
+
 @endsection
 
 <!--================================= Scripting=================================================== -->

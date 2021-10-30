@@ -111,7 +111,7 @@
                 </div>
             @endif
             <div class="text-center mt-md-5">
-                @if ($wallet_info->enable_redeem == 1 && $wallet_info->redeem_request == 0)
+                @if ($wallet_info->enable_redeem == 1 && $wallet_info->redeem_request == 0 && $wallet_info->super_reward_point!=0)
                     <form action="{{ route('user.RedeemRequest') }}" method="post">
                         @csrf
                         <input type="hidden" name="cus_id" value="{{ session('customer')->id }}">

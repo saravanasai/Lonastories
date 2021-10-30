@@ -180,7 +180,7 @@ Route::post('/review',[UserController::class,'review'] )->name('review');
 
 Route::prefix('user')->group(function()
 {
-
+    
     Route::get('login',[UserController::class,'login'])->name('userlogin');
     Route::get('privacyPolicy',[CustomerPagesController::class,'privacy_policy'])->name('user.privacypolicy');
     Route::get('reviews',[CustomerPagesController::class,'reviews'])->name('user.reviews');
