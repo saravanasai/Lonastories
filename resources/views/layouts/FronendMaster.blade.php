@@ -50,154 +50,163 @@
     @yield('content')
     <!-- <div id="footer" data-aos="fade-up" data-aos-duration="3000"></div> -->
     <!-- <footer class="main-footer bg-light pt-5" data-aos="fade-up" data-aos-duration="2000"> -->
-    <footer class="main-footer bg-gray pt-lg-5 text-gray">
-        <div class="container">
-            <a href="./index.php">
-                <h3><img src="{{ asset('frontend/img/logo.png') }}" alt="" width="50vw" />&nbsp;<span
-                        class="text-light"><strong>LOANSTORIES.COM</strong></span></h3>
-            </a>
-            <div class="row pt-5">
-                <div class="col-md-3">
-                    <ul class="list-unstyled">
-                        <li>
-                            <p><a href="#">FAQ</a></p>
-                        </li>
-                        <li>
-                            <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>
-                        </li>
-
-                        <li>
-                            <p><a href="{{ route('user.privacypolicy') }}">Privacy Policy</a></p>
-                        </li>
-                        <li>
-                            <p><a href="{{ route('user.reviews') }}">Our Reviews</a></p>
-                        </li>
-
-                        @if (session('customer'))
+        <footer class="main-footer bg-gray pt-lg-5 text-gray">
+            <div class="container">
+                <a href="./index.php">
+                    <h3><img src="{{ asset('frontend/img/logo.png') }}" alt="" width="50vw" />&nbsp;<span
+                            class="text-light"><strong>LOANSTORIES.COM</strong></span></h3>
+                </a>
+                <div class="row pt-5">
+                    <div class="col-md-3">
+                        <ul class="list-unstyled">
                             <li>
-                                <p><a href="{{ route('user.OneView') }}">One View</a></p>
+                                <p><a href="{{ route('user.FAQ') }}">FAQ</a></p>
+                            </li>
+                            <li>
+                                <p><a href="https://www.facebook.com/loanstories2021" target="_blank">Follow Us On Facebook</a></p>
+                            </li>
+                            <li>
+                                <p><a href="{{ route('user.Docs') }}">List Of Documents</a></p>
+                            </li>
+                            <li>
+                                <p><a href="{{ route('user.privacypolicy') }}">Privacy Policy</a></p>
+                            </li>
+                            <li>
+                                <p><a href="{{ route('user.reviews') }}">Our Reviews</a></p>
+                            </li>
+                            @if (session('customer'))
+                                <li>
+                                    <p><a href="{{ route('user.OneView') }}">One View</a></p>
+                                </li>
+                                <li>
+                                    <p>
+                                    <div class="dropdown">
+                                        <span class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Loan Calculators
+                                        </span>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item"
+                                                href="{{ route('user.personalLoanEmiCalc') }}">Personal Loan EMI
+                                                Calculator</a>
+                                            <a class="dropdown-item" href="{{ route('user.homeLoanEmiCalc') }}">Home
+                                                Loan
+                                                EMI Calculator</a>
+                                            <a class="dropdown-item" href="{{ route('user.partPayCalc') }}">Part Payment
+                                                Calculator</a>
+                                        </div>
+                                    </div>
+                                    </p>
+                                </li>
+                                <li>
+                                    <div class="dropdown">
+                                        <span class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            Eligibility Calculators
+                                        </span>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item"
+                                                href="{{ route('user.personalEligibilityCalc') }}">Personal Loan
+                                                Eligibility
+                                                Calculator</a>
+                                            <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home Loan
+                                                Eligibility
+                                                Calculator</a>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            @endif
+                        </ul>
+                        <hr class="hr d-lg-none d-sm-block">
+                    </div>
+
+                    <div class="col-md-5">
+                        <ul class="list-unstyled text-secondary">
+                            <li>
+                                <h5 class="text-gray"><strong>Our Contact Points</strong></h5>
                             </li>
                             <li>
                                 <p>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" type="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        Loan Calculators
-                                    </span>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item"
-                                            href="{{ route('user.personalLoanEmiCalc') }}">Personal Loan EMI
-                                            Calculator</a>
-                                        <a class="dropdown-item" href="{{ route('user.homeLoanEmiCalc') }}">Home
-                                            Loan
-                                            EMI Calculator</a>
-                                        <a class="dropdown-item" href="{{ route('user.partPayCalc') }}">Part Payment
-                                            Calculator</a>
-                                    </div>
-                                </div>
-                                </p>
+                                    <i class="bi bi-telephone-outbound-fill"></i><a href="tel:9513961300" target="_blank">&nbsp;&nbsp;+91 - 9513 9613 00</a>&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                                    <a href="https://api.whatsapp.com/send?phone=+919513961300" target="_blank"><i class="bi bi-whatsapp"></i>&nbsp;&nbsp;+91 - 9513 9613 00</a></p>
+                            </li>
+                            <!-- <li>
+                            <p><i class="bi bi-whatsapp"></i><a href="#"></a>&nbsp;&nbsp;+91 - 0123456789</p>
+                        </li> -->
+                            <li>
+                                <p><span class="text-gray"><strong>For Enquiries : </strong></span><a
+                                        href="mailto:hello@loanstories.com" target="_blank">&nbsp;hello@loanstories.com</a></p>
                             </li>
                             <li>
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle" type="button" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        Eligibility Calculators
-                                    </span>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item"
-                                            href="{{ route('user.personalEligibilityCalc') }}">Personal
-                                            Eligibility
-                                            Calculator</a>
-                                        <a class="dropdown-item" href="{{ route('user.homeEligibilityCalc') }}">Home
-                                            Eligibility
-                                            Calculator</a>
-
-                                    </div>
-                                </div>
+                                <p><span class="text-gray"><strong>For Applications :</strong></span><a
+                                    href="mailto:bookmyloans@loanstories.com" target="_blank">&nbsp;bookmyloans@loanstories.com</a></p>
                             </li>
-                        @endif
-                    </ul>
-                </div>
+                            <li>
+                                <p><span class="text-gray"><strong>For Queries :</strong></span><a
+                                    href="mailto:support@loanstories.com" target="_blank">&nbsp;support@loanstories.com</a></p>
+                            </li>
+                            <li>
+                                <p><span class="text-gray"><strong>For Complaints :</strong></span><a
+                                    href="mailto:escalate@loanstories.com" target="_blank">&nbsp;escalate@loanstories.com</a></p>
+                            </li>
+                        </ul>
+                        <hr class="hr d-lg-none d-sm-block">
+                    </div>
 
-                <div class="col-md-5">
-                    <ul class="list-unstyled text-secondary">
+                    <div class="col-md-4">
+                        <ul class="contact-info list-unstyled text-justify text-secondary">
+                            <li>
+                                <h5 class="text-gray"><strong>Our Locations</strong></h5>
+                            </li>
+                            <li>
+                                <a href="#"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
+                                    1st
+                                    Cross, Indiranagar
+                                    Bangalore, Karnataka - 560008.</a>
+                            </li>
+                            <hr class="hr">
+                            <li>
+                                <a href="#"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
+                                    Cross,
+                                    Thillai Nagar (East)
+                                    Tiruchirappalli, Tamilnadu – 620018.</a>
+                            </li>
+                            <!-- <hr id="hr">
                         <li>
-                            <h5 class="text-gray"><strong>Our Contact Points</strong></h5>
-                        </li>
-                        <li>
-                            <p><i class="bi bi-telephone-outbound-fill"></i><a href="#">&nbsp;&nbsp;+0431 -
-                                    3366622</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="bi bi-whatsapp"></i><a
-                                    href="#">&nbsp;&nbsp;+91 - 0123456789</a></p>
-                        </li>
-                        <!-- <li>
-                        <p><i class="bi bi-whatsapp"></i><a href="#"></a>&nbsp;&nbsp;+91 - 0123456789</p>
-                    </li> -->
-                        <li>
-                            <p><span class="text-gray"><strong>For Applications :</strong></span><a
-                                    href="#">&nbsp;bookmyloans@loanstories.com</a></p>
-                        </li>
-                        <li>
-                            <p><span class="text-gray"><strong>For Queries :</strong></span><a
-                                    href="#">&nbsp;support@loanstories.com</a></p>
-                        </li>
-                        <li>
-                            <p><span class="text-gray"><strong>For Complaints :</strong></span><a
-                                    href="#">&nbsp;escalate@loanstories.com</a></p>
-                        </li>
-                    </ul>
-                </div>
+                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.7, 3rd Floor, 80
+                                Feet
+                                Road, Anna Nagar
+                                Madurai, Tamilnadu – 625020.</a>
+                        </li> -->
+                        </ul>
 
-                <div class="col-md-4">
-                    <ul class="contact-info list-unstyled text-justify text-secondary">
-                        <li>
-                            <h5 class="text-gray"><strong>Our Locations</strong></h5>
-                        </li>
-                        <li>
-                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.783, 12th Main,
-                                1st
-                                Cross, Indiranagar
-                                Bangalore, Karnataka - 560008.</a>
-                        </li>
+                        {{-- Footer Social Icons --}}
+                        {{-- <ul class="social-icons list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/loanstories2021" target="_blank" title="Facebook"><i
+                                        class="fa fa-facebook"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            </li>
+                        </ul> --}}
+                    </div>
+                    <div class="col-md-12 text-center">
                         <hr class="hr">
-                        <li>
-                            <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.20 B33, 2nd
-                                Cross,
-                                Thillai Nagar (East)
-                                Tiruchirappalli, Tamilnadu – 620018.</a>
-                        </li>
-                        <!-- <hr id="hr">
-                    <li>
-                        <a href="mailto:sales@loanstories.com"><i class="bi bi-geo-alt-fill"></i> No.7, 3rd Floor, 80
-                            Feet
-                            Road, Anna Nagar
-                            Madurai, Tamilnadu – 625020.</a>
-                    </li> -->
-                    </ul>
-                    <ul class="social-icons list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="https://www.facebook.com/loanstories2021" target="_blank" title="Facebook"><i
-                                    class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" target="_blank" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-12 text-center">
-                    <hr class="hr">
-                    <h5 class="text-light">
-                        www.loanstories.com &copy; 2021. All rights reserved | Designed by
-                        <strong><a href="https://exciteon.com">Exciteon</a></strong>
-                    </h5>
+                        <h5 class="text-light">
+                            www.loanstories.com &copy; 2021. All rights reserved | Designed by
+                            <strong><a href="https://exciteon.com">Exciteon</a></strong>
+                        </h5>
+                    </div>
                 </div>
             </div>
-        </div>
     </footer>
 
 
