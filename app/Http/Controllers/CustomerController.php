@@ -38,6 +38,7 @@ class CustomerController extends Controller
         // dd($request->all());
 
          $this->validate($request,[
+             "PromoCode"=>"required",
              "phonenumber"=>"required|min:10|max:10",
              "email"=>"email",
              "name"=>"required",
@@ -77,6 +78,7 @@ class CustomerController extends Controller
                                         $signup->refered_by=$ref_id;
                                         $signup->status=$activation_status;
                                         $signup->otp=$otp;
+                                        $signup->PromoCode=$request->PromoCode;
 
 
                                         if($signup->save())
@@ -181,8 +183,6 @@ class CustomerController extends Controller
                                 {
                                     return redirect()->back()->with('error',"somthing went worng");
                                 }
-
-
 
            }
            else

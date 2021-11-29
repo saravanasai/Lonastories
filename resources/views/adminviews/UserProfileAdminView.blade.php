@@ -67,8 +67,10 @@
                                             <b>Refered By Caller</b> <a
                                                 class="float-right">{{ $isRefByUser->firstname }}</a>
                                         </li>
-
                                     @endif
+                                    <li class="list-group-item">
+                                        <b>Promo Code</b> <a class="float-right">{{ $customer_info->PromoCode}}</a>
+                                    </li>
                                 </ul>
                                 <div class="row">
                                     <div class="container">

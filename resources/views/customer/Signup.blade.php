@@ -18,6 +18,13 @@
                         <form action="{{ route('signup.store') }}" method="post">
                             @csrf
                             <div class="form-group mb-md-4">
+                                <div class="">
+                                    <label for="">Promo Code</label>
+                                    <small><p><b> Note : <b>If you do not have a Promo Code, mention as 'DIRECT'</p></small>
+                                    <input class="form-control" placeholder="Enter The Promo Code For Special Rewards " name="PromoCode" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group mb-md-4">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <input class="form-control" placeholder="Name" name="name" type="text" required>
                                 </div>
