@@ -36,11 +36,11 @@
 
                     </div>
                     <div class="card-body py-lg-4">
-                        <form action="{{route('user.checkOtp')}}" method="post">
+                        <form action="{{route('checkuserotp')}}" method="post">
                             @csrf
                             <div class="form-group mb-md-4">
-                                @if (session()->has('OtpNotValid'))
-                                <div class="text-danger"><b>{{session('OtpNotValid')}}</b></div>
+                                @if (session()->has('no_valid_otp'))
+                                <div class="text-danger"><b>{{session('no_valid_otp')}}</b></div>
                                 @endif
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <input class="form-control" placeholder="Enter Your OTP" name="otp" type="text" maxlength="4" oninput="this.value = this.value.replace(/[^0-9]/, '')" required>
