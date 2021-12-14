@@ -6,10 +6,10 @@ use App\Models\Cutomer\CustomerEnqieryForm;
 use App\Models\Reviews\Reviews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Sanctum\HasApiTokens;
 class CustomerSignup extends Model
 {
-    use HasFactory;
+    use HasFactory,HasApiTokens;
 
     protected $table="table_customer";
 
