@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\User\UserContoller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 //public routes for registering and login to generate token
-Route::post('/login',[AuthController::class,'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(["middleware" => "auth:sanctum", "prefix" => "v1"], function () {
+    Route::get('user/{id}', [UserContoller::class, 'userInfo']);
+    Route::post('logout', [AuthController::class, 'logout']);
 });

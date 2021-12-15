@@ -14,6 +14,7 @@ class Wallet extends Model
         "value_coins",
         "heart_coins",
         "super_reward_point",
+        "active_hearts",
         "enable_redeem",
         "redeem_request",
     ];

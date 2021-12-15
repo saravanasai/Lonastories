@@ -5,15 +5,14 @@ namespace App\Models\Cutomer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SuperRewardPointsRedeemed extends Model
+class HeartsRedeemed extends Model
 {
     use HasFactory;
-
-    protected $table="super_reward_points_redeemeds";
+    protected $table="hearts_redemed";
 
     protected $fillable=[
-        "spr_redem_of_user",
-        "points_redeemed",
-        "redem_option"
+        "heart_redem_of_user",
+        "hearts_redeemed",
+        "redem_thorugh"
     ];
 }

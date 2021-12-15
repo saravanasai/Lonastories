@@ -18,4 +18,14 @@ class CheckUSerExistService
             return false;
         }
     }
+
+    public function check_if_user_exist_api($id)
+    {
+        $customer_exist = CustomerSignup::find($id);
+        if ($customer_exist) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
