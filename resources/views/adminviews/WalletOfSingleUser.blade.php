@@ -14,7 +14,7 @@
     <div class="container py-5">
         <div id="add_chips_section">
             <div class="row">
-                <div class="col-md-2 offset-md-1">
+                <div class="col-md-3">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                         <div class="ribbon-wrapper ribbon-lg">
                             <div class="ribbon bg-primary">
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                         <div class="ribbon-wrapper ribbon-lg">
                             <div class="ribbon bg-primary">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                         <div class="ribbon-wrapper ribbon-lg">
                             <div class="ribbon bg-primary">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="position-relative p-3 bg-gray" style="height: 180px">
                         <div class="ribbon-wrapper ribbon-lg">
                             <div class="ribbon bg-success">
@@ -75,21 +75,6 @@
                         </div>
                         <div>
                             <i class="fab fa-bitcoin p-2 mt-4 fa-5x"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="position-relative p-3 bg-gray" style="height: 180px">
-                        <div class="ribbon-wrapper ribbon-lg">
-                            <div class="ribbon bg-success">
-                                ACTIVE HEARTS
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <h3>{{ $user_wallet->start_coins + $user_wallet->value_coins }}</h3> <br>
-                        </div>
-                        <div>
-                            <i class="fab fa-creative-commons-sampling-plus p-2 mt-4 fa-5x"></i>
                         </div>
                     </div>
                 </div>
@@ -107,29 +92,19 @@
                                 <h3 class="profile-username text-center">Phone :{{ $user_wallet->cus_phonenumber }}
                                 </h3>
                                 <p class="text-muted text-center">Email :{{ $user_wallet->email }}</p>
-                                <p class="text-muted text-center">Existing Super Reward Points :{{ $user_wallet->super_reward_point }}</p>
+                                <p class="text-muted text-center">Promo Code :{{ $user_wallet->PromoCode }}</p>
                             </div>
-                            <div class="col-md-3">
-                                @if($user_wallet->redeem_request==0)
-                                <small class="badge badge-danger">Not Requested</small>
-                                @else
-                                <small class="badge badge-success">Requested</small>
-                                <button type="button" class="btn btn-success" id="update_reedem_status_btn">
-                                    Update Redeem Status
-                                </button>
-                                @endif
-                            </div>
-                            <div class="col col-md-6">
+                            <div class="col-md-6">
                                 <button type="button" class="btn btn-success" id="add_chips_btn" data-toggle="modal" data-target="#modal-add-chips">
                                     Add Chips
                                 </button>
-                                <button type="button" class="btn btn-danger" id="super_reward_point" data-toggle="modal" data-target="#modal-add-super-reward-points">
+                                <button type="button" class="btn btn-primary" id="super_reward_point" data-toggle="modal" data-target="#modal-add-super-reward-points">
                                     Add Super Reward points
                                 </button>
-                                <button type="button" class="btn btn-danger" id="super_reward_poin" data-toggle="modal" data-target="#modal-add-active-hearts-points">
+                                <button type="button" class="btn btn-info" id="super_reward_poin" data-toggle="modal" data-target="#modal-add-active-hearts-points">
                                     Add Active Hearts
                                 </button>
-                                <a href="{{route('wallteByAdmin.edit',$user_wallet->wallet_of_user)}}" class="btn btn-primary"><i class="fas fa-history px-1"></i>History</a>
+                                {{-- <a href="{{route('wallteByAdmin.edit',$user_wallet->wallet_of_user)}}" class="btn btn-primary"><i class="fas fa-history px-1"></i>History</a> --}}
                             </div>
                         </div>
                         @if(Session::has('nohistory'))
@@ -142,16 +117,6 @@
                             </div>
                         </div>
                         @endif
-                        <div id="super_reward_points_section">
-                            <div class="row d-flex justify-content-end">
-                                <div class="p-3">
-                                    <input type="hidden" id="blance_of_stars">
-                                    <input type="hidden" id="blance_of_chips">
-                                    <input type="hidden" id="blance_of_hearts">
-                                    <button type="button" class="btn btn-primary" id="add_super_reward_btn">Add To wallet</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -203,15 +168,27 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <div id="update_chips_error" class="text-danger"></div>
-                                        <label for="update_chips">No Of Stars</label>
+                                        <label for="super_reward_point_stars_avaiable">STARTS AVAIABLE</label>
+                                        <input type="number" class="form-control" id="super_reward_point_stars_avaiable"  value="{{$user_wallet->start_coins}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="super_reward_point_chips_avaiable">CHIPS AVAIABLE</label>
+                                        <input type="number" class="form-control" id="super_reward_point_chips_avaiable" value="{{$user_wallet->value_coins }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="super_reward_point_stars">No Of Stars</label>
                                         <input type="number" class="form-control" id="super_reward_point_stars" placeholder="Enter stars">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group">
-                                        <div id="update_chips_error" class="text-danger"></div>
-                                        <label for="update_chips">No Of Chips</label>
+                                        <label for="super_reward_point_chips">No Of Chips</label>
                                         <input type="number" class="form-control" id="super_reward_point_chips" placeholder="Enter chips">
                                     </div>
                                 </div>
@@ -219,9 +196,22 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <div id="update_chips_error" class="text-danger"></div>
-                                        <label for="">Redem Text</label>
-                                        <input type="text" class="form-control" id="super_reward_point_redem_text" placeholder="Enter Text">
+                                        <label for="super_reward_point_total">TOTAL SRP</label>
+                                        <input type="number" class="form-control" id="super_reward_point_total" placeholder="Total Reward Points" readonly>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="view_promo_code">PROMO CODE</label>
+                                        <input type="text" class="form-control" id="view_promo_code" placeholder="PROMO CODE" value="{{$user_wallet->PromoCode }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Redem Remark</label>
+                                        <input type="text" class="form-control" id="super_reward_point_redem_text" placeholder="Enter Redem Remark">
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +219,6 @@
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" id="add_super_reward_btn">ADD SUPER REWARD POINTS</button>
-                            <input type="hidden" value="" id="update_id">
                         </div>
                     </div>
 
@@ -288,8 +277,7 @@
 <script>
     $(function() {
 
-        //hiding things while loading page
-        $('#super_reward_points_section').hide();
+
         //section to handle update redeem status btn
         $('body').on('click', '#update_reedem_status_btn', function() {
             let wallet_id = $('#waller_id').val();
@@ -347,14 +335,16 @@
         //section for updating the super reward point request
         $('body').on('click', '#add_super_reward_btn', function() {
 
-            $('#update_chips').removeClass('is-invalid');
+
 
             let super_reward_points = $('#super_reward_point_total').val();
-            let balance_stars = $('#blance_of_stars').val();
-            let balance_chips = $('#blance_of_chips').val();
+            let balance_stars = $('#super_reward_point_stars_avaiable').val();
+            let balance_chips = $('#super_reward_point_chips_avaiable').val();
+            let redem_text = $('#super_reward_point_redem_text').val();
             let wallet_id = $('#waller_id').val();
             let url = '{{ route('wallteByAdmin.store') }}';
-            let validation = false;
+
+            let validation = true;
 
             if (validation) {
                 Swal.fire({
@@ -376,13 +366,14 @@
                                 , balance_stars: balance_stars
                                 , balance_chips: balance_chips
                                 , super_reward_points: super_reward_points
+                                , redem_text: redem_text
                                 , table: 2
                             }
                             , success: function(data) {
                                 if (data == 1) {
                                     Swal.fire({
                                         title: 'Success'
-                                        , text: "You Added Chips Successfully"
+                                        , text: "You Added Super Reward Point Successfully"
                                         , icon: 'success'
                                         , confirmButtonColor: '#3085d6'
                                         , confirmButtonText: 'ok'
@@ -416,21 +407,16 @@
         $("#super_reward_point_stars").blur(function() {
             let stars = $(this).val();
             let chips = $('#super_reward_point_chips').val();
-            let hearts = $('#super_reward_point_hearts').val();
-            let existing_stars = $('#existing_star_coins').val();
+            let existing_stars = $('#super_reward_point_stars_avaiable').val();
             let balance = existing_stars - stars;
             if (balance < 0) {
                 $(this).addClass('is-invalid');
-                $('#super_reward_point_total').val(0);
                 $('#add_super_reward_btn').prop('disabled', true);
-                $('#super_reward_point_total_view').html("0");
-                $('#super_reward_point_stars_view').html("0");
             } else {
                 $(this).removeClass('is-invalid');
-                $('#super_reward_point_stars_view').html(balance.toString());
-                $('#blance_of_stars').val(Number(balance));
-                $('#super_reward_point_total_view').html((Number(stars) + Number(chips) + Number(hearts)).toString());
-                $('#super_reward_point_total').val(Number(stars) + Number(chips) + Number(hearts));
+                $(this).prop('disabled',true);
+                $('#super_reward_point_stars_avaiable').val(balance);
+                $('#super_reward_point_total').val(Number(stars)+Number(chips));
                 $('#add_super_reward_btn').prop('disabled', false);
             }
         });
@@ -438,27 +424,33 @@
 
         //section to validate input for super reward chips
         $("#super_reward_point_chips").blur(function() {
-            let stars = $('#super_reward_point_stars').val();
+
             let chips = $(this).val();
-            let hearts = $('#super_reward_point_hearts').val();
-            let existing_chips = $('#existing_chips_coins').val();
+            let stars = $("#super_reward_point_stars").val();
+            let existing_chips = $('#super_reward_point_chips_avaiable').val();
             let balance = existing_chips - chips;
             if (balance < 0) {
                 $(this).addClass('is-invalid');
-                $('#super_reward_point_total').val(0);
-                $('#super_reward_point_total_view').html("0");
-                $('#super_reward_point_chips_view').html("0");
                 $('#add_super_reward_btn').prop('disabled', true);
             } else {
                 $(this).removeClass('is-invalid');
-                $('#super_reward_point_chips_view').html(balance.toString());
-                $('#blance_of_chips').val(Number(balance));
-                $('#super_reward_point_total_view').html((Number(stars) + Number(chips) + Number(hearts)).toString());
-                $('#super_reward_point_total').val(Number(stars) + Number(chips) + Number(hearts));
+                $(this).prop('disabled',true);
+                $('#super_reward_point_chips_avaiable').val(balance);
+                $('#super_reward_point_total').val(Number(stars)+Number(chips));
                 $('#add_super_reward_btn').prop('disabled', false);
             }
         });
         //end section to validate input for super reward chips
+
+
+
+
+
+
+
+
+
+
 
         //section to validate input for super reward hearts
         $("#super_reward_point_hearts").blur(function() {

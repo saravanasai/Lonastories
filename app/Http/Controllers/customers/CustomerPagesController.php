@@ -73,7 +73,7 @@ class CustomerPagesController extends Controller
     public function myWallet()
     {
         $wallet_info=Wallet::where('wallet_of_user',session('customer')->id)->first();
-        $points_given=SuperRewardPointsGiven::where('spr_to_user',session('customer')->id)->sum('points_given');
+        $points_given=SuperRewardPointsGiven::where('spr_to_user',session('customer')->id)->where('super_reward_point_redem_status',1)->first();
         $points_Redemed=SuperRewardPointsRedeemed::where('spr_redem_of_user',session('customer')->id)->sum('points_redeemed');
 
         return view('frontend.pages.myWallet',["wallet_info"=>$wallet_info,"points_Redemed"=>$points_Redemed,"points_given"=>$points_given]);

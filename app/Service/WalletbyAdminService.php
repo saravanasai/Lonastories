@@ -42,12 +42,12 @@ class WalletbyAdminService
             $user_wallet=Wallet::where('id',$request->wallet_id)->first();
             $user_wallet->start_coins=$request->balance_stars;
             $user_wallet->value_coins=$request->balance_chips;
-            $user_wallet->heart_coins=$request->balance_hearts;
-            $user_wallet->super_reward_point=($user_wallet->super_reward_point+$request->super_reward_points);
+            $user_wallet->enable_redeem_srp=1;
              //this section add a records on "super_reward_points_givens" table in database
              $spr_given=new SuperRewardPointsGiven();
              $spr_given->spr_to_user=$user_wallet->wallet_of_user;
              $spr_given->points_given=$request->super_reward_points;
+             $spr_given->remark_of_super_reward_point=$request->redem_text;
             return ($user_wallet->save() && $spr_given->save())?1:0;
         }
     }

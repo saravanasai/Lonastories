@@ -20,6 +20,7 @@ class CreateHeartsGivenTable extends Migration
             $table->bigInteger('hearts_given');
             $table->string('redem_through');
             $table->tinyInteger('request_status')->default(1)->comment('1 means active for redem 0 means redemed');
+            $table->tinyInteger('active_status')->default(1)->comment('1 means active for redem 0 means in active');
             $table->timestamps();
         });
     }

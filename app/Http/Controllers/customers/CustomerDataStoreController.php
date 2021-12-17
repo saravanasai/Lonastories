@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
 use App\Models\Cutomer\PersonalInfoFrom;
+use App\Models\Cutomer\SuperRewardPointsGiven;
 use App\Models\Wallet;
 use App\Service\EmiSheduleReUploadService;
 use Illuminate\Http\Request;
@@ -172,9 +173,13 @@ class CustomerDataStoreController extends Controller
     public function RedeemRequest(Request $request)
     {
          //this section actualy resets the value after giving cash to user
-         $user_wallet=Wallet::where('wallet_of_user',$request->cus_id)->first();
-         $user_wallet->redeem_request=1;
-         $user_wallet->enable_redeem=0;
+         $wallet=Wallet::where('wallet_of_user',$request->cus_id)->first();
+          $wallet->enable_redeem_srp=0;
+          $wallet->save();
+         $user_wallet=SuperRewardPointsGiven::where('spr_to_user',$request->cus_id)->first();
+         $user_wallet->redem_option_choosed=$request->redem_option;
+         $user_wallet->super_reward_point_redem_status=0;
+         $user_wallet->redemed_payment_status=1;
          if($user_wallet->save())
          {
             Session::flash('redeemRequest','Requested for Redeem');
