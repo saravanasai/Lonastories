@@ -83,6 +83,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::post('CrmManagenment/admin/setting/resetPassword', [AdminSettingController::class, 'PasswordChange']);
     // end route section for admin settings controller
     Route::resource('/wallets/wallteByAdmin', WalletControllerForAdmin::class);
+    Route::get('/wallets/wallteByAdmin/pay/{id}',[WalletControllerForAdmin::class,'pay'])->name('admin.pay');
     Route::resource('/viewEnquieryOfSingleCustomer/OverAllCusEnquiery', EnquieryOfCustomerView::class);
     Route::resource('/customerdetailedEnquiery/view/CustomerEnquierydetailview', EnquieryOfCusDetailView::class);
     // routes for products

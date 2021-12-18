@@ -20,10 +20,14 @@ class WalletControllerForAdmin extends Controller
      */
     public function index()
     {
-        $user_wallet=CustomerSignup::join('wallets','table_customer.id','=','wallets.wallet_of_user')
-         ->select('table_customer.*','wallets.*','wallets.id as wallet_id')->where('wallets.redeem_request',1)->paginate(8);
-        //  dd($user_wallet);
+        $user_wallet=SuperRewardPointsGiven::where('redemed_payment_status',1)->paginate(10);
+        // $user_wallet=CustomerSignup::join('wallets','table_customer.id','=','wallets.wallet_of_user')
+        //  ->select('table_customer.*','wallets.*','wallets.id as wallet_id')->where('wallets.redeem_request',1)->paginate(8);
+        // dd($user_wallet);
          return view('adminviews.RedeemRequestAdminSide',["user_wallet"=>$user_wallet]);
+
+
+
     }
 
     /**
@@ -97,7 +101,16 @@ class WalletControllerForAdmin extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         //inserting into the SRP redeemed  table to show user transaction on rewards
+         $points_redeem= new SuperRewardPointsRedeemed();
+         $points_redeem->spr_redem_of_user= $id;
+         $points_redeem->points_redeemed=$request->srp_points_given;
+
+         //updating the SRP given table to notify that request have been payed
+         $srp_given=SuperRewardPointsGiven::where('spr_to_user',$id)->where('redemed_payment_status',1)->first();
+         $srp_given->redemed_payment_status=0;
+         return  ($srp_given->save()&& $points_redeem->save())?1:0;
+
     }
 
     /**
@@ -109,5 +122,13 @@ class WalletControllerForAdmin extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function pay($id)
+    {
+        $super_reward_point_given=SuperRewardPointsGiven::where('redemed_payment_status',1)->where('spr_to_user',$id)->first();
+
+        return view('adminviews.PayToUserSuperRewardPoint',["srp_data"=>$super_reward_point_given]);
     }
 }

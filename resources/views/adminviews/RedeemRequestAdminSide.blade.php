@@ -3,7 +3,7 @@
 <!-- Main content -->
 <div class="content">
     <div class="container mt-2">
-        <h4 class="mb-2 p-2">MY LEADS</h4>
+        <h4 class="mb-2 p-2">USERS REQUEST FOR REDEEM SRP</h4>
         <div class="float-right">
             <p class="breadcrumb-item"><a href="{{ route('admindashboard') }}">Back</a></p>
         </div>
@@ -14,8 +14,8 @@
                         <th>NO</th>
                         <th>NAME</th>
                         <th>PHONE NO</th>
-                        <th>EMAIL</th>
                         <th>SRP</th>
+                        <th>REDEM-OPTION</th>
                         <th>ACTION</th>
                     </tr>
                 </thead>
@@ -23,12 +23,12 @@
                     @foreach ($user_wallet as $user_wallet_info)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $user_wallet_info->name }}</td>
-                        <td>{{ $user_wallet_info->cus_phonenumber }}</td>
-                        <td>{{ $user_wallet_info->email }}</td>
-                        <td>{{ $user_wallet_info->super_reward_point }}</td>
+                        <td>{{ $user_wallet_info->userInfo->name }}</td>
+                        <td>{{ $user_wallet_info->userInfo->cus_phonenumber }}</td>
+                        <td>{{ $user_wallet_info->points_given }}</td>
+                        <td>{{ $user_wallet_info->redem_option_choosed }}</td>
                         <td class="text-center">
-                            <a type="button" href="{{route('wallteByAdmin.show',$user_wallet_info->wallet_of_user)}}" class="btn btn-sm btn-success">
+                            <a type="button" href="{{route('admin.pay',$user_wallet_info->spr_to_user)}}" class="btn btn-sm btn-success">
                                 <i class="fas fa-money-check-alt px-1"></i>Pay
                             </a>
                         </td>

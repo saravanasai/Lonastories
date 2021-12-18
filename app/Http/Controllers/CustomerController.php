@@ -80,7 +80,7 @@ class CustomerController extends Controller
         //and Save the user to database after entering the vaid otp
         $this->validate($request, [
             "otp" => "required|min:4"
-        ]);
+        ]); 
         if (session('userOtp') == $request->otp) {
             //RegisterUser Methode Handles the inserting of customer data
             if ($service->RegisterUser()) {
