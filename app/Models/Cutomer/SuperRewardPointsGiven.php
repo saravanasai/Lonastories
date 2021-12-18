@@ -13,6 +13,8 @@ class SuperRewardPointsGiven extends Model
 
     protected $fillable=[
         "spr_to_user",
-        "points_given"
+        "points_given",
+        "remark_of_super_reward_point",
+        "super_reward_point_redem_status",
     ];
 }

@@ -20,9 +20,8 @@ class CreateWalletsTable extends Migration
             $table->bigInteger('start_coins');
             $table->bigInteger('value_coins');
             $table->bigInteger('heart_coins');
-            $table->bigInteger('super_reward_point');
-            $table->tinyInteger('enable_redeem')->default(0)->comment("0 means disabled 1 means enabled");
-            $table->tinyInteger('redeem_request')->default(0)->comment("0 means No request 1 means requested");
+            $table->tinyInteger('enable_redeem_srp')->default(0)->comment("0 means disabled 1 means enabled");
+            $table->tinyInteger('enable_redeem_hearts')->default(0)->comment("0 means disabled 1 means enabled");
             $table->timestamps();
         });
     }
