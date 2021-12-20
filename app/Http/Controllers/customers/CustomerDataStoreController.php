@@ -5,6 +5,7 @@ namespace App\Http\Controllers\customers;
 use App\Http\Controllers\Controller;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEmiShedule;
+use App\Models\Cutomer\HeartsGive;
 use App\Models\Cutomer\PersonalInfoFrom;
 use App\Models\Cutomer\SuperRewardPointsGiven;
 use App\Models\Wallet;
@@ -188,6 +189,26 @@ class CustomerDataStoreController extends Controller
 
 
     }
+
+    //function to handle the redeem active hearts from user
+    public function RedeemRequestForActiveHearts(Request $request)
+    {
+         //this section actualy resets the value after giving cash to user
+         $wallet=Wallet::where('wallet_of_user',$request->cus_id)->first();
+          $wallet->enable_redeem_hearts=0;
+          $wallet->save();
+         $user_wallet=HeartsGive::where('hearts_to_user',$request->cus_id)->where('request_status',0)->where('active_status',0)->first();
+         $user_wallet->redem_through=$request->redem_option;
+         $user_wallet->request_status=1;
+         $user_wallet->active_status=1;
+         if($user_wallet->save())
+         {
+            Session::flash('redeemRequest','Requested for Redeem');
+            return back();
+         }
+
+    }
+
 
     public function existingEmiSheduleRestoreStore(Request $request,EmiSheduleReUploadService $service)
     {

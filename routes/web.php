@@ -82,8 +82,13 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('CrmManagenment/admin/setting/resetPassword', [AdminSettingController::class, 'PasswordresetIndex'])->name('admin.PasswordresetIndex');
     Route::post('CrmManagenment/admin/setting/resetPassword', [AdminSettingController::class, 'PasswordChange']);
     // end route section for admin settings controller
+
     Route::resource('/wallets/wallteByAdmin', WalletControllerForAdmin::class);
+    Route::get('/wallets/wallteByAdminForHearts/activeHeartsRedemRequest',[WalletControllerForAdmin::class,'activeHeartsRedemRequest'])->name('admin.activeHeartsRedemRequest');
+    Route::post('/wallets/wallteByAdminForHearts/activeHeartsPayRequest',[WalletControllerForAdmin::class,'activeHeartsPayRequest'])->name('admin.activeHeartsPayRequest');
     Route::get('/wallets/wallteByAdmin/pay/{id}',[WalletControllerForAdmin::class,'pay'])->name('admin.pay');
+
+
     Route::resource('/viewEnquieryOfSingleCustomer/OverAllCusEnquiery', EnquieryOfCustomerView::class);
     Route::resource('/customerdetailedEnquiery/view/CustomerEnquierydetailview', EnquieryOfCusDetailView::class);
     // routes for products
@@ -217,6 +222,7 @@ Route::prefix('user')->middleware(['user'])->group(function () {
     Route::post('existingEmiSheduleRestoreStore', [CustomerDataStoreController::class, 'existingEmiSheduleRestoreStore'])->name('user.existingEmiSheduleRestoreStore');
     Route::post('UploadUserImage', [CustomerDataStoreController::class, 'UploadUserImage'])->name('user.UploadUserImage');
     Route::post('RedeemRequest', [CustomerDataStoreController::class, 'RedeemRequest'])->name('user.RedeemRequest');
+    Route::post('RedeemRequest', [CustomerDataStoreController::class, 'RedeemRequestForActiveHearts'])->name('user.RedeemRequestToActiveHearts');
     Route::resource('quickEnquieryForm', CustomerEnquieryFormController::class);
     Route::resource('directReferal', CustomerDirectReferal::class);
 });

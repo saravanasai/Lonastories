@@ -297,6 +297,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('admin.activeHeartsRedemRequest')}}" class="nav-link {{ (request()->is('wallets/wallteByAdminForHearts/activeHeartsRedemRequest')) ? 'active' : '' }}">
+                                        <i class="fas fa-retweet nav-icon"></i>
+                                        <p>Request For Hearts</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <!--End Third part-1 Nav section  -->
                         <!-- Fourth Nav section  -->

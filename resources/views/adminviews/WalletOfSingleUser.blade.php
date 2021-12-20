@@ -241,11 +241,19 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <div id="update_chips_error" class="text-danger"></div>
+                                        <label for="update_chips">HEARTS AVAIABLE</label>
+                                        <input type="number" class="form-control" id="super_reward_point_hearts_available" placeholder="" value="{{$user_wallet->heart_coins }}" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div id="update_chips_error" class="text-danger"></div>
                                         <label for="update_chips">No Of Hearts</label>
                                         <input type="number" class="form-control" id="super_reward_point_hearts" placeholder="Enter hearts">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="modal-footer justify-content-between">
@@ -276,6 +284,9 @@
 
 <script>
     $(function() {
+
+         //section to disable the update buttons of model;
+         $('#add_active_point_btn').prop('disabled', true);
 
 
         //section to handle update redeem status btn
@@ -334,8 +345,6 @@
 
         //section for updating the super reward point request
         $('body').on('click', '#add_super_reward_btn', function() {
-
-
 
             let super_reward_points = $('#super_reward_point_total').val();
             let balance_stars = $('#super_reward_point_stars_avaiable').val();
@@ -442,39 +451,96 @@
         });
         //end section to validate input for super reward chips
 
-
-
-
-
-
-
-
-
-
-
         //section to validate input for super reward hearts
         $("#super_reward_point_hearts").blur(function() {
-            let stars = $('#super_reward_point_stars').val();
-            let chips = $('#super_reward_point_chips').val();
+
             let hearts = $(this).val();
-            let existing_hearts = $('#existing_heart_coins').val();
+            let existing_hearts = $('#super_reward_point_hearts_available').val();
             let balance = existing_hearts - hearts;
             if (balance < 0) {
                 $(this).addClass('is-invalid');
                 $('#super_reward_point_total').val(0);
                 $('#super_reward_point_total_view').html("0");
                 $('#super_reward_point_hearts_view').html("0");
-                $('#add_super_reward_btn').prop('disabled', true);
+                $('#add_active_point_btn').prop('disabled', true);
             } else {
                 $(this).removeClass('is-invalid');
-                $('#super_reward_point_hearts_view').html(balance.toString());
-                $('#blance_of_hearts').val(Number(balance));
-                $('#super_reward_point_total_view').html((Number(stars) + Number(chips) + Number(hearts)).toString());
-                $('#super_reward_point_total').val(Number(stars) + Number(chips) + Number(hearts));
-                $('#add_super_reward_btn').prop('disabled', false);
+                $('#super_reward_point_hearts_available').val(Number(balance));
+                $('#add_active_point_btn').prop('disabled', false);
+                $('#super_reward_point_hearts').prop('disabled', true);
+
             }
         });
         //end section to validate input for super reward hearts
+
+        //section for updating the active hearts request
+        $('body').on('click', '#add_active_point_btn', function() {
+
+            let balance_hearts = $('#super_reward_point_hearts_available').val();
+            let active_hearts = $('#super_reward_point_hearts').val();
+            let wallet_id = $('#waller_id').val();
+            let url = '{{ route('wallteByAdmin.store') }}';
+
+            let validation = true;
+
+
+            if (validation) {
+                Swal.fire({
+                    title: 'Do you want to add Active Hearts'
+                    , showDenyButton: true
+                    , showCancelButton: false
+                    , confirmButtonText: `sure`
+                    , denyButtonText: `cancel`
+                , }).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        $.ajax({
+
+                            url: url
+                            , type: "POST"
+                            , data: {
+                                _token: "{{ csrf_token() }}"
+                                , wallet_id: wallet_id
+                                , balance_hearts: balance_hearts
+                                , active_hearts: active_hearts
+                                , table: 2
+                            }, success: function(data) {
+                                if (data == 1) {
+                                    Swal.fire({
+                                        title: 'Success'
+                                        , text: "You Added Active Hearts Successfully"
+                                        , icon: 'success'
+                                        , confirmButtonColor: '#3085d6'
+                                        , confirmButtonText: 'ok'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.href =
+                                                "{{ route('customer.master') }}";
+                                        }
+                                    })
+                                } else {
+                                    Swal.fire(
+                                        'Somthing Went Worng!'
+                                        , 'You have not made any Changes.'
+                                        , 'error'
+                                    )
+
+                                }
+
+                            }
+                        });
+                    } else if (result.isDenied) {
+                        Swal.fire('You cancelled', '', 'info')
+                    }
+                })
+            }
+
+        })
+        //end section for updating the active hearts request
+
+
+
+
 
         //SECTION TO HANDLE THE ADD CHIPS BUTTON CLICK
         $('body').on('click', '#add_chips_btn', function() {
@@ -561,7 +627,6 @@
         $('body').on('click', '#super_reward_points', function() {
             $('#super_reward_points_section').show();
             $('#add_chips_section').hide();
-
         })
         //END SECTION TO HANDLE ADD SUPER REWARD BTN
 

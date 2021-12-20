@@ -1,6 +1,7 @@
 <?php
 namespace App\Service;
 
+use App\Models\Cutomer\HeartsGive;
 use App\Models\Cutomer\SuperRewardPointsGiven;
 use App\Models\Cutomer\SuperRewardPointsRedeemed;
 use App\Models\Wallet;
@@ -22,11 +23,24 @@ class WalletbyAdminService
            return ($user_wallet->save())?1:0;
 
         }
+        elseif($table==2)
+        {
+            //this section actualy handle the active hearts update request
+            $user_wallet=Wallet::where('id',$request->wallet_id)->first();
+            $user_wallet->enable_redeem_hearts=1;
+             //this section is to updating the points redeemed by user to "super_reward_points_redeemeds" table
+             $activeheart_table=new  HeartsGive();
+             $activeheart_table->hearts_to_user=$user_wallet->wallet_of_user;
+             $activeheart_table->hearts_given=$request->active_hearts;
+             $activeheart_table->active_status=0;
+             $activeheart_table->request_status=0;
+             //end for inserting data to SPR Redeems table
+            return ($user_wallet->save() && $activeheart_table->save())?1:0;
+        }
         elseif($table==3)
         {
             //this section actualy resets the value after giving cash to user
             $user_wallet=Wallet::where('id',$request->wallet_id)->first();
-
              //this section is to updating the points redeemed by user to "super_reward_points_redeemeds" table
              $redeemed_table=new  SuperRewardPointsRedeemed();
              $redeemed_table->spr_redem_of_user=$user_wallet->wallet_of_user;

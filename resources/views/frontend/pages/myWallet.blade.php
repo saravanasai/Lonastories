@@ -112,54 +112,100 @@
             @endif
             <div class="text-center mt-md-5">
                 @if ($wallet_info->enable_redeem_srp==1)
-                <button type="button"
-                            data-toggle="modal"  data-target="#ChooseSuperRewardPointRedeemOption"  class="btn btn-outline-success btn-sm rounded-pill"><strong>REDEEM SUPER REWARD POINTS</strong></button>
+                <button type="button" data-toggle="modal"  data-target="#ChooseSuperRewardPointRedeemOption"  class="btn btn-outline-success btn-sm rounded-pill"><strong>REDEEM SUPER REWARD POINTS</strong></button>
+                @endif
+            </div>
+            <div class="text-center mt-md-5">
+                @if ($wallet_info->enable_redeem_hearts==1)
+                <button type="button" data-toggle="modal"  data-target="#ChooseActiveHeartsRedeemOption"  class="btn btn-outline-success btn-sm rounded-pill"><strong>REDEEM ACTIVE HEARTS POINTS</strong></button>
                 @endif
             </div>
         </div>
     </section>
 
-    @if ($wallet_info->enable_redeem_srp==1)
-          {{-- share model for only redem superRewardPoint Model  --}}
-   <div class="modal fade" id="ChooseSuperRewardPointRedeemOption" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+@if ($wallet_info->enable_redeem_srp==1)
+{{-- share model for only redem superRewardPoint Model  --}}
+<div class="modal fade" id="ChooseSuperRewardPointRedeemOption" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
    aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered" role="document">
-   <div class="modal-content">
-       <div class="modal-header">
-           <h5 class="modal-title" id="exampleModalCenterTitle">Choose the Redem Option</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-           </button>
-       </div>
-       <div class="modal-body">
-        <form action="{{ route('user.RedeemRequest') }}" method="post">
-            @csrf
-            <input type="hidden" name="cus_id" value="{{ session('customer')->id }}">
-             <div class="form-group">
-                  <p><b>NOTE </b>:{{$points_given->remark_of_super_reward_point}}</p>
-             </div>
-            <div class="form-group">
-                <select class="form-control select" name="redem_option" required>
-                    <option value="Redeem 100% SRM as Vouchers" selected>Redeem 100% SRM as Vouchers</option>
-                    <option value="Redeem only 75% as Vouchers & Donate 25% charity" >Redeem only 75% as Vouchers & Donate 25% charity</option>
-                    <option value="Redeem only 50% as Vouchers & Donate 50% charity" >Redeem only 50% as Vouchers & Donate 50% charity</option>
-                    <option value="Redeem only 25% as Vouchers & Donate 75% charity" >Redeem only 25% as Vouchers & Donate 75% charity</option>
-                    <option value="Donate 100% SRP towards charity" >Donate 100% SRP towards charity</option>
-
-                </select>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Choose the Redem Option</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form action="{{ route('user.RedeemRequest') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="cus_id" value="{{ session('customer')->id }}">
+                    <div class="form-group">
+                        <p><b>NOTE </b>:{{$points_given->remark_of_super_reward_point}}</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control select" name="redem_option" required>
+                            <option value="Redeem 100% SRM as Vouchers" selected>Redeem 100% SRM as Vouchers</option>
+                            <option value="Redeem only 75% as Vouchers & Donate 25% charity" >Redeem only 75% as Vouchers & Donate 25% charity</option>
+                            <option value="Redeem only 50% as Vouchers & Donate 50% charity" >Redeem only 50% as Vouchers & Donate 50% charity</option>
+                            <option value="Redeem only 25% as Vouchers & Donate 75% charity" >Redeem only 25% as Vouchers & Donate 75% charity</option>
+                            <option value="Donate 100% SRP towards charity" >Donate 100% SRP towards charity</option>
 
-       </div>
-       <div class="modal-footer">
-           <button type="submit" class="btn btn-secondary"
-               >Redeem</button>
-       </div>
-    </form>
-   </div>
-</div>
+                        </select>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary"
+                    >Redeem</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 {{--share model for only redem superRewardPoint Model  --}}
-    @endif
+@endif
+
+@if ($wallet_info->enable_redeem_hearts==1)
+{{-- share model for only redem active hearts Model  --}}
+<div class="modal fade" id="ChooseActiveHeartsRedeemOption" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+   aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Choose the Redem Option For Active Hearts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('user.RedeemRequestToActiveHearts') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="cus_id" value="{{ session('customer')->id }}">
+                    <div class="form-group">
+                        <select class="form-control select" name="redem_option" required>
+                            <option value="Smartphone Vouchers" selected>Smartphone Vouchers</option>
+                            <option value="Consumer Durable Product Vouchers" >Consumer Durable Product Vouchers</option>
+                            <option value="Grocery Vouchers" >Grocery Vouchers</option>
+                            <option value="Pharmacy Vouchers" >Pharmacy Vouchers</option>
+                            <option value="Diagnostics" >Diagnostics</option>
+                            <option value="Fuel Vouchers" >Fuel Vouchers</option>
+                            <option value="Wellness Vouchers" >Wellness Vouchers</option>
+                            <option value="Gym Vouchers" >Gym Vouchers</option>
+                        </select>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary"
+                    >Redeem</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{--share model for only redem active hearts Model  --}}
+@endif
+
 
 @endsection
 
