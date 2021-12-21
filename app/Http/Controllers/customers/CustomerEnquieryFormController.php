@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\customers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Customer\QuickEnquieryRequest;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEnqieryForm;
 use App\Models\Products;
@@ -39,27 +40,11 @@ class  CustomerEnquieryFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuickEnquieryRequest $request)
     {
 
-           $this->validate($request,[
-               "enq_date"=>"required",
-               "enq_time"=>"required",
-               "enq_pre_mode"=>"required",
-               "enq_pro_type"=>"required",
-               "enq_sub_pro_type"=>"required",
-               "company_name"=>"required",
-               "monthly_income"=>"required|numeric",
-               "loan_amount"=>"required|numeric",
-               "residence"=>"required",
-               "office"=>"required",
-               "working_from_home"=>"required",
-               "loan_expected"=>"required",
-               "enq_cibil_score"=>"required"
-           ]);
-        //    dd($request->all());
            $quick_enquiery_form=new CustomerEnqieryForm();
-           $quick_enquiery_form->eqy_of_cus_enq_tb=session('customer')->id;
+           $quick_enquiery_form->eqy_of_cus_enq_tb=$request->customer_id;
            $quick_enquiery_form->date_to_call=$request->enq_date;
            $quick_enquiery_form->time_to_call=$request->enq_time;
            $quick_enquiery_form->mode_of_contact=$request->enq_pre_mode;
