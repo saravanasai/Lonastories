@@ -7,6 +7,7 @@ use App\Http\Requests\Customer\QuickEnquieryRequest;
 use App\Models\CustomerSignup;
 use App\Models\Cutomer\CustomerEnqieryForm;
 use App\Models\Products;
+use App\Service\CustomerEnquieyService\CustomerEnquieyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -40,33 +41,16 @@ class  CustomerEnquieryFormController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(QuickEnquieryRequest $request)
+    public function store(QuickEnquieryRequest $request , CustomerEnquieyService $service)
     {
-
-           $quick_enquiery_form=new CustomerEnqieryForm();
-           $quick_enquiery_form->eqy_of_cus_enq_tb=$request->customer_id;
-           $quick_enquiery_form->date_to_call=$request->enq_date;
-           $quick_enquiery_form->time_to_call=$request->enq_time;
-           $quick_enquiery_form->mode_of_contact=$request->enq_pre_mode;
-           $quick_enquiery_form->product_type=$request->enq_pro_type;
-           $quick_enquiery_form->sub_product_type_eq_tb=$request->enq_sub_pro_type;
-           $quick_enquiery_form->priority_for_personal_loan=$request->priority_for_personal_loan;
-           $quick_enquiery_form->company_name=$request->company_name;
-           $quick_enquiery_form->monthly_income=$request->monthly_income;
-           $quick_enquiery_form->loan_amount=$request->loan_amount;
-           $quick_enquiery_form->residence=$request->residence;
-           $quick_enquiery_form->office=$request->office;
-           $quick_enquiery_form->working_from_home=$request->working_from_home;
-           $quick_enquiery_form->loan_expected=$request->loan_expected;
-           $quick_enquiery_form->cibil_score=$request->enq_cibil_score;
-           $quick_enquiery_form->save();
-           //updating the master customer table cus_enquiery_form status to 1
-           $customer_master=CustomerSignup::where('id',session('customer')->id)->first();
-           $customer_master->enquiery_form_status=1;
-           $customer_master->save();
-           //end updating the master customer table cus_enquiery_form status to 1
-           return redirect()->route('home')->with('enquierySubmited','Form submited');
-
+            if($service->handleCustomerService($request))
+            {
+                return redirect()->route('home')->with('enquierySubmited','Form submited');
+            }
+            else
+            {
+                return response("Internal Server Error",501);
+            }
     }
 
     /**

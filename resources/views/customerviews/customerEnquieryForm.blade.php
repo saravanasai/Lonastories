@@ -41,7 +41,7 @@
                         <input type="hidden" name="customer_id" value="{{Session('customer')->id}}">
                         <div class="card">
                             <div class="card-body font-weight-bold text-secondary">
-                                <h2>Quick Enquiery</h2>
+                                <h4 class="text-center" >Quick Enquiery</h4>
                                 <p class="font-weight-bold text-center mb-5">@if ($errors->any())
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -174,8 +174,11 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
                                         <div class="float-right">
+                                            @if ($user_info->enquiery_form_status == 0)
                                             <button type="submit" name="submit" class="btn btn-success"
-                                        value="">Submit Your Details</button>
+                                            value="">Submit</button>
+                                        @endif
+
                                         </div>
                                     </div>
                                 </div>
