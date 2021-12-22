@@ -36,6 +36,8 @@ class CustomerResource extends JsonResource
             "user_profile_img" => url('/') . "/userprofile/" . $this->user_profile_img,
             "pr_form_status" => $this->pr_form_status,
             "customer_one_view_status" => $this->customer_one_view_status,
+            "enquiery_form_status" => $this->enquiery_form_status,
+            "customer_one_view_status" => $this->customer_one_view_status,
             "Wallet_info" => $this->wallet,
         ];
     }

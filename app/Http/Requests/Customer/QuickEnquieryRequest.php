@@ -33,6 +33,7 @@ class QuickEnquieryRequest extends FormRequest
             "enq_date"=>"required",
             "enq_time"=>"required",
             "mode_to_connect"=>"required",
+            "customer_id"=>"required|numeric"
         ];
     }
 }

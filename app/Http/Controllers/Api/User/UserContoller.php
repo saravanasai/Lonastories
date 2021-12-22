@@ -12,14 +12,10 @@ class UserContoller extends Controller
 {
 
 
-    public function  userInfo($id, CheckUSerExistService $service)
+    public function  userInfo(Request $request)
     {
-        if ($service->check_if_user_exist_api($id)) {
-            $user = CustomerSignup::find($id);
-            return  new CustomerResource($user);
-        } else {
-            $reponse = ["message" => "User Not Found"];
-            return response(json_encode($reponse), 404);
-        }
+
+        return  new CustomerResource($request->user());
+
     }
 }
